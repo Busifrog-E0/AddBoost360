@@ -1,0 +1,21 @@
+import React from "react";
+import Button from "../../Button";
+import Global from "../../../assets/Global.png";
+import Black from "../../../assets/black.png";
+import ServiceCard from "./ServiceCard";
+
+const ServiceList = ({ services }) => {
+  return (
+    <div>
+      <div className="flex flex-col gap-14">
+        {services.map((service, index) => (
+          <div key={service.id} className=" ">
+            <ServiceCard reverse={index % 2 !== 0} service={service} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ServiceList;
