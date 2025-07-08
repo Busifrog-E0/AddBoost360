@@ -27,7 +27,7 @@ const PortfolioCard = ({ project, reverse = false }) => {
           hoverBgColor="bg-gray-300"
           hoverTextColor="text-black"
           onClick={() => {
-            navigate("/contact");
+            window.open(project.linkToProject, "_blank");
           }}
         />
       </div>
@@ -47,13 +47,20 @@ const PortfolioCard = ({ project, reverse = false }) => {
 
       {/* Overlapping Text Box */}
       <div className="absolute -bottom-6 left-0 right-6 md:right-8 xl:right-16">
-        <div className="w-4 h-4 lg:w-14 lg:h-14 p-2 lg:p-4 bg-primary">
-          <img
-            src={Play}
-            alt={"skills"}
-            className="w-full h-full object-cover"
-          />
+        <div className="w-10 h-10 sm:w-8 sm:h-8 lg:w-12 lg:h-12 p-3 lg:p-4 sm:p-2 bg-primary">
+          <a
+            href={project.linkToProject}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src={Play}
+              alt="skills"
+              className="w-full h-full object-cover cursor-pointer"
+            />
+          </a>
         </div>
+
         <div className="flex bg-white  ">
           {/* Text content */}
           <div className="p-2 md:p-3 lg:p-4">
@@ -71,7 +78,7 @@ const PortfolioCard = ({ project, reverse = false }) => {
   return (
     <div>
       <div>
-        <div className="bg-white grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
+        <div className=" grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
           {reverse ? (
             <>
               {TextContent}
