@@ -10,7 +10,12 @@ const ServiceList = ({ services }) => {
       <div className="flex flex-col gap-14">
         {services.map((service, index) => (
           <div key={service.id} className=" ">
-            <ServiceCard reverse={index % 2 !== 0} service={service} />
+            <div className="hidden lg:block">
+              <ServiceCard reverse={index % 2 !== 0} service={service} />
+            </div>
+            <div className="block lg:hidden">
+              <ServiceCard service={service} />
+            </div>
           </div>
         ))}
       </div>
