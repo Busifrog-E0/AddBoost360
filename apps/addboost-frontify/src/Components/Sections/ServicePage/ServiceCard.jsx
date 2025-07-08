@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../../Button";
 import Black from "../../../assets/black.png";
 
-const ServiceCard = ({ service, reverse = false }) => {
+const ServiceCard = ({ service, reverse = true }) => {
   const TextContent = (
     <div className="flex flex-col gap-5">
       <h className="font-arya text-[#1C1C1C] text-3xl 2xl:text-5xl 2xl:pt-10 uppercase">
