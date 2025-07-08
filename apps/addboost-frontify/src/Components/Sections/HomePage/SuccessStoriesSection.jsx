@@ -61,7 +61,7 @@ const SuccessStoriesSection = () => {
     else {
         if (testimonials.length > 0) {
             return (
-                <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 bg-gray-100">
+                <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 bg-pastelpink">
                     <div className="grid lg:grid-cols-3 gap-4 lg:gap-12 2xl:gap-16 items-start">
                         <div className="flex flex-col justify-between h-full order-1 lg:order-2">
                             <div className="flex flex-row lg:flex-col justify-between items-center lg:justify-start lg:items-start gap-4">
