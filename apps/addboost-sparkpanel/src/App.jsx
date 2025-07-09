@@ -8,6 +8,8 @@ import PortfolioSection from "./components/PortfolioSection";
 import TeamSection from "./components/TeamSection";
 import CompanySection from "./components/CompanySection";
 
+import FormListPage from "./components/FormListPage";
+
 function App() {
   const [activeSection, setActiveSection] = useState("service");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -25,6 +27,8 @@ function App() {
         return <AboutSection />;
       case "companies":
         return <CompanySection />;
+      case "form":
+        return <FormListPage />;
       default:
         <ServiceSection />;
         return;
