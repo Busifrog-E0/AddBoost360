@@ -41,7 +41,7 @@ const PortfolioCard = ({ project, reverse = false }) => {
       <img
         src={project.image}
         alt="black"
-        className="aw-full h-full object-cover rounded-md relative z-10 "
+        className="w-full h-full object-cover rounded-md relative z-10 "
       />
 
       {/* Overlapping Text Box */}
