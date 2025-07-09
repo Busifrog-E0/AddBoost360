@@ -1,7 +1,7 @@
 import PortfoliList from "./PortfoliList";
 import React, { useState } from "react";
 
-const ProtfolioSection = () => {
+const PortfolioSection = () => {
   const [projects, setprojects] = useState([
     {
       id: 1,
@@ -69,4 +69,4 @@ const ProtfolioSection = () => {
   );
 };
 
-export default ProtfolioSection;
+export default PortfolioSection;

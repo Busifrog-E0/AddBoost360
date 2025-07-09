@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar";
 import ServiceSection from "./components/ServiceSection";
 
 import AboutSection from "./components/AboutSection";
-import PortfolioSection from "./components/Protfoliosection";
+import PortfolioSection from "./components/PortfolioSection";
 
 function App() {
   const [activeSection, setActiveSection] = useState("service");
@@ -20,7 +20,8 @@ function App() {
       case "about":
         return <AboutSection />;
       default:
-        return ;
+        <ServiceSection />;
+        return;
     }
   };
 
