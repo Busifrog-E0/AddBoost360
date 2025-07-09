@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
+import ServicePreviewCard from "./Elements/Services/ServicePreviewCard";
+
+
 
 const AddServicePage = ({ onBack, onSave }) => {
   const [formData, setFormData] = useState({
@@ -10,7 +13,7 @@ const AddServicePage = ({ onBack, onSave }) => {
 
     image: null,
     imagePreview: "",
-    services: [""],
+    services: [],
   });
 
   const [errors, setErrors] = useState({});
@@ -124,219 +127,226 @@ const AddServicePage = ({ onBack, onSave }) => {
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-6">
-            Service Information
-          </h2>
 
-          {/* Title */}
-          <div className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Service Title *
-              </label>
-              <input
-                type="text"
-                value={formData.title}
-                onChange={(e) => handleInputChange("title", e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-                  }`}
-                placeholder="e.g., Web Development"
-              />
-              {errors.title && (
-                <p className="mt-1 text-sm text-red-600">{errors.title}</p>
-              )}
-            </div>
+      <div className="grid lg:grid-cols-3 gap-3">
+        <form onSubmit={handleSubmit} className="space-y-6 lg:col-span-2">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <h2 className="text-lg font-semibold text-gray-900 mb-6">
+              Service Information
+            </h2>
 
-            {/* Description */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Service Description *
-              </label>
-              <textarea
-                rows={6}
-                value={formData.description}
-                onChange={(e) =>
-                  handleInputChange("description", e.target.value)
-                }
-                className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.description
+            {/* Title */}
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Service Title *
+                </label>
+                <input
+                  type="text"
+                  value={formData.title}
+                  onChange={(e) => handleInputChange("title", e.target.value)}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                    }`}
+                  placeholder="e.g., Web Development"
+                />
+                {errors.title && (
+                  <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+                )}
+              </div>
+
+              {/* Description */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Service Description *
+                </label>
+                <textarea
+                  rows={6}
+                  value={formData.description}
+                  onChange={(e) =>
+                    handleInputChange("description", e.target.value)
+                  }
+                  className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.description
                     ? "border-red-300 bg-red-50"
                     : "border-gray-300"
-                  }`}
-                placeholder="Detailed description..."
-              />
+                    }`}
+                  placeholder="Detailed description..."
+                />
 
-              {errors.description && (
-                <p className="text-sm text-red-600">{errors.description}</p>
-              )}
-            </div>
+                {errors.description && (
+                  <p className="text-sm text-red-600">{errors.description}</p>
+                )}
+              </div>
 
-            {/* Subtitle */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Service Subtitle *
-              </label>
-              <input
-                type="text"
-                value={formData.subtitle}
-                onChange={(e) => handleInputChange("subtitle", e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg ${errors.subtitle
+              {/* Subtitle */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Service Subtitle *
+                </label>
+                <input
+                  type="text"
+                  value={formData.subtitle}
+                  onChange={(e) => handleInputChange("subtitle", e.target.value)}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.subtitle
                     ? "border-red-300 bg-red-50"
                     : "border-gray-300"
-                  }`}
-                placeholder="e.g., Modern Web Apps"
-              />
-              {errors.subtitle && (
-                <p className="mt-1 text-sm text-red-600">{errors.subtitle}</p>
-              )}
-            </div>
+                    }`}
+                  placeholder="e.g., Modern Web Apps"
+                />
+                {errors.subtitle && (
+                  <p className="mt-1 text-sm text-red-600">{errors.subtitle}</p>
+                )}
+              </div>
 
-            {/* Services List */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                List of Services
-              </label>
+              {/* Services List */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  List of Services
+                </label>
 
-              {formData.services.map((service, index) => (
-                <div key={index} className="flex items-center space-x-2 mb-2">
-                  <input
-                    type="text"
-                    value={service}
-                    onChange={(e) => handleServiceChange(index, e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                    placeholder={`Service ${index + 1}`}
-                  />
-                </div>
-              ))}
+                {formData.services.map((service, index) => (
+                  <div key={index} className="flex items-center space-x-2 mb-2">
+                    <input
+                      type="text"
+                      value={service}
+                      onChange={(e) => handleServiceChange(index, e.target.value)}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      placeholder={`Service ${index + 1}`}
+                    />
+                  </div>
+                ))}
 
-              <div className="flex items-center space-x-2 mt-2">
-                <button
-                  type="button"
-                  onClick={addService}
-                  className="flex items-center mt-2 text-blue-600 hover:underline"
-                >
-                  <Plus className="w-4 h-4 mr-1" /> Add New Service
-                </button>
-
-                {formData.services.length > 1 && (
+                <div className="flex items-center space-x-2 mt-2">
                   <button
                     type="button"
-                    onClick={() => removeService(formData.services.length - 1)}
-                    className="flex items-center justify-center border border-red-500 text-red-500 rounded-md p-2 hover:bg-red-50"
+                    onClick={addService}
+                    className="flex items-center mt-2 text-blue-600 hover:underline"
                   >
-                    <Trash2 className="w-4 h-4" />
+                    <Plus className="w-4 h-4 mr-1" /> Add New Service
                   </button>
+
+                  {formData.services.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeService(formData.services.length - 1)}
+                      className="flex items-center justify-center border border-red-500 text-red-500 rounded-md p-2 hover:bg-red-50"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Button Text */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Call-to-Action Button Text *
+                </label>
+                <input
+                  type="text"
+                  value={formData.buttonText}
+                  onChange={(e) =>
+                    handleInputChange("buttonText", e.target.value)
+                  }
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
+                  placeholder="e.g., Contact Us"
+                />
+                {errors.buttonText && (
+                  <p className="mt-1 text-sm text-red-600">{errors.buttonText}</p>
+                )}
+              </div>
+
+              {/* Image Upload */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Service Image *
+                </label>
+                {!formData.imagePreview ? (
+                  <div
+                    className={`border-2 border-dashed p-8 text-center ${errors.image
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                      }`}
+                  >
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                      id="image-upload"
+                    />
+                    <label htmlFor="image-upload" className="cursor-pointer">
+                      <div className="flex flex-col items-center space-y-3">
+                        <div className="p-3 bg-gray-100 rounded-full">
+                          <Upload className="w-6 h-6 text-gray-600" />
+                        </div>
+                        <p className="text-sm font-medium text-gray-900">
+                          Click to upload image
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          PNG, JPG, GIF up to 5MB
+                        </p>
+                      </div>
+                    </label>
+                  </div>
+                ) : (
+                  <div className="relative">
+                    <img
+                      src={formData.imagePreview}
+                      alt="Service preview"
+                      className="w-full h-48 object-cover rounded-lg border"
+                    />
+                    <button
+                      type="button"
+                      onClick={removeImage}
+                      className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+                {errors.image && (
+                  <p className="text-sm text-red-600 mt-1">{errors.image}</p>
                 )}
               </div>
             </div>
-
-            {/* Button Text */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Call-to-Action Button Text *
-              </label>
-              <input
-                type="text"
-                value={formData.buttonText}
-                onChange={(e) =>
-                  handleInputChange("buttonText", e.target.value)
-                }
-                className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                  }`}
-                placeholder="e.g., Contact Us"
-              />
-              {errors.buttonText && (
-                <p className="mt-1 text-sm text-red-600">{errors.buttonText}</p>
-              )}
-            </div>
-
-            {/* Image Upload */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Service Image *
-              </label>
-              {!formData.imagePreview ? (
-                <div
-                  className={`border-2 border-dashed p-8 text-center ${errors.image
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                    }`}
-                >
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="hidden"
-                    id="image-upload"
-                  />
-                  <label htmlFor="image-upload" className="cursor-pointer">
-                    <div className="flex flex-col items-center space-y-3">
-                      <div className="p-3 bg-gray-100 rounded-full">
-                        <Upload className="w-6 h-6 text-gray-600" />
-                      </div>
-                      <p className="text-sm font-medium text-gray-900">
-                        Click to upload image
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        PNG, JPG, GIF up to 5MB
-                      </p>
-                    </div>
-                  </label>
-                </div>
-              ) : (
-                <div className="relative">
-                  <img
-                    src={formData.imagePreview}
-                    alt="Service preview"
-                    className="w-full h-48 object-cover rounded-lg border"
-                  />
-                  <button
-                    type="button"
-                    onClick={removeImage}
-                    className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-              )}
-              {errors.image && (
-                <p className="text-sm text-red-600 mt-1">{errors.image}</p>
-              )}
-            </div>
           </div>
-        </div>
 
-        {/* Footer Buttons */}
-        <div className="flex items-center justify-end space-x-4 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
-          <button
-            type="button"
-            onClick={onBack}
-            className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
-          >
-            {isLoading ? (
-              <>
-                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                <span>Saving...</span>
-              </>
-            ) : (
-              <>
-                <Save className="w-4 h-4" />
-                <span>Save Service</span>
-              </>
-            )}
-          </button>
+          {/* Footer Buttons */}
+          <div className="flex items-center justify-end space-x-4 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <button
+              type="button"
+              onClick={onBack}
+              className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
+            >
+              {isLoading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span>Saving...</span>
+                </>
+              ) : (
+                <>
+                  <Save className="w-4 h-4" />
+                  <span>Save Service</span>
+                </>
+              )}
+            </button>
+          </div>
+        </form>
+        <div className="">
+          <ServicePreviewCard service={formData} />
         </div>
-      </form>
+      </div>
+
     </div>
   );
 };
