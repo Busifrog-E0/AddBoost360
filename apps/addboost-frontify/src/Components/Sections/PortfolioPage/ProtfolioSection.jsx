@@ -11,8 +11,7 @@ const ProtfolioSection = () => {
         "Cross-border shipping integration",
         "One-month sales target met in 18 days",
       ],
-      image:
-        "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg",
+      image: "https://images.pexels.com/photos/3762876/pexels-photo-3762876.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop", // Skincare / e-commerce
       buttonText: "View Website",
       type: "Website Design, Branding, Social Media Marketing, Product Sourcing from India",
       linkToProject: "https://google.com",
@@ -20,31 +19,27 @@ const ProtfolioSection = () => {
     {
       id: 2,
       title: "Empowerment Training - Marketing Team in Philippines",
-      image:
-        "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg",
       impactPoints: [
-        "400% increase in organic traffic in 6 months",
-        "Cross-border shipping integration",
-        "One-month sales target met in 18 days",
+        "Up-skilled 20+ team members",
+        "Real-time Meta Ads & Canva workshops",
+        "Result: 2X engagement across campaigns",
       ],
+      image: "https://images.pexels.com/photos/4144222/pexels-photo-4144222.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop", // Corporate training
       buttonText: "View Website",
-      image:
-        "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg",
-      type: "Website Design, Branding, Social Media Marketing, Product Sourcing swapna from India",
+      type: "Digital Training, Workshop, Marketing Tools Empowerment",
       linkToProject: "https://google.com",
     },
     {
       id: 3,
       title: "Influencer Campaign - UAE Luxury Watch Brand",
       impactPoints: [
-        "400% increase in organic traffic in 6 months",
-        "Cross-border shipping integration",
-        "One-month sales target met in 18 days",
+        "100K+ influencer reach in 3 weeks",
+        "Video ad ROI: 8.4x",
+        "Brand awareness up by 260%",
       ],
-      image:
-        "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg",
+      image: "https://images.pexels.com/photos/3616764/pexels-photo-3616764.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop", // Luxury watch influencer
       buttonText: "View Website",
-      type: "Website Design, Branding, Social Media Marketing, Product rajath Sourcing from India",
+      type: "Influencer Marketing, Paid Ads, UAE Market Penetration",
       linkToProject: "https://www.savana.com/",
     },
   ]);
