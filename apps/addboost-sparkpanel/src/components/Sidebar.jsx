@@ -26,7 +26,7 @@ const Sidebar = ({
     { id: "team", label: "Team", icon: Users },
     { id: "companies", label: "Companies", icon: Building2 },
     { id: "form", label: "Leads", icon: UserSearch },
-    { id: "about", label: "About Us", icon: User },
+    // { id: "about", label: "About Us", icon: User },
   ];
   return (
     <>
