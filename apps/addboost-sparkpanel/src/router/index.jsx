@@ -11,6 +11,7 @@ import TeamSection from "../components/TeamSection";
 import PortfolioSection from "../components/PortfolioSection";
 import AboutSection from "../components/AboutSection";
 import AddServicePage from "../components/AddServicePage";
+import FormListPage from "../components/FormListPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,10 @@ export const router = createBrowserRouter(
       <Route
         path="/about"
         element={<AboutSection />}
+      />
+      <Route
+        path="/form"
+        element={<FormListPage />}
       />
     </Route>
   )
