@@ -1,12 +1,5 @@
-import { useState } from "react";
-import Sidebar from "./components/Sidebar";
-
-import ServiceSection from "./components/ServiceSection";
-
-import AboutSection from "./components/AboutSection";
-import PortfolioSection from "./components/PortfolioSection";
-import TeamSection from "./components/TeamSection";
-import CompanySection from "./components/CompanySection";
+import { RouterProvider } from "react-router";
+import { router } from "./router";
 
 import FormListPage from "./components/FormListPage";
 
@@ -49,9 +42,8 @@ function App() {
 
       {/* Sidebar */}
       <div
-        className={`${
-          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed inset-y-0 left-0 z-50 transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0`}
+        className={`${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+          } fixed inset-y-0 left-0 z-50 transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0`}
       >
         <Sidebar
           activeSection={activeSection}
