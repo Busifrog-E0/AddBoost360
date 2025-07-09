@@ -8,6 +8,7 @@ import {
   Menu,
   Building2,
   Users,
+  FileText,
 } from "lucide-react";
 import { useNavigate } from "react-router";
 
