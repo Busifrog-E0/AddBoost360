@@ -1,17 +1,8 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
 
-const AddServicePage = ({ onBack, onSave }) => {
-  const [formData, setFormData] = useState({
-    title: "",
-    subtitle: "",
-    description: "",
-    buttonText: "",
-
-    image: null,
-    imagePreview: "",
-    services: [""],
-  });
+const EditServicePage = ({ onBack, onSave, serviceToBeEdited }) => {
+  const [formData, setFormData] = useState(serviceToBeEdited);
 
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -161,8 +152,8 @@ const AddServicePage = ({ onBack, onSave }) => {
                   handleInputChange("description", e.target.value)
                 }
                 className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.description
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
                   }`}
                 placeholder="Detailed description..."
               />
@@ -182,8 +173,8 @@ const AddServicePage = ({ onBack, onSave }) => {
                 value={formData.subtitle}
                 onChange={(e) => handleInputChange("subtitle", e.target.value)}
                 className={`w-full px-4 py-3 border rounded-lg ${errors.subtitle
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
                   }`}
                 placeholder="e.g., Modern Web Apps"
               />
@@ -243,8 +234,8 @@ const AddServicePage = ({ onBack, onSave }) => {
                   handleInputChange("buttonText", e.target.value)
                 }
                 className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
                   }`}
                 placeholder="e.g., Contact Us"
               />
@@ -261,8 +252,8 @@ const AddServicePage = ({ onBack, onSave }) => {
               {!formData.imagePreview ? (
                 <div
                   className={`border-2 border-dashed p-8 text-center ${errors.image
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                 >
                   <input
@@ -341,4 +332,4 @@ const AddServicePage = ({ onBack, onSave }) => {
   );
 };
 
-export default AddServicePage;
+export default EditServicePage;

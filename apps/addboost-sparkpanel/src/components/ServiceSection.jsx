@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2, Eye } from "lucide-react";
 import AddServicePage from "./AddServicePage";
+import EditServicePage from "./EditServicePage";
 
 const ServiceSection = () => {
   const [showAddService, setShowAddService] = useState(false);
-  const [editingService, setEditingService] = useState(null);
+  const [showEditService, setShowEditService] = useState(false);
+  const [serviceToBeEdited, setServiceToBeEdited] = useState(null);
   const [services, setServices] = useState([
+
     {
       id: 1,
       title: "Web Development",
@@ -13,8 +16,10 @@ const ServiceSection = () => {
       description:
         "We create responsive, fast, and secure web applications using the latest technologies like React, Node.js, and cloud services.",
       buttonText: "Get Started",
-      image:
+      image: null,
+      imagePreview:
         "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400",
+      services: [""],
     },
     {
       id: 2,
@@ -23,8 +28,10 @@ const ServiceSection = () => {
       description:
         "Build powerful mobile apps for iOS and Android platforms with seamless user experience and robust functionality.",
       buttonText: "Learn More",
-      image:
+      image: null,
+      imagePreview:
         "https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-147413.jpeg?auto=compress&cs=tinysrgb&w=400",
+      services: [""],
     },
     {
       id: 3,
@@ -33,8 +40,10 @@ const ServiceSection = () => {
       description:
         "Create stunning and intuitive designs that enhance user engagement and drive business growth.",
       buttonText: "View Portfolio",
-      image:
+      image: null,
+      imagePreview:
         "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400",
+      services: [""],
     },
     {
       id: 4,
@@ -43,19 +52,21 @@ const ServiceSection = () => {
       description:
         "Boost your online presence with our data-driven marketing strategies and campaigns.",
       buttonText: "Contact Us",
-      image:
+      image: null,
+      imagePreview:
         "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=400",
+      services: [""],
     },
   ]);
 
   const handleAddService = () => {
-    setEditingService(null);
+    setServiceToBeEdited(null);
     setShowAddService(true);
   };
 
   const handleEditService = (service) => {
-    setEditingService(service);
-    setShowAddService(true);
+    setServiceToBeEdited(service);
+    setShowEditService(true);
   };
 
   const handleDeleteService = (serviceId) => {
@@ -66,15 +77,16 @@ const ServiceSection = () => {
 
   const handleBackToServices = () => {
     setShowAddService(false);
-    setEditingService(null);
+    setShowEditService(false);
+    setServiceToBeEdited(null);
   };
 
   const handleSaveService = (serviceData) => {
-    if (editingService) {
+    if (serviceToBeEdited) {
       setServices((prev) =>
         prev.map((service) =>
-          service.id === editingService.id
-            ? { ...service, ...serviceData, id: editingService.id }
+          service.id === serviceToBeEdited.id
+            ? { ...service, ...serviceData, id: serviceToBeEdited.id }
             : service
         )
       );
@@ -86,7 +98,8 @@ const ServiceSection = () => {
       setServices((prev) => [...prev, newService]);
     }
     setShowAddService(false);
-    setEditingService(null);
+    setShowEditService(false);
+    setServiceToBeEdited(null);
   };
 
   if (showAddService) {
@@ -94,8 +107,15 @@ const ServiceSection = () => {
       <AddServicePage
         onBack={handleBackToServices}
         onSave={handleSaveService}
-        initialData={editingService}
-        isEditing={!!editingService}
+      />
+    );
+  }
+  if (showEditService) {
+    return (
+      <EditServicePage
+        onBack={handleBackToServices}
+        onSave={handleSaveService}
+        serviceToBeEdited={serviceToBeEdited}
       />
     );
   }
@@ -145,7 +165,7 @@ const ServiceSection = () => {
                     <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0">
                         <img
-                          src={service.image}
+                          src={service.imagePreview}
                           alt={service.title}
                           className="w-12 h-12 rounded-full object-cover border border-gray-200"
                         />
