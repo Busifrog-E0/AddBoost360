@@ -5,7 +5,7 @@ const AddCompanyPage = ({ onBack, onSave }) => {
   const [formData, setFormData] = useState({
     id: 1,
     title: "",
-    productCategories: "",
+    productCategories: [],
     country: "",
     image: null,
     imagePreview: "",
@@ -38,12 +38,12 @@ const AddCompanyPage = ({ onBack, onSave }) => {
         }));
         return;
       }
-      setFormData((prev) => ({ ...prev, image: file }));
 
       const reader = new FileReader();
       reader.onload = (e) => {
         setFormData((prev) => ({
           ...prev,
+          image: file,
           imagePreview: e.target.result,
         }));
       };
@@ -59,7 +59,7 @@ const AddCompanyPage = ({ onBack, onSave }) => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.title.trim()) newErrors.title = "Company name is required";
-    if (!formData.productCategories.trim())
+    if (!formData.productCategories.length)
       newErrors.productCategories = "Product categories are required";
     if (!formData.country.trim()) newErrors.country = "Country is required";
     if (!formData.image) newErrors.image = "Company image is required";
@@ -99,12 +99,12 @@ const AddCompanyPage = ({ onBack, onSave }) => {
 
       {/* Form */}
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div className="bg-white rounded-xl shadow-sm border p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-6">
             Company Information
           </h2>
 
-          {/* Title */}
+          {/* Company Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Company Name *
@@ -119,7 +119,7 @@ const AddCompanyPage = ({ onBack, onSave }) => {
               placeholder="e.g., Razorpay"
             />
             {errors.title && (
-              <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+              <p className="text-sm text-red-600">{errors.title}</p>
             )}
           </div>
 
@@ -130,11 +130,17 @@ const AddCompanyPage = ({ onBack, onSave }) => {
             </label>
             <input
               type="text"
-              value={formData.productCategories}
+              value={formData.productCategories.join(", ")}
               onChange={(e) =>
-                handleInputChange("productCategories", e.target.value)
+                handleInputChange(
+                  "productCategories",
+                  e.target.value
+                    .split(",")
+                    .map((cat) => cat.trim())
+                    .filter(Boolean)
+                )
               }
-              className={`w-full px-4 mb-3 py-3 border rounded-lg ${
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
                 errors.productCategories
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
@@ -142,9 +148,7 @@ const AddCompanyPage = ({ onBack, onSave }) => {
               placeholder="e.g., Fintech, Payments"
             />
             {errors.productCategories && (
-              <p className="mt-1 text-sm text-red-600">
-                {errors.productCategories}
-              </p>
+              <p className="text-sm text-red-600">{errors.productCategories}</p>
             )}
           </div>
 
@@ -157,13 +161,13 @@ const AddCompanyPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.country}
               onChange={(e) => handleInputChange("country", e.target.value)}
-              className={`w-full px-4 mb-3 py-3 border rounded-lg ${
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
                 errors.country ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., India"
             />
             {errors.country && (
-              <p className="mt-1 text-sm text-red-600">{errors.country}</p>
+              <p className="text-sm text-red-600">{errors.country}</p>
             )}
           </div>
 
@@ -222,7 +226,7 @@ const AddCompanyPage = ({ onBack, onSave }) => {
         </div>
 
         {/* Footer Buttons */}
-        <div className="flex items-center justify-end space-x-4 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div className="flex items-center justify-end space-x-4 bg-white rounded-xl shadow-sm border p-6">
           <button
             type="button"
             onClick={onBack}
