@@ -43,14 +43,10 @@ const ServicePreviewCard = ({ service }) => {
       </p>
 
       {/* Subtitle */}
-      <p className="text-sm text-gray-700 mb-2">
-        {subtitle?.trim() || "{{Service Subtitle}}"}
-      </p>
-
+      <p className="font-semibold text-gray-800 mb-2"> {subtitle?.trim() || "{{Service Subtitle}}"}</p>
 
       {/* Services List */}
       <div>
-        <h3 className="font-semibold text-gray-800 mb-2">Our Services Include:</h3>
         <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
           {services?.length > 0
             ? services.map((item, idx) => (
