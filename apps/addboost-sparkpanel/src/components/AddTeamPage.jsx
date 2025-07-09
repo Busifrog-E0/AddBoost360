@@ -114,7 +114,7 @@ const AddTeamPage = ({ onBack, onSave }) => {
             <input
               type="text"
               value={formData.title}
-              onChange={(e) => handleInputChange("name", e.target.value)}
+              onChange={(e) => handleInputChange("title", e.target.value)}
               className={`w-full px-4 py-3 border mb-3 rounded-lg ${
                 errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
