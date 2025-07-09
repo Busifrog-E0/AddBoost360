@@ -1,11 +1,10 @@
 import Button from "../../Button";
 import Global from "../../../assets/Global.png";
-import Black from "../../../assets/black.png";
 
 import { useNavigate } from "react-router";
 
 const HeroSubSection = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="bg-pastelpink grid lg:grid-cols-2 gap-10 lg:gap-20 items-start px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24  ">
       <div className="flex flex-col gap-6 ">
@@ -13,7 +12,10 @@ const HeroSubSection = () => {
           Your Global Digital Transformation Partner
         </h>
         <p className="font-inter text-base 2xl:text-lg ">
-          A London-based agency offering global solutions in branding, web development, AI integration, marketing automation, and business growth—plus secure product sourcing with verified international suppliers.
+          A London-based agency offering global solutions in branding, web
+          development, AI integration, marketing automation, and business
+          growth—plus secure product sourcing with verified international
+          suppliers.
         </p>
 
         <div className="grid md:flex lg:grid xl:flex flex-row   gap-6">
@@ -41,12 +43,12 @@ const HeroSubSection = () => {
 
       <div className="relative z-1 mt-6 ">
         {/* Bottom image (Global with border) */}
-        <img src={Black} alt="Global" className="rounded-md border-2  w-full" />
+        <div className="absolute top-4 left-4 w-full h-full bg-lightblack rounded-md z-0 "></div>
         {/* Top image (Black overlay card) */}
         <img
           src={Global}
-          alt="Black"
-          className="absolute bottom-4 right-4 rounded-md w-full "
+          alt="black"
+          className="w-full h-full object-cover rounded-md relative z-10 "
         />
       </div>
     </div>

@@ -37,17 +37,16 @@ const PortfolioCard = ({ project, reverse = false }) => {
   const ImageBlock = (
     <div className="relative bg-white">
       {/* Image */}
-      <div className="h-[350px] w-full rounded-md overflow-hidden">
-        <img
-          src={project.image}
-          alt=""
-          className="h-full w-full object-cover"
-        />
-      </div>
+      <div className="absolute top-4 left-4 w-full h-full bg-lightblack rounded-md z-0 "></div>
+      <img
+        src={project.image}
+        alt="black"
+        className="aw-full h-full object-cover rounded-md relative z-10 "
+      />
 
       {/* Overlapping Text Box */}
-      <div className="absolute -bottom-6 left-0 right-6 md:right-8 xl:right-16">
-        <div className="w-10 h-10 sm:w-8 sm:h-8 lg:w-12 lg:h-12 p-3 lg:p-4 sm:p-2 bg-primary">
+      <div className="absolute -bottom-9 left-0 right-6 md:right-8 xl:right-16 z-30 ">
+        <div className="w-10 h-10 sm:w-8 sm:h-8 lg:w-12 lg:h-12 p-3 lg:p-4 sm:p-2 bg-primary  ">
           <a
             href={project.linkToProject}
             target="_blank"

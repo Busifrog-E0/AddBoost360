@@ -7,8 +7,10 @@ import WhyItWorks4 from "../../../assets/WhyItWorkSectionIcon/WhyItWorks4.png";
 import WhyItWorksHome from "../../../assets/WhyItWorkSectionIcon/WhyItWorksHome.png";
 import Button from "../../Button";
 import { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router";
 
 const WhyItWorksSection = () => {
+  const navigate = useNavigate();
   const [processes, setProcesses] = useState([
     {
       number: "01",
@@ -27,7 +29,7 @@ const WhyItWorksSection = () => {
       description:
         "Instant validation of product quality through live interaction.",
     },
-  ])
+  ]);
   const [steps, setSteps] = useState([
     {
       icon: WhyItWorks1,
@@ -45,7 +47,7 @@ const WhyItWorksSection = () => {
       icon: WhyItWorks4,
       text: "Delivery & payment release",
     },
-  ])
+  ]);
   return (
     <div className="bg-pastelpink px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 ">
       <p className="text-primary  font-inter text-base 2xl:text-lg">
@@ -65,7 +67,11 @@ const WhyItWorksSection = () => {
             className="relative flex flex-col justify-between items-center h-full "
           >
             <div className="flex flex-col items-center gap-3">
-              <img src={step.icon} alt={`Step ${index + 1}`} className="w-8 h-8" />
+              <img
+                src={step.icon}
+                alt={`Step ${index + 1}`}
+                className="w-8 h-8"
+              />
               <p className="font-arya uppercase text-base lg:text-lg leading-snug">
                 {step.text}
               </p>
@@ -97,7 +103,9 @@ const WhyItWorksSection = () => {
           <div className="flex flex-col gap-6 mt-6 sm:mt-8 p-6">
             {processes.map((point, index) => (
               <div key={index} className="flex flex-col">
-                <span className="text-sm font-bold text-gray-500">{point.number}</span>
+                <span className="text-sm font-bold text-gray-500">
+                  {point.number}
+                </span>
                 <p className="uppercase font-arya text-base sm:text-xl font-bold mt-1">
                   {point.title}
                 </p>
@@ -110,6 +118,7 @@ const WhyItWorksSection = () => {
             {/* Button */}
             <div className="flex items-center mt-6 sm:mt-8">
               <Button
+                onClick={() => navigate("/contact")}
                 text="Meet Global Suppliers"
                 bgColor="bg-white"
                 textColor="text-black"
@@ -124,11 +133,7 @@ const WhyItWorksSection = () => {
 
         {/* Right Section - Image */}
         <div className="flex justify-end mt-10 md:mt-0">
-          <img
-            src={WhyItWorksHome}
-            alt="Live Session"
-            className="w-full "
-          />
+          <img src={WhyItWorksHome} alt="Live Session" className="w-full " />
         </div>
       </div>
     </div>

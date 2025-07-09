@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../Button";
 import Global from "../../../assets/Global.png";
-import Black from "../../../assets/black.png";
+
 import ServiceCard from "./ServiceCard";
 
 const ServiceList = ({ services }) => {

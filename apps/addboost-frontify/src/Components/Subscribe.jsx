@@ -39,7 +39,11 @@ const Subscribe = () => {
           </button>
         </div> */}
         <div className="mt-4">
-          <Button text="Subscribe to newsletter" />
+          <a
+            href={`mailto:info@addboost360.com?subject=Subscribe to newsletter&body=Hello, I would like to subscribe to your newsletter.%0D%0APlease send me the latest updates.`}
+          >
+            <Button text="Subscribe to newsletter" />
+          </a>
         </div>
       </div>
     </div>

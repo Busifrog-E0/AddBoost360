@@ -1,8 +1,10 @@
 import React from "react";
 import Button from "../../Button";
-import Black from "../../../assets/black.png";
+
+import { Link, NavLink, useNavigate } from "react-router";
 
 const ServiceCard = ({ service, reverse = true }) => {
+  const navigate = useNavigate();
   const TextContent = (
     <div className="flex flex-col gap-5">
       <h className="font-arya text-[#1C1C1C] text-3xl 2xl:text-5xl 2xl:pt-10 uppercase">
@@ -34,12 +36,15 @@ const ServiceCard = ({ service, reverse = true }) => {
   );
 
   const ImageBlock = (
-    <div className="relative z-1 mt-6">
-      <img src={Black} alt="Global" className="rounded-md border-2 w-full" />
+    <div className="relative mt-6 h-[350px] w-full">
+      {/* Background shadow layer */}
+      <div className="absolute top-4 left-4 w-full h-full bg-lightblack rounded-md z-0"></div>
+
+      {/* Main image on top */}
       <img
         src={service.image}
         alt="Black"
-        className="absolute bottom-4 right-4 rounded-md w-full"
+        className="w-full h-full object-cover rounded-md relative z-10"
       />
     </div>
   );
