@@ -209,9 +209,7 @@ const ServiceSection = () => {
                 <th className="text-left py-4 px-6 font-medium text-gray-700">
                   Service
                 </th>
-                <th className="text-left py-4 px-6 font-medium text-gray-700">
-                  Subtitle
-                </th>
+
                 <th className="text-center py-4 px-6 font-medium text-gray-700">
                   Actions
                 </th>
@@ -239,16 +237,6 @@ const ServiceSection = () => {
                         </p>
                       </div>
                     </div>
-                  </td>
-
-                  {/* Subtitle */}
-                  <td className="py-4 px-6">
-                    <p
-                      className="text-sm text-gray-700 leading-relaxed max-w-md"
-                      title={service.subtitle}
-                    >
-                      {service.subtitle}
-                    </p>
                   </td>
 
                   {/* Actions */}
