@@ -12,7 +12,7 @@ const Button = ({
 }) => {
   return (
     <div onClick={onClick}
-      className={`relative group flex items-center justify-between gap-3 p-6 overflow-hidden cursor-pointer ${bgColor} ${border}`}
+      className={`relative group flex items-center justify-between gap-3 p-6 overflow-hidden cursor-pointer select-none ${bgColor} ${border}`}
     >
       <span
         className={`absolute inset-0 w-0 ${hoverBgColor} transition-all duration-500 ease-in-out group-hover:w-full`}
