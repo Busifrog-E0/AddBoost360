@@ -12,33 +12,71 @@ const CompanySection = () => {
       title: "Razorpay",
       country: "Bengaluru, India",
       productCategories: ["Fintech", "Payments"],
-      image:
-        "https://images.pexels.com/photos/1181395/pexels-photo-1181395.jpeg",
+      image: "https://images.pexels.com/photos/1181395/pexels-photo-1181395.jpeg"
     },
     {
       id: 2,
-      title: "google",
-      country: "Bengaluru, India",
+      title: "Miro",
+      country: "Amsterdam, Netherlands",
       productCategories: ["Fintech", "Payments"],
-      image:
-        "https://static.dezeen.com/uploads/2025/05/sq-google-g-logo-update_dezeen_2364_col_0-852x852.jpg",
+      image: "https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg"
     },
     {
       id: 3,
-      title: "apple",
-      country: "Bengaluru, India",
+      title: "Notion",
+      country: "San Francisco, United States",
       productCategories: ["Fintech", "Payments"],
-      image:
-        "https://cdn.logojoy.com/wp-content/uploads/20230509114756/apple-logo-future-600x400.jpg",
+      image: "https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg"
     },
     {
       id: 4,
-      title: "deloitte",
+      title: "LottieFiles",
+      productCategories: ["Fintech", "Payments"],
+      country: "Kuala Lumpur, Malaysia",
+      image: "https://images.pexels.com/photos/1181303/pexels-photo-1181303.jpeg"
+    },
+    {
+      id: 5,
+      title: "DeepL",
+      country: "Cologne, Germany",
+      productCategories: ["Fintech", "Payments"],
+      image: "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg"
+    },
+    {
+      id: 6,
+      title: "Copy.ai",
+      country: "New York, United States",
+      productCategories: ["Fintech", "Payments"],
+      image: "https://images.pexels.com/photos/260689/pexels-photo-260689.jpeg"
+    },
+    {
+      id: 7,
+      title: "CRED",
       country: "Bengaluru, India",
       productCategories: ["Fintech", "Payments"],
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9rTfOmHehYoGznTL0bQ_6gXj9OkUbo6cnXw&s",
+      image: "https://images.pexels.com/photos/2422280/pexels-photo-2422280.jpeg"
     },
+    {
+      id: 8,
+      title: "Hopin",
+      country: "London, United Kingdom",
+      productCategories: ["Fintech", "Payments"],
+      image: "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg"
+    },
+    {
+      id: 9,
+      title: "Sendinblue",
+      country: "Paris, France",
+      productCategories: ["Fintech", "Payments"],
+      image: "https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg"
+    },
+    {
+      id: 10,
+      title: "Deel",
+      country: "San Francisco, United States",
+      productCategories: ["Fintech", "Payments"],
+      image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg"
+    }
   ]);
 
   const handleAddCompany = () => {

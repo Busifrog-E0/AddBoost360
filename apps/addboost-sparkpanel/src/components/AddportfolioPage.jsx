@@ -136,9 +136,8 @@ const AddPortfolioPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.title}
               onChange={(e) => handleInputChange("title", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., E-commerce Platform"
             />
             {errors.title && (
@@ -155,11 +154,10 @@ const AddPortfolioPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.buttonText}
               onChange={(e) => handleInputChange("buttonText", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.buttonText
+              className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
-              }`}
+                }`}
               placeholder="e.g., View Website"
             />
             {errors.buttonText && (
@@ -176,9 +174,8 @@ const AddPortfolioPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.type}
               onChange={(e) => handleInputChange("type", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.type ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border rounded-lg ${errors.type ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., Website Design, Branding, Social Media Marketing"
             />
             {errors.type && (
@@ -242,11 +239,10 @@ const AddPortfolioPage = ({ onBack, onSave }) => {
               onChange={(e) =>
                 handleInputChange("linkToProject", e.target.value)
               }
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.linkToProject
+              className={`w-full px-4 py-3 border rounded-lg ${errors.linkToProject
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
-              }`}
+                }`}
               placeholder="e.g., https://google.com"
             />
             {errors.linkToProject && (
@@ -260,9 +256,8 @@ const AddPortfolioPage = ({ onBack, onSave }) => {
             </label>
             {!formData.imagePreview ? (
               <div
-                className={`border-2 border-dashed p-6 text-center ${
-                  errors.image ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+                className={`border-2 border-dashed p-6 text-center ${errors.image ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
               >
                 <input
                   type="file"

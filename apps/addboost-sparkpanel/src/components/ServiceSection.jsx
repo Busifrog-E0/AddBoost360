@@ -8,54 +8,117 @@ const ServiceSection = () => {
   const [showEditService, setShowEditService] = useState(false);
   const [serviceToBeEdited, setServiceToBeEdited] = useState(null);
   const [services, setServices] = useState([
-
     {
       id: 1,
-      title: "Web Development",
-      subtitle: "Custom web applications using modern technologies",
+      title: "DIGITAL MARKETING & GROWTH CAMPAIGNS",
+      subtitle: "Our Services Include:",
       description:
-        "We create responsive, fast, and secure web applications using the latest technologies like React, Node.js, and cloud services.",
-      buttonText: "Get Started",
-      image: null,
-      imagePreview:
-        "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=400",
-      services: [""],
+        "Turn Clicks into Clients. Globally. Effectively. We drive traffic, leads, and conversions through proven, ROI-focused strategies.",
+      buttonText: "LET'S GROW YOUR AUDIENCE",
+      imagePreview: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      services: [
+        "Search Engine Optimization (SEO)",
+        "Paid Media (PPC/Google Ads)",
+        "Social Media Marketing (Facebook, Instagram, TikTok, LinkedIn)",
+        "Influencer & Affiliate Campaigns",
+        "Content Strategy & Blogging",
+        "Marketing Automation",
+      ],
     },
     {
       id: 2,
-      title: "Mobile App Development",
-      subtitle: "Native and cross-platform mobile applications",
+      title: "WEBSITE DEVELOPMENT & E-COMMERCE SOLUTIONS",
+      subtitle: "We Offer:",
       description:
-        "Build powerful mobile apps for iOS and Android platforms with seamless user experience and robust functionality.",
-      buttonText: "Learn More",
-      image: null,
-      imagePreview:
-        "https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-147413.jpeg?auto=compress&cs=tinysrgb&w=400",
-      services: [""],
+        "Websites That Work - Beautiful, Functional, and Fast. We design, develop, and maintain secure, scalable, and high-converting websites.",
+      buttonText: "BUILD MY WEBSITE NOW",
+      imagePreview: "https://images.pexels.com/photos/6476589/pexels-photo-6476589.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      services: [
+        "Business Websites & Landing Pages",
+        "E-Commerce & WebCommerce Stores",
+        "Catalog & Portfolio Sites",
+        "Mobile-Optimized SEO-First-Design Development",
+        "Payment Gateway Integration",
+        "Hosting, Maintenance & Cybersecurity",
+      ],
     },
     {
       id: 3,
-      title: "UI/UX Design",
-      subtitle: "User interface and experience design services",
+      title: "AI & SMART TECH INTEGRATION",
+      subtitle: "Our AI Services:",
       description:
-        "Create stunning and intuitive designs that enhance user engagement and drive business growth.",
-      buttonText: "View Portfolio",
-      image: null,
-      imagePreview:
-        "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=400",
-      services: [""],
+        "Smarter Workflows. Instant Engagement. Powerful Insights. Automate, optimize, and scale your operations using advanced AI solutions.",
+      buttonText: "GET AI WORKING FOR YOU",
+      imagePreview: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      services: [
+        "Chatbot Development",
+        "AI-Powered Analytics",
+        "Predictive Algorithms for Marketing & Sales",
+        "Automation Pipelines",
+        "AI Tools for Content & Campaign Creation",
+        "CRM & Analytics Integration",
+      ],
     },
     {
       id: 4,
-      title: "Digital Marketing",
-      subtitle: "Comprehensive digital marketing strategies",
+      title: "BRANDING & CREATIVE IDENTITY",
+      subtitle: "What We Deliver:",
       description:
-        "Boost your online presence with our data-driven marketing strategies and campaigns.",
-      buttonText: "Contact Us",
-      image: null,
-      imagePreview:
-        "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=400",
-      services: [""],
+        "Design That Inspires Trust and Loyalty. We help you stand out with a brand that reflects who you are and what you believe in.",
+      buttonText: "CRAFT MY BRAND IDENTITY",
+      imagePreview: "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      services: [
+        "Logo Design",
+        "Visual Identity (Color, Fonts, Icons, Templates)",
+        "Social Media Branding",
+        "Visual Strategy & Direction",
+        "Packaging & Promotional Assets",
+      ],
+    },
+    {
+      id: 5,
+      title: "STARTUP PRODUCT SOURCING & ESCROW SERVICES",
+      subtitle: "Includes:",
+      description:
+        "Launch Your Store with Confidence. We handle the rest. We support startups with sourcing, supplier negotiation, and purchase management.",
+      buttonText: "SOURCE PRODUCTS SAFELY",
+      imagePreview: "https://images.pexels.com/photos/4483776/pexels-photo-4483776.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      services: [
+        "Global Wholesale Product Sourcing (China, India, UAE, etc.)",
+        "Verified Suppliers: Marketplace Verified Connections",
+        "Secure Supplier Matching + Final Selection",
+        "Logistics Coordination + Flexible dispatch or even delivery",
+        "Custom Contracts with Suppliers on Quality & Protection",
+        "Free One-Month Marketing Support (with Full Package)",
+      ],
+    },
+    {
+      id: 6,
+      title: "DIGITAL MARKETING TRAINING & EMPOWERMENT",
+      subtitle: "Available Trainings:",
+      description:
+        "Learn From Experts. Take Control of Your Digital Future. We provide hands-on training for corporations, teams, and freelancers.",
+      buttonText: "BUILD MY WEBSITE NOW",
+      imagePreview: "https://images.pexels.com/photos/4144222/pexels-photo-4144222.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      services: [
+        "Masterclasses in SEO, social media, Email Marketing",
+        "Live Projects Through Applications (Canva, Meta Ads, etc.)",
+        "Customized Team Workshops",
+        "Ongoing Support & Mentorship",
+      ],
+    },
+    {
+      id: 7,
+      title: "FREELANCER NETWORK & OUTSOURCING PROGRAM",
+      subtitle: "Two Categories:",
+      description:
+        "Top Talent. Global Reach. On Your Terms. We match businesses with high-performing freelancers or train their in-house team.",
+      buttonText: "LET'S GROW YOUR AUDIENCE",
+      imagePreview: "https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      services: [
+        "Remote Freelancers: Developers, Designers, SEO Experts, Marketers",
+        "Internship Talent: Young professionals with core tech & digital tools",
+      ],
     },
   ]);
 
