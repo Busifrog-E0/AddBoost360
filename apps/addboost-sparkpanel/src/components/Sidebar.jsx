@@ -8,7 +8,7 @@ import {
   Menu,
   Building2,
   Users,
-  FileText,
+  UserSearch
 } from "lucide-react";
 import { useNavigate } from "react-router";
 
@@ -25,10 +25,9 @@ const Sidebar = ({
     { id: "portfolio", label: "Portfolio", icon: Briefcase },
     { id: "team", label: "Team", icon: Users },
     { id: "companies", label: "Companies", icon: Building2 },
-    { id: "form", label: "Leads", icon: Building2 },
+    { id: "form", label: "Leads", icon: UserSearch },
     { id: "about", label: "About Us", icon: User },
   ];
-
   return (
     <>
       {/* Mobile Toggle Button */}
