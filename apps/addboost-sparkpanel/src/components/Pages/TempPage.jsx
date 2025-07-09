@@ -1,0 +1,9 @@
+const TempPage = () => {
+    return (
+        <div>
+            <h1>Temp Page</h1>
+            <p>This is a temporary page.</p>
+        </div>
+    );
+}
+export default TempPage;
