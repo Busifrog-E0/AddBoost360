@@ -29,7 +29,7 @@ const HeroSection = () => {
                     <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-arya uppercase">
                         {homePageData.title}
                     </h1>
-                    <p className="text-lg">
+                    <p className="text-lg font-inter">
                         {homePageData.description}
                     </p>
                     <div className="flex">

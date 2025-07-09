@@ -37,7 +37,7 @@ const PortfolioCard = ({ project, reverse = false }) => {
   const ImageBlock = (
     <div className="relative bg-white">
       {/* Image */}
-      <div className="absolute top-4 left-4 w-full h-full bg-lightblack rounded-md z-0 "></div>
+      <div className="absolute top-2 left-2 lg:top-4 lg:left-4 w-full h-full bg-lightblack rounded-md z-0 "></div>
       <img
         src={project.image}
         alt="black"

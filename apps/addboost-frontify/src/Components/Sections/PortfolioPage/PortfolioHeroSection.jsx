@@ -24,7 +24,7 @@ const PortfolioHeroSection = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-arya uppercase leading-snug  text-white lg:text-black">
             Our Portfolio
           </h1>
-          <p className="text-sm sm:text-base font-lato mt-6 max-w-xl  text-white lg:text-black">
+          <p className="font-inter text-sm sm:text-base font-lato mt-6 max-w-xl  text-white lg:text-black">
             We power global success through bold branding, smart digital
             campaigns, and AI-driven websites—built with creativity, strategy,
             and innovation.
