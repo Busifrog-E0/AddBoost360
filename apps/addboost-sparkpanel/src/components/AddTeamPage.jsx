@@ -115,9 +115,8 @@ const AddTeamPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.title}
               onChange={(e) => handleInputChange("title", e.target.value)}
-              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
-                errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., John Doe"
             />
             {errors.title && (
@@ -134,11 +133,10 @@ const AddTeamPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.designation}
               onChange={(e) => handleInputChange("designation", e.target.value)}
-              className={`w-full px-4 mb-3 py-3 border rounded-lg ${
-                errors.designation
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-              }`}
+              className={`w-full px-4 mb-3 py-3 border rounded-lg ${errors.designation
+                ? "border-red-300 bg-red-50"
+                : "border-gray-300"
+                }`}
               placeholder="e.g., Frontend Developer"
             />
             {errors.designation && (
@@ -155,9 +153,8 @@ const AddTeamPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.country}
               onChange={(e) => handleInputChange("country", e.target.value)}
-              className={`w-full px-4 mb-3 py-3 border rounded-lg ${
-                errors.country ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 mb-3 py-3 border rounded-lg ${errors.country ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., India"
             />
             {errors.country && (
@@ -170,49 +167,51 @@ const AddTeamPage = ({ onBack, onSave }) => {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Member Image *
             </label>
-            {!formData.imagePreview ? (
-              <div
-                className={`border-2 border-dashed p-8 text-center ${
-                  errors.image ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
-              >
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                  id="image-upload"
-                />
-                <label htmlFor="image-upload" className="cursor-pointer">
-                  <div className="flex flex-col items-center space-y-3">
-                    <div className="p-3 bg-gray-100 rounded-full">
-                      <Upload className="w-6 h-6 text-gray-600" />
-                    </div>
-                    <p className="text-sm font-medium text-gray-900">
-                      Click to upload image
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      PNG, JPG, GIF up to 5MB
-                    </p>
-                  </div>
-                </label>
-              </div>
-            ) : (
-              <div className="relative">
-                <img
-                  src={formData.imagePreview}
-                  alt="Team member preview"
-                  className="w-full h-48 object-cover rounded-lg border"
-                />
-                <button
-                  type="button"
-                  onClick={removeImage}
-                  className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
+            <div className="overflow-hidden w-[250px] h-[250px]">
+              {!formData.imagePreview ? (
+                <div
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.image ? "border-red-300 bg-red-50" : "border-gray-300"
+                    }`}
                 >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-            )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    id="image-upload"
+                  />
+                  <label htmlFor="image-upload" className="cursor-pointer ">
+                    <div className="flex flex-col items-center space-y-3  h-full justify-center">
+                      <div className="p-3 bg-gray-100 rounded-full">
+                        <Upload className="w-6 h-6 text-gray-600" />
+                      </div>
+                      <p className="text-sm font-medium text-gray-900 ">
+                        Click to upload image
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        PNG, JPG, GIF up to 5MB
+                      </p>
+                    </div>
+                  </label>
+                </div>
+              ) : (
+                <div className="relative w-full h-full rounded-lg">
+                  <img
+                    src={formData.imagePreview}
+                    alt="Team member preview"
+                    className="w-full h-48 object-cover rounded-lg border"
+                  />
+                  <button
+                    type="button"
+                    onClick={removeImage}
+                    className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+            </div>
+
             {errors.image && (
               <p className="text-sm text-red-600 mt-1">{errors.image}</p>
             )}

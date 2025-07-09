@@ -89,7 +89,7 @@ const AddServicePage = ({ onBack, onSave }) => {
 
     if (!formData.buttonText.trim())
       newErrors.buttonText = "Button text is required";
-    if (!formData.imagePreview) newErrors.image = "Service image is required";
+    if (!formData.imagePreview) newErrors.imagePreview = "Service image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -265,7 +265,7 @@ const AddServicePage = ({ onBack, onSave }) => {
                 </label>
                 {!formData.imagePreview ? (
                   <div
-                    className={`border-2 border-dashed p-8 text-center ${errors.image
+                    className={`border-2 border-dashed p-8 text-center ${errors.imagePreview
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
                       }`}
@@ -307,8 +307,8 @@ const AddServicePage = ({ onBack, onSave }) => {
                     </button>
                   </div>
                 )}
-                {errors.image && (
-                  <p className="text-sm text-red-600 mt-1">{errors.image}</p>
+                {errors.imagePreview && (
+                  <p className="text-sm text-red-600 mt-1">{errors.imagePreview}</p>
                 )}
               </div>
             </div>
