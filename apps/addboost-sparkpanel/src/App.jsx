@@ -5,6 +5,7 @@ import ServiceSection from "./components/ServiceSection";
 
 import AboutSection from "./components/AboutSection";
 import PortfolioSection from "./components/PortfolioSection";
+import TeamSection from "./components/TeamSection";
 
 function App() {
   const [activeSection, setActiveSection] = useState("service");
@@ -17,6 +18,8 @@ function App() {
         return <ServiceSection />;
       case "portfolio":
         return <PortfolioSection />;
+      case "teams":
+        return <TeamSection />;
       case "about":
         return <AboutSection />;
       default:
