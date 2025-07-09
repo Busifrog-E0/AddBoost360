@@ -105,10 +105,10 @@ const EditServicePage = ({ onBack, onSave, serviceToBeEdited }) => {
           </button>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">
-              Add New Service
+              Edit Service
             </h1>
             <p className="text-gray-600 mt-1">
-              Create a new service offering for your business
+              Edit a service offering for your business
             </p>
           </div>
         </div>
