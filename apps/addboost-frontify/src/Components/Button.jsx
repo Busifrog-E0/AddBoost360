@@ -12,12 +12,10 @@ const Button = ({
 }) => {
   return (
     <div onClick={onClick}
-      className={`relative group flex items-center justify-between gap-3 p-6 overflow-hidden cursor-pointer select-none ${bgColor} ${border}`}
+      className={`relative group flex items-center justify-between gap-3 p-4 px-5 lg:p-6 overflow-hidden cursor-pointer select-none ${bgColor} ${border}`}
     >
       <span
-        className={`absolute inset-0 w-0 ${hoverBgColor} transition-all duration-500 ease-in-out group-hover:w-full`}
-        style={{ zIndex: 1 }}
-      ></span>
+        className={`absolute inset-0 w-0 ${hoverBgColor} transition-all duration-500 ease-in-out group-hover:w-full`}></span>
 
       {text && (
         // <div
@@ -27,7 +25,7 @@ const Button = ({
         // </div>
 
 
-        <div className="relative z-10 font-arya text-sm group">
+        <div className="relative z-10 font-arya text-xs lg:text-sm group">
           <div
             className={`relative transition-all duration-500 ease-in-out transform group-hover:translate-x-1 uppercase ${textColor}`}
           >
@@ -45,7 +43,17 @@ const Button = ({
           viewBox="0 -960 960 960"
           width="20px"
           fill={iconColor}
-          className="transition-colors duration-500 "
+          className="transition-colors duration-500 hidden lg:block"
+        >
+          <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="16px"
+          viewBox="0 -960 960 960"
+          width="16px"
+          fill={iconColor}
+          className="transition-colors duration-500 block lg:hidden"
         >
           <path d="m256-240-56-56 384-384H240v-80h480v480h-80v-344L256-240Z" />
         </svg>
