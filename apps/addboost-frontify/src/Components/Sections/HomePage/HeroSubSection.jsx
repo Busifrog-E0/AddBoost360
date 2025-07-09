@@ -43,7 +43,7 @@ const HeroSubSection = () => {
 
       <div className="relative z-1 mt-6 ">
         {/* Bottom image (Global with border) */}
-        <div className="absolute top-4 left-4 w-full h-full bg-lightblack rounded-md z-0 "></div>
+        <div className="absolute top-2 left-2 lg:top-4 lg:left-4 w-full h-full bg-lightblack rounded-md z-0 "></div>
         {/* Top image (Black overlay card) */}
         <img
           src={Global}

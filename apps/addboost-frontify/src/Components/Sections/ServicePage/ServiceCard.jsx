@@ -38,7 +38,7 @@ const ServiceCard = ({ service, reverse = true }) => {
   const ImageBlock = (
     <div className="relative mt-6 h-[350px] w-full">
       {/* Background shadow layer */}
-      <div className="absolute top-4 left-4 w-full h-full bg-lightblack rounded-md z-0"></div>
+      <div className="absolute top-2 left-2 lg:top-4 lg:left-4 w-full h-full bg-lightblack rounded-md z-0"></div>
 
       {/* Main image on top */}
       <img
