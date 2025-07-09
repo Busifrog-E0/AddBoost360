@@ -25,7 +25,7 @@ export const router = createBrowserRouter(
       />
       <Route path="/portfolio" element={<PortfolioSection />} />
       <Route
-        path="/teams"
+        path="/team"
         element={<TeamSection />}
       />
       <Route

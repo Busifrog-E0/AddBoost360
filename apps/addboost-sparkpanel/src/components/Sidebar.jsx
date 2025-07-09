@@ -22,10 +22,9 @@ const Sidebar = ({
   const menuItems = [
     { id: "services", label: "Services", icon: Settings },
     { id: "portfolio", label: "Portfolio", icon: Briefcase },
-    { id: "teams", label: "teams", icon: Users },
-    { id: "companies", label: "companies", icon: Building2 },
-    { id: "form", label: "form", icon: Building2 },
-
+    { id: "team", label: "Team", icon: Users },
+    { id: "companies", label: "Companies", icon: Building2 },
+    { id: "form", label: "Leads", icon: Building2 },
     { id: "about", label: "About Us", icon: User },
   ];
 
