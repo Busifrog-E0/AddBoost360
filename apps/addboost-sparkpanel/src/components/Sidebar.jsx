@@ -10,6 +10,7 @@ import {
   Users,
   FileText,
 } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const Sidebar = ({
   activeSection,
@@ -18,9 +19,9 @@ const Sidebar = ({
   setIsCollapsed,
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false); // For mobile toggle
-
+  const navigate = useNavigate();
   const menuItems = [
-    { id: "service", label: "Services", icon: Settings },
+    { id: "services", label: "Services", icon: Settings },
     { id: "portfolio", label: "Portfolio", icon: Briefcase },
     { id: "teams", label: "teams", icon: Users },
     { id: "companies", label: "companies", icon: Building2 },
@@ -44,9 +45,8 @@ const Sidebar = ({
 
       {/* Sidebar */}
       <div
-        className={`fixed md:static top-0 left-0 z-40 bg-slate-900 text-white h-full transition-all duration-300 ease-in-out ${
-          isCollapsed ? "w-16" : "w-64"
-        } ${mobileOpen ? "block" : "hidden"} md:flex flex-col`}
+        className={`fixed md:static top-0 left-0 z-40 bg-slate-900 text-white h-full transition-all duration-300 ease-in-out ${isCollapsed ? "w-16" : "w-64"
+          } ${mobileOpen ? "block" : "hidden"} md:flex flex-col`}
       >
         {/* Header */}
         <div className="p-4 border-b border-slate-700">
@@ -64,9 +64,8 @@ const Sidebar = ({
               className="p-1.5 rounded-lg hover:bg-slate-700 transition-colors"
             >
               <ChevronLeft
-                className={`w-5 h-5 transition-transform ${
-                  isCollapsed ? "rotate-180" : ""
-                }`}
+                className={`w-5 h-5 transition-transform ${isCollapsed ? "rotate-180" : ""
+                  }`}
               />
             </button>
           </div>
@@ -85,19 +84,22 @@ const Sidebar = ({
                     onClick={() => {
                       setActiveSection(item.id);
                       setMobileOpen(false); // Close on mobile tap
+
+
+                      navigate(`/${item.id}`);
+
+
                     }}
-                    className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${
-                      isActive
-                        ? "bg-blue-600 text-white shadow-lg"
-                        : "hover:bg-slate-700 text-slate-300 hover:text-white"
-                    }`}
+                    className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg transition-all duration-200 group ${isActive
+                      ? "bg-blue-600 text-white shadow-lg"
+                      : "hover:bg-slate-700 text-slate-300 hover:text-white"
+                      }`}
                   >
                     <Icon
-                      className={`w-5 h-5 ${
-                        isActive
-                          ? "text-white"
-                          : "text-slate-400 group-hover:text-white"
-                      }`}
+                      className={`w-5 h-5 ${isActive
+                        ? "text-white"
+                        : "text-slate-400 group-hover:text-white"
+                        }`}
                     />
                     {!isCollapsed && (
                       <span className="font-medium">{item.label}</span>
