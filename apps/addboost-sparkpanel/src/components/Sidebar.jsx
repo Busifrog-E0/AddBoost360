@@ -8,6 +8,7 @@ import {
   Menu,
   Building2,
   Users,
+  FileText,
 } from "lucide-react";
 
 const Sidebar = ({
@@ -23,7 +24,7 @@ const Sidebar = ({
     { id: "portfolio", label: "Portfolio", icon: Briefcase },
     { id: "teams", label: "teams", icon: Users },
     { id: "companies", label: "companies", icon: Building2 },
-    { id: "form", label: "form", icon: Building2 },
+    { id: "form", label: "form", icon: FileText },
 
     { id: "about", label: "About Us", icon: User },
   ];
