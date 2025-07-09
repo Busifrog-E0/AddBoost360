@@ -6,6 +6,8 @@ import {
   ChevronLeft,
   Home,
   Menu,
+  Building2,
+  Users,
 } from "lucide-react";
 
 const Sidebar = ({
@@ -19,7 +21,8 @@ const Sidebar = ({
   const menuItems = [
     { id: "service", label: "Services", icon: Settings },
     { id: "portfolio", label: "Portfolio", icon: Briefcase },
-    { id: "teams", label: "teams", icon: User },
+    { id: "teams", label: "teams", icon: Users },
+    { id: "companies", label: "companies", icon: Building2 },
 
     { id: "about", label: "About Us", icon: User },
   ];

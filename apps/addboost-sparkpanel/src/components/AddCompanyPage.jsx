@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft } from "lucide-react";
 
-const AddTeamPage = ({ onBack, onSave }) => {
+const AddCompanyPage = ({ onBack, onSave }) => {
   const [formData, setFormData] = useState({
     id: 1,
     title: "",
-    designation: "",
+    productCategories: "",
     country: "",
     image: null,
     imagePreview: "",
@@ -58,11 +58,11 @@ const AddTeamPage = ({ onBack, onSave }) => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.title.trim()) newErrors.title = "Name is required";
-    if (!formData.designation.trim())
-      newErrors.designation = "Designation is required";
+    if (!formData.title.trim()) newErrors.title = "Company name is required";
+    if (!formData.productCategories.trim())
+      newErrors.productCategories = "Product categories are required";
     if (!formData.country.trim()) newErrors.country = "Country is required";
-    if (!formData.image) newErrors.image = "Team member image is required";
+    if (!formData.image) newErrors.image = "Company image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -90,11 +90,9 @@ const AddTeamPage = ({ onBack, onSave }) => {
           </button>
           <div>
             <h1 className="text-2xl font-bold text-gray-900">
-              Add New Team Member
+              Add New Company
             </h1>
-            <p className="text-gray-600 mt-1">
-              Create a new member profile for your team
-            </p>
+            <p className="text-gray-600 mt-1">Create a new company profile</p>
           </div>
         </div>
       </div>
@@ -103,46 +101,50 @@ const AddTeamPage = ({ onBack, onSave }) => {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-6">
-            Team Member Information
+            Company Information
           </h2>
 
-          {/* Name */}
+          {/* Title */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Name *
+              Company Name *
             </label>
             <input
               type="text"
               value={formData.title}
-              onChange={(e) => handleInputChange("name", e.target.value)}
+              onChange={(e) => handleInputChange("title", e.target.value)}
               className={`w-full px-4 py-3 border mb-3 rounded-lg ${
                 errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
-              placeholder="e.g., John Doe"
+              placeholder="e.g., Razorpay"
             />
             {errors.title && (
               <p className="mt-1 text-sm text-red-600">{errors.title}</p>
             )}
           </div>
 
-          {/* Designation */}
+          {/* Product Categories */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Designation *
+              Product Categories *
             </label>
             <input
               type="text"
-              value={formData.designation}
-              onChange={(e) => handleInputChange("designation", e.target.value)}
+              value={formData.productCategories}
+              onChange={(e) =>
+                handleInputChange("productCategories", e.target.value)
+              }
               className={`w-full px-4 mb-3 py-3 border rounded-lg ${
-                errors.designation
+                errors.productCategories
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
               }`}
-              placeholder="e.g., Frontend Developer"
+              placeholder="e.g., Fintech, Payments"
             />
-            {errors.designation && (
-              <p className="mt-1 text-sm text-red-600">{errors.designation}</p>
+            {errors.productCategories && (
+              <p className="mt-1 text-sm text-red-600">
+                {errors.productCategories}
+              </p>
             )}
           </div>
 
@@ -168,7 +170,7 @@ const AddTeamPage = ({ onBack, onSave }) => {
           {/* Image Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Member Image *
+              Company Image *
             </label>
             {!formData.imagePreview ? (
               <div
@@ -201,7 +203,7 @@ const AddTeamPage = ({ onBack, onSave }) => {
               <div className="relative">
                 <img
                   src={formData.imagePreview}
-                  alt="Team member preview"
+                  alt="Company preview"
                   className="w-full h-48 object-cover rounded-lg border"
                 />
                 <button
@@ -241,7 +243,7 @@ const AddTeamPage = ({ onBack, onSave }) => {
             ) : (
               <>
                 <Save className="w-4 h-4" />
-                <span>Save Member</span>
+                <span>Save Company</span>
               </>
             )}
           </button>
@@ -251,4 +253,4 @@ const AddTeamPage = ({ onBack, onSave }) => {
   );
 };
 
-export default AddTeamPage;
+export default AddCompanyPage;
