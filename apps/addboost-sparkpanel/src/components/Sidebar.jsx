@@ -18,7 +18,7 @@ const Sidebar = ({
   setIsCollapsed,
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false); // For mobile toggle
-  const navigate = useNavigate();
+  const navigate = () => { }
   const menuItems = [
     { id: "services", label: "Services", icon: Settings },
     { id: "portfolio", label: "Portfolio", icon: Briefcase },

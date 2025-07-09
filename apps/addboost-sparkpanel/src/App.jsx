@@ -2,6 +2,13 @@ import { RouterProvider } from "react-router";
 import { router } from "./router";
 
 import FormListPage from "./components/FormListPage";
+import { useState } from "react";
+import ServiceSection from "./components/ServiceSection";
+import PortfolioSection from "./components/PortfolioSection";
+import TeamSection from "./components/TeamSection";
+import AboutSection from "./components/AboutSection";
+import CompanySection from "./components/CompanySection";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const [activeSection, setActiveSection] = useState("service");
