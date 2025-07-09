@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
-import Dashboard from "./components/Dashboard";
+
 import ServiceSection from "./components/ServiceSection";
 
 import AboutSection from "./components/AboutSection";
@@ -20,7 +20,7 @@ function App() {
       case "about":
         return <AboutSection />;
       default:
-        return <Dashboard />;
+        return ;
     }
   };
 

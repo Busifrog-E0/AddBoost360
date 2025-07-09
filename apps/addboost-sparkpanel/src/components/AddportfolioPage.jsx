@@ -4,12 +4,13 @@ import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
 const AddPortfolioPage = ({ onBack, onSave }) => {
   const [formData, setFormData] = useState({
     title: "",
-    subtitle: "",
     buttonText: "",
+    type: "",
     image: null,
     imagePreview: "",
-    successStories: [""],
-    impact: [""],
+
+    impactPoints: [""],
+    linkToProject: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -80,9 +81,11 @@ const AddPortfolioPage = ({ onBack, onSave }) => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.title.trim()) newErrors.title = "Project name is required";
-    if (!formData.subtitle.trim()) newErrors.subtitle = "Subtitle is required";
     if (!formData.buttonText.trim())
       newErrors.buttonText = "Button text is required";
+    if (!formData.type.trim()) newErrors.type = "Type is required";
+    if (!formData.linkToProject.trim())
+      newErrors.linkToProject = "Project Link is required";
     if (!formData.image) newErrors.image = "Project image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -143,25 +146,6 @@ const AddPortfolioPage = ({ onBack, onSave }) => {
             )}
           </div>
 
-          {/* Subtitle */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Subtitle *
-            </label>
-            <input
-              type="text"
-              value={formData.subtitle}
-              onChange={(e) => handleInputChange("subtitle", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.subtitle ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
-              placeholder="e.g., Innovative Design for Client X"
-            />
-            {errors.subtitle && (
-              <p className="text-sm text-red-600">{errors.subtitle}</p>
-            )}
-          </div>
-
           {/* Button Text */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -176,67 +160,99 @@ const AddPortfolioPage = ({ onBack, onSave }) => {
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
               }`}
-              placeholder="e.g., View Project"
+              placeholder="e.g., View Website"
             />
             {errors.buttonText && (
               <p className="text-sm text-red-600">{errors.buttonText}</p>
             )}
           </div>
 
-          {/* Success Stories */}
+          {/*Type*/}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Success Stories
+              Type *
             </label>
-            {formData.successStories.map((story, index) => (
-              <div key={index} className="flex items-center space-x-2 mb-2">
-                <input
-                  type="text"
-                  value={story}
-                  onChange={(e) =>
-                    handleListChange("successStories", index, e.target.value)
-                  }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                  placeholder={`Story ${index + 1}`}
-                />
-              </div>
-            ))}
-            <button
-              type="button"
-              onClick={() => addListItem("successStories")}
-              className="flex items-center text-blue-600 hover:underline mt-2"
-            >
-              <Plus className="w-4 h-4 mr-1" /> Add Success Story
-            </button>
+            <input
+              type="text"
+              value={formData.type}
+              onChange={(e) => handleInputChange("type", e.target.value)}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.type ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
+              placeholder="e.g., Website Design, Branding, Social Media Marketing"
+            />
+            {errors.type && (
+              <p className="text-sm text-red-600">{errors.type}</p>
+            )}
           </div>
 
-          {/* Impact */}
+          {/* Impact Points */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              ImpactPoints
+            </label>
+
+            {formData.impactPoints.map((item, index) => (
+              <input
+                key={index}
+                type="text"
+                value={item}
+                onChange={(e) =>
+                  handleListChange("impactPoints", index, e.target.value)
+                }
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
+                placeholder={`ImpactPoints ${index + 1}`}
+              />
+            ))}
+
+            <div className="flex items-center space-x-2 mt-2">
+              <button
+                type="button"
+                onClick={() => addListItem("impactPoints")}
+                className="flex items-center text-blue-600 hover:underline"
+              >
+                <Plus className="w-4 h-4 mr-1" /> Add Impact Point
+              </button>
+
+              {formData.impactPoints.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() =>
+                    removeListItem(
+                      "impactPoints",
+                      formData.impactPoints.length - 1
+                    )
+                  }
+                  className="flex items-center justify-center border border-red-500 text-red-500 rounded-md p-2 hover:bg-red-50"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+          </div>
+          {/*linkToProject */}
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Impact
+              Project Link *
             </label>
-            {formData.impact.map((item, index) => (
-              <div key={index} className="flex items-center space-x-2 mb-2">
-                <input
-                  type="text"
-                  value={item}
-                  onChange={(e) =>
-                    handleListChange("impact", index, e.target.value)
-                  }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                  placeholder={`Impact ${index + 1}`}
-                />
-              </div>
-            ))}
-            <button
-              type="button"
-              onClick={() => addListItem("impact")}
-              className="flex items-center text-blue-600 hover:underline mt-2"
-            >
-              <Plus className="w-4 h-4 mr-1" /> Add Impact Point
-            </button>
+            <input
+              type="text"
+              value={formData.linkToProject}
+              onChange={(e) =>
+                handleInputChange("linkToProject", e.target.value)
+              }
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.linkToProject
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+              }`}
+              placeholder="e.g., https://google.com"
+            />
+            {errors.linkToProject && (
+              <p className="text-sm text-red-600">{errors.linkToProject}</p>
+            )}
           </div>
-
           {/* Image Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">

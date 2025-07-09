@@ -7,6 +7,7 @@ const AddServicePage = ({ onBack, onSave }) => {
     subtitle: "",
     description: "",
     buttonText: "",
+
     image: null,
     imagePreview: "",
     services: [""],
