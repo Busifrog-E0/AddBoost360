@@ -13,7 +13,7 @@ const AddServicePage = ({ onBack, onSave }) => {
 
     image: null,
     imagePreview: "",
-    services: [],
+    services: [""],
   });
 
   const [errors, setErrors] = useState({});

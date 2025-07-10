@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Save, X, Upload, ArrowLeft } from "lucide-react";
+import { Save, X, Upload, ArrowLeft, Plus, Trash2 } from "lucide-react";
 
 const AddCompanyPage = ({ onBack, onSave }) => {
   const [formData, setFormData] = useState({
     id: 1,
     title: "",
-    productCategories: [],
+    productCategories: [""],
     country: "",
     image: null,
     imagePreview: "",
@@ -59,7 +59,10 @@ const AddCompanyPage = ({ onBack, onSave }) => {
   const validateForm = () => {
     const newErrors = {};
     if (!formData.title.trim()) newErrors.title = "Company name is required";
-    if (!formData.productCategories.length)
+    if (
+      !formData.productCategories.length ||
+      formData.productCategories.every((cat) => cat.trim() === "")
+    )
       newErrors.productCategories = "Product categories are required";
     if (!formData.country.trim()) newErrors.country = "Country is required";
     if (!formData.image) newErrors.image = "Company image is required";
@@ -128,27 +131,56 @@ const AddCompanyPage = ({ onBack, onSave }) => {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Product Categories *
             </label>
-            <input
-              type="text"
-              value={formData.productCategories.join(", ")}
-              onChange={(e) =>
-                handleInputChange(
-                  "productCategories",
-                  e.target.value
-                    .split(",")
-                    .map((cat) => cat.trim())
-                    .filter(Boolean)
-                )
-              }
-              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
-                errors.productCategories
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-              }`}
-              placeholder="e.g., Fintech, Payments"
-            />
+
+            {formData.productCategories.map((category, index) => (
+              <div key={index} className="flex items-center space-x-2 mb-2">
+                <input
+                  type="text"
+                  value={category}
+                  onChange={(e) => {
+                    const updated = [...formData.productCategories];
+                    updated[index] = e.target.value;
+                    handleInputChange("productCategories", updated);
+                  }}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                  placeholder={`Category ${index + 1}`}
+                />
+              </div>
+            ))}
+
+            <div className="flex items-center space-x-2 mt-2">
+              <button
+                type="button"
+                onClick={() =>
+                  handleInputChange("productCategories", [
+                    ...formData.productCategories,
+                    "",
+                  ])
+                }
+                className="flex items-center mt-1  mb-2 text-blue-600 hover:underline"
+              >
+                <Plus className="w-4 h-4 mr-1 " /> Add New Category
+              </button>
+
+              {formData.productCategories.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const updated = [...formData.productCategories];
+                    updated.pop();
+                    handleInputChange("productCategories", updated);
+                  }}
+                  className="flex items-center justify-center border border-red-500 text-red-500 rounded-md p-2 hover:bg-red-50"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+
             {errors.productCategories && (
-              <p className="text-sm text-red-600">{errors.productCategories}</p>
+              <p className="text-sm text-red-600 mt-1">
+                {errors.productCategories}
+              </p>
             )}
           </div>
 
