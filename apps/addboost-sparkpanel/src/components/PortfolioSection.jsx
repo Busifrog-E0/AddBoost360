@@ -9,7 +9,7 @@ const PortfolioSection = () => {
 
   const initialValue = {
     title: "",
-    impactPoints: [],
+    impactPoints: [""],
     image: null,
     imagePreview: "",
     buttonText: "",
@@ -25,7 +25,7 @@ const PortfolioSection = () => {
         "Cross-border shipping integration",
         "One-month sales target met in 18 days",
       ],
-      image:
+      imagePreview:
         "https://images.pexels.com/photos/3762876/pexels-photo-3762876.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       buttonText: "View Website",
       type: "Website Design, Branding, Social Media Marketing, Product Sourcing from India",
@@ -39,7 +39,7 @@ const PortfolioSection = () => {
         "Converted 2x more leads with automated follow-ups",
         "24/7 virtual support improved client satisfaction",
       ],
-      image:
+      imagePreview:
         "https://images.pexels.com/photos/8031872/pexels-photo-8031872.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       buttonText: "View Project",
       type: "AI Integration, Lead Automation, WhatsApp Chatbot, CRM Setup",
@@ -53,7 +53,7 @@ const PortfolioSection = () => {
         "Social media ads optimized internally",
         "Saved over £1,500 in outsourced costs within 3 months",
       ],
-      image:
+      imagePreview:
         "https://images.pexels.com/photos/3769747/pexels-photo-3769747.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       buttonText: "Download Course Outline",
       type: "Live SEO, Meta Ads & Canva Masterclass for Local Startup",
@@ -67,7 +67,7 @@ const PortfolioSection = () => {
         "250% ROI on campaign",
         "1200+ new followers in 10 days",
       ],
-      image:
+      imagePreview:
         "https://images.pexels.com/photos/19387226/pexels-photo-19387226.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       buttonText: "See Campaign Results",
       type: "Influencer Marketing, Paid Ads, Content Creation",
@@ -115,7 +115,7 @@ const PortfolioSection = () => {
     setportfolioToBeEdited(null);
   };
 
-  if (showAddProject ) {
+  if (showAddProject) {
     return (
       <AddPortfolioPage
         isEditing={false}
@@ -164,7 +164,7 @@ const PortfolioSection = () => {
             className="bg-white rounded-xl shadow border overflow-hidden"
           >
             <img
-              src={item.image}
+              src={item.imagePreview}
               alt={item.title}
               className="w-full h-48 object-cover"
             />
