@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
 import ServicePreviewCard from "./Elements/Services/ServicePreviewCard";
 
-
-
-const AddServicePage = ({ onBack, onSave }) => {
-  const [formData, setFormData] = useState({
+const AddServicePage = ({
+  onBack,
+  onSave,
+  title,
+  description,
+  isEditing = false,
+  initialValue = {
     title: "",
     subtitle: "",
     description: "",
@@ -14,7 +17,9 @@ const AddServicePage = ({ onBack, onSave }) => {
     image: null,
     imagePreview: "",
     services: [""],
-  });
+  },
+}) => {
+  const [formData, setFormData] = useState(initialValue);
 
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -89,7 +94,8 @@ const AddServicePage = ({ onBack, onSave }) => {
 
     if (!formData.buttonText.trim())
       newErrors.buttonText = "Button text is required";
-    if (!formData.imagePreview) newErrors.imagePreview = "Service image is required";
+    if (!formData.imagePreview)
+      newErrors.imagePreview = "Service image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -116,12 +122,8 @@ const AddServicePage = ({ onBack, onSave }) => {
             <ArrowLeft className="w-5 h-5 text-gray-600" />
           </button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Add New Service
-            </h1>
-            <p className="text-gray-600 mt-1">
-              Create a new service offering for your business
-            </p>
+            <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
+            <p className="text-gray-600 mt-1">{description}</p>
           </div>
         </div>
       </div>
@@ -145,8 +147,11 @@ const AddServicePage = ({ onBack, onSave }) => {
                   type="text"
                   value={formData.title}
                   onChange={(e) => handleInputChange("title", e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.title
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="e.g., Web Development"
                 />
                 {errors.title && (
@@ -165,10 +170,11 @@ const AddServicePage = ({ onBack, onSave }) => {
                   onChange={(e) =>
                     handleInputChange("description", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.description
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg resize-none ${
+                    errors.description
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="Detailed description..."
                 />
 
@@ -185,11 +191,14 @@ const AddServicePage = ({ onBack, onSave }) => {
                 <input
                   type="text"
                   value={formData.subtitle}
-                  onChange={(e) => handleInputChange("subtitle", e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.subtitle
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  onChange={(e) =>
+                    handleInputChange("subtitle", e.target.value)
+                  }
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.subtitle
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="e.g., Modern Web Apps"
                 />
                 {errors.subtitle && (
@@ -208,7 +217,9 @@ const AddServicePage = ({ onBack, onSave }) => {
                     <input
                       type="text"
                       value={service}
-                      onChange={(e) => handleServiceChange(index, e.target.value)}
+                      onChange={(e) =>
+                        handleServiceChange(index, e.target.value)
+                      }
                       className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                       placeholder={`Service ${index + 1}`}
                     />
@@ -227,7 +238,9 @@ const AddServicePage = ({ onBack, onSave }) => {
                   {formData.services.length > 1 && (
                     <button
                       type="button"
-                      onClick={() => removeService(formData.services.length - 1)}
+                      onClick={() =>
+                        removeService(formData.services.length - 1)
+                      }
                       className="flex items-center justify-center border border-red-500 text-red-500 rounded-md p-2 hover:bg-red-50"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -247,14 +260,17 @@ const AddServicePage = ({ onBack, onSave }) => {
                   onChange={(e) =>
                     handleInputChange("buttonText", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.buttonText
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="e.g., Contact Us"
                 />
                 {errors.buttonText && (
-                  <p className="mt-1 text-sm text-red-600">{errors.buttonText}</p>
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.buttonText}
+                  </p>
                 )}
               </div>
 
@@ -265,10 +281,11 @@ const AddServicePage = ({ onBack, onSave }) => {
                 </label>
                 {!formData.imagePreview ? (
                   <div
-                    className={`border-2 border-dashed p-8 text-center ${errors.imagePreview
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                      }`}
+                    className={`border-2 border-dashed p-8 text-center ${
+                      errors.imagePreview
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
+                    }`}
                   >
                     <input
                       type="file"
@@ -308,7 +325,9 @@ const AddServicePage = ({ onBack, onSave }) => {
                   </div>
                 )}
                 {errors.imagePreview && (
-                  <p className="text-sm text-red-600 mt-1">{errors.imagePreview}</p>
+                  <p className="text-sm text-red-600 mt-1">
+                    {errors.imagePreview}
+                  </p>
                 )}
               </div>
             </div>
@@ -346,7 +365,6 @@ const AddServicePage = ({ onBack, onSave }) => {
           <ServicePreviewCard service={formData} />
         </div>
       </div>
-
     </div>
   );
 };
