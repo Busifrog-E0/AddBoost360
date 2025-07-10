@@ -16,7 +16,7 @@ const StartupCard = ({ startup }) => {
         </div>
 
         <div className="flex flex-col justify-start gap-2 w-full">
-          <h3 className="text-lg sm:text-xl md:text-2xl font-bold uppercase font-arya text-black ">
+          <h3 className="text-lg sm:text-xl md:text-2xl  uppercase font-arya text-black ">
             {startup.title}
           </h3>
 

@@ -12,7 +12,7 @@ const StartupSupportService = () => {
     <div className="bg-white grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-start px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24">
       {/* Left Column */}
       <div>
-        <p className="uppercase text-[#A8A8A8] font-arya text-sm font-bold mb-3">
+        <p className="uppercase text-[#A8A8A8] font-arya text-sm  mb-3">
           Supporting our vision
         </p>
 
@@ -49,14 +49,14 @@ const StartupSupportService = () => {
 
       {/* Right Column */}
       <div>
-        <h2 className="font-arya text-xl md:text-2xl font-bold uppercase mb-4">
+        <h2 className="font-arya text-xl md:text-2xl uppercase mb-4">
           Startup Support Services
         </h2>
 
         <div className="flex flex-col p-5 sm:p-8 md:p-10 gap-6">
           {/* Heading & Paragraph */}
           <div>
-            <h3 className="font-arya uppercase text-base md:text-lg">
+            <h3 className="font-arya text-base md:text-lg">
               Turn Your Business Idea into a Global Brand
             </h3>
             <p className="font-inter text-sm text-lightblack mt-3 leading-relaxed">

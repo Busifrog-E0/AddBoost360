@@ -82,10 +82,10 @@ const JoinTalentPoolSection = () => {
             onTouchEnd={handleTouchEnd}>
             <div className="bg-primary rounded-md p-6 text-white flex flex-col justify-between">
               <div className="flex-grow">
-                <div className="text-lg 2xl:text-xl font-bold opacity-50 font-arya">
+                <div className="text-lg 2xl:text-xl  opacity-50 font-arya">
                   {currentSlideData.number}
                 </div>
-                <h3 className="text-xl 2xl:text-2xl font-bold mb-4 leading-tight font-arya">
+                <h3 className="text-xl 2xl:text-2xl  mb-4 leading-tight font-arya">
                   {currentSlideData.title}
                 </h3>
                 <p className="text-xs opacity-50 font-normal font-inter">
