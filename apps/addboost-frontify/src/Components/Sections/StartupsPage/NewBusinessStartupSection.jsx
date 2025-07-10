@@ -19,7 +19,7 @@ const NewBusinessStartupSection = () => {
           <div className="absolute top-0 left-0">
             <img src={CornerChip} alt="Global" className="w-6 h-6" />
           </div>
-          <h3 className="font-bold text-lg uppercase font-arya">Great clients</h3>
+          <h3 className=" text-lg uppercase font-arya">Great clients</h3>
           <p className="text-sm text-lightblack mt-1 font-inter">
             We offer comprehensive startup support, from business identity to
             sourcing the right products from trusted international wholesalers.
@@ -31,7 +31,7 @@ const NewBusinessStartupSection = () => {
           <div className="absolute top-0 left-0">
             <img src={CornerChip} alt="Global" className="w-6 h-6" />
           </div>
-          <h3 className="font-bold text-lg uppercase font-arya">Great Team</h3>
+          <h3 className=" text-lg uppercase font-arya">Great Team</h3>
           <p className="text-sm text-lightblack mt-1 font-inter">
             We offer comprehensive startup support, from business identity to
             sourcing the right products from trusted international wholesalers.
@@ -44,7 +44,7 @@ const NewBusinessStartupSection = () => {
           <div className="absolute top-0 left-0">
             <img src={CornerChip} alt="Global" className="w-6 h-6" />
           </div>
-          <h3 className="font-bold text-lg uppercase font-arya">
+          <h3 className=" text-lg uppercase font-arya">
             Great Success
           </h3>
           <p className="text-sm text-lightblack mt-1 font-inter">

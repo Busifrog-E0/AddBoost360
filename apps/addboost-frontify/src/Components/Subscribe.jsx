@@ -18,7 +18,7 @@ const Subscribe = () => {
     >
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-center items-center h-full px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 text-center">
-        <h1 className="text-xl md:text-3xl font-semibold font-arya text-gray-900">
+        <h1 className="text-xl md:text-3xl  font-arya text-gray-900">
           STAY UPDATED WITH DIGITAL TRENDS, OFFERS &amp; SOURCING OPPORTUNITIES
         </h1>
         <p className="text-sm text-gray-700 mt-2 font-inter">

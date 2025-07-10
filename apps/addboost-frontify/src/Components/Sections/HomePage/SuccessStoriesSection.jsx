@@ -65,7 +65,7 @@ const SuccessStoriesSection = () => {
                     <div className="grid lg:grid-cols-3 gap-4 lg:gap-12 2xl:gap-16 items-start">
                         <div className="flex flex-col justify-between h-full order-1 lg:order-2">
                             <div className="flex flex-row lg:flex-col justify-between items-center lg:justify-start lg:items-start gap-4">
-                                <h2 className="text-lg 2xl:text-2xl font-arya uppercase font-bold text-gray-900 leading-tight">
+                                <h2 className="text-lg 2xl:text-2xl font-arya uppercase  text-gray-900 leading-tight">
                                     SUCCESS STORIES
                                 </h2>
                                 <div className="flex items-center gap-3">

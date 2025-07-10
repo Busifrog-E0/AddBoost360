@@ -10,7 +10,7 @@ const PortfolioCard = ({ project, reverse = false }) => {
         {project.title}
       </h>
       <p className="font-inter text-base 2xl:text-lg">{project.description}</p>
-      <h1 className="font-inter text-xl font-bold ">Impact:</h1>
+      <h1 className="font-inter text-xl font-bold">Impact:</h1>
       <div className="p-2 font-inter text-sm leading-relaxed">
         {project.impactPoints.map((item, index) => (
           <p key={index}>▪ {item}</p>
@@ -63,7 +63,7 @@ const PortfolioCard = ({ project, reverse = false }) => {
         <div className="flex bg-white  ">
           {/* Text content */}
           <div className="p-2 md:p-3 lg:p-4">
-            <p className="text-sm sm:text-base md:text-lg font-arya font-bold text-gray-700 mt-1">
+            <p className="text-sm sm:text-base md:text-lg font-arya  text-gray-700 mt-1">
               {project.type}
             </p>
           </div>

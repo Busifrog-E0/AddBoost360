@@ -31,7 +31,7 @@ const Footer = () => {
       <div className="flex flex-col gap-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-6">
           <div className="flex-1">
-            <h2 className="text-lg  font-arya font-bold tracking-wide">
+            <h2 className="text-lg  font-arya  tracking-wide">
               {footerData.company}
             </h2>
             <p className="text-sm font-inter text-gray-400 mt-2 max-w-md leading-relaxed">
@@ -84,7 +84,7 @@ const Footer = () => {
 
         <div className="flex flex-row gap-20 justify-between lg:gap-96 text-sm text-gray-300">
           <div className="">
-            <p className="text-white font-semibold  font-arya">
+            <p className="text-white   font-arya">
               {footerData.address.city}
             </p>
             <p className="font-inter text-gray-400 text-xs mt-1 ">
