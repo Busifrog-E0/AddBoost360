@@ -4,7 +4,8 @@ import AddTeamPage from "./AddTeamPage";
 
 const TeamSection = () => {
   const [showAddTeam, setShowAddTeam] = useState(false);
-  const [editingMember, setEditingMember] = useState(null);
+  const [showEditTeam, setShowEditTeam] = useState(false);
+  const [memberToBeEdited, setMemberToBeEdited] = useState(null);
 
   const [teamMembers, setTeamMembers] = useState([
     {
@@ -12,81 +13,91 @@ const TeamSection = () => {
       title: "John Smith",
       designation: "CTO",
       country: "California, USA",
-      image: "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg" // New image for John
+      imagePreview:
+        "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg", // New image for John
     },
     {
       id: 2,
       title: "Meera Varma",
       designation: "Product Manager",
       country: "New Delhi, India",
-      image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg" // New image for Meera
+      imagePreview:
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg", // New image for Meera
     },
     {
       id: 3,
       title: "Carlos Ruiz",
       designation: "UX Designer",
       country: "Barcelona, Spain",
-      image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg",
     },
     {
       id: 4,
       title: "Aiko Tanaka",
       designation: "Software Engineer",
       country: "Tokyo, Japan",
-      image: "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg",
     },
     {
       id: 5,
       title: "James Lee",
       designation: "Marketing Director",
       country: "New York, USA",
-      image: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg",
     },
     {
       id: 6,
       title: "Fatima Al-Fulan",
       designation: "HR Specialist",
       country: "Dubai, UAE",
-      image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
     },
     {
       id: 7,
       title: "Arjun Patel",
       designation: "Cloud Architect",
       country: "Bengaluru, India",
-      image: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg",
     },
     {
       id: 8,
       title: "Isabella Rossi",
       designation: "Legal Advisor",
       country: "Milan, Italy",
-      image: "https://images.pexels.com/photos/206452/pexels-photo-206452.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/206452/pexels-photo-206452.jpeg",
     },
     {
       id: 9,
       title: "Sofia Nguyen",
       designation: "Data Scientist",
       country: "Ho Chi Minh City, Vietnam",
-      image: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg",
     },
     {
       id: 10,
       title: "Liam O'Connor",
       designation: "Finance Manager",
       country: "Dublin, Ireland",
-      image: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg"
-    }
+      imagePreview:
+        "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg",
+    },
   ]);
 
   const handleAddMember = () => {
-    setEditingMember(null);
+    setMemberToBeEdited(null);
     setShowAddTeam(true);
   };
 
   const handleEditMember = (member) => {
-    setEditingMember(member);
-    setShowAddTeam(true);
+    setMemberToBeEdited(member);
+    setShowEditTeam(true);
   };
 
   const handleDeleteMember = (id) => {
@@ -96,10 +107,12 @@ const TeamSection = () => {
   };
 
   const handleSaveMember = (memberData) => {
-    if (editingMember) {
+    if (memberToBeEdited) {
       setTeamMembers((prev) =>
         prev.map((member) =>
-          member.id === editingMember.id ? { ...member, ...memberData } : member
+          member.id === memberToBeEdited.id
+            ? { ...member, ...memberData }
+            : member
         )
       );
     } else {
@@ -107,21 +120,27 @@ const TeamSection = () => {
       setTeamMembers((prev) => [...prev, newMember]);
     }
     setShowAddTeam(false);
-    setEditingMember(null);
+    setMemberToBeEdited(null);
+    setShowEditTeam(false);
   };
 
   const handleBack = () => {
     setShowAddTeam(false);
-    setEditingMember(null);
+    setMemberToBeEdited(null);
+    setShowEditTeam(false);
   };
 
   if (showAddTeam) {
+    return <AddTeamPage onBack={handleBack} onSave={handleSaveMember} />;
+  }
+
+  if (showEditTeam) {
     return (
       <AddTeamPage
+        isEditing={true}
         onBack={handleBack}
         onSave={handleSaveMember}
-        initialData={editingMember}
-        isEditing={!!editingMember}
+        initialValue={memberToBeEdited}
       />
     );
   }
@@ -171,7 +190,7 @@ const TeamSection = () => {
                     <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0">
                         <img
-                          src={member.image}
+                          src={member.imagePreview}
                           alt={member.title}
                           className="w-12 h-12 rounded-full object-cover border border-gray-200"
                         />

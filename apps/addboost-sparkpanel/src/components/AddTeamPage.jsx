@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft } from "lucide-react";
 
-const AddTeamPage = ({ onBack, onSave }) => {
-  const [formData, setFormData] = useState({
+const AddTeamPage = ({
+  onBack,
+  onSave,
+  title,
+  description,
+  isEditing = false,
+  initialValue = {
     id: 1,
     title: "",
     designation: "",
     country: "",
     image: null,
     imagePreview: "",
-  });
+  },
+}) => {
+  const [formData, setFormData] = useState(initialValue);
 
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -89,12 +96,8 @@ const AddTeamPage = ({ onBack, onSave }) => {
             <ArrowLeft className="w-5 h-5 text-gray-600" />
           </button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Add New Team Member
-            </h1>
-            <p className="text-gray-600 mt-1">
-              Create a new member profile for your team
-            </p>
+            <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
+            <p className="text-gray-600 mt-1">{description}</p>
           </div>
         </div>
       </div>
@@ -115,8 +118,9 @@ const AddTeamPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.title}
               onChange={(e) => handleInputChange("title", e.target.value)}
-              className={`w-full px-4 py-3 border mb-3 rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
+                errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., John Doe"
             />
             {errors.title && (
@@ -133,10 +137,11 @@ const AddTeamPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.designation}
               onChange={(e) => handleInputChange("designation", e.target.value)}
-              className={`w-full px-4 mb-3 py-3 border rounded-lg ${errors.designation
-                ? "border-red-300 bg-red-50"
-                : "border-gray-300"
-                }`}
+              className={`w-full px-4 mb-3 py-3 border rounded-lg ${
+                errors.designation
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+              }`}
               placeholder="e.g., Frontend Developer"
             />
             {errors.designation && (
@@ -153,8 +158,9 @@ const AddTeamPage = ({ onBack, onSave }) => {
               type="text"
               value={formData.country}
               onChange={(e) => handleInputChange("country", e.target.value)}
-              className={`w-full px-4 mb-3 py-3 border rounded-lg ${errors.country ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 mb-3 py-3 border rounded-lg ${
+                errors.country ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., India"
             />
             {errors.country && (
@@ -170,8 +176,11 @@ const AddTeamPage = ({ onBack, onSave }) => {
             <div className="overflow-hidden w-[250px] h-[250px]">
               {!formData.imagePreview ? (
                 <div
-                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.image ? "border-red-300 bg-red-50" : "border-gray-300"
-                    }`}
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
+                    errors.image
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                 >
                   <input
                     type="file"

@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2, ExternalLink } from "lucide-react";
-import AddportfolioPage from "./AddportfolioPage";
+import AddPortfolioPage from "./AddPortfolioPage";
 
 const PortfolioSection = () => {
   const [showAddProject, setShowAddProject] = useState(false);
-  const [editingProject, setEditingProject] = useState(null);
+  const [showEditProject, setShowEditProject] = useState(false);
+  const [portfolioToBeEdited, setportfolioToBeEdited] = useState(null);
 
+  const initialValue = {
+    title: "",
+    impactPoints: [],
+    image: null,
+    imagePreview: "",
+    buttonText: "",
+    type: "",
+    linkToProject: "",
+  };
   const [portfolioItems, setPortfolioItems] = useState([
     {
       id: 1,
@@ -15,7 +25,8 @@ const PortfolioSection = () => {
         "Cross-border shipping integration",
         "One-month sales target met in 18 days",
       ],
-      image: "https://images.pexels.com/photos/3762876/pexels-photo-3762876.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image:
+        "https://images.pexels.com/photos/3762876/pexels-photo-3762876.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       buttonText: "View Website",
       type: "Website Design, Branding, Social Media Marketing, Product Sourcing from India",
       linkToProject: "https://google.com",
@@ -28,7 +39,8 @@ const PortfolioSection = () => {
         "Converted 2x more leads with automated follow-ups",
         "24/7 virtual support improved client satisfaction",
       ],
-      image: "https://images.pexels.com/photos/8031872/pexels-photo-8031872.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image:
+        "https://images.pexels.com/photos/8031872/pexels-photo-8031872.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       buttonText: "View Project",
       type: "AI Integration, Lead Automation, WhatsApp Chatbot, CRM Setup",
       linkToProject: "https://google.com",
@@ -41,7 +53,8 @@ const PortfolioSection = () => {
         "Social media ads optimized internally",
         "Saved over £1,500 in outsourced costs within 3 months",
       ],
-      image: "https://images.pexels.com/photos/3769747/pexels-photo-3769747.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image:
+        "https://images.pexels.com/photos/3769747/pexels-photo-3769747.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       buttonText: "Download Course Outline",
       type: "Live SEO, Meta Ads & Canva Masterclass for Local Startup",
       linkToProject: "https://google.com",
@@ -54,7 +67,8 @@ const PortfolioSection = () => {
         "250% ROI on campaign",
         "1200+ new followers in 10 days",
       ],
-      image: "https://images.pexels.com/photos/19387226/pexels-photo-19387226.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image:
+        "https://images.pexels.com/photos/19387226/pexels-photo-19387226.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       buttonText: "See Campaign Results",
       type: "Influencer Marketing, Paid Ads, Content Creation",
       linkToProject: "https://google.com",
@@ -62,13 +76,13 @@ const PortfolioSection = () => {
   ]);
 
   const handleAddProject = () => {
-    setEditingProject(null);
+    setportfolioToBeEdited(null);
     setShowAddProject(true);
   };
 
   const handleEditProject = (project) => {
-    setEditingProject(project);
-    setShowAddProject(true);
+    setportfolioToBeEdited(project);
+    setShowEditProject(true);
   };
 
   const handleDeleteProject = (id) => {
@@ -78,10 +92,12 @@ const PortfolioSection = () => {
   };
 
   const handleSaveProject = (projectData) => {
-    if (editingProject) {
+    if (portfolioToBeEdited) {
       setPortfolioItems((prev) =>
         prev.map((item) =>
-          item.id === editingProject.id ? { ...item, ...projectData } : item
+          item.id === portfolioToBeEdited.id
+            ? { ...item, ...projectData }
+            : item
         )
       );
     } else {
@@ -89,25 +105,40 @@ const PortfolioSection = () => {
       setPortfolioItems((prev) => [...prev, newProject]);
     }
     setShowAddProject(false);
-    setEditingProject(null);
+    setShowEditProject(false);
+    setportfolioToBeEdited(null);
   };
 
   const handleBack = () => {
     setShowAddProject(false);
-    setEditingProject(null);
+    setShowEditProject(false);
+    setportfolioToBeEdited(null);
   };
 
-  if (showAddProject) {
+  if (showAddProject ) {
     return (
-      <AddportfolioPage
+      <AddPortfolioPage
+        isEditing={false}
+        title=""
+        description=""
+        initialValue={initialValue}
         onBack={handleBack}
         onSave={handleSaveProject}
-        initialData={editingProject}
-        isEditing={!!editingProject}
       />
     );
   }
-
+  if (showEditProject) {
+    return (
+      <AddPortfolioPage
+        isEditing={true}
+        title=""
+        description=""
+        onBack={handleBack}
+        onSave={handleSaveProject}
+        initialValue={portfolioToBeEdited}
+      />
+    );
+  }
   return (
     <div className="space-y-6">
       {/* Header */}
