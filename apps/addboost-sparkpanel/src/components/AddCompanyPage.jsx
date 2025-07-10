@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft, Plus, Trash2 } from "lucide-react";
 
-const AddCompanyPage = ({ onBack, onSave }) => {
-  const [formData, setFormData] = useState({
-    id: 1,
+const AddCompanyPage = ({
+  onBack,
+  onSave,
+  title,
+  description,
+  isEditing = false,
+  initialValue = {
     title: "",
     productCategories: [""],
     country: "",
     image: null,
     imagePreview: "",
-  });
+  },
+}) => {
+  const [formData, setFormData] = useState(initialValue);
 
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -65,7 +71,8 @@ const AddCompanyPage = ({ onBack, onSave }) => {
     )
       newErrors.productCategories = "Product categories are required";
     if (!formData.country.trim()) newErrors.country = "Country is required";
-    if (!formData.image) newErrors.image = "Company image is required";
+    if (!formData.imagePreview)
+      newErrors.imagePreview = "Company image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -92,10 +99,8 @@ const AddCompanyPage = ({ onBack, onSave }) => {
             <ArrowLeft className="w-5 h-5 text-gray-600" />
           </button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Add New Company
-            </h1>
-            <p className="text-gray-600 mt-1">Create a new company profile</p>
+            <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
+            <p className="text-gray-600 mt-1">{description}</p>
           </div>
         </div>
       </div>
@@ -251,8 +256,8 @@ const AddCompanyPage = ({ onBack, onSave }) => {
                 </button>
               </div>
             )}
-            {errors.image && (
-              <p className="text-sm text-red-600 mt-1">{errors.image}</p>
+            {errors.imagePreview && (
+              <p className="text-sm text-red-600 mt-1">{errors.imagePreview}</p>
             )}
           </div>
         </div>

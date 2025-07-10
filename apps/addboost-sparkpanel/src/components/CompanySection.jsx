@@ -4,7 +4,8 @@ import AddCompanyPage from "./AddCompanyPage";
 
 const CompanySection = () => {
   const [showAddCompany, setShowAddCompany] = useState(false);
-  const [editingCompany, setEditingCompany] = useState(null);
+  const [showEditCompany, setshowEditCompany] = useState(false);
+  const [companyToBeEdited, setcompanyToBeEdited] = useState(null);
 
   const [companies, setCompanies] = useState([
     {
@@ -12,81 +13,91 @@ const CompanySection = () => {
       title: "Razorpay",
       country: "Bengaluru, India",
       productCategories: ["Fintech", "Payments"],
-      image: "https://images.pexels.com/photos/1181395/pexels-photo-1181395.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/1181395/pexels-photo-1181395.jpeg",
     },
     {
       id: 2,
       title: "Miro",
       country: "Amsterdam, Netherlands",
       productCategories: ["Fintech", "Payments"],
-      image: "https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg"
+      imageimagePreview:
+        "https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg",
     },
     {
       id: 3,
       title: "Notion",
       country: "San Francisco, United States",
       productCategories: ["Fintech", "Payments"],
-      image: "https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg",
     },
     {
       id: 4,
       title: "LottieFiles",
       productCategories: ["Fintech", "Payments"],
       country: "Kuala Lumpur, Malaysia",
-      image: "https://images.pexels.com/photos/1181303/pexels-photo-1181303.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/1181303/pexels-photo-1181303.jpeg",
     },
     {
       id: 5,
       title: "DeepL",
       country: "Cologne, Germany",
       productCategories: ["Fintech", "Payments"],
-      image: "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg",
     },
     {
       id: 6,
       title: "Copy.ai",
       country: "New York, United States",
       productCategories: ["Fintech", "Payments"],
-      image: "https://images.pexels.com/photos/260689/pexels-photo-260689.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/260689/pexels-photo-260689.jpeg",
     },
     {
       id: 7,
       title: "CRED",
       country: "Bengaluru, India",
       productCategories: ["Fintech", "Payments"],
-      image: "https://images.pexels.com/photos/2422280/pexels-photo-2422280.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/2422280/pexels-photo-2422280.jpeg",
     },
     {
       id: 8,
       title: "Hopin",
       country: "London, United Kingdom",
       productCategories: ["Fintech", "Payments"],
-      image: "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg",
     },
     {
       id: 9,
       title: "Sendinblue",
       country: "Paris, France",
       productCategories: ["Fintech", "Payments"],
-      image: "https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg"
+      imagePreview:
+        "https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg",
     },
     {
       id: 10,
       title: "Deel",
       country: "San Francisco, United States",
       productCategories: ["Fintech", "Payments"],
-      image: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg"
-    }
+      imagePreview:
+        "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
+    },
   ]);
 
   const handleAddCompany = () => {
-    setEditingCompany(null);
+    setcompanyToBeEdited(null);
     setShowAddCompany(true);
   };
 
   const handleEditCompany = (company) => {
-    setEditingCompany(company);
-    setShowAddCompany(true);
+    setcompanyToBeEdited(company);
+    setshowEditCompany(true);
   };
 
   const handleDeleteCompany = (id) => {
@@ -109,21 +120,36 @@ const CompanySection = () => {
       setCompanies((prev) => [...prev, newCompany]);
     }
     setShowAddCompany(false);
-    setEditingCompany(null);
+    setshowEditCompany(false);
+    setcompanyToBeEdited(null);
   };
 
   const handleBack = () => {
     setShowAddCompany(false);
-    setEditingCompany(null);
+    setshowEditCompany(false);
+    setcompanyToBeEdited(null);
   };
 
   if (showAddCompany) {
     return (
       <AddCompanyPage
+        isEditing={false}
+        title="Add New Company"
+        description="Create a new company profile"
         onBack={handleBack}
         onSave={handleSaveCompany}
-        initialData={editingCompany}
-        isEditing={!!editingCompany}
+      />
+    );
+  }
+  if (showEditCompany) {
+    return (
+      <AddCompanyPage
+        isEditing={true}
+        title="Edit Company"
+        description="Edit the details of your existing company offering"
+        onBack={handleBack}
+        onSave={handleSaveCompany}
+        initialValue={companyToBeEdited}
       />
     );
   }
@@ -172,7 +198,7 @@ const CompanySection = () => {
                     <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0">
                         <img
-                          src={company.image}
+                          src={company.imagePreview}
                           alt={company.title}
                           className="w-12 h-12 rounded-full object-cover border border-gray-200"
                         />

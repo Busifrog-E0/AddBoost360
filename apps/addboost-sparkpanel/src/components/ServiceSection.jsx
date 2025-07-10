@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2, Eye } from "lucide-react";
 import AddServicePage from "./AddServicePage";
-import EditServicePage from "./EditServicePage";
 
 const ServiceSection = () => {
   const [showAddService, setShowAddService] = useState(false);

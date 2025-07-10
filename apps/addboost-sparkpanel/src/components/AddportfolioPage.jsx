@@ -5,7 +5,15 @@ import ProjectPreviewCard from "./Elements/Portfolio/PortfolioPreviewCard";
 const AddPortfolioPage = ({
   onBack,
   onSave,
-  initialValue,
+  initialValue = {
+    title: "",
+    impactPoints: [""],
+    image: null,
+    imagePreview: "",
+    buttonText: "",
+    type: "",
+    linkToProject: "",
+  },
   title,
   description,
   isEditing = false,
@@ -84,7 +92,8 @@ const AddPortfolioPage = ({
     if (!formData.type.trim()) newErrors.type = "Type is required";
     if (!formData.linkToProject.trim())
       newErrors.linkToProject = "Project Link is required";
-    if (!formData.image) newErrors.image = "Project image is required";
+    if (!formData.imagePreview)
+      newErrors.imagePreview = "Project image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -112,12 +121,8 @@ const AddPortfolioPage = ({
             <ArrowLeft className="w-5 h-5 text-gray-600" />
           </button>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">
-              Edit Portfolio Project
-            </h1>
-            <p className="text-gray-600 mt-1">
-              Add details of your project portfolio
-            </p>
+            <h1 className="text-2xl font-bold text-gray-900">{title}</h1>
+            <p className="text-gray-600 mt-1">{description}</p>
           </div>
         </div>
       </div>
@@ -300,8 +305,10 @@ const AddPortfolioPage = ({
                   </button>
                 </div>
               )}
-              {errors.image && (
-                <p className="text-sm text-red-600 mt-1">{errors.image}</p>
+              {errors.imagePreview && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.imagePreview}
+                </p>
               )}
             </div>
           </div>

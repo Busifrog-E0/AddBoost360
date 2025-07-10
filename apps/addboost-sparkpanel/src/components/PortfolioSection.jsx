@@ -1,21 +1,12 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2, ExternalLink } from "lucide-react";
-import AddPortfolioPage from "./AddPortfolioPage";
+import AddPortfolioPage from "./AddportfolioPage";
 
 const PortfolioSection = () => {
   const [showAddProject, setShowAddProject] = useState(false);
   const [showEditProject, setShowEditProject] = useState(false);
   const [portfolioToBeEdited, setportfolioToBeEdited] = useState(null);
 
-  const initialValue = {
-    title: "",
-    impactPoints: [""],
-    image: null,
-    imagePreview: "",
-    buttonText: "",
-    type: "",
-    linkToProject: "",
-  };
   const [portfolioItems, setPortfolioItems] = useState([
     {
       id: 1,
@@ -119,9 +110,8 @@ const PortfolioSection = () => {
     return (
       <AddPortfolioPage
         isEditing={false}
-        title=""
-        description=""
-        initialValue={initialValue}
+        title="Add New Project"
+        description=" Create a new project offering for your business"
         onBack={handleBack}
         onSave={handleSaveProject}
       />
@@ -131,8 +121,8 @@ const PortfolioSection = () => {
     return (
       <AddPortfolioPage
         isEditing={true}
-        title=""
-        description=""
+        title=" Edit Portfolio Project"
+        description="Edit the details of your existing project offering"
         onBack={handleBack}
         onSave={handleSaveProject}
         initialValue={portfolioToBeEdited}
