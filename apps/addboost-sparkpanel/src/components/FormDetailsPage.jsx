@@ -3,8 +3,8 @@ import { ArrowLeft } from "lucide-react";
 
 const FormDetailsPage = ({ form, onBack }) => {
   return (
-    <div className="p-6 space-y-6">
-      {/* Back Button and Title */}
+    <div className="space-y-6">
+      {/* Header with Back Button */}
       <div className="flex items-center space-x-4">
         <button
           onClick={onBack}
@@ -12,44 +12,45 @@ const FormDetailsPage = ({ form, onBack }) => {
         >
           <ArrowLeft className="w-5 h-5 text-gray-600" />
         </button>
-        <h1 className="text-2xl font-bold text-gray-900">
-          Full Submission Details
-        </h1>
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">
+            Full Submission Details
+          </h1>
+          <p className="text-gray-500 text-sm">Review all submitted fields</p>
+        </div>
       </div>
 
-      {/* Details Card */}
-      <div className="bg-white p-6 rounded-xl shadow-sm border space-y-4">
-        <div>
-          <p className="text-gray-600 font-semibold">Name:</p>
-          <p className="text-gray-900">{form.name}</p>
+      {/* Card Layout */}
+      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <Detail label="Full name" value={form.name} />
+          <Detail label="Email Address" value={form.email} />
+          <Detail label="Phone Number" value={form.phoneNumber} />
+          <Detail label="Choose Your Focus Area" value={form.area} />
+          <Detail
+            label="Business / Startup Name (if any)"
+            value={form.startup}
+          />
+          <Detail label="Preferred Date & Time" value={form.DateTime} />
         </div>
-        <div>
-          <p className="text-gray-600 font-semibold">Email:</p>
-          <p className="text-gray-900">{form.email}</p>
-        </div>
-        <div>
-          <p className="text-gray-600 font-semibold">Phone Number:</p>
-          <p className="text-gray-900">{form.phoneNumber}</p>
-        </div>
-        <div>
-          <p className="text-gray-600 font-semibold">Area:</p>
-          <p className="text-gray-900">{form.area}</p>
-        </div>
-        <div>
-          <p className="text-gray-600 font-semibold">Startup:</p>
-          <p className="text-gray-900">{form.startup}</p>
-        </div>
-        <div>
-          <p className="text-gray-600 font-semibold">Comments:</p>
-          <p className="text-gray-900">{form.comments}</p>
-        </div>
-        <div>
-          <p className="text-gray-600 font-semibold">Submitted At:</p>
-          <p className="text-gray-900">{form.submittedAt}</p>
+
+        <div className="mt-6">
+          <p className="text-gray-600 font-semibold mb-1">
+            Additional Notes or Questions:
+          </p>
+          <p className="text-gray-900 whitespace-pre-line">{form.comments}</p>
         </div>
       </div>
     </div>
   );
 };
+
+// Reusable field component
+const Detail = ({ label, value }) => (
+  <div>
+    <p className="text-gray-600 font-medium text-sm mb-1">{label}:</p>
+    <p className="text-gray-900 font-semibold">{value || "—"}</p>
+  </div>
+);
 
 export default FormDetailsPage;

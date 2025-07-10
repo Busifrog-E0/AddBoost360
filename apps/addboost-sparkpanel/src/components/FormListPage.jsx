@@ -8,13 +8,13 @@ const FormListPage = () => {
   const formSubmissions = [
     {
       id: 1,
-      area: "Mumbai",
+      area: "Digital Marketing Strategy",
       name: "Swapna",
       email: "swapna103@example.com",
       phoneNumber: "9876543210",
       startup: "TechieStart",
       comments: "Looking for early-stage funding support.",
-      submittedAt: "2025-07-09 10:30 AM",
+      DateTime: "10-9-2025 10:30 AM",
     },
     {
       id: 2,
@@ -24,7 +24,7 @@ const FormListPage = () => {
       phoneNumber: "9999988888",
       startup: "Epoq Zeo Private Ltd",
       comments: "Interested in mentorship programs.",
-      submittedAt: "2025-07-09 11:00 AM",
+      DateTime: "09-07-2025 11:00 AM",
     },
   ];
 
@@ -38,7 +38,7 @@ const FormListPage = () => {
   }
 
   return (
-    <div className="space-y-6 p-6">
+    <div className="space-y-6">
       <h1 className="text-2xl font-bold text-gray-900">Form Submissions</h1>
       <p className="text-gray-600">View basic info of all submissions</p>
 
