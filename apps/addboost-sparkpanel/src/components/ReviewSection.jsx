@@ -46,10 +46,10 @@ const ReviewSection = () => {
   };
 
   const handleSave = (reviewData) => {
-    if (editingReview) {
+    if (reviewToBeEdited) {
       setReviews((prev) =>
         prev.map((r) =>
-          r.id === editingReview.id ? { ...r, ...reviewData } : r
+          r.id === reviewToBeEdited.id ? { ...r, ...reviewData } : r
         )
       );
     } else {
