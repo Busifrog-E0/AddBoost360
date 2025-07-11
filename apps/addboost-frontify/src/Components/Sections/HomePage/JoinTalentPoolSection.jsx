@@ -19,14 +19,14 @@ const JoinTalentPoolSection = () => {
     {
       id: 1,
       number: "01",
-      title: "HIGHLY COMPETENT PROFESSIONALS",
+      title: "highly competent professionals",
       description: "Must have 3+ years' experience, strong portfolio",
       image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
     },
     {
       id: 2,
       number: "02",
-      title: "FLEXIBLE REMOTE OPPORTUNITIES",
+      title: "flexible remote opportunities",
       description: "Work from anywhere with competitive rates and project-based assignments",
       image: "https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
     }
@@ -71,7 +71,7 @@ const JoinTalentPoolSection = () => {
       <div className="grid lg:grid-cols-2 gap-32 items-start">
         <div className=" flex flex-col gap-2">
           <p className="text-primary  font-inter text-base 2xl:text-lg">In-House Team</p>
-          <h className="uppercase text-3xl 2xl:text-5xl font-arya">
+          <h className="uppercase text-3xl 2xl:text-5xl font-libre">
             JOIN OUR GLOBAL TALENT Pool
           </h>
           <p className="mt-2 text-sm leading-loose font-inter">
@@ -82,10 +82,10 @@ const JoinTalentPoolSection = () => {
             onTouchEnd={handleTouchEnd}>
             <div className="bg-primary rounded-md p-6 text-white flex flex-col justify-between">
               <div className="flex-grow">
-                <div className="text-lg 2xl:text-xl  opacity-50 font-arya">
+                <div className="text-lg 2xl:text-xl  opacity-50 font-libre">
                   {currentSlideData.number}
                 </div>
-                <h3 className="text-xl 2xl:text-2xl  mb-4 leading-tight font-arya">
+                <h3 className="text-xl 2xl:text-2xl  mb-4 leading-tight font-libre capitalize">
                   {currentSlideData.title}
                 </h3>
                 <p className="text-xs opacity-50 font-normal font-inter">

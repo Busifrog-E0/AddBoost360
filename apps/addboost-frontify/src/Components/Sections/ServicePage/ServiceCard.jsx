@@ -7,11 +7,11 @@ const ServiceCard = ({ service, reverse = true }) => {
   const navigate = useNavigate();
   const TextContent = (
     <div className="flex flex-col gap-5">
-      <h className="font-arya text-[#1C1C1C] text-3xl 2xl:text-5xl 2xl:pt-10 uppercase">
+      <h className="font-libre text-[#1C1C1C] text-3xl 2xl:text-5xl 2xl:pt-10 uppercase">
         {service.title}
       </h>
       <p className="font-inter text-base 2xl:text-lg">{service.description}</p>
-      <h className="font-arya text-2xl">{service.subtitle}</h>
+      <h className="font-libre text-2xl">{service.subtitle}</h>
       <div className="p-2 font-inter text-sm leading-relaxed">
         {service.services.map((item, index) => (
           <p key={index}>▪ {item}</p>

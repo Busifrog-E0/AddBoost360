@@ -27,7 +27,7 @@ const ContactSupportSection = () => {
 
   return (
     <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24">
-      <h2 className="text-3xl md:text-4xl text-black mb-8 font-arya">
+      <h2 className="text-3xl md:text-4xl text-black mb-8 font-libre">
         Need Immediate Assistance?
       </h2>
 
@@ -42,7 +42,7 @@ const ContactSupportSection = () => {
             <div className="flex items-center gap-1 transition-transform duration-300">
               <a
                 href={`mailto:${item.email}`}
-                className="text-black text-lg font-arya break-all transition-transform duration-300 group-hover:translate-x-1"
+                className="text-black text-lg font-libre break-all transition-transform duration-300 group-hover:translate-x-1"
               >
                 {item.email}
               </a>

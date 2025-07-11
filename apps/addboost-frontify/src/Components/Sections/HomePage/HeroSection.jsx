@@ -26,7 +26,7 @@ const HeroSection = () => {
             <div className="absolute top-0 left-0 w-full h-full z-0 bg-gradient-to-r from-zinc-800 via-zinc-800/60 to-transparent" />
             <div className="relative z-10 w-full h-full grid xl:grid-cols-2 items-center px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24">
                 <div className="flex flex-col gap-8 text-white">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-arya uppercase">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-libre uppercase">
                         {homePageData.title}
                     </h1>
                     <p className="text-lg font-inter">

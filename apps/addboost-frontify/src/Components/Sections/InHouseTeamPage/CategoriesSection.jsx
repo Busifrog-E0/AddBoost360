@@ -4,18 +4,18 @@ const CategoriesSection = ({ isSlideIndicatorsEnabled = false }) => {
     const services = [
         {
             id: 1,
-            title: "Highly Competent Professionals",
-            description: "For professionals with solid experience and proven skillsets.",
-            image: "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg",
-            skills: ["JavaScript", "React", "Node.js", "Python", "Django", "Ruby on Rails"]
+            number: "01",
+            title: "highly competent professionals",
+            description: "Must have 3+ years' experience, strong portfolio",
+            image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
         },
         {
             id: 2,
-            title: "Intern-Level Freelancers",
-            description: "For passionate learners ready to grow through guided real-time projects.",
-            image: "https://images.pexels.com/photos/6476589/pexels-photo-6476589.jpeg",
-            skills: ["JavaScript", "React", "Node.js", "Python", "Django", "Ruby on Rails"]
-        },
+            number: "02",
+            title: "flexible remote opportunities",
+            description: "Work from anywhere with competitive rates and project-based assignments",
+            image: "https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+        }
     ];
 
     return (

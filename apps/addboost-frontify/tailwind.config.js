@@ -13,7 +13,8 @@ export default {
         lightblack: "#262626",
       },
       fontFamily: {
-        arya: ["Anton", "sans-serif"],
+        libre: ["Libre Bodoni", "sans-serif"],
+        arya: ["Arya", "sans-serif"],
         inter: ["inter", "sans-serif"],
       },
       spacing: {

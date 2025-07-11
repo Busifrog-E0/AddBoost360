@@ -19,7 +19,7 @@ const StartupHeroSection = () => {
 
           {/* Text Content */}
           <div className="relative z-10 p-6 sm:p-10 md:p-20 lg:p-20  text-white flex flex-col items-center text-center justify-center min-h-screen lg:items-start lg:text-left">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-arya uppercase leading-snug">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-libre uppercase leading-snug">
               Startups & Global Sourcing
             </h1>
             <p className="text-lg sm:text-lg font-inter mt-8">

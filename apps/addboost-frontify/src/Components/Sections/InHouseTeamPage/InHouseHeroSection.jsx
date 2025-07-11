@@ -15,7 +15,7 @@ const InHouseHeroSection = () => {
         <p className="font-inter font-semibold text-sm mb-2 text-gray-300 italic">
           Collaborate. Learn. Grow.
         </p>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-arya uppercase leading-snug">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-libre uppercase leading-snug">
           In-house Team
         </h1>
         <p className="text-base md:text-lg font-inter mt-6 text-gray-300">

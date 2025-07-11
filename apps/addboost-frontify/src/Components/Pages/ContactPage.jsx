@@ -13,7 +13,7 @@ const ContactPage = () => {
           Let's Unlock Your Brand's Full Potential — Together.
         </p>
 
-        <h className="font-arya text-white uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2">
+        <h className="font-libre text-white uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2">
           Book a free consultation
         </h>
 

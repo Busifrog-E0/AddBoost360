@@ -27,7 +27,7 @@ const Button = ({
 
         <div className="relative z-10 font-arya text-xs lg:text-sm group">
           <div
-            className={`relative transition-all duration-500 ease-in-out transform group-hover:translate-x-1 tracking-widest uppercase ${textColor}`}
+            className={`relative transition-all duration-500 ease-in-out transform group-hover:translate-x-1  uppercase ${textColor}`}
           >
             {text}
           </div>

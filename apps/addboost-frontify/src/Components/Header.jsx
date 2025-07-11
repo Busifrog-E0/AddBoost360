@@ -24,7 +24,7 @@ const Header = () => {
         <div className="flex flex-row gap-24 ml-6 lg:ml-10  items-center">
           <div className="flex flex-row gap-2 cursor-pointer" onClick={() => navigate("/")}>
             <div >
-              <h className="text-xl uppercase font-arya  ">
+              <h className="text-xl uppercase font-libre  ">
                 ADD BOOST <span className="text-primary">360</span>
               </h>
             </div>
@@ -40,8 +40,8 @@ const Header = () => {
                 to={item.to}
                 className={({ isActive }) =>
                   isActive
-                    ? "font-arya tracking-widest underline outline-none"
-                    : "text-black hover:underline font-arya tracking-widest outline-none"
+                    ? "font-arya underline outline-none"
+                    : "text-black hover:underline font-arya outline-none"
                 }
               >
                 {item.label}

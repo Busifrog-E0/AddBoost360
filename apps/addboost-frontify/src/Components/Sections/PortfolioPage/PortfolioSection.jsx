@@ -60,7 +60,7 @@ const PortfolioSection = () => {
   return (
     <div>
       <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 bg-pastelpink">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-arya uppercase  leading-snug">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-libre uppercase  leading-snug">
           Featured Projects
         </h1>
         <PortfoliList howAllServicesButton={true} projects={projects} />

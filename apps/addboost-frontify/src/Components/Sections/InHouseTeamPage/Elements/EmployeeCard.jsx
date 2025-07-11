@@ -16,7 +16,7 @@ const EmployeeCard = ({ employee }) => {
           className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-white transition-colors duration-300"
         />
 
-        <h3 className="mt-4 text-sm sm:text-lg md:text-xl text-black font-arya ">
+        <h3 className="mt-4 text-sm sm:text-lg md:text-xl text-black font-libre ">
           {employee.title}
         </h3>
 
