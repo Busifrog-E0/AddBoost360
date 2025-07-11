@@ -163,13 +163,13 @@ const AddReview = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Customer Image *
             </label>
-            <div className="overflow-hidden w-[250px] h-[250px]">
+            <div className="overflow-hidden w-[250px] h-[150px]">
               {!formData.imagePreview ? (
                 <div
-                  className={`border-2 border-dashed p-6 text-center ${
+                  className={`border-2 border-dashed  p-6 text-center ${
                     errors.imagePreview
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
