@@ -131,12 +131,22 @@ const TeamSection = () => {
   };
 
   if (showAddTeam) {
-    return <AddTeamPage onBack={handleBack} onSave={handleSaveMember} />;
+    return (
+      <AddTeamPage
+        isEditing={false}
+        title=" Add new team member"
+        description="create a new team member"
+        onBack={handleBack}
+        onSave={handleSaveMember}
+      />
+    );
   }
 
   if (showEditTeam) {
     return (
       <AddTeamPage
+        title="Edit team member"
+        description="Edit the details of your existing team member"
         isEditing={true}
         onBack={handleBack}
         onSave={handleSaveMember}
