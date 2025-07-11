@@ -107,10 +107,10 @@ const CompanySection = () => {
   };
 
   const handleSaveCompany = (companyData) => {
-    if (editingCompany) {
+    if (companyToBeEdited) {
       setCompanies((prev) =>
         prev.map((company) =>
-          company.id === editingCompany.id
+          company.id === companyToBeEdited.id
             ? { ...company, ...companyData }
             : company
         )

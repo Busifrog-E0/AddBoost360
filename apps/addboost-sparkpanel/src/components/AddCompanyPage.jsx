@@ -213,52 +213,58 @@ const AddCompanyPage = ({
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Company Image *
             </label>
-            {!formData.imagePreview ? (
-              <div
-                className={`border-2 border-dashed p-8 text-center ${
-                  errors.image ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
-              >
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                  id="image-upload"
-                />
-                <label htmlFor="image-upload" className="cursor-pointer">
-                  <div className="flex flex-col items-center space-y-3">
-                    <div className="p-3 bg-gray-100 rounded-full">
-                      <Upload className="w-6 h-6 text-gray-600" />
-                    </div>
-                    <p className="text-sm font-medium text-gray-900">
-                      Click to upload image
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      PNG, JPG, GIF up to 5MB
-                    </p>
-                  </div>
-                </label>
-              </div>
-            ) : (
-              <div className="relative">
-                <img
-                  src={formData.imagePreview}
-                  alt="Company preview"
-                  className="w-full h-48 object-cover rounded-lg border"
-                />
-                <button
-                  type="button"
-                  onClick={removeImage}
-                  className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
+            <div className="overflow-hidden w-[250px] h-[180px]">
+              {!formData.imagePreview ? (
+                <div
+                  className={`border-2 border-dashed p-8 text-center ${
+                    errors.image
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                 >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-            )}
-            {errors.imagePreview && (
-              <p className="text-sm text-red-600 mt-1">{errors.imagePreview}</p>
-            )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    id="image-upload"
+                  />
+                  <label htmlFor="image-upload" className="cursor-pointer">
+                    <div className="flex flex-col items-center space-y-3">
+                      <div className="p-3 bg-gray-100 rounded-full">
+                        <Upload className="w-6 h-6 text-gray-600" />
+                      </div>
+                      <p className="text-sm font-medium text-gray-900">
+                        Click to upload image
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        PNG, JPG, GIF up to 5MB
+                      </p>
+                    </div>
+                  </label>
+                </div>
+              ) : (
+                <div className="relative">
+                  <img
+                    src={formData.imagePreview}
+                    alt="Company preview"
+                    className="w-full h-48 object-cover rounded-lg border"
+                  />
+                  <button
+                    type="button"
+                    onClick={removeImage}
+                    className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+              {errors.imagePreview && (
+                <p className="text-sm text-red-600 mt-1">
+                  {errors.imagePreview}
+                </p>
+              )}
+            </div>
           </div>
         </div>
 
