@@ -3,6 +3,7 @@ import linkedin from "../assets/SocialMediaIcon/Linkedin.svg";
 import instagram from "../assets/SocialMediaIcon/Instagram.svg";
 import facebook from "../assets/SocialMediaIcon/Facebook.svg";
 import youtube from "../assets/SocialMediaIcon/Youtube.svg";
+import Ukflag from "../assets/Ukflag.png";
 
 const Footer = () => {
   const [footerData, setFooterData] = React.useState({
@@ -31,9 +32,22 @@ const Footer = () => {
       <div className="flex flex-col gap-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-6">
           <div className="flex-1">
-            <h2 className="text-lg  font-arya  ">
-              {footerData.company}
-            </h2>
+            <div
+              className="flex flex-row gap-2 cursor-pointer items-center leading-normal"
+              onClick={() => navigate("/")}
+            >
+              <div>
+                <h2
+                  className={`text-lg uppercase font-arya font-bold m-0 text-white`}
+                >
+                  ADD BOOST 360
+                </h2>
+              </div>
+              <div className="mt-0">
+                <img src={Ukflag} alt="Uploaded" width="30px" />
+              </div>
+            </div>
+
             <p className="text-sm font-inter text-gray-400 mt-2 max-w-md leading-relaxed">
               {footerData.description}
             </p>
