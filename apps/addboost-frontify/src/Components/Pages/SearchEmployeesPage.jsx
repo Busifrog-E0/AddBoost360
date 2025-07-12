@@ -80,7 +80,7 @@ const SearchEmployeesPage = () => {
 
   return (
     <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 pt-32 md:py-20 md:pt-40 lg:py-24 lg:pt-44 bg-pastelpink ">
-      <h className="font-arya text-black uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2">
+      <h className="font-garamond text-black uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 font-bold">
         OUR Team
       </h>
       <p className="text-sm text-black mt-2">

@@ -7,7 +7,7 @@ const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
       id: 1,
       title: "Wholesale Product Sourcing",
       description: "Verified suppliers from China, India, UAE & more",
-      image: "https://images.pexels.com/photos/4483776/pexels-photo-4483776.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop", // Warehousing/logistics
+      image: "https://images.pexels.com/photos/5827062/pexels-photo-5827062.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop", // Warehousing/logistics
     },
     {
       id: 2,

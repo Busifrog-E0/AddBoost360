@@ -13,7 +13,8 @@ export default {
         lightblack: "#262626",
       },
       fontFamily: {
-        arya: ["Anton", "sans-serif"],
+        garamond: ["Cormorant Garamond", "sans-serif"],
+        arya: ["Arya", "sans-serif"],
         inter: ["inter", "sans-serif"],
       },
       spacing: {

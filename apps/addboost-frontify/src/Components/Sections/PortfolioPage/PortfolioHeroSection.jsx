@@ -21,7 +21,7 @@ const PortfolioHeroSection = () => {
           <p className="font-inter font-semibold text-sm mb-2 text-white lg:text-black">
             Proven Projects. Global Impact. Digital Excellence.
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-arya uppercase leading-snug  text-white lg:text-black">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-garamond uppercase leading-snug  text-white lg:text-black font-bold">
             Our Portfolio
           </h1>
           <p className="font-inter text-sm sm:text-base font-lato mt-6 max-w-xl  text-white lg:text-black">

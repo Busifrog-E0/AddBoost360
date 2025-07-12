@@ -53,7 +53,7 @@ const WhyItWorksSection = () => {
       <p className="text-primary  font-inter text-base 2xl:text-lg">
         Global Wholesale Hub
       </p>
-      <h className="uppercase font-arya text-3xl 2xl:text-5xl ">
+      <h className="uppercase font-garamond text-3xl 2xl:text-5xl font-bold">
         Direct Deals with Trusted Global Suppliers
       </h>
       <p className="text-sm sm:text-base md:text-sm font-inter mt-6 sm:mt-8 leading-relaxed text-gray-700">
@@ -72,12 +72,12 @@ const WhyItWorksSection = () => {
                 alt={`Step ${index + 1}`}
                 className="w-8 h-8"
               />
-              <p className="font-arya uppercase text-base lg:text-lg leading-snug">
+              <p className="font-arya uppercase text-lg lg:text-xl leading-snug">
                 {step.text}
               </p>
             </div>
             <div className="relative mt-6">
-              <div className="w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 font-arya text-sm z-10">
+              <div className="w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 font-inter text-sm z-10">
                 {index + 1}
               </div>
               {index !== 3 && (
@@ -91,7 +91,7 @@ const WhyItWorksSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mt-16 px-4 sm:px-6 md:px-12">
         {/* Left Section - Text */}
         <div>
-          <h2 className="uppercase font-arya text-xl sm:text-2xl">
+          <h2 className="uppercase font-garamond text-xl sm:text-2xl font-bold">
             Why It Works
           </h2>
 
@@ -103,13 +103,13 @@ const WhyItWorksSection = () => {
           <div className="flex flex-col gap-6 mt-6 sm:mt-8 p-6">
             {processes.map((point, index) => (
               <div key={index} className="flex flex-col">
-                <span className="text-sm  text-gray-500">
+                <span className="text-sm font-arya text-gray-500">
                   {point.number}
                 </span>
-                <p className="uppercase font-arya text-base sm:text-xl  mt-1">
+                <p className="capitalize font-garamond font-bold text-lg sm:text-xl mt-1">
                   {point.title}
                 </p>
-                <p className="font-inter text-sm sm:text-base mt-1 leading-relaxed">
+                <p className="font-inter text-xs sm:text-sm mt-1 ">
                   {point.description}
                 </p>
               </div>
