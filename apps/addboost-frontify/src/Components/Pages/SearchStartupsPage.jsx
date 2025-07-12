@@ -82,7 +82,7 @@ const SearchStartupsPage = () => {
       <h className="font-anton text-black uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 ">
         OUR Startups
       </h>
-      <p className="text-sm text-black mt-2">
+      <p className="text-sm font-inter text-black mt-2">
         At ADD BOOST 360 LIMITED, we provide end-to-end digital solutions—from marketing and web development to product sourcing and startup support—to drive global growth and impact.
       </p>
 

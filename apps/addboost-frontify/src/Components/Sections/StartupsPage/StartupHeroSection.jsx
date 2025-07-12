@@ -22,7 +22,7 @@ const StartupHeroSection = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-anton uppercase leading-snug ">
               Startups & Global Sourcing
             </h1>
-            <p className="text-lg sm:text-lg font-inter mt-8">
+            <p className="text-base md:text-lg font-inter mt-8">
               Empowering New Businesses with Products, Strategy & Security
             </p>
           </div>

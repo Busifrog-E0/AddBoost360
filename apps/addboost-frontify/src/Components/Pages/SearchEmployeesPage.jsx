@@ -83,7 +83,7 @@ const SearchEmployeesPage = () => {
       <h className="font-anton text-black uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 ">
         OUR Team
       </h>
-      <p className="text-sm text-black mt-2">
+      <p className="text-sm font-inter text-black mt-2">
         View Our Global Talent Network & Empower the Digital Future
       </p>
 
