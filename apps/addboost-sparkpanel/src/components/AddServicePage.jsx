@@ -77,7 +77,10 @@ const AddServicePage = ({
         }));
       };
       reader.readAsDataURL(file);
-      setErrors((prev) => ({ ...prev, image: "" }));
+      setErrors((prev) => {
+        console.log(prev);
+        return { ...prev, imagePreview: "" };
+      });
     }
   };
 
@@ -279,7 +282,7 @@ const AddServicePage = ({
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Service Image *
                 </label>
-                <div className="overflow-hidden w-[250px] h-[180px]">
+                <div className="overflow-hidden w-[250px] h-[200px]">
                   {!formData.imagePreview ? (
                     <div
                       className={`border-2 border-dashed p-8 text-center ${

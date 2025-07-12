@@ -33,14 +33,14 @@ const AddCompanyPage = ({
       if (!file.type.startsWith("image/")) {
         setErrors((prev) => ({
           ...prev,
-          image: "Please select a valid image file",
+          imagePreview: "Please select a valid image file",
         }));
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
         setErrors((prev) => ({
           ...prev,
-          image: "Image size should be less than 5MB",
+          imagePreview: "Image size should be less than 5MB",
         }));
         return;
       }
@@ -54,7 +54,7 @@ const AddCompanyPage = ({
         }));
       };
       reader.readAsDataURL(file);
-      setErrors((prev) => ({ ...prev, image: "" }));
+      setErrors((prev) => ({ ...prev, imagePreview: "" }));
     }
   };
 
@@ -127,7 +127,7 @@ const AddCompanyPage = ({
               placeholder="e.g., Razorpay"
             />
             {errors.title && (
-              <p className="text-sm text-red-600">{errors.title}</p>
+              <p className="text-sm text-red-600 mb-2 ">{errors.title}</p>
             )}
           </div>
 
@@ -183,7 +183,7 @@ const AddCompanyPage = ({
             </div>
 
             {errors.productCategories && (
-              <p className="text-sm text-red-600 mt-1">
+              <p className="text-sm text-red-600 mb-2">
                 {errors.productCategories}
               </p>
             )}
@@ -204,7 +204,7 @@ const AddCompanyPage = ({
               placeholder="e.g., India"
             />
             {errors.country && (
-              <p className="text-sm text-red-600">{errors.country}</p>
+              <p className="text-sm text-red-600 mb-2">{errors.country}</p>
             )}
           </div>
 
@@ -213,7 +213,7 @@ const AddCompanyPage = ({
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Company Image *
             </label>
-            <div className="overflow-hidden w-[250px] h-[180px]">
+            <div className="overflow-hidden w-[250px] h-[200px]">
               {!formData.imagePreview ? (
                 <div
                   className={`border-2 border-dashed p-8 text-center ${

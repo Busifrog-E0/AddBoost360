@@ -14,6 +14,7 @@ import AddServicePage from "../components/AddServicePage";
 import FormListPage from "../components/FormListPage";
 
 import ReviewSection from "../components/ReviewSection";
+import LoginPage from "../components/LoginPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,6 +28,7 @@ export const router = createBrowserRouter(
       <Route path="/about" element={<AboutSection />} />
       <Route path="/form" element={<FormListPage />} />
       <Route path="/review" element={<ReviewSection />} />
+      <Route path="/login" element={<LoginPage />} />
     </Route>
   )
 );

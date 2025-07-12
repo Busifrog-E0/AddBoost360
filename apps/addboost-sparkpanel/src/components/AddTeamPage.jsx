@@ -34,14 +34,14 @@ const AddTeamPage = ({
       if (!file.type.startsWith("image/")) {
         setErrors((prev) => ({
           ...prev,
-          image: "Please select a valid image file",
+          imagePreview: "Please select a valid image file",
         }));
         return;
       }
       if (file.size > 5 * 1024 * 1024) {
         setErrors((prev) => ({
           ...prev,
-          image: "Image size should be less than 5MB",
+          imagePreview: "Image size should be less than 5MB",
         }));
         return;
       }
@@ -55,7 +55,7 @@ const AddTeamPage = ({
         }));
       };
       reader.readAsDataURL(file);
-      setErrors((prev) => ({ ...prev, image: "" }));
+      setErrors((prev) => ({ ...prev, image: "", imagePreview: "" }));
     }
   };
 
@@ -69,7 +69,8 @@ const AddTeamPage = ({
     if (!formData.designation.trim())
       newErrors.designation = "Designation is required";
     if (!formData.country.trim()) newErrors.country = "Country is required";
-    if (!formData.image) newErrors.image = "Team member image is required";
+    if (!formData.imagePreview)
+      newErrors.imagePreview = "Team member image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -177,7 +178,7 @@ const AddTeamPage = ({
               {!formData.imagePreview ? (
                 <div
                   className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
-                    errors.image
+                    errors.imagePreview
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
                   }`}
@@ -221,8 +222,8 @@ const AddTeamPage = ({
               )}
             </div>
 
-            {errors.image && (
-              <p className="text-sm text-red-600 mt-1">{errors.image}</p>
+            {errors.imagePreview && (
+              <p className="text-sm text-red-600 mt-1">{errors.imagePreview}</p>
             )}
           </div>
         </div>
