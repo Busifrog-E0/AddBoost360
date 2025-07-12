@@ -63,7 +63,7 @@ const PortfolioCard = ({ project, reverse = false }) => {
         <div className="flex bg-white  ">
           {/* Text content */}
           <div className="p-2 md:p-3 lg:p-4">
-            <p className="text-sm sm:text-base md:text-lg font-garamond  text-gray-700 mt-1">
+            <p className="text-sm sm:text-sm md:text-xl font-garamond font-bold text-gray-700 mt-1">
               {project.type}
             </p>
           </div>
