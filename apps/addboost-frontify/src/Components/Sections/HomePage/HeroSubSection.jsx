@@ -8,7 +8,7 @@ const HeroSubSection = () => {
   return (
     <div className="bg-pastelpink grid lg:grid-cols-2 gap-10 lg:gap-20 items-start px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24  ">
       <div className="flex flex-col gap-6 ">
-        <h className="font-garamond text-3xl 2xl:text-5xl font-bold 2xl:pt-10 uppercase">
+        <h className="font-anton text-3xl 2xl:text-5xl 2xl:pt-10 uppercase">
           Your Global Digital Transformation Partner
         </h>
         <p className="font-inter text-base 2xl:text-lg ">

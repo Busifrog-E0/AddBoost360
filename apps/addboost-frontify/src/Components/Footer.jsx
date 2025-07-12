@@ -37,9 +37,7 @@ const Footer = () => {
               onClick={() => navigate("/")}
             >
               <div>
-                <h2
-                  className={`text-lg uppercase font-arya font-bold m-0 text-white`}
-                >
+                <h2 className={`text-xl uppercase font-anton m-0 text-white`} >
                   ADD BOOST 360
                 </h2>
               </div>

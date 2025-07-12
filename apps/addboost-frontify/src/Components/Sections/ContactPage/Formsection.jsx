@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { CheckCircle } from "lucide-react";
 import Button from "../../Button";
 
 const Formsection = () => {
@@ -72,9 +71,8 @@ const Formsection = () => {
             name="area"
             value={formData.area}
             onChange={handleChange}
-            className={`p-3 bg-white border rounded-md text-black outline-none ${
-              errors.area ? "border-red-500" : "border-gray-600"
-            }`}
+            className={`p-3 bg-white border rounded-md text-black outline-none ${errors.area ? "border-red-500" : "border-gray-600"
+              }`}
           >
             <option value="">-- Select an option --</option>
             <option>Digital Marketing Strategy</option>
@@ -101,9 +99,8 @@ const Formsection = () => {
             onChange={handleChange}
             type="text"
             placeholder="Enter your full name"
-            className={`p-3 bg-white border rounded-md text-black placeholder-gray-400 outline-none ${
-              errors.name ? "border-red-500" : "border-gray-600"
-            }`}
+            className={`p-3 bg-white border rounded-md text-black placeholder-gray-400 outline-none ${errors.name ? "border-red-500" : "border-gray-600"
+              }`}
           />
           {errors.name && (
             <span className="text-sm text-red-400 mt-1">{errors.name}</span>
@@ -121,9 +118,8 @@ const Formsection = () => {
             onChange={handleChange}
             type="email"
             placeholder="Enter your email address"
-            className={`p-3 bg-white border rounded-md text-black placeholder-gray-400 outline-none ${
-              errors.email ? "border-red-500" : "border-gray-600"
-            }`}
+            className={`p-3 bg-white border rounded-md text-black placeholder-gray-400 outline-none ${errors.email ? "border-red-500" : "border-gray-600"
+              }`}
           />
           {errors.email && (
             <span className="text-sm text-red-400 mt-1">{errors.email}</span>
@@ -193,7 +189,7 @@ const Formsection = () => {
       {showPopup && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-xl shadow-xl p-6 md:p-8 w-full max-w-sm text-center animate-fade-in">
-            <CheckCircle className="text-green-500 w-12 h-12 mx-auto mb-4" />
+            {/* <CheckCircle className="text-green-500 w-12 h-12 mx-auto mb-4" /> */}
             <h2 className="text-lg font-semibold text-gray-800">Thank you!</h2>
             <p className="text-sm text-gray-600 mt-2">
               Your submission has been received. Our team will get back to you

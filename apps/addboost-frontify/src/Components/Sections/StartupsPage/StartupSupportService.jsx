@@ -49,14 +49,14 @@ const StartupSupportService = () => {
 
       {/* Right Column */}
       <div>
-        <h2 className="font-garamond text-xl md:text-2xl uppercase mb-4 font-bold">
+        <h2 className="font-anton text-xl md:text-2xl uppercase mb-4 ">
           Startup Support Services
         </h2>
 
         <div className="flex flex-col p-5 sm:p-8 md:p-10 gap-6">
           {/* Heading & Paragraph */}
           <div>
-            <h3 className="font-garamond text-base md:text-lg font-bold">
+            <h3 className="font-anton text-base md:text-lg ">
               Turn Your Business Idea into a Global Brand
             </h3>
             <p className="font-inter text-sm text-lightblack mt-3 leading-relaxed">
@@ -68,7 +68,7 @@ const StartupSupportService = () => {
 
           {/* List */}
           <div>
-            <h4 className="font-garamond text-base md:text-lg mb-4 font-bold">
+            <h4 className="font-anton text-base md:text-lg mb-4 ">
               Our Startup Support Includes
             </h4>
 

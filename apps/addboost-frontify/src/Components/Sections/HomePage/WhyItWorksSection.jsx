@@ -50,12 +50,18 @@ const WhyItWorksSection = () => {
   ]);
   return (
     <div className="bg-pastelpink px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 ">
-      <p className="text-primary  font-inter text-base 2xl:text-lg">
-        Global Wholesale Hub
-      </p>
-      <h className="uppercase font-garamond text-3xl 2xl:text-5xl font-bold">
-        Direct Deals with Trusted Global Suppliers
-      </h>
+
+      <div className=" flex flex-col gap-2">
+        <p className="text-primary  font-inter text-base 2xl:text-lg">
+          Global Wholesale Hub
+        </p>
+        <h className="uppercase text-3xl 2xl:text-5xl font-anton  ">
+          Direct Deals with Trusted Global Suppliers
+        </h>
+      </div>
+
+
+
       <p className="text-sm sm:text-base md:text-sm font-inter mt-6 sm:mt-8 leading-relaxed text-gray-700">
         We connect startups with legally contracted wholesale companies across
         continents through conferencing and escrow-backed platform.
@@ -91,7 +97,7 @@ const WhyItWorksSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mt-16 px-4 sm:px-6 md:px-12">
         {/* Left Section - Text */}
         <div>
-          <h2 className="uppercase font-garamond text-xl sm:text-2xl font-bold">
+          <h2 className="uppercase font-anton text-xl sm:text-2xl ">
             Why It Works
           </h2>
 
@@ -106,7 +112,7 @@ const WhyItWorksSection = () => {
                 <span className="text-sm font-arya text-gray-500">
                   {point.number}
                 </span>
-                <p className="capitalize font-garamond font-bold text-lg sm:text-xl mt-1">
+                <p className="capitalize font-anton text-lg sm:text-xl mt-1">
                   {point.title}
                 </p>
                 <p className="font-inter text-xs sm:text-sm mt-1 ">
