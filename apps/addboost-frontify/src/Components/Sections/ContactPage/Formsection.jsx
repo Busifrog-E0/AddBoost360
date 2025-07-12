@@ -40,9 +40,15 @@ const Formsection = () => {
   const handleSubmit = () => {
     const newErrors = {};
 
-    if (!formData.area.trim()) newErrors.area = "Please select a focus area";
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.area.trim()) {
+      newErrors.area = "Please select a focus area";
+    }
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    }
 
     setErrors(newErrors);
 
