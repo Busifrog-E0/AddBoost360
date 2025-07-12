@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import { CheckCircle } from "lucide-react";
 import Button from "../../Button";
 
 const Formsection = () => {
@@ -28,7 +27,6 @@ const Formsection = () => {
       [name]: value,
     }));
 
-    // Clear error dynamically when field is filled
     if (value.trim() !== "") {
       setErrors((prev) => ({
         ...prev,
@@ -202,7 +200,7 @@ const Formsection = () => {
       {showPopup && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-xl shadow-xl p-6 md:p-8 w-full max-w-sm text-center animate-fade-in">
-            <CheckCircle className="text-green-500 w-12 h-12 mx-auto mb-4" />
+            <div className="text-4xl mb-4">✅</div>
             <h2 className="text-lg font-semibold text-gray-800">Thank you!</h2>
             <p className="text-sm text-gray-600 mt-2">
               Your submission has been received. Our team will get back to you
