@@ -12,8 +12,8 @@ const CategoriesSection = ({ isSlideIndicatorsEnabled = false }) => {
         {
             id: 2,
             number: "02",
-            title: "flexible remote opportunities",
-            description: "Work from anywhere with competitive rates and project-based assignments",
+            title: "Intern-Level Freelancers",
+            description: "For passionate learners ready to grow through guided real-time projects. ",
             image: "https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
         }
     ];
