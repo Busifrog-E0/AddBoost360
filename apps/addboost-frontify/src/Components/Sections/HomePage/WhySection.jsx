@@ -43,7 +43,7 @@ const WhySection = () => {
   );
 
   return (
-    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 bg-pastelpink ">
+    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 bg-pastelpink">
       <WhySectionView items={items} title={"Global, Intelligent, Creative."} subtitle={"Why Add Boost 360?"} />
     </div>
   );

@@ -53,7 +53,7 @@ const WhyItWorksSection = () => {
       <p className="text-primary  font-inter text-base 2xl:text-lg">
         Global Wholesale Hub
       </p>
-      <h className="uppercase font-libre text-3xl 2xl:text-5xl ">
+      <h className="uppercase font-garamond text-3xl 2xl:text-5xl font-bold">
         Direct Deals with Trusted Global Suppliers
       </h>
       <p className="text-sm sm:text-base md:text-sm font-inter mt-6 sm:mt-8 leading-relaxed text-gray-700">
@@ -72,7 +72,7 @@ const WhyItWorksSection = () => {
                 alt={`Step ${index + 1}`}
                 className="w-8 h-8"
               />
-              <p className="font-inter font-bold uppercase text-base lg:text-lg leading-snug">
+              <p className="font-arya uppercase text-lg lg:text-xl leading-snug">
                 {step.text}
               </p>
             </div>
@@ -91,7 +91,7 @@ const WhyItWorksSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mt-16 px-4 sm:px-6 md:px-12">
         {/* Left Section - Text */}
         <div>
-          <h2 className="uppercase font-libre text-xl sm:text-2xl">
+          <h2 className="uppercase font-garamond text-xl sm:text-2xl font-bold">
             Why It Works
           </h2>
 
@@ -106,10 +106,10 @@ const WhyItWorksSection = () => {
                 <span className="text-sm font-arya text-gray-500">
                   {point.number}
                 </span>
-                <p className="capitalize font-libre font-bold text-base sm:text-xl  mt-1">
+                <p className="capitalize font-garamond font-bold text-lg sm:text-xl mt-1">
                   {point.title}
                 </p>
-                <p className="font-inter text-sm sm:text-base mt-1 ">
+                <p className="font-inter text-xs sm:text-sm mt-1 ">
                   {point.description}
                 </p>
               </div>

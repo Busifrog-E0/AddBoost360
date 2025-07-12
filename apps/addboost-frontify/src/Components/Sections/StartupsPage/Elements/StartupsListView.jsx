@@ -102,7 +102,7 @@ const StartupsListView = ({ isSlideIndicatorsEnabled = false, title, startups = 
     <div className="select-none">
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
-        <h className="uppercase font-libre text-3xl 2xl:text-5xl ">
+        <h className="uppercase font-garamond text-3xl 2xl:text-5xl font-bold">
           {title}
         </h>
         <div className="flex items-center gap-2 flex-shrink-0 mt-2 md:mt-0">

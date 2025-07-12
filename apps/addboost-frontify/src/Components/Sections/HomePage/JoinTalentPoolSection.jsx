@@ -71,7 +71,7 @@ const JoinTalentPoolSection = () => {
       <div className="grid lg:grid-cols-2 gap-32 items-start">
         <div className=" flex flex-col gap-2">
           <p className="text-primary  font-inter text-base 2xl:text-lg">In-House Team</p>
-          <h className="uppercase text-3xl 2xl:text-5xl font-libre">
+          <h className="uppercase text-3xl 2xl:text-5xl font-garamond font-bold">
             JOIN OUR GLOBAL TALENT Pool
           </h>
           <p className="mt-2 text-sm leading-loose font-inter">
@@ -82,10 +82,10 @@ const JoinTalentPoolSection = () => {
             onTouchEnd={handleTouchEnd}>
             <div className="bg-primary rounded-md p-6 text-white flex flex-col justify-between">
               <div className="flex-grow">
-                <div className="text-lg 2xl:text-xl  opacity-50 font-libre">
+                <div className="text-lg 2xl:text-xl  opacity-50 font-garamond">
                   {currentSlideData.number}
                 </div>
-                <h3 className="text-xl 2xl:text-2xl  mb-4 leading-tight font-libre capitalize">
+                <h3 className="text-xl 2xl:text-2xl mb-4 leading-tight font-garamond capitalize font-bold">
                   {currentSlideData.title}
                 </h3>
                 <p className="text-xs opacity-50 font-normal font-inter">

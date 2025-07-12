@@ -31,7 +31,7 @@ const Footer = () => {
       <div className="flex flex-col gap-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-6">
           <div className="flex-1">
-            <h2 className="text-lg  font-libre  tracking-wide">
+            <h2 className="text-lg  font-arya  ">
               {footerData.company}
             </h2>
             <p className="text-sm font-inter text-gray-400 mt-2 max-w-md leading-relaxed">
@@ -84,7 +84,7 @@ const Footer = () => {
 
         <div className="flex flex-row gap-20 justify-between lg:gap-96 text-sm text-gray-300">
           <div className="">
-            <p className="text-white   font-libre">
+            <p className="text-white text-lg font-arya">
               {footerData.address.city}
             </p>
             <p className="font-inter text-gray-400 text-xs mt-1 ">
@@ -99,7 +99,7 @@ const Footer = () => {
           </div>
 
           <div className="md:ml-60 space-y-2">
-            <p className="text-white font-libre text-lg">
+            <p className="text-white font-arya text-lg">
               <a
                 href={`mailto:${footerData.email}`}
                 className="hover:underline"
@@ -107,12 +107,12 @@ const Footer = () => {
                 {footerData.email}
               </a>
             </p>
-            <p className="text-white font-libre text-lg">
+            <p className="text-white font-arya text-lg">
               <a href={`tel:${footerData.phone}`} className="hover:underline">
                 {footerData.phone}
               </a>
             </p>
-            <p className="text-white font-libre text-lg">{footerData.website}</p>
+            <p className="text-white font-arya text-lg">{footerData.website}</p>
           </div>
         </div>
         <div className="text-xs text-gray-500 mt-2 font-inter">

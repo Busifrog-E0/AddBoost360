@@ -7,7 +7,7 @@ const NewBusinessStartupSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 
 
-        <h className="uppercase font-libre text-2xl 2xl:text-5xl 2xl:pt-10 block">
+        <h className="uppercase font-garamond text-2xl 2xl:text-5xl 2xl:pt-10 block font-bold">
           Empowering New Businesses with Products, Strategy & Security
         </h>
       </div>
@@ -19,7 +19,7 @@ const NewBusinessStartupSection = () => {
           <div className="absolute top-0 left-0">
             <img src={CornerChip} alt="Global" className="w-6 h-6" />
           </div>
-          <h3 className=" text-lg uppercase font-libre">Great clients</h3>
+          <h3 className=" text-lg uppercase font-garamond font-bold">Great clients</h3>
           <p className="text-sm text-lightblack mt-1 font-inter">
             We offer comprehensive startup support, from business identity to
             sourcing the right products from trusted international wholesalers.
@@ -31,7 +31,7 @@ const NewBusinessStartupSection = () => {
           <div className="absolute top-0 left-0">
             <img src={CornerChip} alt="Global" className="w-6 h-6" />
           </div>
-          <h3 className=" text-lg uppercase font-libre">Great Team</h3>
+          <h3 className=" text-lg uppercase font-garamond font-bold">Great Team</h3>
           <p className="text-sm text-lightblack mt-1 font-inter">
             We offer comprehensive startup support, from business identity to
             sourcing the right products from trusted international wholesalers.
@@ -44,7 +44,7 @@ const NewBusinessStartupSection = () => {
           <div className="absolute top-0 left-0">
             <img src={CornerChip} alt="Global" className="w-6 h-6" />
           </div>
-          <h3 className=" text-lg uppercase font-libre">
+          <h3 className=" text-lg uppercase font-garamond font-bold">
             Great Success
           </h3>
           <p className="text-sm text-lightblack mt-1 font-inter">
