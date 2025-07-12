@@ -9,7 +9,7 @@ const MenuIcon = ({
   const delays = ["delay-100", "delay-200", "delay-300"];
 
   return (
-    <div className="group flex flex-col gap-0.5 cursor-pointer items-end justify-center px-5 py-4 lg:p-4" onClick={onClick}>
+    <div className="group flex flex-col gap-0.5 cursor-pointer items-end justify-center px-5 py-4 lg:p-4 " onClick={onClick}>
       {lineWidths.map((width, index) => (
         <span key={index} className={`relative ${width} h-1`}>
           {/* base line (always visible) */}

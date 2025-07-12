@@ -68,7 +68,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-center">
           <div className="hidden lg:flex flex-row">
             <Button
               onClick={() => navigate("/contact")}
