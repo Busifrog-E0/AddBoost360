@@ -196,7 +196,7 @@ const Formsection = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="mt-6 w-28">
+        <div className="mt-6 w-full">
           <Button onClick={handleSubmit} text="Submit" />
         </div>
       </div>
