@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "../../Button";
 
 const Formsection = () => {
@@ -18,6 +18,7 @@ const Formsection = () => {
   const areaRef = useRef(null);
   const nameRef = useRef(null);
   const emailRef = useRef(null);
+  const popupRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,7 +45,6 @@ const Formsection = () => {
 
     setErrors(newErrors);
 
-    // Scroll to first invalid field
     const firstError = Object.keys(newErrors)[0];
     if (firstError === "area")
       areaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -60,6 +60,23 @@ const Formsection = () => {
   };
 
   const closePopup = () => setShowPopup(false);
+
+  // ✅ Close popup when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        closePopup();
+      }
+    };
+
+    if (showPopup) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showPopup]);
 
   return (
     <div className="relative">
@@ -191,7 +208,7 @@ const Formsection = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="mt-6 w-28">
+        <div className="mt-6 w-full">
           <Button onClick={handleSubmit} text="Submit" />
         </div>
       </div>
@@ -199,19 +216,24 @@ const Formsection = () => {
       {/* ✅ Popup Modal */}
       {showPopup && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
-          <div className="bg-white rounded-xl shadow-xl p-6 md:p-8 w-full max-w-sm text-center animate-fade-in">
+          <div
+            ref={popupRef}
+            className="relative bg-white rounded-xl shadow-xl p-6 md:p-8 w-full max-w-sm text-center animate-fade-in"
+          >
+            {/* Close Icon */}
+            <button
+              onClick={closePopup}
+              className="absolute top-3 right-3 text-gray-500 hover:text-black text-xl font-bold"
+            >
+              &times;
+            </button>
+
             <div className="text-4xl mb-4">✅</div>
             <h2 className="text-lg font-semibold text-gray-800">Thank you!</h2>
             <p className="text-sm text-gray-600 mt-2">
               Your submission has been received. Our team will get back to you
               shortly.
             </p>
-            <button
-              onClick={closePopup}
-              className="mt-6 w-full py-2 rounded-lg text-white font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 transition"
-            >
-              Close
-            </button>
           </div>
         </div>
       )}

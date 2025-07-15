@@ -6,11 +6,11 @@ import Play from "../../../assets/Play.svg";
 const PortfolioCard = ({ project, reverse = false }) => {
   const TextContent = (
     <div className="flex flex-col gap-5">
-      <h className="font-garamond text-[#1C1C1C] text-2xl 2xl:text-4xl font-bold mt-0">
+      <h className="font-anton text-[#1C1C1C] text-2xl 2xl:text-4xl  mt-0">
         {project.title}
       </h>
       <p className="font-inter text-base 2xl:text-lg">{project.description}</p>
-      <h1 className="font-garamond text-xl font-bold">Impact:</h1>
+      <h1 className="font-anton text-xl ">Impact:</h1>
       <div className="p-2 font-inter text-sm leading-relaxed">
         {project.impactPoints.map((item, index) => (
           <p key={index}>▪ {item}</p>
@@ -63,7 +63,7 @@ const PortfolioCard = ({ project, reverse = false }) => {
         <div className="flex bg-white  ">
           {/* Text content */}
           <div className="p-2 md:p-3 lg:p-4">
-            <p className="text-sm sm:text-sm md:text-xl font-garamond font-bold text-gray-700 mt-1">
+            <p className="text-sm sm:text-sm md:text-xl font-anton  text-gray-700 mt-1">
               {project.type}
             </p>
           </div>

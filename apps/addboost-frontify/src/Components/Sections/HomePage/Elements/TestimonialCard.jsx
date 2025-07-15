@@ -25,7 +25,7 @@ const TestimonialCard = ({ currentTestimonial }) => {
                     {currentTestimonial.quote}
                 </p>
                 <div className="pt-4 border-t border-gray-200">
-                    <p className=" font-garamond uppercase text-gray-900 text-base lg:text-lg font-bold">
+                    <p className=" font-anton uppercase text-gray-900 text-base lg:text-lg ">
                         {currentTestimonial.designation + ", " + currentTestimonial.location}
                     </p>
                 </div>

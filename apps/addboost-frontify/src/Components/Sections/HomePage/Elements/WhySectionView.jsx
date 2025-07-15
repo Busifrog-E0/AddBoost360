@@ -19,7 +19,7 @@ const WhySectionView = ({ title, subtitle, items = [], showLearnMoreButton = fal
         <p className="text-primary  font-inter text-base 2xl:text-lg">
           {subtitle}
         </p>
-        <h className="uppercase text-3xl 2xl:text-5xl font-garamond  font-semibold">
+        <h className="uppercase text-3xl 2xl:text-5xl font-anton  ">
           {title}
         </h>
       </div>
