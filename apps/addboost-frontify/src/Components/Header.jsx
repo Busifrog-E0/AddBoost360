@@ -5,7 +5,6 @@ import Sidebar from "./Sidebar";
 import ADDBOOSTlogo from "../assets/ADDBOOSTlogo.png";
 import call from "../assets/call.png";
 
-
 const Header = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,7 +31,7 @@ const Header = () => {
               <img
                 src={ADDBOOSTlogo}
                 alt="Logo"
-                className="w-10 h-10 object-contain"
+                className="w-14 h-14 object-contain"
               />
               <h1 className="text-xl font-anton leading-none">
                 ADD BOOST <span className="text-[#2174bb]">360</span>
@@ -41,11 +40,7 @@ const Header = () => {
 
             {/* Phone */}
             <div className="hidden md:flex ml-14 items-center text-sm font-inter gap-2">
-               <img
-                src={call}
-                alt="Logo"
-                className="w-4 object-contain"
-              />
+              <img src={call} alt="Logo" className="w-4 object-contain" />
               <span>+44 (0)20-1234-5678</span>
             </div>
           </div>

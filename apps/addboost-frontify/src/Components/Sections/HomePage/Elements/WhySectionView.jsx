@@ -41,6 +41,8 @@ const WhySectionView = ({
             textColor="text-black"
             iconColor="black"
             text="LEARN MORE ABOUT US"
+            hoverBgColor="bg-gray-300"
+            hoverTextColor="text-black"
             onClick={() => {
               navigate("/startups-and-sourcing");
             }}

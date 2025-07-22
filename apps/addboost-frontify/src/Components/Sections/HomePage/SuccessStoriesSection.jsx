@@ -153,6 +153,8 @@ const CTASection = ({ isMobile = false, className = "" }) => {
             }}
             bgColor="bg-white"
             textColor="text-black"
+            hoverBgColor="bg-gray-300"
+            hoverTextColor="text-black"
             iconColor="black"
             text="BOOK A FREE CONSULTATION"
           />

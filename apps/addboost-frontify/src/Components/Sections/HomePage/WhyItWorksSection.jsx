@@ -106,7 +106,7 @@ const WhyItWorksSection = () => {
           <div className="flex flex-col gap-6 mt-6 sm:mt-8 p-6">
             {processes.map((point, index) => (
               <div key={index} className="flex flex-col">
-                <span className="text-sm font-arya text-black">
+                <span className="text-sm font-arya text-white">
                   {point.number}
                 </span>
                 <p className="capitalize font-anton text-lg sm:text-xl mt-1 text-PrimaryWhite">

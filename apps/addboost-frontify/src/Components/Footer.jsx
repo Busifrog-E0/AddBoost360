@@ -40,12 +40,9 @@ const Footer = () => {
               <img
                 src={ADDBOOSTlogo}
                 alt="Logo"
-                className="w-10 h-10 object-contain"
+                className="w-14 h-14 object-contain"
               />
-              <div>
-              
-              </div>
-            
+              <div></div>
             </div>
 
             <p className="text-sm font-inter text-gray-400 mt-2 max-w-md leading-relaxed">
@@ -98,9 +95,9 @@ const Footer = () => {
 
         <div className="flex flex-row gap-20 justify-between lg:gap-96 text-sm text-gray-300">
           <div className="">
-              <div className="mt-0">
-                <img src={Ukflag} alt="Uploaded" width="30px" />
-              </div>
+            <div className="mt-0">
+              <img src={Ukflag} alt="Uploaded" width="30px" />
+            </div>
             <p className="text-white text-lg font-arya">
               {footerData.address.city}
             </p>
