@@ -7,6 +7,7 @@ import dataHandling from '../../functions.js';
  * @property {string} Country
  * @property {array} Tags
  * @property {string} ImageUrl
+ * @property {number} Priority
  * @property {string} DocId
  * @property {string} CreatedIndex
  * @property {number} Index

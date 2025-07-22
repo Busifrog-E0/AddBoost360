@@ -9,6 +9,7 @@ const OrganizationSchema = Joi.object({
   Country: Joi.string().required(),
   Tags: Joi.array().required(),
   ImageUrl: Joi.string().required(),
+  Priority: Joi.number().required(),
 });
 
 export { OrganizationSchema };
