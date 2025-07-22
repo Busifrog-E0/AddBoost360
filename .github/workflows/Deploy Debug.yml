@@ -3,7 +3,7 @@ name: Pull to DigitalOcean Droplet
 on:
   push:
     branches:
-      - DebugServer
+      - DebugServer1
 
 jobs:
 
@@ -26,3 +26,52 @@ jobs:
         echo "APP_ENV=$APP_ENV" >> $GITHUB_ENV
     - name: Print one variable
       run: echo "Environment is $APP_ENV"
+    - name: Add SSH key
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+            ssh-private-key: ${{ secrets.DEBUG_SERVER_SSH_TOKEN }}
+
+    - name: Pull latest changes and update dependencies on DigitalOcean Droplet
+      run: |
+        ssh -o StrictHostKeyChecking=no root@139.59.46.32 << 'EOF'
+          git clone https://${{ secrets.DEBUG_SERVER_SSH_TOKEN }}@github.com/${{ secrets.GITHUB_REPO_ORAGANIZATION }}/${{ secrets.GITHUB_REPO_NAME }}.git
+          cd ${{ secrets.GITHUB_REPO_NAME }}
+          git remote add debug https://${{ secrets.DEBUG_SERVER_SSH_TOKEN }}@github.com/${{ secrets.GITHUB_REPO_ORAGANIZATION }}/${{ secrets.GITHUB_REPO_NAME }}.git
+          git checkout DebugServer
+          git pull debug DebugServer
+          cd apps/server
+          echo "" >> /etc/nginx/sites-available/default
+          echo "server {" >> /etc/nginx/sites-available/default
+          echo "    server_name addboost360debug.epoqzero.com;" >> /etc/nginx/sites-available/default
+          echo "" >> /etc/nginx/sites-available/default
+          echo "    location / {" >> /etc/nginx/sites-available/default
+          echo "        proxy_pass http://localhost:3010;" >> /etc/nginx/sites-available/default
+          echo "    }" >> /etc/nginx/sites-available/default
+          echo "}" >> /etc/nginx/sites-available/default
+          npm install 
+          pm2 restart AddBoost360
+        EOF
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event.head_commit.message != 'initial deployment'
+    outputs:
+      should_deploy: ${{ github.event.head_commit.message == 'initial deployment' }}
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Add SSH key
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+            ssh-private-key: ${{ secrets.DEBUG_SERVER_SSH_TOKEN }}
+
+    - name: Pull latest changes and update dependencies on DigitalOcean Droplet
+      run: |
+        ssh -o StrictHostKeyChecking=no root@139.59.46.32 << 'EOF'
+          cd AddBoost360
+          git pull debug DebugServer
+          cd server
+          npm install 
+          pm2 restart AddBoost360
+        EOF
