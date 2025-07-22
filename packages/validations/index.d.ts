@@ -4,6 +4,9 @@ declare module 'validations' {
   export const QueryParametersSchema: Joi.ObjectSchema;
 
   // EXPORTS HERE
+// Service-related Schema
+export const  ServiceSchema  : Joi.ObjectSchema;
+
 
  
 }

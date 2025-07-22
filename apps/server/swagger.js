@@ -1,5 +1,6 @@
 import swaggerAutogen from 'swagger-autogen';
 //IMPORT DEFINITIONS HERE
+import serviceDefinitions from "./features/service/serviceDefinitions.js";
 
 
 const doc = {
@@ -25,6 +26,7 @@ const doc = {
     },
     definitions: {
         // USE DEFINITIONS HERE
+        ...serviceDefinitions,
     }
 
 }
