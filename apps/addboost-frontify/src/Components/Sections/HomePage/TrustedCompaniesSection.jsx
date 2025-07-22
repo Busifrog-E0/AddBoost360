@@ -35,11 +35,11 @@ const TrustedCompaniesSection = () => {
                 alt="Logo"
                 className="w-30 object-contain"
               />
-              <img src={tsmclogo} alt="Logo" className="w-24 object-contain" />
+              <img src={tsmclogo} alt="Logo" className="w-24 object-contain " />
               <img
                 src={boxlogo}
                 alt="Logo"
-                className="w-20 object-contain filter invert brightness-[98%] contrast-[500%] grayscale"
+                className="w-20 object-contain filter invert brightness-0 contrast-[500%] grayscale"
               />
               <img
                 src={amazon}
