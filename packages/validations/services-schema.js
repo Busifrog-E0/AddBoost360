@@ -5,6 +5,7 @@ import Joi from 'joi';
  */
 const ServiceSchema = Joi.object({
   Title: Joi.string().required(),
+  Type: Joi.string().required(),
   ImageUrl: Joi.string().required(),
   Description1: Joi.string().required(),
   Description2: Joi.string().required(),

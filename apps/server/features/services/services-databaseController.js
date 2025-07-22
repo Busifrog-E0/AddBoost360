@@ -4,6 +4,7 @@ import dataHandling from '../../functions.js';
  * @typedef {object} ServiceData
  * @property {string} Title
  * @property {string} ImageUrl
+ * @property {string} Type
  * @property {string} Description1
  * @property {string} Description2
  * @property {Array<string>} ServiceList
