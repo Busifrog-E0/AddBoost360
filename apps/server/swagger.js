@@ -32,6 +32,7 @@ const doc = {
         myNumber: 123,
         myString: 'my example',
         LoginData: { Token: "string", RefreshToken: "string", CurrentUser: { Role: "User", UserId: "" } },
+        RefreshTokenData: { Token: "string", RefreshToken: "string" },
         // USE DEFINITIONS HERE
         ...formDefinitions,
         ...organizationDefinitions,

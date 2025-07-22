@@ -34,12 +34,19 @@ const ModelLogin = async (req, res) => {
  * @param {e.Response} res 
  */
 const RefreshToken = async (req, res) => {
+    // #swagger.tags = ['Admin','Auth']
+
     const { Token, RefreshToken } = req.body;
     /**
      * @type {RefreshTokenData}
      */
     const RefreshTokenData = await Read("RefreshTokens", RefreshToken);
     if (!RefreshTokenData || RefreshTokenData.Token !== Token || RefreshTokenData.Valid !== true) {
+        /* #swagger.responses[445] = {
+                description: 'Fail',
+                schema: "Invalid"
+            } 
+        */
         res.status(445).json("InValid");
     }
     else {
@@ -47,6 +54,11 @@ const RefreshToken = async (req, res) => {
             jwt.decode(RefreshTokenData.Token, { complete: true });
             const responseObject = await GenerateToken(RefreshTokenData.SignObject);
             await Delete("RefreshToken", RefreshTokenData.DocId);
+            /* #swagger.responses[200] = {
+             description: 'Admin Refresh Token Data',
+             schema: {$ref: '#/definitions/RefreshTokenData'}
+            } 
+            */
             res.json(responseObject);
         } catch (error) {
             res.status(445).json(error.message);
