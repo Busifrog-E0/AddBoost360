@@ -1,5 +1,6 @@
 import swaggerAutogen from 'swagger-autogen';
 //IMPORT DEFINITIONS HERE
+import portfolioDefinitions from "./features/portfolios/portfolioDefinitions.js";
 import serviceDefinitions from "./features/services/serviceDefinitions.js";
 
 
@@ -26,6 +27,7 @@ const doc = {
     },
     definitions: {
         // USE DEFINITIONS HERE
+        ...portfolioDefinitions,
         ...serviceDefinitions,
     }
 
