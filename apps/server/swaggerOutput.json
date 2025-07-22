@@ -681,6 +681,19 @@
         }
       }
     },
+    "RefreshTokenData": {
+      "type": "object",
+      "properties": {
+        "Token": {
+          "type": "string",
+          "example": "string"
+        },
+        "RefreshToken": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
     "FormData": {
       "type": "object",
       "properties": {
