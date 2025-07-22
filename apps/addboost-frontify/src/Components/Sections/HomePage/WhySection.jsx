@@ -1,4 +1,4 @@
-import creative1 from "../../../assets/WhySectionIcons/creative1.png";
+import Creative1 from "../../../assets/WhySectionIcons/creative1.png"
 import creative2 from "../../../assets/WhySectionIcons/creative2.png";
 import creative3 from "../../../assets/WhySectionIcons/Creative3.png";
 import creative4 from "../../../assets/WhySectionIcons/creative4.png";
@@ -10,7 +10,7 @@ const WhySection = () => {
   const [items, setItems] = useState(
     [
       {
-        icon: creative1,
+        icon: Creative1,
         title: "A reliable UK-Based, Global Service Delivery.",
         description:
           "Clear storytelling and creative flair from a trusted UK team with global reach.",
@@ -43,7 +43,7 @@ const WhySection = () => {
   );
 
   return (
-    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 bg-pastelpink">
+    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 bg-BackgroundGradientright">
       <WhySectionView items={items} title={"Global, Intelligent, Creative."} subtitle={"Why Add Boost 360?"} />
     </div>
   );

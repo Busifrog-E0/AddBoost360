@@ -4,7 +4,7 @@ import WhyItWorks1 from "../../../assets/WhyItWorkSectionIcon/WhyItWorks1.png";
 import WhyItWorks2 from "../../../assets/WhyItWorkSectionIcon/WhyItWorks2.png";
 import WhyItWorks3 from "../../../assets/WhyItWorkSectionIcon/WhyItWorks3.png";
 import WhyItWorks4 from "../../../assets/WhyItWorkSectionIcon/WhyItWorks4.png";
-import WhyItWorksHome from "../../../assets/WhyItWorkSectionIcon/WhyItWorksHome.png";
+import WhyItWorksHome from "../../../assets/WhyItWorkSectionIcon/WhyItWorksHome.jpg";
 import Button from "../../Button";
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
@@ -49,20 +49,17 @@ const WhyItWorksSection = () => {
     },
   ]);
   return (
-    <div className="bg-pastelpink px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 ">
-
-      <div className=" flex flex-col gap-2">
-        <p className="text-primary  font-inter text-base 2xl:text-lg">
+    <div className="bg-PrimaryDarkBlue px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 ">
+      <div className=" flex flex-col gap-4">
+        <p className="text-[#76B0FF]  font-inter text-base 2xl:text-lg">
           Global Wholesale Hub
         </p>
-        <h className="uppercase text-3xl 2xl:text-5xl font-anton  ">
+        <h className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite  ">
           Direct Deals with Trusted Global Suppliers
         </h>
       </div>
 
-
-
-      <p className="text-sm sm:text-base md:text-sm font-inter mt-6 sm:mt-8 leading-relaxed text-gray-700">
+      <p className="text-sm sm:text-base md:text-sm font-inter mt-6 sm:mt-8 leading-relaxed text-white">
         We connect startups with legally contracted wholesale companies across
         continents through conferencing and escrow-backed platform.
       </p>
@@ -78,12 +75,12 @@ const WhyItWorksSection = () => {
                 alt={`Step ${index + 1}`}
                 className="w-8 h-8"
               />
-              <p className="font-arya uppercase text-lg lg:text-xl leading-snug">
+              <p className="font-arya uppercase text-lg lg:text-xl text-white leading-snug">
                 {step.text}
               </p>
             </div>
             <div className="relative mt-6">
-              <div className="w-9 h-9 rounded-full bg-white shadow-md flex items-center justify-center text-blue-900 font-inter text-sm z-10">
+              <div className="w-9 h-9 rounded-full bg-[#0000001A]/20 shadow-md flex items-center justify-center text-white font-inter text-sm z-10">
                 {index + 1}
               </div>
               {index !== 3 && (
@@ -97,11 +94,11 @@ const WhyItWorksSection = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-0 mt-16 px-4 sm:px-6 md:px-12">
         {/* Left Section - Text */}
         <div>
-          <h2 className="uppercase font-anton text-xl sm:text-2xl ">
+          <h2 className="uppercase font-anton text-xl sm:text-2xl text-PrimaryWhite ">
             Why It Works
           </h2>
 
-          <p className="font-inter text-sm sm:text-base mt-4 sm:mt-6 leading-relaxed">
+          <p className="font-inter text-sm sm:text-base mt-4 sm:mt-6 leading-relaxed text-white">
             We know just how hard it can be to find the right video agency, so
             here's how we make this easy:
           </p>
@@ -109,13 +106,13 @@ const WhyItWorksSection = () => {
           <div className="flex flex-col gap-6 mt-6 sm:mt-8 p-6">
             {processes.map((point, index) => (
               <div key={index} className="flex flex-col">
-                <span className="text-sm font-arya text-gray-500">
+                <span className="text-sm font-arya text-black">
                   {point.number}
                 </span>
-                <p className="capitalize font-anton text-lg sm:text-xl mt-1">
+                <p className="capitalize font-anton text-lg sm:text-xl mt-1 text-PrimaryWhite">
                   {point.title}
                 </p>
-                <p className="font-inter text-xs sm:text-sm mt-1 ">
+                <p className="font-inter text-xs sm:text-sm mt-1 text-white ">
                   {point.description}
                 </p>
               </div>

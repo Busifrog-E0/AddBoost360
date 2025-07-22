@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../Button";
-import Global from "../../../assets/Global.png";
+import Global from "../../../assets/Global.jpg";
 
 import ServiceCard from "./ServiceCard";
 

@@ -11,6 +11,12 @@ export default {
         pastelpink: "#F4F1F2",
         grey: "#787878",
         lightblack: "#262626",
+        PrimaryDarkBlue: "#00203C",
+        PrimaryWhite: "#F4F4F4",
+      },
+      backgroundImage: {
+        BackgroundGradientleft: "linear-gradient(to left, #00203C, #04406C)",
+        BackgroundGradientright: "linear-gradient(to right, #00203C, #04406C)",
       },
       fontFamily: {
         anton: ["Anton", "sans-serif"],
@@ -19,12 +25,12 @@ export default {
         inter: ["inter", "sans-serif"],
       },
       spacing: {
-        14: "3.5rem", // for px-14, py-14
-        20: "5rem", // for md:py-20
-        24: "6rem", // for lg:py-24
-        36: "9rem", // for lg:px-36
-        60: "15rem", // for xl:px-60
-        80: "20rem", // for 2xl:px-80
+        14: "3.5rem",
+        20: "5rem",
+        24: "6rem",
+        36: "9rem",
+        60: "15rem",
+        80: "20rem",
       },
       screens: {
         sm: "640px",

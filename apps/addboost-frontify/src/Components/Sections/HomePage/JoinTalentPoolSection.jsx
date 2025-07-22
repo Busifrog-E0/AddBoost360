@@ -67,20 +67,20 @@ const JoinTalentPoolSection = () => {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24  ">
+    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 bg-BackgroundGradientleft  ">
       <div className="grid lg:grid-cols-2 gap-32 items-start">
         <div className=" flex flex-col gap-2">
-          <p className="text-primary  font-inter text-base 2xl:text-lg">In-House Team</p>
-          <h className="uppercase text-3xl 2xl:text-5xl font-anton ">
+          <p className="text-[#76B0FF]  font-inter text-base 2xl:text-lg">In-House Team</p>
+          <h className="uppercase text-3xl 2xl:text-5xl font-anton text-white ">
             JOIN OUR GLOBAL TALENT Pool
           </h>
-          <p className="mt-2 text-sm leading-loose font-inter">
+          <p className="mt-2 text-sm leading-loose font-inter text-white">
             We recruit only the best. Whether you're a seasoned expert or a passionate intern, ADD BOOST 360 offers flexible, remote freelance opportunities in digital  design, marketing, development, and more.
           </p>
           <div onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}>
-            <div className="bg-primary rounded-md p-6 text-white flex flex-col justify-between">
+            <div className="bg-[#15233D] rounded-md p-6 text-white flex flex-col justify-between">
               <div className="flex-grow">
                 <div className="text-lg 2xl:text-xl  opacity-50 font-anton">
                   {currentSlideData.number}

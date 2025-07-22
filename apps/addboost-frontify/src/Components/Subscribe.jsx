@@ -10,7 +10,7 @@ import Button from "./Button";
 const Subscribe = () => {
   return (
     <div
-      className="relative w-full h-[420px] bg-cover bg-center"
+      className="relative w-full h-[420px] bg-cover bg-center "
       style={{
         backgroundImage: `url(${bgsubscribe})`,
         backgroundPosition: "top",
@@ -18,10 +18,10 @@ const Subscribe = () => {
     >
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-center items-center h-full px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 text-center">
-        <h1 className="text-xl md:text-3xl font-anton text-gray-900">
+        <h1 className="text-xl md:text-3xl font-anton text-white">
           STAY UPDATED WITH DIGITAL TRENDS, OFFERS &amp; SOURCING OPPORTUNITIES
         </h1>
-        <p className="text-sm text-gray-700 mt-2 font-inter">
+        <p className="text-sm text-white mt-2 font-inter">
           Subscribe to connect with what's next in tech, trade & opportunities
         </p>
 

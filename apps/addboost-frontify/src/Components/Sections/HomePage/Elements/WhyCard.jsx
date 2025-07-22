@@ -1,16 +1,15 @@
-
 const WhyCard = ({ item }) => {
-    return (
-        <div className="flex flex-col">
-            <img src={item.icon} alt="creative" className="w-8" />
-            <h3 className="font-anton  mt-2 text-lg lg:text-xl">
-                {item.title}
-            </h3>
-            <p className="mt-2 font-inter text-xs sm:text-sm leading-relaxed text-gray-700">
-                {item.description}
-            </p>
-        </div>
-    );
+  return (
+    <div className="flex flex-col items-center text-center p-6 md:p-10 rounded-lg bg-[#00203C]/80 border border-[#00203C]/80 min-h-[240px]">
+      <img src={item.icon} alt="icon" className="w-8 mb-4" />
+      <h3 className="font-anton text-lg lg:text-xl text-PrimaryWhite">
+        {item.title}
+      </h3>
+      <p className="mt-2 font-inter text-sm text-white leading-relaxed">
+        {item.description}
+      </p>
+    </div>
+  );
 };
 
 export default WhyCard;

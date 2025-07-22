@@ -4,6 +4,7 @@ import instagram from "../assets/SocialMediaIcon/Instagram.svg";
 import facebook from "../assets/SocialMediaIcon/Facebook.svg";
 import youtube from "../assets/SocialMediaIcon/Youtube.svg";
 import Ukflag from "../assets/Ukflag.png";
+import ADDBOOSTlogo from "../assets/ADDBOOSTlogo.png";
 
 const Footer = () => {
   const [footerData, setFooterData] = React.useState({
@@ -36,14 +37,15 @@ const Footer = () => {
               className="flex flex-row gap-2 cursor-pointer items-center leading-normal"
               onClick={() => navigate("/")}
             >
+              <img
+                src={ADDBOOSTlogo}
+                alt="Logo"
+                className="w-10 h-10 object-contain"
+              />
               <div>
-                <h2 className={`text-xl uppercase font-anton m-0 text-white`} >
-                  ADD BOOST 360
-                </h2>
+              
               </div>
-              <div className="mt-0">
-                <img src={Ukflag} alt="Uploaded" width="30px" />
-              </div>
+            
             </div>
 
             <p className="text-sm font-inter text-gray-400 mt-2 max-w-md leading-relaxed">
@@ -96,6 +98,9 @@ const Footer = () => {
 
         <div className="flex flex-row gap-20 justify-between lg:gap-96 text-sm text-gray-300">
           <div className="">
+              <div className="mt-0">
+                <img src={Ukflag} alt="Uploaded" width="30px" />
+              </div>
             <p className="text-white text-lg font-arya">
               {footerData.address.city}
             </p>

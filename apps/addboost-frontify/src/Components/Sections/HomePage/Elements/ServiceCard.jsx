@@ -17,10 +17,10 @@ const ServiceCard = ({ service }) => {
         {/* Service Content */}
         <div className="pt-4 flex flex-col justify-between flex-grow">
           <div>
-            <h3 className="font-anton text-xl lg:text-2xl  text-gray-900 mb-2 uppercase ">
+            <h3 className="font-anton text-xl lg:text-2xl  text-PrimaryWhite mb-2 uppercase ">
               {service.title}
             </h3>
-            <p className="font-inter text-sm lg:text-base text-gray-600 leading-relaxed m-0">
+            <p className="font-inter text-sm lg:text-base  text-white leading-relaxed m-0">
               {service.description}
             </p>
           </div>

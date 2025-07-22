@@ -3,7 +3,6 @@ import Button from "./Button";
 import { useEffect } from "react";
 
 const Sidebar = ({ menuOpen, setMenuOpen, navItems }) => {
-
   const navigate = useNavigate();
   useEffect(() => {
     if (menuOpen) {
@@ -14,14 +13,16 @@ const Sidebar = ({ menuOpen, setMenuOpen, navItems }) => {
   }, [menuOpen]);
 
   return (
-    <div className={`
-    fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out
+    <div
+      className={`
+    fixed inset-0 bg-black z-50 transform transition-transform duration-300 ease-in-out
     ${menuOpen ? "translate-x-0" : "translate-x-full"}
     overflow-y-auto h-screen
-  `}>
+  `}
+    >
       <div className="flex justify-end p-6">
         <button
-          className="text-xl font-bold text-gray-800"
+          className="text-xl font-bold text-white"
           onClick={() => setMenuOpen(false)}
         >
           ✕
@@ -36,17 +37,20 @@ const Sidebar = ({ menuOpen, setMenuOpen, navItems }) => {
             className={({ isActive }) =>
               isActive
                 ? "text-primary underline outline-none"
-                : "text-gray-800 hover:text-primary transition outline-none"
+                : "text-white hover:text-primary transition outline-none"
             }
           >
             {item.label}
           </NavLink>
         ))}
         <div className="flex flex-row">
-          <Button onClick={() => {
-            setMenuOpen(false);
-            navigate("/contact");
-          }} text="BOOK A FREE CONSULTATION" />
+          <Button
+            onClick={() => {
+              setMenuOpen(false);
+              navigate("/contact");
+            }}
+            text="BOOK A FREE CONSULTATION"
+          />
         </div>
       </div>
     </div>
