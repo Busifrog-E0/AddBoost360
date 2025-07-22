@@ -40,7 +40,7 @@ const Footer = () => {
               <img
                 src={ADDBOOSTlogo}
                 alt="Logo"
-                className="w-14 h-14 object-contain"
+                className="w-20 object-contain"
               />
               <div></div>
             </div>
