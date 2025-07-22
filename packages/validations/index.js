@@ -1,4 +1,5 @@
 // EXPORTS HERE
+export { FormSchema } from './forms-schema.js';
 export { OrganizationSchema } from './organizations-schema.js';
 export { PortfolioSchema } from './portfolios-schema.js';
 export { ServiceSchema } from './services-schema.js';

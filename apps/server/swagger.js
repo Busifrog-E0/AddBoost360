@@ -1,5 +1,6 @@
 import swaggerAutogen from 'swagger-autogen';
 //IMPORT DEFINITIONS HERE
+import formDefinitions from "./features/forms/formDefinitions.js";
 import organizationDefinitions from "./features/organizations/organizationDefinitions.js";
 import portfolioDefinitions from "./features/portfolios/portfolioDefinitions.js";
 import serviceDefinitions from "./features/services/serviceDefinitions.js";
@@ -28,6 +29,7 @@ const doc = {
     },
     definitions: {
         // USE DEFINITIONS HERE
+        ...formDefinitions,
         ...organizationDefinitions,
         ...portfolioDefinitions,
         ...serviceDefinitions,
