@@ -31,7 +31,7 @@ const Header = () => {
               <img
                 src={ADDBOOSTlogo}
                 alt="Logo"
-                className="w-14 h-14 object-contain"
+                className="w-20 object-contain"
               />
               <h1 className="text-xl font-anton leading-none">
                 ADD BOOST <span className="text-[#2174bb]">360</span>
@@ -51,7 +51,7 @@ const Header = () => {
           </div>
 
           {/* Right: Nav Items */}
-          <nav className="hidden lg:flex gap-8 text-xs font-arya uppercase">
+          <nav className="hidden lg:flex gap-8 text-sm font-arya uppercase">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
