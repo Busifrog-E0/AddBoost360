@@ -9,8 +9,6 @@ jobs:
 
   intial-deploy:
     runs-on: ubuntu-latest
-    env:
-      MY_VAR: ${{ env.APP_ENV }}
     if: github.event.head_commit.message == 'initial deployment'
     outputs:
       should_deploy: ${{ github.event.head_commit.message == 'initial deployment' }}
@@ -26,4 +24,4 @@ jobs:
         source .github/workflows/.env
         set +a
     - name: Print one variable
-      run: echo "Environment is $APP_ENV"
+      run: echo "Environment is ${{ env.APP_ENV }}"
