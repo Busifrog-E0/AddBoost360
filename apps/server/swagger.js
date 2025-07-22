@@ -28,6 +28,10 @@ const doc = {
         },
     },
     definitions: {
+        myBoolean: true,
+        myNumber: 123,
+        myString: 'my example',
+        LoginData: { Token: "string", RefreshToken: "string", CurrentUser: { Role: "User", UserId: "" } },
         // USE DEFINITIONS HERE
         ...formDefinitions,
         ...organizationDefinitions,

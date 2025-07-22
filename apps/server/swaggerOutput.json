@@ -643,6 +643,44 @@
     }
   },
   "definitions": {
+    "myBoolean": {
+      "type": "boolean",
+      "example": true
+    },
+    "myNumber": {
+      "type": "number",
+      "example": 123
+    },
+    "myString": {
+      "type": "string",
+      "example": "my example"
+    },
+    "LoginData": {
+      "type": "object",
+      "properties": {
+        "Token": {
+          "type": "string",
+          "example": "string"
+        },
+        "RefreshToken": {
+          "type": "string",
+          "example": "string"
+        },
+        "CurrentUser": {
+          "type": "object",
+          "properties": {
+            "Role": {
+              "type": "string",
+              "example": "User"
+            },
+            "UserId": {
+              "type": "string",
+              "example": ""
+            }
+          }
+        }
+      }
+    },
     "FormData": {
       "type": "object",
       "properties": {
