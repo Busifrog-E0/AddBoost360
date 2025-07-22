@@ -1,0 +1,12 @@
+import Joi from 'joi';
+
+/**
+ * Schema for {{pascalCase entity}}
+ */
+const {{pascalCase entity}}Schema = Joi.object({
+{{#each fields}}
+  {{name}}: Joi.{{type}}().required(),
+{{/each}}
+});
+
+export { {{pascalCase entity}}Schema };
