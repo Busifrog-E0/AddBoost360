@@ -24,6 +24,396 @@
     "application/json"
   ],
   "paths": {
+    "/api/employees": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "NextId",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Keyword",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee Data",
+            "schema": {
+              "$ref": "#/definitions/EmployeeDataArray"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/EmployeeData"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/employees/{EmployeeId}": {
+      "get": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "EmployeeId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Employee Data",
+            "schema": {
+              "$ref": "#/definitions/EmployeeData"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "EmployeeId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/EmployeeData"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Employee"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "EmployeeId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/testimonialss": {
+      "get": {
+        "tags": [
+          "Testimonials"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "NextId",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Keyword",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Testimonials Data",
+            "schema": {
+              "$ref": "#/definitions/TestimonialsDataArray"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Testimonials"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/TestimonialsData"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/testimonialss/{TestimonialsId}": {
+      "get": {
+        "tags": [
+          "Testimonials"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "TestimonialsId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Testimonials Data",
+            "schema": {
+              "$ref": "#/definitions/TestimonialsData"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Testimonials"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "TestimonialsId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/TestimonialsData"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Testimonials"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "TestimonialsId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/companyLogos": {
+      "get": {
+        "tags": [
+          "CompanyLogo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "NextId",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Limit",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "Keyword",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CompanyLogo Data",
+            "schema": {
+              "$ref": "#/definitions/CompanyLogoDataArray"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CompanyLogo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CompanyLogoData"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/api/companyLogos/{CompanyLogoId}": {
+      "get": {
+        "tags": [
+          "CompanyLogo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "CompanyLogoId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CompanyLogo Data",
+            "schema": {
+              "$ref": "#/definitions/CompanyLogoData"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CompanyLogo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "CompanyLogoId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/CompanyLogoData"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CompanyLogo"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "CompanyLogoId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/api/forms": {
       "get": {
         "tags": [
@@ -691,6 +1081,229 @@
         "RefreshToken": {
           "type": "string",
           "example": "string"
+        }
+      }
+    },
+    "EmployeeData": {
+      "type": "object",
+      "properties": {
+        "FullName": {
+          "type": "string",
+          "example": "example"
+        },
+        "ImageUrl": {
+          "type": "string",
+          "example": "example"
+        },
+        "State": {
+          "type": "string",
+          "example": "example"
+        },
+        "Country": {
+          "type": "string",
+          "example": "example"
+        },
+        "Designation": {
+          "type": "string",
+          "example": "example"
+        },
+        "Description1": {
+          "type": "string",
+          "example": "example"
+        },
+        "Priority": {
+          "type": "number",
+          "example": 5
+        },
+        "DocId": {
+          "type": "string",
+          "example": "67f4f8dd2fda64604bcf754b"
+        },
+        "CreatedIndex": {
+          "type": "number",
+          "example": 1744107741739
+        },
+        "Index": {
+          "type": "string",
+          "example": "1744107741739"
+        }
+      }
+    },
+    "EmployeeDataArray": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "FullName": {
+            "type": "string",
+            "example": "example"
+          },
+          "ImageUrl": {
+            "type": "string",
+            "example": "example"
+          },
+          "State": {
+            "type": "string",
+            "example": "example"
+          },
+          "Country": {
+            "type": "string",
+            "example": "example"
+          },
+          "Designation": {
+            "type": "string",
+            "example": "example"
+          },
+          "Description1": {
+            "type": "string",
+            "example": "example"
+          },
+          "Priority": {
+            "type": "number",
+            "example": 5
+          },
+          "DocId": {
+            "type": "string",
+            "example": "67f4f8dd2fda64604bcf754b"
+          },
+          "CreatedIndex": {
+            "type": "number",
+            "example": 1744107741739
+          },
+          "Index": {
+            "type": "string",
+            "example": "1744107741739"
+          }
+        }
+      }
+    },
+    "TestimonialsData": {
+      "type": "object",
+      "properties": {
+        "Title": {
+          "type": "string",
+          "example": "example"
+        },
+        "Description1": {
+          "type": "string",
+          "example": "example"
+        },
+        "ImageUrl": {
+          "type": "string",
+          "example": "example"
+        },
+        "Priority": {
+          "type": "number",
+          "example": 5
+        },
+        "DocId": {
+          "type": "string",
+          "example": "67f4f8dd2fda64604bcf754b"
+        },
+        "CreatedIndex": {
+          "type": "number",
+          "example": 1744107741739
+        },
+        "Index": {
+          "type": "string",
+          "example": "1744107741739"
+        }
+      }
+    },
+    "TestimonialsDataArray": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "type": "string",
+            "example": "example"
+          },
+          "Description1": {
+            "type": "string",
+            "example": "example"
+          },
+          "ImageUrl": {
+            "type": "string",
+            "example": "example"
+          },
+          "Priority": {
+            "type": "number",
+            "example": 5
+          },
+          "DocId": {
+            "type": "string",
+            "example": "67f4f8dd2fda64604bcf754b"
+          },
+          "CreatedIndex": {
+            "type": "number",
+            "example": 1744107741739
+          },
+          "Index": {
+            "type": "string",
+            "example": "1744107741739"
+          }
+        }
+      }
+    },
+    "CompanyLogoData": {
+      "type": "object",
+      "properties": {
+        "Title": {
+          "type": "string",
+          "example": "example"
+        },
+        "ImageUrl": {
+          "type": "string",
+          "example": "example"
+        },
+        "Priority": {
+          "type": "number",
+          "example": 5
+        },
+        "DocId": {
+          "type": "string",
+          "example": "67f4f8dd2fda64604bcf754b"
+        },
+        "CreatedIndex": {
+          "type": "number",
+          "example": 1744107741739
+        },
+        "Index": {
+          "type": "string",
+          "example": "1744107741739"
+        }
+      }
+    },
+    "CompanyLogoDataArray": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Title": {
+            "type": "string",
+            "example": "example"
+          },
+          "ImageUrl": {
+            "type": "string",
+            "example": "example"
+          },
+          "Priority": {
+            "type": "number",
+            "example": 5
+          },
+          "DocId": {
+            "type": "string",
+            "example": "67f4f8dd2fda64604bcf754b"
+          },
+          "CreatedIndex": {
+            "type": "number",
+            "example": 1744107741739
+          },
+          "Index": {
+            "type": "string",
+            "example": "1744107741739"
+          }
         }
       }
     },
