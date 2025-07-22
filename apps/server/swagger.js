@@ -1,6 +1,6 @@
 import swaggerAutogen from 'swagger-autogen';
 //IMPORT DEFINITIONS HERE
-import serviceDefinitions from "./features/service/serviceDefinitions.js";
+import serviceDefinitions from "./features/services/serviceDefinitions.js";
 
 
 const doc = {
@@ -15,7 +15,7 @@ const doc = {
     consumes: ['application/json'],
     produces: ['application/json'],
     tags: [
-       
+
     ],
     securityDefinitions: {
         api_key: {

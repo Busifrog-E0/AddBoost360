@@ -141,7 +141,7 @@ export default function (plop) {
                 type: "append",
                 path: "swagger.js",
                 pattern: /(\/\/\s*IMPORT DEFINITIONS HERE)/gi,
-                template: "import {{camelCase entity}}Definitions from \"./features/{{camelCase entity}}/{{camelCase entity}}Definitions.js\";"
+                template: "import {{camelCase entity}}Definitions from \"./features/{{camelCase entity}}s/{{camelCase entity}}Definitions.js\";"
             },
             {
                 type: "append",
