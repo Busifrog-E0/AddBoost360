@@ -14,6 +14,7 @@ import portfolioRoutes from "./features/portfolios/portfolios-routes.js";
 import serviceRoutes from "./features/services/services-routes.js";
 import fileRoutes from "./features/files/files-routes.js";
 import adminRoutes from "./features/admins/admins-routes.js";
+import authRoutes from "./features/auth/auth-routes.js";
 
 
 // USE ROUTES HERE
@@ -27,6 +28,7 @@ router.use("/api", portfolioRoutes);
 router.use("/api", serviceRoutes);
 router.use("/api", fileRoutes);
 router.use("/api", adminRoutes);
+router.use("/api", authRoutes);
 
 
 
