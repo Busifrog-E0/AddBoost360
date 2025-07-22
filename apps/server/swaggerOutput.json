@@ -1030,6 +1030,80 @@
           }
         }
       }
+    },
+    "/api/ModelLogin": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "EnrollmentId": {
+                  "example": "any"
+                },
+                "PhoneNumber": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/api/RefreshToken": {
+      "post": {
+        "tags": [
+          "Admin",
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "Token": {
+                  "example": "any"
+                },
+                "RefreshToken": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Admin Refresh Token Data",
+            "schema": {
+              "$ref": "#/definitions/RefreshTokenData"
+            }
+          },
+          "445": {
+            "description": "Fail",
+            "schema": {
+              "type": "string",
+              "example": "Invalid",
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
