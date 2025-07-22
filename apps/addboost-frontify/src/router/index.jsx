@@ -26,7 +26,7 @@ export const router = createBrowserRouter(
         path="/startups-and-sourcing/view-startups"
         element={<SearchStartupsPage />}
       />
-      <Route path="/protfolio" element={<PortfolioPage />} />
+      <Route path="/portfolio" element={<PortfolioPage />} />
       <Route path="/in-house-team" element={<Inhousepage />} />
       <Route
         path="/in-house-team/view-team"

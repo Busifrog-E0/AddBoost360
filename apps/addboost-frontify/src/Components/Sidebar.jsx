@@ -22,7 +22,7 @@ const Sidebar = ({ menuOpen, setMenuOpen, navItems }) => {
     >
       <div className="flex justify-end p-6">
         <button
-          className="text-xl font-bold text-white"
+          className="text-xl text-white"
           onClick={() => setMenuOpen(false)}
         >
           ✕

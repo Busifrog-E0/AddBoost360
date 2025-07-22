@@ -136,7 +136,7 @@ const WhyItWorksSection = () => {
 
         {/* Right Section - Image */}
         <div className="flex justify-end mt-10 md:mt-0">
-          <img src={WhyItWorksHome} alt="Live Session" className="w-full " />
+          <img src={WhyItWorksHome} alt="Live Session" className="w-full rounded-md" />
         </div>
       </div>
     </div>
