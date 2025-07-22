@@ -40,6 +40,15 @@ export default {
         "2xl": "1536px",
         "3xl": "1920px",
       },
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" }, // half, for seamless loop
+        },
+      },
+      animation: {
+        scroll: "scroll 20s linear infinite", // slower continuous scroll
+      },
     },
   },
   plugins: [],
