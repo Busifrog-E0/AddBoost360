@@ -6,7 +6,7 @@ import dataHandling from '../../functions.js';
  * @property {string} ImageUrl
  * @property {string} Description1
  * @property {string} Description2
- * @property {array} ServiceList
+ * @property {Array<string>} ServiceList
  * @property {number} Priority
  * @property {string} DocId
  * @property {string} CreatedIndex

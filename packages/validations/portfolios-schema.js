@@ -8,7 +8,7 @@ const PortfolioSchema = Joi.object({
   ImageUrl: Joi.string().required(),
   Description1: Joi.string().required(),
   Description2: Joi.string().required(),
-  ServiceList: Joi.array().required(),
+  ServiceList: Joi.array().items(Joi.string().trim().allow("")).required(),
   Priority: Joi.number().required(),
 });
 
