@@ -2,7 +2,7 @@ import logger from 'harislogger';
 
 import dbFile from './db.config.js';
 const dbClient = dbFile.getClient();
-const db = dbClient.db("DbName");
+const db = dbClient.db("AddBoost360");
 import { ObjectId } from 'mongodb';
 import moment from "moment-timezone";
 import { ClientSession } from 'mongodb';
