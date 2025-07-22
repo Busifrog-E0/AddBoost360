@@ -42,7 +42,7 @@ export default {
       },
       keyframes: {
         scroll: {
-          "0%": { transform: "translateX(0%)" },
+          "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" }, // half, for seamless loop
         },
       },
