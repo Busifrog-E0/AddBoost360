@@ -1,5 +1,6 @@
 import swaggerAutogen from 'swagger-autogen';
 //IMPORT DEFINITIONS HERE
+import employeeDefinitions from "./features/employees/employeeDefinitions.js";
 import testimonialsDefinitions from "./features/testimonialss/testimonialsDefinitions.js";
 import companyLogoDefinitions from "./features/companyLogos/companyLogoDefinitions.js";
 import formDefinitions from "./features/forms/formDefinitions.js";
@@ -36,6 +37,7 @@ const doc = {
         LoginData: { Token: "string", RefreshToken: "string", CurrentUser: { Role: "User", UserId: "" } },
         RefreshTokenData: { Token: "string", RefreshToken: "string" },
         // USE DEFINITIONS HERE
+        ...employeeDefinitions,
         ...testimonialsDefinitions,
         ...companyLogoDefinitions,
         ...formDefinitions,

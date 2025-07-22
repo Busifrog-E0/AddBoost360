@@ -4,6 +4,7 @@ const router = Router();
 
 // import testRoutes from "./test-routes.js";
 // IMPORT ROUTES HERE
+import employeeRoutes from "./features/employees/employees-routes.js";
 import testimonialsRoutes from "./features/testimonialss/testimonialss-routes.js";
 import companyLogoRoutes from "./features/companyLogos/companyLogos-routes.js";
 import formRoutes from "./features/forms/forms-routes.js";
@@ -16,6 +17,7 @@ import adminRoutes from "./features/admins/admins-routes.js";
 
 
 // USE ROUTES HERE
+router.use("/api", employeeRoutes);
 router.use("/api", testimonialsRoutes);
 router.use("/api", companyLogoRoutes);
 router.use("/api", formRoutes);
