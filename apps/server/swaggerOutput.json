@@ -1424,6 +1424,10 @@
           "type": "string",
           "example": "example"
         },
+        "Priority": {
+          "type": "number",
+          "example": 5
+        },
         "DocId": {
           "type": "string",
           "example": "67f4f8dd2fda64604bcf754b"
@@ -1463,6 +1467,10 @@
           "ImageUrl": {
             "type": "string",
             "example": "example"
+          },
+          "Priority": {
+            "type": "number",
+            "example": 5
           },
           "DocId": {
             "type": "string",
