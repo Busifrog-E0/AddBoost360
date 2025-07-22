@@ -24,6 +24,19 @@ const MongoDB_Host = process.env.MongoDB_Host;
  * @type {string}
  */
 // @ts-ignore
+const MongoDB_Production_Host = process.env.MongoDB_Production_Host;
+
+/**
+ * @type {string}
+ */
+// @ts-ignore
+const MongoDB_Debug_Host = process.env.MongoDB_Debug_Host;
+
+
+/**
+ * @type {string}
+ */
+// @ts-ignore
 const TOKEN_KEY = process.env.TOKEN_KEY;
 
 
@@ -59,6 +72,8 @@ export default {
     PORT,
     ModeOfDevelopment,
     MongoDB_Host,
+    MongoDB_Production_Host,
+    MongoDB_Debug_Host,
     TOKEN_KEY,
     DO_SPACES_ENDPOINT,
     DO_SPACES_FILEURL,
