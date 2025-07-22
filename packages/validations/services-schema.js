@@ -11,6 +11,7 @@ const ServiceSchema = Joi.object({
   Description2: Joi.string().required(),
   ServiceList: Joi.array().items(Joi.string().trim().allow("")).required(),
   ButtonMessage1: Joi.string().required(),
+  Priority: Joi.number().required(),
 });
 
 export { ServiceSchema };

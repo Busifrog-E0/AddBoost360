@@ -9,6 +9,7 @@ import dataHandling from '../../functions.js';
  * @property {string} Description2
  * @property {Array<string>} ServiceList
  * @property {string} ButtonMessage1
+ * @property {number} Priority
  * @property {string} DocId
  * @property {string} CreatedIndex
  * @property {number} Index
