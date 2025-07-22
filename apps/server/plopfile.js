@@ -1,7 +1,7 @@
 
 export default function (plop) {
     const basePath = 'features/{{camelCase entity}}s';
-    const joiTypes = ['string', 'number', 'boolean', 'array','object'];
+    const joiTypes = ['string', 'number', 'boolean', 'array', 'object'];
     plop.setHelper('eq', function (a, b) {
         return a === b;
     });
@@ -103,7 +103,7 @@ export default function (plop) {
                 path: "routes.js",
                 pattern: /(\/\/\s*IMPORT ROUTES HERE)/gi,
 
-                template: "import {{camelCase entity}}Routes from \"./features/{{camelCase entity}}/{{camelCase entity}}s-routes.js\";"
+                template: "import {{camelCase entity}}Routes from \"./features/{{camelCase entity}}s/{{camelCase entity}}s-routes.js\";"
             },
             {
                 type: "append",
