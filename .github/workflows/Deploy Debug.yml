@@ -23,5 +23,6 @@ jobs:
         set -a
         source .github/workflows/.env
         set +a
+        echo "APP_ENV=$APP_ENV" >> $GITHUB_ENV
     - name: Print one variable
-      run: echo "Environment is ${{ env.APP_ENV }}"
+      run: echo "Environment is $APP_ENV"
