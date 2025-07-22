@@ -1,0 +1,27 @@
+name: Pull to DigitalOcean Droplet
+
+on:
+  push:
+    branches:
+      - DebugServer
+
+jobs:
+
+  intial-deploy:
+    runs-on: ubuntu-latest
+    if: github.event.head_commit.message == 'initial deployment'
+    outputs:
+      should_deploy: ${{ github.event.head_commit.message == 'initial deployment' }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Load .env variables
+      run: |
+        echo "Loading environment variables from .github/workflows/.env"
+        set -a
+        source .github/workflows/.env
+        set +a
+    - name: Print one variable
+      run: echo "Environment is $APP_ENV"
