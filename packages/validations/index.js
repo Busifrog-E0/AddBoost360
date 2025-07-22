@@ -1,4 +1,5 @@
 // EXPORTS HERE
+export { TestimonialsSchema } from './testimonialss-schema.js';
 export { CompanyLogoSchema } from './companyLogos-schema.js';
 export { FormSchema } from './forms-schema.js';
 export { OrganizationSchema } from './organizations-schema.js';
