@@ -20,9 +20,10 @@ const ValidatePostEmployee = (req, res, next) => {
  * Validate GET /employee
  */
 const ValidateGetEmployee = (req, res, next) => {
-  const schema = QueryParametersSchema.keys({
-    // Add additional query validation fields if needed
-  });
+  const schema = QueryParametersSchema
+  // .keys({
+  //   // Add additional query validation fields if needed
+  // });
   const { error, value } = schema.validate(req.query, { convert: true, stripUnknown: true });
   if (error) return void res.status(400).json({ error: error.details.map(d => d.message).join(", ") });
   req.query = value;
