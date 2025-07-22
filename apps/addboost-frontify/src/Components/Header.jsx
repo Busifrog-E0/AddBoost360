@@ -57,8 +57,7 @@ const Header = () => {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `hover:underline transition duration-150 ${
-                    isActive ? "underline font-bold" : ""
+                  `hover:underline transition duration-150 ${isActive ? "underline " : ""
                   }`
                 }
               >
