@@ -209,7 +209,9 @@ const Formsection = () => {
 
         {/* Submit Button */}
         <div className="mt-6 w-full">
-          <Button onClick={handleSubmit} text="Submit" />
+          <Button
+          
+           onClick={handleSubmit} text="Submit" />
         </div>
       </div>
 
@@ -222,6 +224,7 @@ const Formsection = () => {
           >
             {/* Close Icon */}
             <button
+            
               onClick={closePopup}
               className="absolute top-3 right-3 text-gray-500 hover:text-black text-xl font-bold"
             >
