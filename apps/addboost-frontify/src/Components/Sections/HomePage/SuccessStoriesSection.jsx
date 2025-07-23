@@ -61,7 +61,8 @@ const SuccessStoriesSection = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-col justify-between h-full items-center px-6 md:px-14 2xl:px-60 3xl:px-80 
+      <div
+        className="flex flex-col justify-between h-full items-center px-6 md:px-14 2xl:px-60 3xl:px-80 
   4xl:px-120 5xl:px-160 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
@@ -70,14 +71,16 @@ const SuccessStoriesSection = () => {
   4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
 8xl:py-80 9xl:py-96 10xl:py-112 
 11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200 bg-gray-100">
+14xl:py-180 15xl:py-200 bg-gray-100"
+      >
         <Loader />
       </div>
     );
   } else {
     if (testimonials.length > 0) {
       return (
-        <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 
+        <div
+          className="px-6 md:px-14 2xl:px-60 3xl:px-80 
   4xl:px-120 5xl:px-160 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
@@ -86,7 +89,8 @@ const SuccessStoriesSection = () => {
   4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
 8xl:py-80 9xl:py-96 10xl:py-112 
 11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200 bg-PrimaryDarkBlue">
+14xl:py-180 15xl:py-200 bg-PrimaryDarkBlue"
+        >
           <div className="grid lg:grid-cols-3 gap-4 lg:gap-12 2xl:gap-16 items-start">
             <div className="flex flex-col justify-between h-full order-1 lg:order-2">
               <div className="flex flex-row lg:flex-col justify-between items-center lg:justify-start lg:items-start gap-4">
@@ -102,7 +106,7 @@ const SuccessStoriesSection = () => {
                   <div className="flex items-center gap-2">
                     <button
                       onClick={handlePrevious}
-                      className="p-2 rounded-full border border-gray-400 hover:border-primary hover:bg-gray-200 hover:text-white transition-all duration-300 transform hover:scale-110 flex-shrink-0"
+                      className="p-2 rounded-full border border-gray-400  hover:bg-white/10 hover:text-white transition-all duration-300 transform hover:scale-110 flex-shrink-0"
                     >
                       <img
                         src={Arrowbackward}
@@ -112,7 +116,7 @@ const SuccessStoriesSection = () => {
                     </button>
                     <button
                       onClick={handleNext}
-                      className="p-2 rounded-full border border-gray-400 hover:border-primary hover:bg-gray-200 hover:text-white transition-all duration-300 transform hover:scale-110 flex-shrink-0"
+                      className="p-2 rounded-full border border-gray-400  hover:bg-white/10 hover:text-white transition-all duration-300 transform hover:scale-110 flex-shrink-0"
                     >
                       <img
                         src={Arrowforward}
@@ -129,7 +133,11 @@ const SuccessStoriesSection = () => {
               <div className="lg:col-span-2 order-2 lg:order-1 flex flex-col gap-14">
                 <div className="bg-PrimaryLightBlue p-8 relative overflow-hidden  ">
                   <div className="absolute top-0 left-0">
-                    <img src={Cornerchipwhite} alt="Global" className="w-6 h-6" />
+                    <img
+                      src={Cornerchipwhite}
+                      alt="Global"
+                      className="w-6 h-6"
+                    />
                   </div>
                   <TestimonialCard currentTestimonial={currentTestimonial} />
                 </div>
@@ -157,8 +165,9 @@ const CTASection = ({ isMobile = false, className = "" }) => {
   return (
     <div className={`${className}`}>
       <div
-        className={`w-full flex flex-col gap-4 ${isMobile ? "items-center text-center" : ""
-          }`}
+        className={`w-full flex flex-col gap-4 ${
+          isMobile ? "items-center text-center" : ""
+        }`}
       >
         <h2 className="text-sm font-inter text-white">
           Let's work together and make your project our next success story.
