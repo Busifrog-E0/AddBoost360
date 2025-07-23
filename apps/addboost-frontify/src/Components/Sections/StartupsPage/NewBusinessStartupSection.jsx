@@ -21,7 +21,7 @@ const NewBusinessStartupSection = () => {
         </h>
       </div>
 
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 sm:gap-0 md:ml-20">
+      <div className="mt-12 lg:mt-36 grid grid-cols-1 md:grid-cols-2 sm:gap-0 md:ml-20">
         {/* Great Clients */}
         <div className=" p-8 relative overflow-hidden ">
           <div className="absolute top-0 left-0">
