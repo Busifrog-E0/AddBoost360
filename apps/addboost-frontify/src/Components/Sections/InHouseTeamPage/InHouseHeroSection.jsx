@@ -1,12 +1,11 @@
 import React from "react";
 import InHouseHeroImage from "../../../assets/InHouseHeroImage.png";
-import noice from '../../../assets/Bg/noice1.jpg';
 
 const InHouseHeroSection = () => {
   return (
     <div
-      className="bg-PrimaryDarkBlue bg-cover bg-blend-overlay grid grid-cols-1 lg:grid-cols-2 items-center lg:min-h-0 min-h-[900px] lg:mt-0 gap-10 lg:gap-20 px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 pt-32 md:py-20 md:pt-40 lg:py-28 lg:pt-44 relative"
-      style={{ backgroundImage: `url(${noice})` }}
+      className="bg-PrimaryDarkBlue  grid grid-cols-1 lg:grid-cols-2 items-center lg:min-h-0 min-h-[900px] lg:mt-0 gap-10 lg:gap-20 px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 pt-32 md:py-20 md:pt-40 lg:py-28 lg:pt-44 relative"
+
     >
       {/* Background Image for Mobile */}
       <div
