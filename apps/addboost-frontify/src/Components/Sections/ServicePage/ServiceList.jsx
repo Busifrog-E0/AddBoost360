@@ -7,7 +7,7 @@ import ServiceCard from "./ServiceCard";
 const ServiceList = ({ services }) => {
   return (
     <div>
-      <div className="flex flex-col gap-14">
+      <div className="flex flex-col gap-14 ">
         {services.map((service, index) => (
           <div key={service.id} className=" ">
             <div className="hidden lg:block">

@@ -43,7 +43,7 @@ const WhyJoinSection = () => {
   );
 
   return (
-    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24  ">
+    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 bg-BackgroundGradientleft ">
       <WhySectionView items={items} title={"Driven by Talent. Defined by Vision."} subtitle={"Why Join ADD BOOST 360 LIMITED?"} />
     </div>
   );
