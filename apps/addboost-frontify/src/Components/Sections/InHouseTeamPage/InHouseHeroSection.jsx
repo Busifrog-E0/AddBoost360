@@ -19,7 +19,7 @@ const InHouseHeroSection = () => {
           Collaborate. Learn. Grow.
         </p>
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-anton uppercase leading-snug ">
-          In-house Team
+          Talent Pool
         </h1>
         <p className="text-base md:text-lg font-inter mt-6 text-gray-300">
           Join Our Global Talent Network & Empower the Digital Future
@@ -29,7 +29,7 @@ const InHouseHeroSection = () => {
       <div className="hidden lg:block h-[560px]">
         <img
           src={InHouseHeroImage}
-          alt="In-house team"
+          alt="Talent Pool"
           className="h-full w-full object-cover rounded-md"
         />
       </div>
