@@ -41,7 +41,7 @@ const TrustedCompaniesSection = () => {
               key={i}
               src={logo.src}
               alt={logo.title}
-              className={"h-10 object-contain filter invert brightness-0 "}
+              className={"h-9 object-contain filter invert brightness-0 "}
             />
           ))}
         </div>
