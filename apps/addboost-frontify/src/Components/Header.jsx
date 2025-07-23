@@ -16,6 +16,7 @@ const Header = () => {
     { label: "STARTUPS & SOURCING", to: "/startups-and-sourcing" },
     { label: "PORTFOLIO", to: "/portfolio" },
     { label: "TALENT POOL", to: "/in-house-team" },
+    { label: "CONTACT", to: "/contact" },
   ];
 
   useEffect(() => {
@@ -31,9 +32,10 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-30 text-white transition-all duration-300
-          ${scrolled
-            ? "bg-black/30 backdrop-blur-md shadow-md "
-            : "bg-black/10 backdrop-blur-md shadow-md "
+          ${
+            scrolled
+              ? "bg-black/30 backdrop-blur-md shadow-md "
+              : "bg-black/10 backdrop-blur-md shadow-md "
           }`}
       >
         <div
@@ -83,7 +85,8 @@ const Header = () => {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `hover:underline transition duration-150 ${isActive ? "underline " : ""
+                  `hover:underline transition duration-150 ${
+                    isActive ? "underline " : ""
                   }`
                 }
               >
