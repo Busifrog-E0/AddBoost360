@@ -72,7 +72,7 @@ const ServiceSection = () => {
     },
     {
       id: 5,
-      title: "STARTUP PRODUCT SOURCING & ESCROW SERVICES",
+      title: "STARTUP PRODUCT SOURCING & ESCROW Model Management",
       subtitle: "Includes:",
       description:
         "Launch Your Store with Confidence. We handle the rest. We support startups with sourcing, supplier negotiation, and purchase management.",
