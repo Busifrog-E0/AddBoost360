@@ -90,7 +90,7 @@ const Formsection = () => {
             name="area"
             value={formData.area}
             onChange={handleChange}
-            className={`p-3 border rounded-md outline-none ${errors.area
+            className={`p-3 border rounded-md outline-none w-full ${errors.area
               ? "border-red-500 bg-red-50 text-black"
               : "border-gray-600 bg-white text-black"
               }`}
@@ -187,7 +187,7 @@ const Formsection = () => {
             value={formData.dateTime}
             onChange={handleChange}
             type="datetime-local"
-            className="p-3 bg-white border border-gray-600 rounded-md text-black outline-none"
+            className="p-3 bg-white border border-gray-600 rounded-md text-black outline-none w-full"
           />
         </div>
 
