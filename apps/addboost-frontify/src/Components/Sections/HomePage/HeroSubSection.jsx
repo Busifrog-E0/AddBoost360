@@ -6,7 +6,13 @@ import { useNavigate } from "react-router";
 const HeroSubSection = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-PrimaryDarkBlue grid lg:grid-cols-2 gap-10 lg:gap-20 items-start px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24  ">
+    <div className="bg-PrimaryDarkBlue grid lg:grid-cols-2 gap-10 lg:gap-20 items-start 
+  px-6 md:px-14 2xl:px-60 3xl:px-80 
+  4xl:px-160 5xl:px-180 6xl:px-200
+  7xl:px-220 8xl:px-240 9xl:px-260
+  10xl:px-280 11xl:px-300 12xl:px-320
+  13xl:px-340 14xl:px-360 15xl:px-400
+  py-14 md:py-20 lg:py-24">
       <div className="flex flex-col gap-6 ">
         <h className="font-anton text-3xl 2xl:text-5xl 2xl:pt-10 uppercase text-PrimaryWhite">
           Your Global Digital Transformation Partner
@@ -25,7 +31,7 @@ const HeroSubSection = () => {
             iconColor="black"
             text="LEARN MORE ABOUT US"
             hoverBgColor="bg-gray-300"
-             hoverTextColor="text-black"
+            hoverTextColor="text-black"
             onClick={() => {
               navigate("/startups-and-sourcing");
             }}
