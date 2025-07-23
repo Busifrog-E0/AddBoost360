@@ -57,7 +57,7 @@ const Header = () => {
                 className="w-20 object-contain"
               />
               <h1 className="text-xl font-anton leading-none">
-                ADD BOOST <span className="text-[#2174bb]">360</span>
+                ADD BOOST <span className="">360</span>
               </h1>
             </div>
 
