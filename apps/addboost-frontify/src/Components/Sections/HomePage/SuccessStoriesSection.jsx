@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Arrowforward from "../../../assets/arrowforwardwhite.svg";
 import Arrowbackward from "../../../assets/Arrowbackwardwhite.svg";
-import Cornerchip from "../../../assets/Cornerchipwhite.svg";
+import Cornerchipwhite from "../../../assets/Cornerchipwhite.svg";
 import SlideIndicators from "./Elements/SlideIndicators";
 import Button from "../../Button";
 import TestimonialCard from "./Elements/TestimonialCard";
@@ -129,7 +129,7 @@ const SuccessStoriesSection = () => {
               <div className="lg:col-span-2 order-2 lg:order-1 flex flex-col gap-14">
                 <div className="bg-PrimaryLightBlue p-8 relative overflow-hidden  ">
                   <div className="absolute top-0 left-0">
-                    <img src={Cornerchip} alt="Global" className="w-6 h-6" />
+                    <img src={Cornerchipwhite} alt="Global" className="w-6 h-6" />
                   </div>
                   <TestimonialCard currentTestimonial={currentTestimonial} />
                 </div>
