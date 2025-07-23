@@ -38,7 +38,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
   );
 
   const ImageBlock = (
-    <div className="relative bg-white">
+    <div className="relative rounded-md">
       <img
         src={project.image}
         alt="project"
