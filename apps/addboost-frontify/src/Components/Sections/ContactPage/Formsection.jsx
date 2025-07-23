@@ -90,11 +90,10 @@ const Formsection = () => {
             name="area"
             value={formData.area}
             onChange={handleChange}
-            className={`p-3 border rounded-md outline-none ${
-              errors.area
-                ? "border-red-500 bg-red-50 text-black"
-                : "border-gray-600 bg-white text-black"
-            }`}
+            className={`p-3 border rounded-md outline-none ${errors.area
+              ? "border-red-500 bg-red-50 text-black"
+              : "border-gray-600 bg-white text-black"
+              }`}
           >
             <option value="">-- Select an option --</option>
             <option>Digital Marketing Strategy</option>
@@ -121,11 +120,10 @@ const Formsection = () => {
             onChange={handleChange}
             type="text"
             placeholder="Enter your full name"
-            className={`p-3 border rounded-md outline-none ${
-              errors.name
-                ? "border-red-500 bg-red-50 text-black"
-                : "border-gray-600 bg-white text-black"
-            }`}
+            className={`p-3 border rounded-md outline-none ${errors.name
+              ? "border-red-500 bg-red-50 text-black"
+              : "border-gray-600 bg-white text-black"
+              }`}
           />
           {errors.name && (
             <span className="text-sm text-red-500 mt-1">{errors.name}</span>
@@ -143,11 +141,10 @@ const Formsection = () => {
             onChange={handleChange}
             type="email"
             placeholder="Enter your email address"
-            className={`p-3 border rounded-md outline-none ${
-              errors.email
-                ? "border-red-500 bg-red-50 text-black"
-                : "border-gray-600 bg-white text-black"
-            }`}
+            className={`p-3 border rounded-md outline-none ${errors.email
+              ? "border-red-500 bg-red-50 text-black"
+              : "border-gray-600 bg-white text-black"
+              }`}
           />
           {errors.email && (
             <span className="text-sm text-red-500 mt-1">{errors.email}</span>
@@ -210,8 +207,8 @@ const Formsection = () => {
         {/* Submit Button */}
         <div className="mt-6 w-full">
           <Button
-          
-           onClick={handleSubmit} text="Submit" />
+
+            onClick={handleSubmit} text="Submit" />
         </div>
       </div>
 
@@ -220,11 +217,11 @@ const Formsection = () => {
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
           <div
             ref={popupRef}
-            className="relative bg-white rounded-xl shadow-xl p-6 md:p-8 w-full max-w-sm text-center animate-fade-in"
+            className="relative bg-white rounded-md shadow-xl p-6 md:p-8 w-full max-w-sm text-center animate-fade-in"
           >
             {/* Close Icon */}
             <button
-            
+
               onClick={closePopup}
               className="absolute top-3 right-3 text-gray-500 hover:text-black text-xl font-bold"
             >
@@ -232,8 +229,8 @@ const Formsection = () => {
             </button>
 
             <div className="text-4xl mb-4">✅</div>
-            <h2 className="text-lg font-semibold text-gray-800">Thank you!</h2>
-            <p className="text-sm text-gray-600 mt-2">
+            <h2 className="text-xl mt-4 font-semibold text-gray-800 font-anton">Thank you!</h2>
+            <p className="text-sm text-gray-600 mt-4 font-inter">
               Your submission has been received. Our team will get back to you
               shortly.
             </p>
