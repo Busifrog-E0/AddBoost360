@@ -3,21 +3,26 @@ import PortfolioCard from "./PortfolioCard";
 
 const PortfoliList = ({ projects }) => {
   return (
-    <div>
-      <div>
-        <div className="flex flex-col gap-14">
-          {projects.map((project, index) => (
-            <div key={project.id} className=" mt-8">
-              <div className="hidden lg:block">
-                <PortfolioCard reverse={index % 2 !== 0} project={project} />
-              </div>
-              <div className="block  lg:hidden">
-                <PortfolioCard project={project} />
-              </div>
+    <div className="flex flex-col">
+      {projects.map((project, index) => {
+        const bgColor = index % 2 === 0 ? "bg-BackgroundGradientleft" : "bg-BackgroundGradientright";
+        return (
+          <div key={project.id} className="">
+            {/* Desktop */}
+            <div className="hidden lg:block">
+              <PortfolioCard
+                project={project}
+                reverse={index % 2 !== 0}
+                bgColor={bgColor}
+              />
             </div>
-          ))}
-        </div>
-      </div>
+            {/* Mobile */}
+            <div className="block lg:hidden">
+              <PortfolioCard project={project} bgColor={bgColor} />
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
