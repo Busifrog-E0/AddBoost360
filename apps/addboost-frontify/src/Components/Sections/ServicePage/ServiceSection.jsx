@@ -118,7 +118,7 @@ const ServiceSection = () => {
   ]);
 
   return (
-    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24">
+    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 ">
       <ServiceList howAllServicesButton={true} services={services} />
     </div>
   );

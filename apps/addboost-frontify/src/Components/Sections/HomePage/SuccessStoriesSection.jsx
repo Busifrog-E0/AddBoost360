@@ -109,7 +109,7 @@ const SuccessStoriesSection = () => {
             </div>
             {currentTestimonial && (
               <div className="lg:col-span-2 order-2 lg:order-1 flex flex-col gap-14">
-                <div className="bg-white p-8 relative overflow-hidden ">
+                <div className="bg-PrimaryDarkBlue p-8 relative overflow-hidden  ">
                   <div className="absolute top-0 left-0">
                     <img src={Cornerchip} alt="Global" className="w-6 h-6" />
                   </div>

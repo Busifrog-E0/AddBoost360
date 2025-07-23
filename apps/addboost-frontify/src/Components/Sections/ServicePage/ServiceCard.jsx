@@ -3,7 +3,7 @@ import Button from "../../Button";
 
 import { Link, NavLink, useNavigate } from "react-router";
 
-const ServiceCard = ({ service, reverse = true }) => {
+const ServiceCard = ({ service, reverse = true, backgroundcolor }) => {
   const navigate = useNavigate();
   const TextContent = (
     <div className="flex flex-col gap-5">
@@ -50,7 +50,7 @@ const ServiceCard = ({ service, reverse = true }) => {
   );
   return (
     <div>
-      <div className="bg-white grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
+      <div className=" grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
         {reverse ? (
           <>
             {ImageBlock}
