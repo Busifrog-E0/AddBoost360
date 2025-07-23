@@ -4,7 +4,7 @@ import StartupHeroImg from "../../../assets/StartupHeroImg.png";
 const StartupHeroSection = () => {
   return (
     <div>
-      <div className="bg-lightblack grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+      <div className="bg-PrimaryDarkBlue grid grid-cols-1 lg:grid-cols-2 min-h-screen">
         {/* Text Section */}
         <div className="relative">
           {/* Background image only on mobile */}
