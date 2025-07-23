@@ -29,7 +29,8 @@ const Footer = () => {
     copywrite: "© 2025 ADD BOOST 360 LIMITED. All Rights Reserved.",
   });
   return (
-    <footer className="bg-[#1E1E1E] text-white px-6 md:px-14 2xl:px-60 3xl:px-80 
+    <footer
+      className="bg-black text-white px-6 md:px-14 2xl:px-60 3xl:px-80 
   4xl:px-120 5xl:px-160 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
@@ -38,7 +39,8 @@ const Footer = () => {
   4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
 8xl:py-80 9xl:py-96 10xl:py-112 
 11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200">
+14xl:py-180 15xl:py-200"
+    >
       <div className="flex flex-col gap-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-6">
           <div className="flex-1">
