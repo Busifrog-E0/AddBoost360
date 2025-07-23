@@ -1,5 +1,5 @@
 
-const SlideIndicators = ({ items, currentSlide, setCurrentSlide, activeColor = "bg-primary", inActiveColor = "bg-gray-400", hoverInActiveColor = "bg-gray-500" }) => {
+const SlideIndicators = ({ items, currentSlide, setCurrentSlide, activeColor = "bg-white", inActiveColor = "bg-gray-400", hoverInActiveColor = "bg-gray-500" }) => {
     return (
 
         <div className="flex gap-1">

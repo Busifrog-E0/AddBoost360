@@ -25,7 +25,7 @@ const TestimonialCard = ({ currentTestimonial }) => {
         <p className="font-inter text-sm lg:text-base text-white">
           {currentTestimonial.quote}
         </p>
-        <div className="pt-4 border-t border-black">
+        <div className="pt-4 border-t border-PrimaryDarkBlue">
           <p className=" font-anton uppercase text-white text-base lg:text-lg ">
             {currentTestimonial.designation +
               ", " +

@@ -12,6 +12,7 @@ export default {
         grey: "#787878",
         lightblack: "#262626",
         PrimaryDarkBlue: "#00203C",
+        PrimaryLightBlue: "#04406C",
         PrimaryWhite: "#F4F4F4",
       },
       backgroundImage: {

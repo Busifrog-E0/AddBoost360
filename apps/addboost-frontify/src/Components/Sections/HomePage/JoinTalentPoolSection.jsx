@@ -97,7 +97,7 @@ const JoinTalentPoolSection = () => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
-            <div className="bg-[#15233D] rounded-md p-6 text-white flex flex-col justify-between">
+            <div className="bg-PrimaryDarkBlue rounded-md p-6 text-white flex flex-col justify-between">
               <div className="flex-grow">
                 <div className="text-lg 2xl:text-xl  opacity-50 font-anton">
                   {currentSlideData.number}
@@ -114,7 +114,6 @@ const JoinTalentPoolSection = () => {
                   items={slides}
                   currentSlide={currentSlide}
                   setCurrentSlide={setCurrentSlide}
-                  activeColor="bg-white"
                 />
                 <div className="flex items-center gap-2">
                   <button

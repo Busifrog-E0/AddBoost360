@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Arrowforward from "../../../assets/arrowforwardwhite.svg";
 import Arrowbackward from "../../../assets/Arrowbackwardwhite.svg";
-import Cornerchip from "../../../assets/Cornerchip.svg";
+import Cornerchip from "../../../assets/Cornerchipwhite.svg";
 import SlideIndicators from "./Elements/SlideIndicators";
 import Button from "../../Button";
 import TestimonialCard from "./Elements/TestimonialCard";
@@ -86,7 +86,7 @@ const SuccessStoriesSection = () => {
   4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
 8xl:py-80 9xl:py-96 10xl:py-112 
 11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200 bg-BackgroundGradientright">
+14xl:py-180 15xl:py-200 bg-PrimaryDarkBlue">
           <div className="grid lg:grid-cols-3 gap-4 lg:gap-12 2xl:gap-16 items-start">
             <div className="flex flex-col justify-between h-full order-1 lg:order-2">
               <div className="flex flex-row lg:flex-col justify-between items-center lg:justify-start lg:items-start gap-4">
@@ -127,7 +127,7 @@ const SuccessStoriesSection = () => {
             </div>
             {currentTestimonial && (
               <div className="lg:col-span-2 order-2 lg:order-1 flex flex-col gap-14">
-                <div className="bg-PrimaryDarkBlue p-8 relative overflow-hidden  ">
+                <div className="bg-PrimaryLightBlue p-8 relative overflow-hidden  ">
                   <div className="absolute top-0 left-0">
                     <img src={Cornerchip} alt="Global" className="w-6 h-6" />
                   </div>
