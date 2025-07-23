@@ -145,7 +145,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center text-xs text-gray-500 mt-2 font-inter gap-4">
           <p>{footerData.copywrite}</p>
 
-          <p className="text-gray-200 font-inter text-xs">
+          <p className="text-gray-500 font-inter text-xs">
             Want to stay updated with digital trends, offers and sourcing
             opportunities?{" "}
             <a
