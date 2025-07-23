@@ -1,5 +1,4 @@
 import Cornerchipwhite from "../../../../assets/Cornerchipwhite.svg";
-import ADDBOOSTlogo from "../../../../assets/ADDBOOSTlogo.png"
 
 const StartupCard = ({ startup }) => {
   return (
@@ -17,7 +16,6 @@ const StartupCard = ({ startup }) => {
         </div>
 
         <div className="flex flex-col justify-start gap-2 w-full">
-          <img src={ADDBOOSTlogo} alt="Logo" className="w-20 object-contain" />
           <h3 className="text-lg sm:text-xl md:text-2xl  uppercase font-arya text-white ">
             {startup.title}
           </h3>
