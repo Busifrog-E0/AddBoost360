@@ -1,28 +1,18 @@
 import React from "react";
-import Workday from "../../.././assets/CompanyLogo/Workday.webp";
 import googlelogo from "../../.././assets/CompanyLogo/googlelogo.webp";
-import lookerlogo from "../../.././assets/CompanyLogo/lookerlogo.webp";
-import microsoftlogo from "../../.././assets/CompanyLogo/microsoftlogo.webp";
-import tsmclogo from "../../.././assets/CompanyLogo/tsmclogo.webp";
-import boxlogo from "../../.././assets/CompanyLogo/boxlogo.webp";
-import amazon from "../../.././assets/CompanyLogo/amazon.webp";
+import microsoftlogo from "../../.././assets/CompanyLogo/microsoftlogo.png";
+import judopaylogo from "../../.././assets/CompanyLogo/judopaylogo.svg";
+import paypallogo from "../../.././assets/CompanyLogo/paypallogo.png";
+import stripelogo from "../../.././assets/CompanyLogo/stripelogo.png";
+import worldpaylogo from "../../.././assets/CompanyLogo/worldpaylogo.png";
 
 const logos = [
-  { src: Workday, width: "w-28" },
-  { src: googlelogo, width: "w-28" },
-  { src: lookerlogo, width: "w-28" },
-  { src: microsoftlogo, width: "w-28" },
-  { src: tsmclogo, width: "w-24" },
-  {
-    src: boxlogo,
-    width: "w-20",
-    filter: "filter invert brightness-0 contrast-[500%] grayscale",
-  },
-  {
-    src: amazon,
-    width: "w-28",
-    filter: "filter invert brightness-[99%] contrast-[500%] grayscale",
-  },
+  { src: judopaylogo, title: "Judopay" },
+  { src: googlelogo, title: "Google" },
+  { src: paypallogo, title: "PayPal" },
+  { src: microsoftlogo, title: "Microsoft" },
+  { src: stripelogo, title: "Stripe" },
+  { src: worldpaylogo, title: "Worldpay" },
 ];
 
 const TrustedCompaniesSection = () => {
@@ -45,13 +35,13 @@ const TrustedCompaniesSection = () => {
 
       <div className="relative overflow-hidden mt-16">
         {/* Scrolling container */}
-        <div className="flex animate-scroll gap-16 w-max">
+        <div className="flex animate-scroll gap-28 w-max">
           {[...logos, ...logos].map((logo, i) => (
             <img
               key={i}
               src={logo.src}
-              alt="Company Logo"
-              className={`${logo.width} object-contain ${logo.filter || ""}`}
+              alt={logo.title}
+              className={"h-9 object-contain filter invert brightness-0 "}
             />
           ))}
         </div>

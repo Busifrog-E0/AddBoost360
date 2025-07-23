@@ -1,6 +1,7 @@
 import { useState } from "react";
 import StartupCard from "../Sections/StartupsPage/Elements/StartupCard";
 import Button from "../Button";
+import ADDBOOSTlogo from "../../assets/ADDBOOSTlogo.png"
 
 const SearchStartupsPage = () => {
   const [startups, setStartups] = useState([
@@ -99,6 +100,7 @@ const SearchStartupsPage = () => {
 14xl:py-180 15xl:py-200 pt-32 md:pt-40 lg:pt-44 
  bg-BackgroundGradientleft "
     >
+      <img src={ADDBOOSTlogo} alt="Logo" className="w-32 object-contain" />
       <h className="font-anton text-white uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 ">
         OUR Startups
       </h>
@@ -131,7 +133,7 @@ const SearchStartupsPage = () => {
           hoverBgColor="bg-gray-300"
           hoverTextColor="text-black"
           iconColor="black"
-          onClick={() => {}}
+          onClick={() => { }}
           text="View More"
         />
       </div>
