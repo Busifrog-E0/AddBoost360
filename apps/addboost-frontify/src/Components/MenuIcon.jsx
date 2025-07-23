@@ -1,7 +1,7 @@
 import React from "react";
 
 const MenuIcon = ({
-  bgColor = "bg-gray-400",
+  bgColor = "bg-white",
   hoverBgColor = "bg-primary",
   onClick
 }) => {
