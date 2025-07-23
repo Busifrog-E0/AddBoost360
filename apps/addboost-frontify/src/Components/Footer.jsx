@@ -12,7 +12,7 @@ const Footer = () => {
     phone: "+44 (0)20-1234-5678",
     website: "www.addboost360.com",
     description:
-      "Empowering Your Digital Future - Globally. Intelligently. Creatively.",
+      "Empowering Your Digital Future – Globally. Intelligently. Creatively.",
     company: "ADD BOOST 360",
     address: {
       country: "United Kingdom",
@@ -28,26 +28,25 @@ const Footer = () => {
     },
     copywrite: "© 2025 ADD BOOST 360 LIMITED. All Rights Reserved.",
   });
+
   return (
     <footer
       className="bg-black text-white px-6 md:px-14 2xl:px-60 3xl:px-80 
-  4xl:px-120 5xl:px-160 6xl:px-180
-  7xl:px-220 8xl:px-240 9xl:px-260
-  10xl:px-280 11xl:px-300 12xl:px-320
-  13xl:px-340 14xl:px-360 15xl:px-400
-   py-14 md:py-20 lg:py-24 
-  4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
-8xl:py-80 9xl:py-96 10xl:py-112 
-11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200"
+    4xl:px-120 5xl:px-160 6xl:px-180
+    7xl:px-220 8xl:px-240 9xl:px-260
+    10xl:px-280 11xl:px-300 12xl:px-320
+    13xl:px-340 14xl:px-360 15xl:px-400
+    py-14 md:py-20 lg:py-24 
+    4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
+    8xl:py-80 9xl:py-96 10xl:py-112 
+    11xl:py-128 12xl:py-144 13xl:py-160 
+    14xl:py-180 15xl:py-200"
     >
       <div className="flex flex-col gap-12">
+        {/* Top: Logo & Description + Social Media */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-start gap-6">
           <div className="flex-1">
-            <div
-              className="flex flex-row gap-2 cursor-pointer items-center leading-normal"
-              onClick={() => navigate("/")}
-            >
+            <div className="flex flex-row gap-2 items-center leading-normal cursor-pointer">
               <img
                 src={ADDBOOSTlogo}
                 alt="Logo"
@@ -55,11 +54,11 @@ const Footer = () => {
               />
               <div></div>
             </div>
-
             <p className="text-sm font-inter text-gray-400 mt-2 max-w-md leading-relaxed">
               {footerData.description}
             </p>
           </div>
+
           <div className="flex items-center gap-4 mt-2 md:mt-0">
             <a
               href={footerData.socialMedia.linkedin}
@@ -104,15 +103,16 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Middle: Address & Contact Info */}
         <div className="flex flex-row gap-20 justify-between lg:gap-96 text-sm text-gray-300">
-          <div className="">
+          <div>
             <div className="mt-0">
-              <img src={Ukflag} alt="Uploaded" width="30px" />
+              <img src={Ukflag} alt="UK Flag" width="30px" />
             </div>
-            <p className="text-white text-lg font-arya">
+            <p className="text-white text-lg font-arya mt-1">
               {footerData.address.city}
             </p>
-            <p className="font-inter text-gray-400 text-xs mt-1 ">
+            <p className="font-inter text-gray-400 text-xs mt-1">
               {footerData.address.street}, {footerData.address.city}
             </p>
             <p className="font-inter text-gray-400 text-xs mt-1">
@@ -140,8 +140,21 @@ const Footer = () => {
             <p className="text-white font-arya text-lg">{footerData.website}</p>
           </div>
         </div>
-        <div className="text-xs text-gray-500 mt-2 font-inter">
-          {footerData.copywrite}
+
+        {/* Bottom: Copyright & Subscribe */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center text-xs text-gray-500 mt-2 font-inter gap-4">
+          <p>{footerData.copywrite}</p>
+
+          <p className="text-gray-200 font-inter text-xs">
+            Want to stay updated with digital trends, offers and sourcing
+            opportunities?{" "}
+            <a
+              href={`mailto:info@addboost360.com?subject=Subscribe to newsletter&body=Hello, I would like to subscribe to your newsletter.%0D%0APlease send me the latest updates.`}
+              className="text-primary  hover:text-blue-300 "
+            >
+              Subscribe now.
+            </a>
+          </p>
         </div>
       </div>
     </footer>
