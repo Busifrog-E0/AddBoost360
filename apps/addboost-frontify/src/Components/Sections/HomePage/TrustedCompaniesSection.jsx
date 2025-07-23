@@ -27,7 +27,8 @@ const logos = [
 
 const TrustedCompaniesSection = () => {
   return (
-    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 
+    <div
+      className="px-6 md:px-14 2xl:px-60 3xl:px-80 
   4xl:px-120 5xl:px-160 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
@@ -36,9 +37,10 @@ const TrustedCompaniesSection = () => {
   4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
 8xl:py-80 9xl:py-96 10xl:py-112 
 11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200 bg-PrimaryDarkBlue">
+14xl:py-180 15xl:py-200 bg-PrimaryDarkBlue"
+    >
       <h2 className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite">
-        TRUSTED BY TOP COMPANIES
+        supported BY TOP providers
       </h2>
 
       <div className="relative overflow-hidden mt-16">
