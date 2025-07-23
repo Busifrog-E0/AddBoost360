@@ -19,7 +19,7 @@ export default {
         BackgroundGradientright: "linear-gradient(to right, #00203C, #04406C)",
       },
       fontFamily: {
-        anton: ["Anton", "sans-serif"],
+        anton: ["Fjalla One", "sans-serif"],
         garamond: ["Cormorant Garamond", "sans-serif"],
         arya: ["Arya", "sans-serif"],
         inter: ["inter", "sans-serif"],
