@@ -50,7 +50,7 @@ const Footer = () => {
               <img
                 src={ADDBOOSTlogo}
                 alt="Logo"
-                className="w-20 object-contain"
+                className="w-40 object-contain"
               />
               <div></div>
             </div>
