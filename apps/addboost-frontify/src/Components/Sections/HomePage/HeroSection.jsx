@@ -25,7 +25,7 @@ const HeroSection = () => {
             />
             <div className="absolute top-0 left-0 w-full h-full z-0 bg-gradient-to-r from-zinc-800 via-zinc-800/60 to-transparent" />
             <div className="relative z-10 w-full h-full grid xl:grid-cols-2 items-center px-6 md:px-14 2xl:px-60 3xl:px-80 
-  4xl:px-160 5xl:px-180 6xl:px-200
+  4xl:px-120 5xl:px-160 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
   13xl:px-340 14xl:px-360 15xl:px-400

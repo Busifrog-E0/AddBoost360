@@ -62,7 +62,7 @@ const SuccessStoriesSection = () => {
   if (loading) {
     return (
       <div className="flex flex-col justify-between h-full items-center px-6 md:px-14 2xl:px-60 3xl:px-80 
-  4xl:px-160 5xl:px-180 6xl:px-200
+  4xl:px-120 5xl:px-160 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
   13xl:px-340 14xl:px-360 15xl:px-400
@@ -78,7 +78,7 @@ const SuccessStoriesSection = () => {
     if (testimonials.length > 0) {
       return (
         <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 
-  4xl:px-160 5xl:px-180 6xl:px-200
+  4xl:px-120 5xl:px-160 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
   13xl:px-340 14xl:px-360 15xl:px-400
