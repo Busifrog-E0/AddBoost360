@@ -126,7 +126,6 @@ const WhyItWorksSection = () => {
                 bgColor="bg-white"
                 textColor="text-black"
                 iconColor="black"
-                border="border border-black"
                 hoverBgColor="bg-gray-300"
                 hoverTextColor="text-black"
               />
@@ -136,7 +135,11 @@ const WhyItWorksSection = () => {
 
         {/* Right Section - Image */}
         <div className="flex justify-end mt-10 md:mt-0">
-          <img src={WhyItWorksHome} alt="Live Session" className="w-full rounded-md" />
+          <img
+            src={WhyItWorksHome}
+            alt="Live Session"
+            className="w-full rounded-md"
+          />
         </div>
       </div>
     </div>
