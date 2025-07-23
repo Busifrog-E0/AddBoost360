@@ -27,7 +27,7 @@ const NewBusinessStartupSection = () => {
           <div className="absolute top-0 left-0">
             <img src={CornerChipwhite} alt="Global" className="w-6 h-6" />
           </div>
-          <h3 className=" text-lg uppercase font-anton  text-[#76B0FF] ">
+          <h3 className=" text-lg uppercase font-anton  text-white ">
             Great clients
           </h3>
           <p className="text-sm text-gray-400 mt-1 font-inter">
@@ -41,7 +41,7 @@ const NewBusinessStartupSection = () => {
           <div className="absolute top-0 left-0">
             <img src={CornerChipwhite} alt="Global" className="w-6 h-6" />
           </div>
-          <h3 className=" text-lg uppercase font-anton  text-[#76B0FF] ">
+          <h3 className=" text-lg uppercase font-anton  text-white ">
             Great Team
           </h3>
           <p className="text-sm text-gray-400 mt-1 font-inter">
@@ -56,7 +56,7 @@ const NewBusinessStartupSection = () => {
           <div className="absolute top-0 left-0">
             <img src={CornerChipwhite} alt="Global" className="w-6 h-6" />
           </div>
-          <h3 className=" text-lg uppercase font-anton text-[#76B0FF] ">
+          <h3 className=" text-lg uppercase font-anton text-white ">
             Great Success
           </h3>
           <p className="text-sm text-gray-400 mt-1 font-inter">

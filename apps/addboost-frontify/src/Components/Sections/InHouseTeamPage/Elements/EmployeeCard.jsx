@@ -1,4 +1,5 @@
 import Cornerchipwhite from "../../../../assets/Cornerchipwhite.svg";
+import ADDBOOSTlogo from "../../../../assets/ADDBOOSTlogo.png";
 
 const EmployeeCard = ({ employee }) => {
   return (
@@ -9,22 +10,29 @@ const EmployeeCard = ({ employee }) => {
       </div>
 
       {/* Content */}
-      <div className="text-center transition-colors duration-300">
-        <img
-          src={employee.image}
-          alt={employee.title}
-          className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-white transition-colors duration-300"
-        />
+      <div className="text-center transition-colors duration-300 relative">
+        {/* Wrapper to position logo above employee image */}
+        <div className="relative inline-block">
+          {/* Boost Logo Positioned on Top */}
+          <img src={ADDBOOSTlogo} alt="Boost Logo" className="w-20 ml-6 mt-2" />
+
+          {/* Employee Image */}
+          <img
+            src={employee.image}
+            alt={employee.title}
+            className="w-24 h-24 mt-2 mx-auto rounded-full object-cover border-4 border-white"
+          />
+        </div>
 
         <h3 className="mt-4 text-sm sm:text-lg md:text-xl text-white font-arya">
           {employee.title}
         </h3>
 
-        <p className="text-[#76B0FF] font-medium text-xs sm:text-base md:text-lg font-inter ">
+        <p className="text-[#76B0FF] font-medium text-xs sm:text-base md:text-lg font-inter">
           {employee.designation}
         </p>
 
-        <p className="text-gray-300 text-xs sm:text-sm md:text-base font-inter mb-5 ">
+        <p className="text-gray-300 text-xs sm:text-sm md:text-base font-inter mb-5">
           {employee.country}
         </p>
       </div>
