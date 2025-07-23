@@ -6,6 +6,8 @@ import WhySection from "../Sections/HomePage/WhySection";
 import JoinTalentPoolSection from "../Sections/HomePage/JoinTalentPoolSection";
 import WhyItWorksSection from "../Sections/HomePage/WhyItWorksSection";
 import TrustedCompaniesSection from "../Sections/HomePage/TrustedCompaniesSection";
+import SuccessStoriesSection from "../Sections/HomePage/SuccessStoriesSection";
+import Subscribe from "../Subscribe";
 
 const HomePage = () => {
   return (
@@ -18,6 +20,8 @@ const HomePage = () => {
       <WhyItWorksSection />
       <JoinTalentPoolSection />
       <TrustedCompaniesSection />
+      <SuccessStoriesSection />
+      <Subscribe />
     </div>
   );
 };
