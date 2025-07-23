@@ -7,7 +7,7 @@ const PortfolioHeroSection = () => {
   return (
     <div
       className="bg-cover bg-center bg-no-repeat"
-     
+
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 bg-lightblack lg:bg-transparent items-center gap-10 lg:gap-20 h-[900px] lg:min-h-[650px] lg:h-auto px-6 md:px-14 2xl:px-60 3xl:px-80 
   4xl:px-120 5xl:px-160 6xl:px-180
@@ -34,9 +34,7 @@ const PortfolioHeroSection = () => {
             Our Portfolio
           </h1>
           <p className="font-inter text-base md:text-lg font-lato mt-6 max-w-xl  text-white lg:text-white">
-            We power global success through bold branding, smart digital
-            campaigns, and AI-driven websites—built with creativity, strategy,
-            and innovation.
+            Bold ideas. Smart execution. Explore how we transform vision into impactful digital experiences.
           </p>
         </div>
 
