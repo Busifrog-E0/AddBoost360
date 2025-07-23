@@ -50,7 +50,7 @@ const ServiceCard = ({ service, reverse = true, backgroundcolor }) => {
   );
   return (
     <div>
-      <div className=" grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
+      <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start">
         {reverse ? (
           <>
             {ImageBlock}
