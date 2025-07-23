@@ -150,7 +150,7 @@ const Footer = () => {
             opportunities?{" "}
             <a
               href={`mailto:info@addboost360.com?subject=Subscribe to newsletter&body=Hello, I would like to subscribe to your newsletter.%0D%0APlease send me the latest updates.`}
-              className="text-primary  hover:text-blue-300 "
+              className="text-blue-300 hover:text-primary"
             >
               Subscribe now.
             </a>
