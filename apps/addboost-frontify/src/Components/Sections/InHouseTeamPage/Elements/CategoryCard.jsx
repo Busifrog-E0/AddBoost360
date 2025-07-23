@@ -2,7 +2,7 @@ import Skills from '../../../../assets/skills.png'
 
 const CategoryCard = ({ service }) => {
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-transparent">
       {/* Image */}
       <div className="h-full aspect-square rounded-md overflow-hidden">
         <img
