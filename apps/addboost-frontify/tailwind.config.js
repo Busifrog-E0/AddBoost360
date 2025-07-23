@@ -11,13 +11,13 @@ export default {
         pastelpink: "#F4F1F2",
         grey: "#787878",
         lightblack: "#262626",
-        PrimaryDarkBlue: "#00203C",
-        PrimaryLightBlue: "#04406C",
+        PrimaryDarkBlue: "#001A2B",
+        PrimaryLightBlue: "#02253E",
         PrimaryWhite: "#F4F4F4",
       },
       backgroundImage: {
-        BackgroundGradientleft: "linear-gradient(to left, #00203C, #04406C)",
-        BackgroundGradientright: "linear-gradient(to right, #00203C, #04406C)",
+        BackgroundGradientleft: "linear-gradient(to left, #001A2B, #02253E)",
+        BackgroundGradientright: "linear-gradient(to right, #001A2B, #02253E)",
       },
       fontFamily: {
         anton: ["Fjalla One", "sans-serif"],
