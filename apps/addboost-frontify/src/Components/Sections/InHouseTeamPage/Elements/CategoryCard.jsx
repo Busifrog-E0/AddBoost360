@@ -2,7 +2,7 @@ import Skills from '../../../../assets/skills.png'
 
 const CategoryCard = ({ service }) => {
   return (
-    <div className="relative bg-white">
+    <div className="relative bg-transparent">
       {/* Image */}
       <div className="h-full aspect-square rounded-md overflow-hidden">
         <img
@@ -21,13 +21,13 @@ const CategoryCard = ({ service }) => {
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="flex bg-PrimaryDarkBlue  ">
+        <div className="flex bg-white  ">
           {/* Text content */}
           <div className="p-2 md:p-3 lg:p-4">
-            <h3 className="text-lg sm:text-xl md:text-2xl uppercase font-anton text-white">
+            <h3 className="text-base sm:text-lg md:text-xl uppercase font-anton text-PrimaryDarkBlue">
               {service.title}
             </h3>
-            <p className="text-sm sm:text-base md:text-lg font-inter text-gray-400 mt-1">
+            <p className="text-sm sm:text-sm md:text-base font-inter text-gray-500 mt-1">
               {service.description}
               {service.link && (
                 <a
