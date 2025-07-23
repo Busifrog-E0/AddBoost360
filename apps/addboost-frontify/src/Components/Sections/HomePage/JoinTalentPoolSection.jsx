@@ -82,7 +82,7 @@ const JoinTalentPoolSection = () => {
       <div className="grid lg:grid-cols-2 gap-32 items-start">
         <div className=" flex flex-col gap-2">
           <p className="text-[#76B0FF]  font-inter text-base 2xl:text-lg">
-            In-House Team
+            Talent Pool
           </p>
           <h className="uppercase text-3xl 2xl:text-5xl font-anton text-white ">
             JOIN OUR GLOBAL TALENT Pool
