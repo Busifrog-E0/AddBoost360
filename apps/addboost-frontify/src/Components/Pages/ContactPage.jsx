@@ -17,7 +17,7 @@ const ContactPage = () => {
           Book a free consultation
         </h>
 
-        <p className="text-sm text-[#C8C8C8] mt-2">
+        <p className="text-base text-[#C8C8C8] mt-2">
           Launching a startup, scaling up, or upgrading online? Get a free
           30-minute consultation from ADD BOOST 360 LIMITED to explore tailored
           strategies.
