@@ -119,7 +119,7 @@ const ServicesListView = ({
             className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
               currentSlide === 0
                 ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
+                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
             }`}
           >
             <img
@@ -135,7 +135,7 @@ const ServicesListView = ({
             className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
               currentSlide === maxSlide
                 ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
+                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
             }`}
           >
             <img
