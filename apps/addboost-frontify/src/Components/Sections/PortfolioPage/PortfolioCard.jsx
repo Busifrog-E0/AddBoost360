@@ -58,9 +58,9 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
             />
           </a>
         </div>
-        <div className="flex bg-PrimaryDarkBlue">
+        <div className="flex bg-white">
           <div className="p-2 md:p-3 lg:p-4">
-            <p className="text-sm sm:text-sm md:text-xl font-anton text-gray-200 mt-1">
+            <p className="text-sm sm:text-sm md:text-xl font-anton text-PrimaryDarkBlue mt-1">
               {project.type}
             </p>
           </div>

@@ -32,14 +32,13 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[999] text-white transition-all duration-300
-          ${
-            scrolled
-              ? "bg-black/30 backdrop-blur-md shadow-md "
-              : "bg-black/10 backdrop-blur-md shadow-md "
+          ${scrolled
+            ? "bg-black/30 backdrop-blur-md shadow-md "
+            : "bg-black/10 backdrop-blur-md shadow-md "
           }`}
       >
         <div
-          className="flex items-center justify-between px-4 md:px-10 py-3
+          className="flex items-center justify-between gap-3 px-4 md:px-10 py-3
             2xl:px-60 3xl:px-80 
             4xl:px-120 5xl:px-160 6xl:px-180
             7xl:px-220 8xl:px-240 9xl:px-260
@@ -62,31 +61,30 @@ const Header = () => {
               </h1>
             </div>
 
-            {/* Phone */}
-            <div className="hidden md:flex ml-14 items-center text-sm font-inter gap-2 outline-none">
-              <img
-                src={call}
-                alt="Phone"
-                className="w-4 object-contain outline-none"
-              />
-              <a
-                href="tel:+442012345678"
-                className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
-              >
-                +44 (0)20-1234-5678
-              </a>
-            </div>
-          </div>
 
+          </div>
+          {/* Phone */}
+          <div className="hidden md:flex items-center text-sm font-inter gap-2 outline-none">
+            <img
+              src={call}
+              alt="Phone"
+              className="w-4 object-contain outline-none"
+            />
+            <a
+              href="tel:+442012345678"
+              className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
+            >
+              +44 (0)20-1234-5678
+            </a>
+          </div>
           {/* Nav Items */}
-          <nav className="hidden lg:flex gap-8 text-sm font-arya uppercase">
+          <nav className="hidden xl:flex gap-8 text-sm font-arya uppercase">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `hover:underline transition duration-150 ${
-                    isActive ? "underline " : ""
+                  `hover:underline transition duration-150 ${isActive ? "underline " : ""
                   }`
                 }
               >
@@ -96,7 +94,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu */}
-          <div className="lg:hidden">
+          <div className="xl:hidden">
             <MenuIcon onClick={() => setMenuOpen(true)} />
           </div>
         </div>
