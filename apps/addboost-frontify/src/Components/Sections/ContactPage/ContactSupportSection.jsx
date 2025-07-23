@@ -4,7 +4,7 @@ import ArrowOutward from "../../../assets/arrowOutward.png";
 const ContactSupportSection = () => {
   const supportItems = [
     {
-      label: "contact at",
+      label: "Contact at",
       email: "info@addboost360.com",
     },
   ];
