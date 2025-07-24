@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, Lock, User, Home } from "lucide-react";
+import useLogin from "./hooks/useLogin";
 
 const LoginPage = ({ onLogin }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState({});
 
+  const [errors, setErrors] = useState({});
+  const { user, setUser, login, isLoading } = useLogin();
   const validateForm = () => {
     const newErrors = {};
-    if (!username.trim()) newErrors.username = "Username is required";
-    if (!password.trim()) newErrors.password = "Password is required";
+    if (!user.Username.trim()) newErrors.username = "Username is required";
+    if (!user.Password.trim()) newErrors.password = "Password is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -19,12 +18,7 @@ const LoginPage = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      onLogin && onLogin();
-    }, 1500);
+    login && login();
   };
 
   return (
@@ -56,9 +50,9 @@ const LoginPage = ({ onLogin }) => {
               <input
                 id="username"
                 type="text"
-                value={username}
+                value={user.Username}
                 onChange={(e) => {
-                  setUsername(e.target.value);
+                  setUser({ ...user, Username: e.target.value });
                   if (errors.username)
                     setErrors((prev) => ({ ...prev, username: "" }));
                 }}
@@ -90,9 +84,9 @@ const LoginPage = ({ onLogin }) => {
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
-                value={password}
+                value={user.Password}
                 onChange={(e) => {
-                  setPassword(e.target.value);
+                  setUser({ ...user, Password: e.target.value });
                   if (errors.password)
                     setErrors((prev) => ({ ...prev, password: "" }));
                 }}

@@ -104,7 +104,6 @@ const ReviewSection = () => {
           <h1 className="text-2xl font-bold text-gray-900">Success Stories</h1>
           <p className="text-gray-600 mt-1">
             Manage reviews shared by your clients
-            
           </p>
         </div>
         <button

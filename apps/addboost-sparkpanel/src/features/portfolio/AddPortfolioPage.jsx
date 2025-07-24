@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
-import ProjectPreviewCard from "./Elements/Portfolio/PortfolioPreviewCard";
+import ProjectPreviewCard from "./PortfolioPreviewCard";
 
 const AddPortfolioPage = ({
   onBack,

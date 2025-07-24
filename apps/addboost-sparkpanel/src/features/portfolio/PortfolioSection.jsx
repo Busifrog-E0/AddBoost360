@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2, ExternalLink } from "lucide-react";
-import AddPortfolioPage from "./AddportfolioPage";
+import AddPortfolioPage from "./AddPortfolioPage";
 
 const PortfolioSection = () => {
   const [showAddProject, setShowAddProject] = useState(false);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
-import ServicePreviewCard from "./Elements/Services/ServicePreviewCard";
+import ServicePreviewCard from "./ServicePreviewCard";
 
 const AddServicePage = ({
   onBack,
