@@ -1,94 +1,22 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2, Eye } from "lucide-react";
 import AddTeamPage from "./AddTeamPage";
+import useGetList from "../../hooks/api/useGetList";
+import useDeleteData from "../../hooks/api/UseDeleteData";
 
 const TeamSection = () => {
   const [showAddTeam, setShowAddTeam] = useState(false);
   const [showEditTeam, setShowEditTeam] = useState(false);
   const [memberToBeEdited, setMemberToBeEdited] = useState(null);
+  const { deleteData } = useDeleteData({});
 
-  const [teamMembers, setTeamMembers] = useState([
-    {
-      id: 1,
-      title: "John Smith",
-      designation: "CTO",
-      country: "California, USA",
-      imagePreview:
-        "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg", // New image for John
-    },
-    {
-      id: 2,
-      title: "Meera Varma",
-      designation: "Product Manager",
-      country: "New Delhi, India",
-      imagePreview:
-        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg", // New image for Meera
-    },
-    {
-      id: 3,
-      title: "Carlos Ruiz",
-      designation: "UX Designer",
-      country: "Barcelona, Spain",
-      imagePreview:
-        "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg",
-    },
-    {
-      id: 4,
-      title: "Aiko Tanaka",
-      designation: "Software Engineer",
-      country: "Tokyo, Japan",
-      imagePreview:
-        "https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg",
-    },
-    {
-      id: 5,
-      title: "James Lee",
-      designation: "Marketing Director",
-      country: "New York, USA",
-      imagePreview:
-        "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg",
-    },
-    {
-      id: 6,
-      title: "Fatima Al-Fulan",
-      designation: "HR Specialist",
-      country: "Dubai, UAE",
-      imagePreview:
-        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-    },
-    {
-      id: 7,
-      title: "Arjun Patel",
-      designation: "Cloud Architect",
-      country: "Bengaluru, India",
-      imagePreview:
-        "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg",
-    },
-    {
-      id: 8,
-      title: "Isabella Rossi",
-      designation: "Legal Advisor",
-      country: "Milan, Italy",
-      imagePreview:
-        "https://images.pexels.com/photos/206452/pexels-photo-206452.jpeg",
-    },
-    {
-      id: 9,
-      title: "Sofia Nguyen",
-      designation: "Data Scientist",
-      country: "Ho Chi Minh City, Vietnam",
-      imagePreview:
-        "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg",
-    },
-    {
-      id: 10,
-      title: "Liam O'Connor",
-      designation: "Finance Manager",
-      country: "Dublin, Ireland",
-      imagePreview:
-        "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg",
-    },
-  ]);
+  const {
+    data: employees,
+    isLoading,
+    isLoadingMore,
+    isPageDisabled,
+    getList,
+  } = useGetList({ endpoint: "employees" });
 
   const handleAddMember = () => {
     setMemberToBeEdited(null);
@@ -101,27 +29,23 @@ const TeamSection = () => {
   };
 
   const handleDeleteMember = (id) => {
-    if (window.confirm("Are you sure you want to delete this team member?")) {
-      setTeamMembers((prev) => prev.filter((member) => member.id !== id));
+    if (window.confirm("Are you sure you want to delete this service?")) {
+      deleteData({
+        endpoint: `employees/${id}`,
+        onsuccess: (result) => {
+          if (result) {
+            handleSaveMember();
+          }
+        },
+      });
     }
   };
 
-  const handleSaveMember = (memberData) => {
-    if (memberToBeEdited) {
-      setTeamMembers((prev) =>
-        prev.map((member) =>
-          member.id === memberToBeEdited.id
-            ? { ...member, ...memberData }
-            : member
-        )
-      );
-    } else {
-      const newMember = { ...memberData, id: Date.now() };
-      setTeamMembers((prev) => [...prev, newMember]);
-    }
+  const handleSaveMember = () => {
     setShowAddTeam(false);
     setMemberToBeEdited(null);
     setShowEditTeam(false);
+    getList([]);
   };
 
   const handleBack = () => {
@@ -190,9 +114,9 @@ const TeamSection = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {teamMembers.map((member) => (
+              {employees.map((member) => (
                 <tr
-                  key={member.id}
+                  key={member.DocId}
                   className="hover:bg-gray-50 transition-colors"
                 >
                   {/* Member Info with Image */}
@@ -200,14 +124,14 @@ const TeamSection = () => {
                     <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0">
                         <img
-                          src={member.imagePreview}
-                          alt={member.title}
+                          src={member.ImageUrl}
+                          alt={member.FullName}
                           className="w-12 h-12 rounded-full object-cover border border-gray-200"
                         />
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="text-base font-semibold text-gray-900">
-                          {member.title}
+                          {member.FullName}
                         </p>
                       </div>
                     </div>
@@ -215,11 +139,8 @@ const TeamSection = () => {
 
                   {/* Designation */}
                   <td className="py-4 px-6">
-                    <p
-                      className="text-sm text-gray-700 leading-relaxed max-w-md"
-                      title={member.designation}
-                    >
-                      {member.designation}
+                    <p className="text-sm text-gray-700 leading-relaxed max-w-md">
+                      {member.Designation}
                     </p>
                   </td>
 
@@ -235,7 +156,7 @@ const TeamSection = () => {
                       </button>
 
                       <button
-                        onClick={() => handleDeleteMember(member.id)}
+                        onClick={() => handleDeleteMember(member.DocId)}
                         className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                         title="Delete member"
                       >
@@ -250,7 +171,7 @@ const TeamSection = () => {
         </div>
 
         {/* Empty State */}
-        {teamMembers.length === 0 && (
+        {employees.length === 0 && (
           <div className="text-center py-12">
             <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
               <Plus className="w-8 h-8 text-gray-400" />
@@ -266,6 +187,41 @@ const TeamSection = () => {
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
               Add Your First Member
+            </button>
+          </div>
+        )}
+        {/* Load More Button */}
+        {!isPageDisabled && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => getList(employees, false)}
+              className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-60"
+              disabled={isLoadingMore}
+            >
+              {isLoadingMore ? (
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z"
+                  />
+                </svg>
+              ) : (
+                "Load More"
+              )}
             </button>
           </div>
         )}

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft } from "lucide-react";
+import usePostData from "../../hooks/api/usePostData";
+import useUpdateData from "../../hooks/api/useUpdateData";
 
 const AddTeamPage = ({
   onBack,
@@ -9,17 +11,22 @@ const AddTeamPage = ({
   isEditing = false,
   initialValue = {
     id: 1,
-    title: "",
-    designation: "",
-    country: "",
+    FullName: "",
+    Designation: "",
+    Country: "",
+    State: "",
     image: null,
-    imagePreview: "",
+    ImageUrl: "",
+    Description1: "",
+    Priority: "",
   },
 }) => {
   const [formData, setFormData] = useState(initialValue);
 
+  const { isLoading, postData } = usePostData({});
+
   const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const { updateData } = useUpdateData({});
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -30,59 +37,116 @@ const AddTeamPage = ({
 
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (!file.type.startsWith("image/")) {
-        setErrors((prev) => ({
-          ...prev,
-          imagePreview: "Please select a valid image file",
-        }));
-        return;
-      }
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors((prev) => ({
-          ...prev,
-          imagePreview: "Image size should be less than 5MB",
-        }));
-        return;
-      }
-      setFormData((prev) => ({ ...prev, image: file }));
+    if (!file) return;
 
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setFormData((prev) => ({
-          ...prev,
-          imagePreview: e.target.result,
-        }));
-      };
-      reader.readAsDataURL(file);
-      setErrors((prev) => ({ ...prev, image: "", imagePreview: "" }));
+    // ——— Validate type & size ———
+    if (!file.type.startsWith("image/")) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Please select a valid image file",
+      }));
+      return;
     }
-  };
+    if (file.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Image size should be less than 5MB",
+      }));
+      return;
+    }
 
+    // ——— Read as ArrayBuffer ———
+    const reader = new FileReader();
+    reader.onload = (loadEvent) => {
+      const arrayBuffer = loadEvent.target.result; // true ArrayBuffer
+      const byteArray = Array.from(new Uint8Array(arrayBuffer));
+
+      // Create a blob URL for preview
+      const previewUrl = URL.createObjectURL(file);
+
+      setFormData((prev) => ({
+        ...prev,
+        ImageUrl: previewUrl,
+        image: {
+          FileType: file.type,
+          FileData: byteArray,
+          FileName: file.name,
+        },
+      }));
+      setErrors((prev) => ({
+        ...prev,
+        image: "",
+        ImageUrl: "",
+      }));
+    };
+
+    reader.onerror = (err) => {
+      console.error("FileReader error:", err);
+      setErrors((prev) => ({
+        ...prev,
+        image: "Failed to read file. Please try again.",
+      }));
+    };
+
+    reader.readAsArrayBuffer(file);
+  };
   const removeImage = () => {
-    setFormData((prev) => ({ ...prev, image: null, imagePreview: "" }));
+    setFormData((prev) => ({ ...prev, image: null, ImageUrl: "" }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.title.trim()) newErrors.title = "Name is required";
-    if (!formData.designation.trim())
-      newErrors.designation = "Designation is required";
-    if (!formData.country.trim()) newErrors.country = "Country is required";
-    if (!formData.imagePreview)
-      newErrors.imagePreview = "Team member image is required";
+    if (!formData.FullName.trim()) newErrors.FullName = "Name is required";
+    if (!formData.Designation.trim())
+      newErrors.Designation = "Designation is required";
+    if (!formData.Country.trim()) newErrors.Country = "Country is required";
+    if (!formData.ImageUrl)
+      newErrors.ImageUrl = "Team member image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleFormSubmit = (fileUrl) => {
+    const { image, ImageUrl, ...rest } = formData;
+    const payload = { ...rest, ImageUrl: fileUrl };
+
+    if (isEditing) {
+      updateData({
+        endpoint: `employees/${formData.DocId}`,
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    } else {
+      postData({
+        endpoint: "employees",
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    setIsLoading(true);
-    setTimeout(() => {
-      onSave(formData);
-      setIsLoading(false);
-    }, 1500);
+
+    if (formData.image) {
+      postData({
+        endpoint: "files/admin",
+        payload: formData.image,
+        onsuccess: (result) => {
+          handleFormSubmit(result.FileUrl);
+        },
+      });
+    } else {
+      handleFormSubmit(formData.ImageUrl);
+    }
   };
 
   return (
@@ -117,17 +181,53 @@ const AddTeamPage = ({
             </label>
             <input
               type="text"
-              value={formData.title}
-              onChange={(e) => handleInputChange("title", e.target.value)}
+              value={formData.FullName}
+              onChange={(e) => handleInputChange("FullName", e.target.value)}
               className={`w-full px-4 py-3 border mb-3 rounded-lg ${
-                errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                errors.FullName ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., John Doe"
             />
-            {errors.title && (
-              <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+            {errors.FullName && (
+              <p className="mt-1 text-sm text-red-600">{errors.FullName}</p>
             )}
           </div>
+          {/* Priority */}
+          <div className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Priority *
+              </label>
+              <input
+                type="number"
+                value={formData.Priority}
+                onChange={(e) =>
+                  handleInputChange("Priority", Number(e.target.value))
+                }
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
+                placeholder="Order Priority"
+              />
+              {errors.title && (
+                <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+              )}
+            </div>
+          </div>
+
+          <select
+            id="cars"
+            name="cars"
+            onChange={(e) => {
+              console.log(e.target.value);
+              handleInputChange("Description1", e.target.value);
+            }}
+          >
+            <option value="volvo">Volvo XC90</option>
+            <option value="saab">Saab 95</option>
+            <option value="mercedes">Mercedes SLK</option>
+            <option value="audi">Audi TT</option>
+          </select>
 
           {/* Designation */}
           <div>
@@ -136,17 +236,36 @@ const AddTeamPage = ({
             </label>
             <input
               type="text"
-              value={formData.designation}
-              onChange={(e) => handleInputChange("designation", e.target.value)}
+              value={formData.Designation}
+              onChange={(e) => handleInputChange("Designation", e.target.value)}
               className={`w-full px-4 mb-3 py-3 border rounded-lg ${
-                errors.designation
+                errors.Designation
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
               }`}
               placeholder="e.g., Frontend Developer"
             />
-            {errors.designation && (
-              <p className="mt-1 text-sm text-red-600">{errors.designation}</p>
+            {errors.Designation && (
+              <p className="mt-1 text-sm text-red-600">{errors.Designation}</p>
+            )}
+          </div>
+
+          {/*State */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              State *
+            </label>
+            <input
+              type="text"
+              value={formData.State}
+              onChange={(e) => handleInputChange("State", e.target.value)}
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
+                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
+              placeholder="e.g., kerala"
+            />
+            {errors.State && (
+              <p className="text-sm text-red-600 mb-2">{errors.State}</p>
             )}
           </div>
 
@@ -157,15 +276,15 @@ const AddTeamPage = ({
             </label>
             <input
               type="text"
-              value={formData.country}
-              onChange={(e) => handleInputChange("country", e.target.value)}
+              value={formData.Country}
+              onChange={(e) => handleInputChange("Country", e.target.value)}
               className={`w-full px-4 mb-3 py-3 border rounded-lg ${
-                errors.country ? "border-red-300 bg-red-50" : "border-gray-300"
+                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., India"
             />
-            {errors.country && (
-              <p className="mt-1 text-sm text-red-600">{errors.country}</p>
+            {errors.Country && (
+              <p className="mt-1 text-sm text-red-600">{errors.Country}</p>
             )}
           </div>
 
@@ -175,10 +294,10 @@ const AddTeamPage = ({
               Member Image *
             </label>
             <div className="overflow-hidden w-[250px] h-[250px]">
-              {!formData.imagePreview ? (
+              {!formData.ImageUrl ? (
                 <div
                   className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
-                    errors.imagePreview
+                    errors.ImageUrl
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
                   }`}
@@ -207,7 +326,7 @@ const AddTeamPage = ({
               ) : (
                 <div className="relative w-full h-full rounded-lg">
                   <img
-                    src={formData.imagePreview}
+                    src={formData.ImageUrl}
                     alt="Team member preview"
                     className="w-full h-48 object-cover rounded-lg border"
                   />
@@ -222,8 +341,8 @@ const AddTeamPage = ({
               )}
             </div>
 
-            {errors.imagePreview && (
-              <p className="text-sm text-red-600 mt-1">{errors.imagePreview}</p>
+            {errors.ImageUrl && (
+              <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
             )}
           </div>
         </div>

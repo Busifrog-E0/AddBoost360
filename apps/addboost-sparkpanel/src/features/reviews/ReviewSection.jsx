@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2 } from "lucide-react";
+import useGetList from "../../hooks/api/useGetList";
+import useDeleteData from "../../hooks/api/UseDeleteData";
 
 import AddReview from "./AddReview";
 
@@ -7,27 +9,15 @@ const ReviewSection = () => {
   const [showeditReview, setShowEditReview] = useState(false);
   const [showAddReview, setShowAddReview] = useState(false);
   const [reviewToBeEdited, setReviewToBeEdited] = useState(null);
+  const { deleteData } = useDeleteData({});
 
-  const [reviews, setReviews] = useState([
-    {
-      id: 1,
-      name: "John Doe",
-      designation: "Founder, StartupX",
-      successStories:
-        "TechNova helped us triple our revenue and enter global markets. Truly transformative experience!",
-      imagePreview:
-        "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      designation: "CEO, InnovateNow",
-      successStories:
-        "From strategy to execution, their team was amazing. We expanded to 3 countries and raised our Series A.",
-      imagePreview:
-        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
-    },
-  ]);
+  const {
+    data: testimonialss,
+    isLoading,
+    isLoadingMore,
+    isPageDisabled,
+    getList,
+  } = useGetList({ endpoint: "testimonialss" });
 
   const handleAdd = () => {
     setShowEditReview(false);
@@ -40,30 +30,23 @@ const ReviewSection = () => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this review?")) {
-      setReviews((prev) => prev.filter((r) => r.id !== id));
+    if (window.confirm("Are you sure you want to delete this service?")) {
+      deleteData({
+        endpoint: `testimonialss/${id}`,
+        onsuccess: (result) => {
+          if (result) {
+            handleSave();
+          }
+        },
+      });
     }
   };
 
   const handleSave = (reviewData) => {
-    if (reviewToBeEdited) {
-      setReviews((prev) =>
-        prev.map((r) =>
-          r.id === reviewToBeEdited.id ? { ...r, ...reviewData } : r
-        )
-      );
-    } else {
-      setReviews((prev) => [
-        ...prev,
-        {
-          ...reviewData,
-          id: Date.now(),
-        },
-      ]);
-    }
     setShowAddReview(false);
     setShowEditReview(false);
     setReviewToBeEdited(null);
+    getList([]);
   };
 
   const handleBack = () => {
@@ -117,9 +100,9 @@ const ReviewSection = () => {
 
       {/* Review Cards */}
       <div className="grid md:grid-cols-2 gap-6">
-        {reviews.map((review) => (
+        {testimonialss.map((review) => (
           <div
-            key={review.id}
+            key={review.DocId}
             className="relative bg-white border border-gray-200 rounded-xl shadow-sm p-6 pr-14 flex gap-4 items-start hover:shadow-md transition"
           >
             {/* Icons */}
@@ -131,7 +114,7 @@ const ReviewSection = () => {
                 <Edit size={18} />
               </button>
               <button
-                onClick={() => handleDelete(review.id)}
+                onClick={() => handleDelete(review.DocId)}
                 className="text-red-600 hover:text-red-800"
               >
                 <Trash2 size={18} />
@@ -140,17 +123,17 @@ const ReviewSection = () => {
 
             {/* Content */}
             <img
-              src={review.imagePreview}
-              alt={review.name}
+              src={review.ImageUrl}
+              alt={review.Title}
               className="w-14 h-14 rounded-full object-cover border-2 border-blue-500"
             />
             <div className="flex-1">
               <p className="text-gray-700 text-sm italic mb-3 line-clamp-3">
-                “{review.successStories}”
+                “{review.Description1}”
               </p>
               <div>
                 <h2 className="text-md font-semibold text-gray-900">
-                  {review.name}
+                  {review.Title}
                 </h2>
                 <p className="text-sm text-gray-500">{review.designation}</p>
               </div>
@@ -158,7 +141,7 @@ const ReviewSection = () => {
           </div>
         ))}
 
-        {reviews.length === 0 && (
+        {testimonialss.length === 0 && (
           <div className="text-center py-12 col-span-2">
             <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
               <Plus className="w-8 h-8 text-gray-400" />

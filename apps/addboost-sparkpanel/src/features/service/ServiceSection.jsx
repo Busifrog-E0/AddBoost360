@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import AddServicePage from "./AddServicePage";
 import useGetList from "../../hooks/api/useGetList";
+import useDeleteData from "../../hooks/api/UseDeleteData";
 
 const ServiceSection = () => {
   const {
@@ -10,11 +11,12 @@ const ServiceSection = () => {
     isLoadingMore,
     isPageDisabled,
     getList,
-  } = useGetList({ endpoint: "services", initialFilters: { Limit: 1 } });
+  } = useGetList({ endpoint: "services" });
 
   const [showAddService, setShowAddService] = useState(false);
   const [showEditService, setShowEditService] = useState(false);
   const [serviceToBeEdited, setServiceToBeEdited] = useState(null);
+  const { deleteData } = useDeleteData({});
 
   const handleAddService = () => {
     setServiceToBeEdited(null);
@@ -28,7 +30,14 @@ const ServiceSection = () => {
 
   const handleDeleteService = (serviceId) => {
     if (window.confirm("Are you sure you want to delete this service?")) {
-      setServices((prev) => prev.filter((service) => service.id !== serviceId));
+      deleteData({
+        endpoint: `services/${serviceId}`,
+        onsuccess: (result) => {
+          if (result) {
+            handleSaveService();
+          }
+        },
+      });
     }
   };
 
@@ -38,25 +47,11 @@ const ServiceSection = () => {
     setServiceToBeEdited(null);
   };
 
-  const handleSaveService = (serviceData) => {
-    if (serviceToBeEdited) {
-      setServices((prev) =>
-        prev.map((service) =>
-          service.id === serviceToBeEdited.id
-            ? { ...service, ...serviceData, id: serviceToBeEdited.id }
-            : service
-        )
-      );
-    } else {
-      const newService = {
-        ...serviceData,
-        id: Date.now(),
-      };
-      setServices((prev) => [...prev, newService]);
-    }
+  const handleSaveService = () => {
     setShowAddService(false);
     setShowEditService(false);
     setServiceToBeEdited(null);
+    getList([]);
   };
 
   if (showAddService) {
@@ -119,7 +114,7 @@ const ServiceSection = () => {
               <tbody className="divide-y divide-gray-200">
                 {services.map((service) => (
                   <tr
-                    key={service.id}
+                    key={service.DocId}
                     className="hover:bg-gray-50 transition-colors"
                   >
                     {/* Service Info with Image */}
@@ -152,7 +147,7 @@ const ServiceSection = () => {
                         </button>
 
                         <button
-                          onClick={() => handleDeleteService(service.id)}
+                          onClick={() => handleDeleteService(service.DocId)}
                           className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                           title="Delete service"
                         >

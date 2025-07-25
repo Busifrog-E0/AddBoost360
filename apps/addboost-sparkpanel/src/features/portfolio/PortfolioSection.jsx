@@ -1,70 +1,20 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2, ExternalLink } from "lucide-react";
 import AddPortfolioPage from "./AddPortfolioPage";
+import useGetList from "../../hooks/api/useGetList";
 
 const PortfolioSection = () => {
   const [showAddProject, setShowAddProject] = useState(false);
   const [showEditProject, setShowEditProject] = useState(false);
   const [portfolioToBeEdited, setportfolioToBeEdited] = useState(null);
 
-  const [portfolioItems, setPortfolioItems] = useState([
-    {
-      id: 1,
-      title: "E-commerce Launch - UK-Based Organic Skincare Brand",
-      impactPoints: [
-        "400% increase in organic traffic in 6 months",
-        "Cross-border shipping integration",
-        "One-month sales target met in 18 days",
-      ],
-      imagePreview:
-        "https://images.pexels.com/photos/3762876/pexels-photo-3762876.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-      buttonText: "View Website",
-      type: "Website Design, Branding, Social Media Marketing, Product Sourcing from India",
-      linkToProject: "https://google.com",
-    },
-    {
-      id: 2,
-      title: "AI Chatbot & Automation - Dubai Real Estate Agency",
-      impactPoints: [
-        "Reduced response time by 80%",
-        "Converted 2x more leads with automated follow-ups",
-        "24/7 virtual support improved client satisfaction",
-      ],
-      imagePreview:
-        "https://images.pexels.com/photos/8031872/pexels-photo-8031872.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-      buttonText: "View Project",
-      type: "AI Integration, Lead Automation, WhatsApp Chatbot, CRM Setup",
-      linkToProject: "https://google.com",
-    },
-    {
-      id: 3,
-      title: "Empowerment Training - Marketing Team in Philippines",
-      impactPoints: [
-        "Trained 15+ staff to manage their brand's marketing",
-        "Social media ads optimized internally",
-        "Saved over £1,500 in outsourced costs within 3 months",
-      ],
-      imagePreview:
-        "https://images.pexels.com/photos/3769747/pexels-photo-3769747.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-      buttonText: "Download Course Outline",
-      type: "Live SEO, Meta Ads & Canva Masterclass for Local Startup",
-      linkToProject: "https://google.com",
-    },
-    {
-      id: 4,
-      title: "Influencer Campaign - UAE Luxury Watch Brand",
-      impactPoints: [
-        "Partnered with 4 key regional influencers",
-        "250% ROI on campaign",
-        "1200+ new followers in 10 days",
-      ],
-      imagePreview:
-        "https://images.pexels.com/photos/19387226/pexels-photo-19387226.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
-      buttonText: "See Campaign Results",
-      type: "Influencer Marketing, Paid Ads, Content Creation",
-      linkToProject: "https://google.com",
-    },
-  ]);
+  const {
+    data: portfolios,
+    isLoading,
+    isLoadingMore,
+    isPageDisabled,
+    getList,
+  } = useGetList({ endpoint: "portfolios" });
 
   const handleAddProject = () => {
     setportfolioToBeEdited(null);
@@ -148,13 +98,13 @@ const PortfolioSection = () => {
 
       {/* Portfolio Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {portfolioItems.map((item) => (
+        {portfolios.map((item) => (
           <div
             key={item.id}
             className="bg-white rounded-xl shadow border overflow-hidden"
           >
             <img
-              src={item.imagePreview}
+              src={item.ImageUrl}
               alt={item.title}
               className="w-full h-48 object-cover"
             />
@@ -162,7 +112,7 @@ const PortfolioSection = () => {
               {/* Top: Title + Actions */}
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="font-semibold text-lg">{item.title}</h3>
+                  <h3 className="font-semibold text-lg">{item.Title}</h3>
                   {item.type && (
                     <p className="text-xs text-gray-500 mt-1">{item.type}</p>
                   )}

@@ -2,19 +2,18 @@ import { deleteItem } from "@/lib/api";
 import { useState } from "react";
 
 export default function useDeleteData(options) {
-  const { endpoint = "", onSuccess = () => {}, onError = () => {} } = options;
+  const { onSuccess = () => {}, onError = () => {} } = options;
   const [isLoading, setIsLoading] = useState(false);
 
   const deleteData = (options = {}) => {
     const {
-      endPoint = "",
+      endpoint = "",
       payload = {},
       onsuccess = () => {},
       onerror = () => {},
     } = options;
-    const api = endPoint ? endPoint : endpoint;
+    const api = endpoint;
     setIsLoading(true);
-    console.log(payload);
     deleteItem(
       `${api}`,
       payload,

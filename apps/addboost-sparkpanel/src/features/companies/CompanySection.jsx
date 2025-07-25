@@ -1,94 +1,22 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import AddCompanyPage from "./AddCompanyPage";
+import useGetList from "../../hooks/api/useGetList";
+import useDeleteData from "../../hooks/api/UseDeleteData";
 
 const CompanySection = () => {
   const [showAddCompany, setShowAddCompany] = useState(false);
   const [showEditCompany, setshowEditCompany] = useState(false);
   const [companyToBeEdited, setcompanyToBeEdited] = useState(null);
+  const { deleteData } = useDeleteData({});
 
-  const [companies, setCompanies] = useState([
-    {
-      id: 1,
-      title: "Razorpay",
-      country: "Bengaluru, India",
-      productCategories: ["Fintech", "Payments"],
-      imagePreview:
-        "https://images.pexels.com/photos/1181395/pexels-photo-1181395.jpeg",
-    },
-    {
-      id: 2,
-      title: "Miro",
-      country: "Amsterdam, Netherlands",
-      productCategories: ["Fintech", "Payments"],
-      imageimagePreview:
-        "https://images.pexels.com/photos/2422293/pexels-photo-2422293.jpeg",
-    },
-    {
-      id: 3,
-      title: "Notion",
-      country: "San Francisco, United States",
-      productCategories: ["Fintech", "Payments"],
-      imagePreview:
-        "https://images.pexels.com/photos/3182743/pexels-photo-3182743.jpeg",
-    },
-    {
-      id: 4,
-      title: "LottieFiles",
-      productCategories: ["Fintech", "Payments"],
-      country: "Kuala Lumpur, Malaysia",
-      imagePreview:
-        "https://images.pexels.com/photos/1181303/pexels-photo-1181303.jpeg",
-    },
-    {
-      id: 5,
-      title: "DeepL",
-      country: "Cologne, Germany",
-      productCategories: ["Fintech", "Payments"],
-      imagePreview:
-        "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg",
-    },
-    {
-      id: 6,
-      title: "Copy.ai",
-      country: "New York, United States",
-      productCategories: ["Fintech", "Payments"],
-      imagePreview:
-        "https://images.pexels.com/photos/260689/pexels-photo-260689.jpeg",
-    },
-    {
-      id: 7,
-      title: "CRED",
-      country: "Bengaluru, India",
-      productCategories: ["Fintech", "Payments"],
-      imagePreview:
-        "https://images.pexels.com/photos/2422280/pexels-photo-2422280.jpeg",
-    },
-    {
-      id: 8,
-      title: "Hopin",
-      country: "London, United Kingdom",
-      productCategories: ["Fintech", "Payments"],
-      imagePreview:
-        "https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg",
-    },
-    {
-      id: 9,
-      title: "Sendinblue",
-      country: "Paris, France",
-      productCategories: ["Fintech", "Payments"],
-      imagePreview:
-        "https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg",
-    },
-    {
-      id: 10,
-      title: "Deel",
-      country: "San Francisco, United States",
-      productCategories: ["Fintech", "Payments"],
-      imagePreview:
-        "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
-    },
-  ]);
+  const {
+    data: organizations,
+    isLoading,
+    isLoadingMore,
+    isPageDisabled,
+    getList,
+  } = useGetList({ endpoint: "organizations" });
 
   const handleAddCompany = () => {
     setcompanyToBeEdited(null);
@@ -101,27 +29,29 @@ const CompanySection = () => {
   };
 
   const handleDeleteCompany = (id) => {
-    if (window.confirm("Are you sure you want to delete this company?")) {
-      setCompanies((prev) => prev.filter((c) => c.id !== id));
+    if (window.confirm("Are you sure you want to delete this service?")) {
+      deleteData({
+        endpoint: `organizations/${id}`,
+        onsuccess: (result) => {
+          if (result) {
+            handleSaveCompany();
+          }
+        },
+      });
     }
   };
 
+  // const handleDeleteCompany = (id) => {
+  //   if (window.confirm("Are you sure you want to delete this company?")) {
+  //     setCompanies((prev) => prev.filter((c) => c.id !== id));
+  //   }
+  // };
+
   const handleSaveCompany = (companyData) => {
-    if (companyToBeEdited) {
-      setCompanies((prev) =>
-        prev.map((company) =>
-          company.id === companyToBeEdited.id
-            ? { ...company, ...companyData }
-            : company
-        )
-      );
-    } else {
-      const newCompany = { ...companyData, id: Date.now() };
-      setCompanies((prev) => [...prev, newCompany]);
-    }
     setShowAddCompany(false);
     setshowEditCompany(false);
     setcompanyToBeEdited(null);
+    getList([]);
   };
 
   const handleBack = () => {
@@ -189,26 +119,26 @@ const CompanySection = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {companies.map((company) => (
+              {organizations.map((company) => (
                 <tr
-                  key={company.id}
+                  key={company.DocId}
                   className="hover:bg-gray-50 transition-colors"
                 >
                   <td className="py-3 px-5">
                     <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0">
                         <img
-                          src={company.imagePreview}
-                          alt={company.title}
+                          src={company.ImageUrl}
+                          alt={company.itle}
                           className="w-12 h-12 rounded-full object-cover border border-gray-200"
                         />
                       </div>
                       <div className="min-w-0 flex-1">
                         <p className="text-base font-semibold text-gray-900">
-                          {company.title}
+                          {company.Title}
                         </p>
                         <p className="text-xs text-gray-500">
-                          {company.productCategories?.join(", ")}
+                          {company.Tags?.join(", ")}
                         </p>
                       </div>
                     </div>
@@ -216,7 +146,7 @@ const CompanySection = () => {
 
                   <td className="py-4 px-6">
                     <p className="text-sm text-gray-700 leading-relaxed max-w-md">
-                      {company.country}
+                      {company.State}, {company.Country}
                     </p>
                   </td>
 
@@ -230,7 +160,7 @@ const CompanySection = () => {
                         <Edit className="w-5 h-5" />
                       </button>
                       <button
-                        onClick={() => handleDeleteCompany(company.id)}
+                        onClick={() => handleDeleteCompany(company.DocId)}
                         className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                         title="Delete company"
                       >
@@ -244,7 +174,7 @@ const CompanySection = () => {
           </table>
         </div>
 
-        {companies.length === 0 && (
+        {organizations.length === 0 && (
           <div className="text-center py-12">
             <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
               <Plus className="w-8 h-8 text-gray-400" />
@@ -260,6 +190,42 @@ const CompanySection = () => {
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
               Add Your First Company
+            </button>
+          </div>
+        )}
+
+        {/* Load More Button */}
+        {!isPageDisabled && (
+          <div className="flex justify-center mt-6">
+            <button
+              onClick={() => getList(organizations, false)}
+              className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-60"
+              disabled={isLoadingMore}
+            >
+              {isLoadingMore ? (
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 00-8 8h4z"
+                  />
+                </svg>
+              ) : (
+                "Load More"
+              )}
             </button>
           </div>
         )}

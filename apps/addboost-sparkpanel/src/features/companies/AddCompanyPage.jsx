@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft, Plus, Trash2 } from "lucide-react";
+import usePostData from "../../hooks/api/usePostData";
+import useUpdateData from "../../hooks/api/useUpdateData";
 
 const AddCompanyPage = ({
   onBack,
@@ -8,17 +10,20 @@ const AddCompanyPage = ({
   description,
   isEditing = false,
   initialValue = {
-    title: "",
-    productCategories: [""],
-    country: "",
+    Title: "",
+    Tags: [""],
+    Country: "",
+    State: "",
     image: null,
-    imagePreview: "",
+    ImageUrl: "",
+    Priority: "",
   },
 }) => {
   const [formData, setFormData] = useState(initialValue);
 
   const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const { isLoading, postData } = usePostData({});
+  const { updateData } = useUpdateData({});
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -29,62 +34,119 @@ const AddCompanyPage = ({
 
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (!file.type.startsWith("image/")) {
-        setErrors((prev) => ({
-          ...prev,
-          imagePreview: "Please select a valid image file",
-        }));
-        return;
-      }
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors((prev) => ({
-          ...prev,
-          imagePreview: "Image size should be less than 5MB",
-        }));
-        return;
-      }
+    if (!file) return;
 
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setFormData((prev) => ({
-          ...prev,
-          image: file,
-          imagePreview: e.target.result,
-        }));
-      };
-      reader.readAsDataURL(file);
-      setErrors((prev) => ({ ...prev, imagePreview: "" }));
+    // ——— Validate type & size ———
+    if (!file.type.startsWith("image/")) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Please select a valid image file",
+      }));
+      return;
     }
+    if (file.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Image size should be less than 5MB",
+      }));
+      return;
+    }
+
+    // ——— Read as ArrayBuffer ———
+    const reader = new FileReader();
+    reader.onload = (loadEvent) => {
+      const arrayBuffer = loadEvent.target.result; // true ArrayBuffer
+      const byteArray = Array.from(new Uint8Array(arrayBuffer));
+
+      // Create a blob URL for preview
+      const previewUrl = URL.createObjectURL(file);
+
+      setFormData((prev) => ({
+        ...prev,
+        ImageUrl: previewUrl,
+        image: {
+          FileType: file.type,
+          FileData: byteArray,
+          FileName: file.name,
+        },
+      }));
+      setErrors((prev) => ({
+        ...prev,
+        image: "",
+        ImageUrl: "",
+      }));
+    };
+
+    reader.onerror = (err) => {
+      console.error("FileReader error:", err);
+      setErrors((prev) => ({
+        ...prev,
+        image: "Failed to read file. Please try again.",
+      }));
+    };
+
+    reader.readAsArrayBuffer(file);
   };
 
   const removeImage = () => {
-    setFormData((prev) => ({ ...prev, image: null, imagePreview: "" }));
+    setFormData((prev) => ({ ...prev, image: null, ImageUrl: "" }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.title.trim()) newErrors.title = "Company name is required";
+    if (!formData.Title.trim()) newErrors.title = "Company name is required";
     if (
-      !formData.productCategories.length ||
-      formData.productCategories.every((cat) => cat.trim() === "")
+      !formData.Tags.length ||
+      formData.Tags.every((cat) => cat.trim() === "")
     )
-      newErrors.productCategories = "Product categories are required";
-    if (!formData.country.trim()) newErrors.country = "Country is required";
-    if (!formData.imagePreview)
-      newErrors.imagePreview = "Company image is required";
+      newErrors.Tags = "Product categories are required";
+    if (!formData.Country.trim()) newErrors.Country = "Country is required";
+    if (!formData.ImageUrl) newErrors.ImageUrl = "Company image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleFormSubmit = (fileUrl) => {
+    const { image, ImageUrl, ...rest } = formData;
+    const payload = { ...rest, ImageUrl: fileUrl };
+
+    if (isEditing) {
+      updateData({
+        endpoint: `organizations/${formData.DocId}`,
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    } else {
+      postData({
+        endpoint: "organizations",
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    setIsLoading(true);
-    setTimeout(() => {
-      onSave(formData);
-      setIsLoading(false);
-    }, 1500);
+
+    if (formData.image) {
+      postData({
+        endpoint: "files/admin",
+        payload: formData.image,
+        onsuccess: (result) => {
+          handleFormSubmit(result.FileUrl);
+        },
+      });
+    } else {
+      handleFormSubmit(formData.ImageUrl);
+    }
   };
 
   return (
@@ -119,8 +181,8 @@ const AddCompanyPage = ({
             </label>
             <input
               type="text"
-              value={formData.title}
-              onChange={(e) => handleInputChange("title", e.target.value)}
+              value={formData.Title}
+              onChange={(e) => handleInputChange("Title", e.target.value)}
               className={`w-full px-4 py-3 border mb-3 rounded-lg ${
                 errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
@@ -131,21 +193,44 @@ const AddCompanyPage = ({
             )}
           </div>
 
+          {/* Priority */}
+          <div className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Priority *
+              </label>
+              <input
+                type="number"
+                value={formData.Priority}
+                onChange={(e) =>
+                  handleInputChange("Priority", Number(e.target.value))
+                }
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
+                placeholder="Order Priority"
+              />
+              {errors.title && (
+                <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+              )}
+            </div>
+          </div>
+
           {/* Product Categories */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Product Categories *
             </label>
 
-            {formData.productCategories.map((category, index) => (
+            {formData.Tags.map((category, index) => (
               <div key={index} className="flex items-center space-x-2 mb-2">
                 <input
                   type="text"
                   value={category}
                   onChange={(e) => {
-                    const updated = [...formData.productCategories];
+                    const updated = [...formData.Tags];
                     updated[index] = e.target.value;
-                    handleInputChange("productCategories", updated);
+                    handleInputChange("Tags", updated);
                   }}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                   placeholder={`Category ${index + 1}`}
@@ -157,23 +242,20 @@ const AddCompanyPage = ({
               <button
                 type="button"
                 onClick={() =>
-                  handleInputChange("productCategories", [
-                    ...formData.productCategories,
-                    "",
-                  ])
+                  handleInputChange("Tags", [...formData.Tags, ""])
                 }
                 className="flex items-center mt-1  mb-2 text-blue-600 hover:underline"
               >
                 <Plus className="w-4 h-4 mr-1 " /> Add New Category
               </button>
 
-              {formData.productCategories.length > 1 && (
+              {formData.Tags.length > 1 && (
                 <button
                   type="button"
                   onClick={() => {
-                    const updated = [...formData.productCategories];
+                    const updated = [...formData.Tags];
                     updated.pop();
-                    handleInputChange("productCategories", updated);
+                    handleInputChange("Tags", updated);
                   }}
                   className="flex items-center justify-center border border-red-500 text-red-500 rounded-md p-2 hover:bg-red-50"
                 >
@@ -182,13 +264,28 @@ const AddCompanyPage = ({
               )}
             </div>
 
-            {errors.productCategories && (
-              <p className="text-sm text-red-600 mb-2">
-                {errors.productCategories}
-              </p>
+            {errors.Tags && (
+              <p className="text-sm text-red-600 mb-2">{errors.Tags}</p>
             )}
           </div>
-
+          {/*State */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              State *
+            </label>
+            <input
+              type="text"
+              value={formData.State}
+              onChange={(e) => handleInputChange("State", e.target.value)}
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
+                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
+              placeholder="e.g., India"
+            />
+            {errors.State && (
+              <p className="text-sm text-red-600 mb-2">{errors.State}</p>
+            )}
+          </div>
           {/* Country */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -196,15 +293,15 @@ const AddCompanyPage = ({
             </label>
             <input
               type="text"
-              value={formData.country}
-              onChange={(e) => handleInputChange("country", e.target.value)}
+              value={formData.Country}
+              onChange={(e) => handleInputChange("Country", e.target.value)}
               className={`w-full px-4 py-3 border mb-3 rounded-lg ${
-                errors.country ? "border-red-300 bg-red-50" : "border-gray-300"
+                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., India"
             />
-            {errors.country && (
-              <p className="text-sm text-red-600 mb-2">{errors.country}</p>
+            {errors.Country && (
+              <p className="text-sm text-red-600 mb-2">{errors.Country}</p>
             )}
           </div>
 
@@ -214,7 +311,7 @@ const AddCompanyPage = ({
               Company Image *
             </label>
             <div className="overflow-hidden w-[250px] h-[200px]">
-              {!formData.imagePreview ? (
+              {!formData.ImageUrl ? (
                 <div
                   className={`border-2 border-dashed p-8 text-center ${
                     errors.image
@@ -246,7 +343,7 @@ const AddCompanyPage = ({
               ) : (
                 <div className="relative">
                   <img
-                    src={formData.imagePreview}
+                    src={formData.ImageUrl}
                     alt="Company preview"
                     className="w-full h-48 object-cover rounded-lg border"
                   />
@@ -259,10 +356,8 @@ const AddCompanyPage = ({
                   </button>
                 </div>
               )}
-              {errors.imagePreview && (
-                <p className="text-sm text-red-600 mt-1">
-                  {errors.imagePreview}
-                </p>
+              {errors.ImageUrl && (
+                <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
               )}
             </div>
           </div>

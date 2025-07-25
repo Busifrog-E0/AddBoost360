@@ -2,26 +2,28 @@ import React from "react";
 
 const ServicePreviewCard = ({ service }) => {
   const {
-    title,
-    description,
-    subtitle,
-    services,
-    buttonText,
-    imagePreview,
+    Title,
+    Description2,
+    Description1,
+    ServiceList,
+    ButtonMessage1,
+    ImageUrl,
   } = service || {};
 
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 overflow-hidden">
       <div className="mb-4">
         <h2 className="text-lg font-semibold text-gray-900">Preview</h2>
-        <p className="text-sm text-gray-500">This is how your service card will appear</p>
+        <p className="text-sm text-gray-500">
+          This is how your service card will appear
+        </p>
       </div>
 
       {/* Image */}
       <div className="w-full mb-4">
-        {imagePreview?.trim() ? (
+        {ImageUrl?.trim() ? (
           <img
-            src={imagePreview}
+            src={ImageUrl}
             alt="Service"
             className="w-full h-48 object-cover rounded-md"
           />
@@ -34,31 +36,36 @@ const ServicePreviewCard = ({ service }) => {
 
       {/* Title */}
       <h2 className="text-lg font-semibold uppercase text-gray-900 mb-2">
-        {title?.trim() || "{{Service Title}}"}
+        {Title?.trim() || "{{Service Title}}"}
       </h2>
 
       {/* Description */}
       <p className="text-sm text-gray-600 mb-4">
-        {description?.trim() || "{{Service Description}}"}
+        {Description2?.trim() || "{{Service Description}}"}
       </p>
 
       {/* Subtitle */}
-      <p className="font-semibold text-gray-800 mb-2"> {subtitle?.trim() || "{{Service Subtitle}}"}</p>
+      <p className="font-semibold text-gray-800 mb-2">
+        {" "}
+        {Description1?.trim() || "{{Service Subtitle}}"}
+      </p>
 
       {/* Services List */}
       <div>
         <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1">
-          {services?.length > 0
-            ? services.map((item, idx) => (
+          {ServiceList?.length > 0 ? (
+            ServiceList.map((item, idx) => (
               <li key={idx}>{item?.trim() || ``}</li>
             ))
-            : <li key="default">{""}</li>}
+          ) : (
+            <li key="default">{""}</li>
+          )}
         </ul>
       </div>
 
       {/* CTA Button */}
       <button className="mt-6 w-full border border-black text-sm font-medium px-4 py-2 uppercase hover:bg-black hover:text-white transition">
-        {buttonText?.trim() || "{{Call-to-Action Button Text}}"} →
+        {ButtonMessage1?.trim() || "{{Call-to-Action Button Text}}"} →
       </button>
     </div>
   );

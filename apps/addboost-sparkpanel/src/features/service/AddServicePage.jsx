@@ -1,28 +1,33 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
 import ServicePreviewCard from "./ServicePreviewCard";
+import usePostData from "../../hooks/api/usePostData";
+import useUpdateData from "../../hooks/api/useUpdateData";
 
 const AddServicePage = ({
   onBack,
   onSave,
   title,
   description,
+
   isEditing = false,
   initialValue = {
-    title: "",
-    subtitle: "",
-    description: "",
-    buttonText: "",
+    Title: "",
+    Type: "",
+    Description1: "",
+    Description2: "",
+    ButtonMessage1: "",
 
     image: null,
-    imagePreview: "",
-    services: [""],
+    ImageUrl: "",
+    ServiceList: [""],
   },
-}) => {
+}) => { 
+  const { isLoading, postData } = usePostData({});
+  const { updateData } = useUpdateData({});
   const [formData, setFormData] = useState(initialValue);
 
   const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -32,85 +37,138 @@ const AddServicePage = ({
   };
 
   const handleServiceChange = (index, value) => {
-    const newServices = [...formData.services];
+    const newServices = [...formData.ServiceList];
     newServices[index] = value;
-    setFormData((prev) => ({ ...prev, services: newServices }));
+    setFormData((prev) => ({ ...prev, ServiceList: newServices }));
   };
 
   const addService = () => {
     setFormData((prev) => ({
       ...prev,
-      services: [...prev.services, ""],
+      ServiceList: [...prev.ServiceList, ""],
     }));
   };
 
   const removeService = (index) => {
-    const newServices = formData.services.filter((_, i) => i !== index);
-    setFormData((prev) => ({ ...prev, services: newServices }));
+    const newServices = formData.ServiceList.filter((_, i) => i !== index);
+    setFormData((prev) => ({ ...prev, ServiceList: newServices }));
   };
 
   const handleImageUpload = (e) => {
-    console.log(e);
     const file = e.target.files?.[0];
-    if (file) {
-      if (!file.type.startsWith("image/")) {
-        setErrors((prev) => ({
-          ...prev,
-          image: "Please select a valid image file",
-        }));
-        return;
-      }
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors((prev) => ({
-          ...prev,
-          image: "Image size should be less than 5MB",
-        }));
-        return;
-      }
-      setFormData((prev) => ({ ...prev, image: file }));
+    if (!file) return;
 
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setFormData((prev) => ({
-          ...prev,
-          imagePreview: e.target.result,
-        }));
-      };
-      reader.readAsDataURL(file);
-      setErrors((prev) => {
-        console.log(prev);
-        return { ...prev, imagePreview: "" };
-      });
+    // ——— Validate type & size ———
+    if (!file.type.startsWith("image/")) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Please select a valid image file",
+      }));
+      return;
     }
+    if (file.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Image size should be less than 5MB",
+      }));
+      return;
+    }
+
+    // ——— Read as ArrayBuffer ———
+    const reader = new FileReader();
+    reader.onload = (loadEvent) => {
+      const arrayBuffer = loadEvent.target.result; // true ArrayBuffer
+      const byteArray = Array.from(new Uint8Array(arrayBuffer));
+
+      // Create a blob URL for preview
+      const previewUrl = URL.createObjectURL(file);
+
+      setFormData((prev) => ({
+        ...prev,
+        ImageUrl: previewUrl,
+        image: {
+          FileType: file.type,
+          FileData: byteArray,
+          FileName: file.name,
+        },
+      }));
+      setErrors((prev) => ({
+        ...prev,
+        image: "",
+        ImageUrl: "",
+      }));
+    };
+
+    reader.onerror = (err) => {
+      console.error("FileReader error:", err);
+      setErrors((prev) => ({
+        ...prev,
+        image: "Failed to read file. Please try again.",
+      }));
+    };
+
+    reader.readAsArrayBuffer(file);
   };
 
   const removeImage = () => {
-    setFormData((prev) => ({ ...prev, image: null, imagePreview: "" }));
+    setFormData((prev) => ({ ...prev, image: null, ImageUrl: "" }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.title.trim()) newErrors.title = "Title is required";
-    if (!formData.subtitle.trim()) newErrors.subtitle = "Subtitle is required";
-    if (!formData.description.trim())
+    if (!formData.Title.trim()) newErrors.title = "Title is required";
+    if (!formData.Description1.trim())
+      newErrors.subtitle = "Subtitle is required";
+    if (!formData.Description2.trim())
       newErrors.description = "Description is required";
 
-    if (!formData.buttonText.trim())
+    if (!formData.ButtonMessage1.trim())
       newErrors.buttonText = "Button text is required";
-    if (!formData.imagePreview)
-      newErrors.imagePreview = "Service image is required";
+    if (!formData.ImageUrl) newErrors.ImageUrl = "Service image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  const handleFormSubmit = (fileUrl) => {
+    const { image, ImageUrl, ...rest } = formData;
+    const payload = { ...rest, ImageUrl: fileUrl };
 
+    if (isEditing) {
+      updateData({
+        endpoint: `services/${formData.DocId}`,
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    } else {
+      postData({
+        endpoint: "services",
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    setIsLoading(true);
-    setTimeout(() => {
-      onSave(formData);
-      setIsLoading(false);
-    }, 1500);
+
+    if (formData.image) {
+      postData({
+        endpoint: "files/admin",
+        payload: formData.image,
+        onsuccess: (result) => {
+          handleFormSubmit(result.FileUrl);
+        },
+      });
+    } else {
+      handleFormSubmit(formData.ImageUrl);
+    }
   };
 
   return (
@@ -148,8 +206,8 @@ const AddServicePage = ({
                 </label>
                 <input
                   type="text"
-                  value={formData.title}
-                  onChange={(e) => handleInputChange("title", e.target.value)}
+                  value={formData.Title}
+                  onChange={(e) => handleInputChange("Title", e.target.value)}
                   className={`w-full px-4 py-3 border rounded-lg ${
                     errors.title
                       ? "border-red-300 bg-red-50"
@@ -161,7 +219,44 @@ const AddServicePage = ({
                   <p className="mt-1 text-sm text-red-600">{errors.title}</p>
                 )}
               </div>
+              <select
+                id="cars"
+                name="cars"
+                onChange={(e) => {
+                  console.log(e.target.value);
+                  handleInputChange("Type", e.target.value);
+                }}
+              >
+                <option value="volvo">Volvo XC90</option>
+                <option value="saab">Saab 95</option>
+                <option value="mercedes">Mercedes SLK</option>
+                <option value="audi">Audi TT</option>
+              </select>
 
+              {/* Priority */}
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Priority *
+                  </label>
+                  <input
+                    type="number"
+                    value={formData.Priority}
+                    onChange={(e) =>
+                      handleInputChange("Priority", Number(e.target.value))
+                    }
+                    className={`w-full px-4 py-3 border rounded-lg ${
+                      errors.title
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
+                    }`}
+                    placeholder="Order Priority"
+                  />
+                  {errors.title && (
+                    <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+                  )}
+                </div>
+              </div>
               {/* Description */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -169,9 +264,9 @@ const AddServicePage = ({
                 </label>
                 <textarea
                   rows={6}
-                  value={formData.description}
+                  value={formData.Description2}
                   onChange={(e) =>
-                    handleInputChange("description", e.target.value)
+                    handleInputChange("Description2", e.target.value)
                   }
                   className={`w-full px-4 py-3 border rounded-lg resize-none ${
                     errors.description
@@ -193,9 +288,9 @@ const AddServicePage = ({
                 </label>
                 <input
                   type="text"
-                  value={formData.subtitle}
+                  value={formData.Description1}
                   onChange={(e) =>
-                    handleInputChange("subtitle", e.target.value)
+                    handleInputChange("Description1", e.target.value)
                   }
                   className={`w-full px-4 py-3 border rounded-lg ${
                     errors.subtitle
@@ -215,7 +310,7 @@ const AddServicePage = ({
                   List of Services
                 </label>
 
-                {formData.services.map((service, index) => (
+                {formData.ServiceList.map((service, index) => (
                   <div key={index} className="flex items-center space-x-2 mb-2">
                     <input
                       type="text"
@@ -238,11 +333,11 @@ const AddServicePage = ({
                     <Plus className="w-4 h-4 mr-1" /> Add New Service
                   </button>
 
-                  {formData.services.length > 1 && (
+                  {formData.ServiceList.length > 1 && (
                     <button
                       type="button"
                       onClick={() =>
-                        removeService(formData.services.length - 1)
+                        removeService(formData.ServiceList.length - 1)
                       }
                       className="flex items-center justify-center border border-red-500 text-red-500 rounded-md p-2 hover:bg-red-50"
                     >
@@ -259,9 +354,9 @@ const AddServicePage = ({
                 </label>
                 <input
                   type="text"
-                  value={formData.buttonText}
+                  value={formData.ButtonMessage1}
                   onChange={(e) =>
-                    handleInputChange("buttonText", e.target.value)
+                    handleInputChange("ButtonMessage1", e.target.value)
                   }
                   className={`w-full px-4 py-3 border rounded-lg ${
                     errors.buttonText
@@ -283,10 +378,10 @@ const AddServicePage = ({
                   Service Image *
                 </label>
                 <div className="overflow-hidden w-[250px] h-[200px]">
-                  {!formData.imagePreview ? (
+                  {!formData.ImageUrl ? (
                     <div
                       className={`border-2 border-dashed p-8 text-center ${
-                        errors.imagePreview
+                        errors.ImageUrl
                           ? "border-red-300 bg-red-50"
                           : "border-gray-300"
                       }`}
@@ -315,7 +410,7 @@ const AddServicePage = ({
                   ) : (
                     <div className="relative">
                       <img
-                        src={formData.imagePreview}
+                        src={formData.ImageUrl}
                         alt="Service preview"
                         className="w-full h-48 object-cover rounded-lg border"
                       />
@@ -328,9 +423,9 @@ const AddServicePage = ({
                       </button>
                     </div>
                   )}
-                  {errors.imagePreview && (
+                  {errors.ImageUrl && (
                     <p className="text-sm text-red-600 mt-1">
-                      {errors.imagePreview}
+                      {errors.ImageUrl}
                     </p>
                   )}
                 </div>

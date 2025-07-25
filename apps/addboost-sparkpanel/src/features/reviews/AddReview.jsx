@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Upload, X, Save, ArrowLeft } from "lucide-react";
+import usePostData from "../../hooks/api/usePostData";
+import useUpdateData from "../../hooks/api/useUpdateData";
 
 const AddReview = ({
   onBack,
@@ -8,17 +10,18 @@ const AddReview = ({
   description,
   isEditing = false,
   initialValue = {
-    name: "",
+    Title: "",
+    Priority: "",
     designation: "",
-    successStories: "",
+    Description1: "",
     image: null,
-    imagePreview: "",
+    ImageUrl: "",
   },
 }) => {
   const [formData, setFormData] = useState(initialValue);
-
+  const { updateData } = useUpdateData({});
+  const { isLoading, postData } = usePostData({});
   const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -29,60 +32,117 @@ const AddReview = ({
 
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (!file.type.startsWith("image/")) {
-        setErrors((prev) => ({
-          ...prev,
-          image: "Please select a valid image file",
-        }));
-        return;
-      }
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors((prev) => ({
-          ...prev,
-          image: "Image size should be less than 5MB",
-        }));
-        return;
-      }
+    if (!file) return;
 
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setFormData((prev) => ({
-          ...prev,
-          image: file,
-          imagePreview: event.target.result,
-        }));
-      };
-      reader.readAsDataURL(file);
-      setErrors((prev) => ({ ...prev, image: "" }));
+    // ——— Validate type & size ———
+    if (!file.type.startsWith("image/")) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Please select a valid image file",
+      }));
+      return;
     }
+    if (file.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Image size should be less than 5MB",
+      }));
+      return;
+    }
+
+    // ——— Read as ArrayBuffer ———
+    const reader = new FileReader();
+    reader.onload = (loadEvent) => {
+      const arrayBuffer = loadEvent.target.result; // true ArrayBuffer
+      const byteArray = Array.from(new Uint8Array(arrayBuffer));
+
+      // Create a blob URL for preview
+      const previewUrl = URL.createObjectURL(file);
+
+      setFormData((prev) => ({
+        ...prev,
+        ImageUrl: previewUrl,
+        image: {
+          FileType: file.type,
+          FileData: byteArray,
+          FileName: file.name,
+        },
+      }));
+      setErrors((prev) => ({
+        ...prev,
+        image: "",
+        ImageUrl: "",
+      }));
+    };
+
+    reader.onerror = (err) => {
+      console.error("FileReader error:", err);
+      setErrors((prev) => ({
+        ...prev,
+        image: "Failed to read file. Please try again.",
+      }));
+    };
+
+    reader.readAsArrayBuffer(file);
   };
 
   const removeImage = () => {
-    setFormData((prev) => ({ ...prev, image: null, imagePreview: "" }));
+    setFormData((prev) => ({ ...prev, image: null, ImageUrl: "" }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.Title.trim()) newErrors.Title = "Name is required";
     if (!formData.designation.trim())
       newErrors.designation = "Designation is required";
-    if (!formData.successStories.trim())
-      newErrors.successStories = "Review is required";
-    if (!formData.imagePreview) newErrors.imagePreview = "Image is required";
+    if (!formData.Description1.trim())
+      newErrors.Description1 = "Review is required";
+    if (!formData.ImageUrl) newErrors.ImageUrl = "Image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleFormSubmit = (fileUrl) => {
+    const { image, ImageUrl, ...rest } = formData;
+    const payload = { ...rest, ImageUrl: fileUrl };
+
+    if (isEditing) {
+      updateData({
+        endpoint: `testimonialss/${formData.DocId}`,
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    } else {
+      postData({
+        endpoint: "testimonialss",
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
-    setIsLoading(true);
-    setTimeout(() => {
-      onSave(formData);
-      setIsLoading(false);
-    }, 1500);
+    if (formData.image) {
+      postData({
+        endpoint: "files/admin",
+        payload: formData.image,
+        onsuccess: (result) => {
+          handleFormSubmit(result.FileUrl);
+        },
+      });
+    } else {
+      handleFormSubmit(formData.ImageUrl);
+    }
   };
 
   return (
@@ -108,18 +168,40 @@ const AddReview = ({
             </label>
             <input
               type="text"
-              value={formData.name}
-              onChange={(e) => handleInputChange("name", e.target.value)}
+              value={formData.Title}
+              onChange={(e) => handleInputChange("Title", e.target.value)}
               className={`w-full px-4 py-3 border rounded-lg ${
-                errors.name ? "border-red-300 bg-red-50" : "border-gray-300"
+                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
-              placeholder="Customer name"
+              placeholder="Customer Title"
             />
-            {errors.name && (
-              <p className="text-sm text-red-600">{errors.name}</p>
+            {errors.Title && (
+              <p className="text-sm text-red-600">{errors.Title}</p>
             )}
           </div>
 
+          {/* Priority */}
+          <div className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Priority *
+              </label>
+              <input
+                type="number"
+                value={formData.Priority}
+                onChange={(e) =>
+                  handleInputChange("Priority", Number(e.target.value))
+                }
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
+                placeholder="Order Priority"
+              />
+              {errors.title && (
+                <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+              )}
+            </div>
+          </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Designation *
@@ -145,20 +227,20 @@ const AddReview = ({
               Customer Review *
             </label>
             <textarea
-              value={formData.successStories}
+              value={formData.Description1}
               onChange={(e) =>
-                handleInputChange("successStories", e.target.value)
+                handleInputChange("Description1", e.target.value)
               }
               rows={4}
               className={`w-full px-4 py-3 border rounded-lg resize-none ${
-                errors.successStories
+                errors.Description1
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
               }`}
               placeholder="Customer feedback or success story"
             />
-            {errors.successStories && (
-              <p className="text-sm text-red-600">{errors.successStories}</p>
+            {errors.Description1 && (
+              <p className="text-sm text-red-600">{errors.Description1}</p>
             )}
           </div>
 
@@ -167,10 +249,10 @@ const AddReview = ({
               Customer Image *
             </label>
             <div className="overflow-hidden w-[250px] h-[150px]">
-              {!formData.imagePreview ? (
+              {!formData.ImageUrl ? (
                 <div
                   className={`border-2 border-dashed  p-6 text-center ${
-                    errors.imagePreview
+                    errors.ImageUrl
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
                   }`}
@@ -195,7 +277,7 @@ const AddReview = ({
               ) : (
                 <div className="relative">
                   <img
-                    src={formData.imagePreview}
+                    src={formData.ImageUrl}
                     alt="preview"
                     className="w-full h-48 object-cover rounded-lg border"
                   />
@@ -208,10 +290,8 @@ const AddReview = ({
                   </button>
                 </div>
               )}
-              {errors.imagePreview && (
-                <p className="text-sm text-red-600 mt-1">
-                  {errors.imagePreview}
-                </p>
+              {errors.ImageUrl && (
+                <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
               )}
             </div>
           </div>

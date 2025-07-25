@@ -6,10 +6,10 @@ const AddPortfolioPage = ({
   onBack,
   onSave,
   initialValue = {
-    title: "",
-    impactPoints: [""],
+    Title: "",
+    ServiceList: [""],
     image: null,
-    imagePreview: "",
+    ImageUrl: "",
     buttonText: "",
     type: "",
     linkToProject: "",
