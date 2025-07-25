@@ -1,0 +1,59 @@
+const get_{{pascalCase entity}} = async (req, res, next) => {
+    // #swagger.tags = ['{{pascalCase entity}}']
+    /* #swagger.responses[200] = {
+                description: '{{pascalCase entity}} Data',
+                schema: {  $ref: '#/definitions/{{pascalCase entity}}DataArray' }
+        } 
+    */
+    return next();
+}
+const get_{{pascalCase entity}}_{{pascalCase entity}}Id = async (req, res, next) => {
+    // #swagger.tags = ['{{pascalCase entity}}']
+    /* #swagger.responses[200] = {
+                description: '{{pascalCase entity}} Data',
+                schema: { $ref: '#/definitions/{{pascalCase entity}}Data' }
+        } 
+    */
+    return next();
+}
+
+const post_{{pascalCase entity}} = async (req, res, next) => {
+    // #swagger.tags = ['{{pascalCase entity}}']
+    /*  #swagger.parameters['body'] = {
+              in: 'body',
+              schema: { $ref: '#/definitions/{{pascalCase entity}}Data' }
+      }
+  */
+    return next();
+}
+
+const patch_{{pascalCase entity}}_{{pascalCase entity}}Id = async (req, res, next) => {
+    // #swagger.tags = ['{{pascalCase entity}}']
+    /*  #swagger.parameters['body'] = {
+                in: 'body',
+                schema: { $ref: '#/definitions/{{pascalCase entity}}Data' }
+        }
+*/
+
+    return next();
+};
+
+const delete_{{pascalCase entity}}_{{pascalCase entity}}Id = async (req, res, next) => {
+    // #swagger.tags = ['{{pascalCase entity}}']
+
+    return next();
+};
+
+
+
+
+
+
+
+export default {
+    get_{{pascalCase entity}}_{{pascalCase entity}}Id,
+    get_{{pascalCase entity}},
+    post_{{pascalCase entity}},
+    patch_{{pascalCase entity}}_{{pascalCase entity}}Id,
+    delete_{{pascalCase entity}}_{{pascalCase entity}}Id,
+}
