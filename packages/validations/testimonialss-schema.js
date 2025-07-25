@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 /**
  * Schema for Testimonials
@@ -8,6 +8,7 @@ const TestimonialsSchema = Joi.object({
   Description1: Joi.string().required(),
   ImageUrl: Joi.string().required(),
   Priority: Joi.number().required(),
+  Designation: Joi.string().required(),
 });
 
 export { TestimonialsSchema };
