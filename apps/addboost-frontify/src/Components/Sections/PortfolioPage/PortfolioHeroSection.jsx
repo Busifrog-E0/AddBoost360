@@ -7,9 +7,18 @@ const PortfolioHeroSection = () => {
   return (
     <div
       className="bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url(${Pink})` }}
+
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 bg-lightblack lg:bg-transparent items-center gap-10 lg:gap-20 h-[900px] lg:min-h-[650px] lg:h-auto px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24 relative">
+      <div className="grid grid-cols-1 lg:grid-cols-2 bg-lightblack lg:bg-transparent items-center gap-10 lg:gap-20 h-[900px] lg:min-h-[650px] lg:h-auto px-6 md:px-14 2xl:px-60 3xl:px-80 
+  4xl:px-120 5xl:px-160 6xl:px-180
+  7xl:px-220 8xl:px-240 9xl:px-260
+  10xl:px-280 11xl:px-300 12xl:px-320
+  13xl:px-340 14xl:px-360 15xl:px-400
+   py-14 md:py-20 lg:py-24 
+  4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
+8xl:py-80 9xl:py-96 10xl:py-112 
+11xl:py-128 12xl:py-144 13xl:py-160 
+14xl:py-180 15xl:py-200 relative">
         {/* Background Image for Mobile */}
         <div
           className="absolute inset-0 lg:hidden bg-cover bg-center opacity-50 z-0"
@@ -18,16 +27,14 @@ const PortfolioHeroSection = () => {
 
         {/* Text Section */}
         <div className="relative z-10  text-center lg:text-left flex flex-col items-center lg:items-start">
-          <p className="font-inter font-semibold text-sm mb-2 text-white lg:text-black">
+          <p className="font-inter font-semibold text-sm mb-2 text-white lg:text-gray-400 italic">
             Proven Projects. Global Impact. Digital Excellence.
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-garamond uppercase leading-snug  text-white lg:text-black font-bold">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-anton uppercase leading-snug  text-white lg:text-white ">
             Our Portfolio
           </h1>
-          <p className="font-inter text-sm sm:text-base font-lato mt-6 max-w-xl  text-white lg:text-black">
-            We power global success through bold branding, smart digital
-            campaigns, and AI-driven websites—built with creativity, strategy,
-            and innovation.
+          <p className="font-inter text-base md:text-lg font-lato mt-6 max-w-xl  text-white lg:text-white">
+            Bold ideas. Smart execution. Explore how we transform vision into impactful digital experiences.
           </p>
         </div>
 

@@ -17,10 +17,10 @@ const ServiceCard = ({ service }) => {
         {/* Service Content */}
         <div className="pt-4 flex flex-col justify-between flex-grow">
           <div>
-            <h3 className="font-garamond text-xl lg:text-2xl  text-gray-900 mb-2 uppercase font-bold">
+            <h3 className="font-anton text-xl lg:text-2xl  text-PrimaryWhite mb-2 uppercase ">
               {service.title}
             </h3>
-            <p className="font-inter text-sm lg:text-base text-gray-600 leading-relaxed m-0">
+            <p className="font-inter text-sm lg:text-base  text-white leading-relaxed m-0">
               {service.description}
             </p>
           </div>
@@ -31,3 +31,78 @@ const ServiceCard = ({ service }) => {
 };
 
 export default ServiceCard;
+
+
+
+
+
+// import React, { useEffect, useState } from "react";
+// import noice from '../../../../assets/noice.png'
+
+// const ServiceCard = ({ service }) => {
+//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+//   const [isFading, setIsFading] = useState(false);
+//   const [showNoise, setShowNoise] = useState(false);
+
+//   useEffect(() => {
+//     if (!service.images || service.images.length <= 1) return;
+
+//     const interval = setInterval(() => {
+//       setIsFading(true);
+//       setShowNoise(true);
+
+//       setTimeout(() => {
+//         setCurrentImageIndex((prevIndex) =>
+//           (prevIndex + 1) % service.images.length
+//         );
+//         setIsFading(false);
+//         setTimeout(() => setShowNoise(false), 300);
+//       }, 400);
+//     }, 3000);
+
+//     return () => clearInterval(interval);
+//   }, [service.images]);
+
+//   return (
+//     <div className="h-full">
+//       <div className="h-full flex flex-col">
+//         <div className="relative rounded-xl h-28 md:h-36 lg:h-44 xl:h-64 overflow-hidden flex-shrink-0">
+
+//           <img
+//             src={service.images[currentImageIndex]}
+//             alt={service.title}
+//             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"
+//               }`}
+//           />
+
+//           {showNoise && (
+//             <div
+//               className="absolute inset-0 pointer-events-none bg-repeat opacity-20 animate-pulse"
+//               style={{
+//                 backgroundImage: `url(${noice})`,
+//                 backgroundSize: "150px",
+//                 mixBlendMode: "soft-light",
+//               }}
+//             />
+//           )}
+
+//           <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+//         </div>
+
+//         <div className="pt-4 flex flex-col justify-between flex-grow">
+//           <div>
+//             <h3 className="font-anton text-xl lg:text-2xl text-PrimaryWhite mb-2 uppercase">
+//               {service.title}
+//             </h3>
+//             <p className="font-inter text-sm lg:text-base text-white leading-relaxed m-0">
+//               {service.description}
+//             </p>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ServiceCard;
+

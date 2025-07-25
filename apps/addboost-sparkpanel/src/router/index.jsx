@@ -3,30 +3,45 @@ import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
-} from "react-router"; // use react-router-dom, not just react-router
+} from "react-router";
+
 import MainLayout from "../layout/MainLayout";
-import ServiceSection from "../components/ServiceSection";
-import CompanySection from "../components/CompanySection";
-import TeamSection from "../components/TeamSection";
-import PortfolioSection from "../components/PortfolioSection";
-import AboutSection from "../components/AboutSection";
-import AddServicePage from "../components/AddServicePage";
-import FormListPage from "../components/FormListPage";
+import ServiceSection from "../features/service/ServiceSection";
 
-import ReviewSection from "../components/ReviewSection";
+import TeamSection from "../features/team/TeamSection";
+import PortfolioSection from "../features/portfolio/PortfolioSection";
 
+import AddServicePage from "../features/service/AddServicePage";
+import FormListPage from "../features/leads/FormListPage";
+import ReviewSection from "../features/reviews/ReviewSection";
+import LoginPage from "../features/auth/LoginPage";
+import CompanySection from "../features/companies/CompanySection";
+import AuthLayout from "../features/auth/layouts/AuthLayout";
+import UnAuthLayout from "../features/auth/layouts/UnAuthLayout";
+
+// ✅ Render LoginPage OUTSIDE MainLayout
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<MainLayout />}>
-      <Route index element={<ServiceSection />} />
-      <Route path="/services" element={<ServiceSection />} />
-      <Route path="/services/add/new" element={<AddServicePage />} />
-      <Route path="/companies" element={<CompanySection />} />
-      <Route path="/portfolio" element={<PortfolioSection />} />
-      <Route path="/team" element={<TeamSection />} />
-      <Route path="/about" element={<AboutSection />} />
-      <Route path="/form" element={<FormListPage />} />
-      <Route path="/review" element={<ReviewSection />} />
-    </Route>
+    <>
+      {/* Standalone Login page */}
+      <Route path="/login" element={<UnAuthLayout/>}>
+      <Route index element={<LoginPage />} />
+
+      </Route>
+      <Route path="/" element={<AuthLayout />}>
+        {/* All other routes use MainLayout */}
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<ServiceSection />} />
+          <Route path="/services" element={<ServiceSection />} />
+          <Route path="/services/add/new" element={<AddServicePage />} />
+          <Route path="/companies" element={<CompanySection />} />
+          <Route path="/portfolio" element={<PortfolioSection />} />
+          <Route path="/team" element={<TeamSection />} />
+
+          <Route path="/form" element={<FormListPage />} />
+          <Route path="/review" element={<ReviewSection />} />
+        </Route>
+      </Route>
+    </>
   )
 );

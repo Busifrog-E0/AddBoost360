@@ -72,7 +72,7 @@ const ServiceSection = () => {
     },
     {
       id: 5,
-      title: "STARTUP PRODUCT SOURCING & ESCROW SERVICES",
+      title: "STARTUP PRODUCT SOURCING & ESCROW Model Management",
       subtitle: "Includes:",
       description:
         "Launch Your Store with Confidence. We handle the rest. We support startups with sourcing, supplier negotiation, and purchase management.",
@@ -118,7 +118,7 @@ const ServiceSection = () => {
   ]);
 
   return (
-    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24">
+    <div className=" ">
       <ServiceList howAllServicesButton={true} services={services} />
     </div>
   );
