@@ -21,20 +21,20 @@ const router = e.Router();
 
 
 
-router.get('/forms', ValidateGetForm, QueryParameterFormatting, SwaggerDocs.get_Form,
+router.get('/forms', decodeIDToken, ensureAuthorized("Admin"), ValidateGetForm, QueryParameterFormatting, SwaggerDocs.get_Form,
 	//@ts-ignore
 	asyncHandler(GetForms));
 
 
 
-router.get('/forms/:FormId', SwaggerDocs.get_Form_FormId,
+router.get('/forms/:FormId', decodeIDToken, ensureAuthorized("Admin"), SwaggerDocs.get_Form_FormId,
 	// @ts-ignore
 	asyncHandler(GetOneFromForms)
 );
 
 
 
-router.post('/forms', decodeIDToken, ensureAuthorized("Admin"), ValidatePostForm, SwaggerDocs.post_Form,
+router.post('/forms', ValidatePostForm, SwaggerDocs.post_Form,
 	// @ts-ignore
 	asyncHandler(PostForms)
 );
