@@ -6,7 +6,7 @@ import Joi from "joi";
 const PortfolioSchema = Joi.object({
   Title: Joi.string().required(),
   ImageUrl: Joi.string().required(),
-  Description1: Joi.string().required(),
+  LinkToProject: Joi.string(),
   Type: Joi.string().required(),
   ImpactPoints: Joi.array().items(Joi.string().trim().allow("")).required(),
   Priority: Joi.number().required(),
