@@ -21,27 +21,27 @@ const router = e.Router();
 
 
 
-router.get('/services', decodeIDToken, ensureAuthorized(), ValidateGetService, QueryParameterFormatting, SwaggerDocs.get_Service,
-    //@ts-ignore
-asyncHandler(GetServices));
+router.get('/services', ValidateGetService, QueryParameterFormatting, SwaggerDocs.get_Service,
+	//@ts-ignore
+	asyncHandler(GetServices));
 
 
 
-router.get('/services/:ServiceId', decodeIDToken, ensureAuthorized(), SwaggerDocs.get_Service_ServiceId,
+router.get('/services/:ServiceId', SwaggerDocs.get_Service_ServiceId,
 	// @ts-ignore
 	asyncHandler(GetOneFromServices)
 );
 
 
 
-router.post('/services', decodeIDToken, ensureAuthorized(),ValidatePostService, SwaggerDocs.post_Service,
+router.post('/services', decodeIDToken, ensureAuthorized("Admin"), ValidatePostService, SwaggerDocs.post_Service,
 	// @ts-ignore
 	asyncHandler(PostServices)
 );
 
 
 
-router.patch('/services/:ServiceId', decodeIDToken, ensureAuthorized(),ValidatePatchService, SwaggerDocs.patch_Service_ServiceId,
+router.patch('/services/:ServiceId', decodeIDToken, ensureAuthorized("Admin"), ValidatePatchService, SwaggerDocs.patch_Service_ServiceId,
 	// @ts-ignore
 	asyncHandler(PatchServices)
 );
@@ -49,7 +49,7 @@ router.patch('/services/:ServiceId', decodeIDToken, ensureAuthorized(),ValidateP
 
 
 
-router.delete('/services/:ServiceId', decodeIDToken, ensureAuthorized(), SwaggerDocs.delete_Service_ServiceId,
+router.delete('/services/:ServiceId', decodeIDToken, ensureAuthorized("Admin"), SwaggerDocs.delete_Service_ServiceId,
 	// @ts-ignore
 	asyncHandler(DeleteServices)
 );

@@ -21,27 +21,27 @@ const router = e.Router();
 
 
 
-router.get('/companyLogos', decodeIDToken, ensureAuthorized(), ValidateGetCompanyLogo, QueryParameterFormatting, SwaggerDocs.get_CompanyLogo,
-    //@ts-ignore
-asyncHandler(GetCompanyLogos));
+router.get('/companyLogos', ValidateGetCompanyLogo, QueryParameterFormatting, SwaggerDocs.get_CompanyLogo,
+	//@ts-ignore
+	asyncHandler(GetCompanyLogos));
 
 
 
-router.get('/companyLogos/:CompanyLogoId', decodeIDToken, ensureAuthorized(), SwaggerDocs.get_CompanyLogo_CompanyLogoId,
+router.get('/companyLogos/:CompanyLogoId', SwaggerDocs.get_CompanyLogo_CompanyLogoId,
 	// @ts-ignore
 	asyncHandler(GetOneFromCompanyLogos)
 );
 
 
 
-router.post('/companyLogos', decodeIDToken, ensureAuthorized(),ValidatePostCompanyLogo, SwaggerDocs.post_CompanyLogo,
+router.post('/companyLogos', decodeIDToken, ensureAuthorized("Admin"), ValidatePostCompanyLogo, SwaggerDocs.post_CompanyLogo,
 	// @ts-ignore
 	asyncHandler(PostCompanyLogos)
 );
 
 
 
-router.patch('/companyLogos/:CompanyLogoId', decodeIDToken, ensureAuthorized(),ValidatePatchCompanyLogo, SwaggerDocs.patch_CompanyLogo_CompanyLogoId,
+router.patch('/companyLogos/:CompanyLogoId', decodeIDToken, ensureAuthorized("Admin"), ValidatePatchCompanyLogo, SwaggerDocs.patch_CompanyLogo_CompanyLogoId,
 	// @ts-ignore
 	asyncHandler(PatchCompanyLogos)
 );
@@ -49,7 +49,7 @@ router.patch('/companyLogos/:CompanyLogoId', decodeIDToken, ensureAuthorized(),V
 
 
 
-router.delete('/companyLogos/:CompanyLogoId', decodeIDToken, ensureAuthorized(), SwaggerDocs.delete_CompanyLogo_CompanyLogoId,
+router.delete('/companyLogos/:CompanyLogoId', decodeIDToken, ensureAuthorized("Admin"), SwaggerDocs.delete_CompanyLogo_CompanyLogoId,
 	// @ts-ignore
 	asyncHandler(DeleteCompanyLogos)
 );
