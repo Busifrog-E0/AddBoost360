@@ -41,7 +41,8 @@ router.post('/services', decodeIDToken, ensureAuthorized("Admin"), ValidatePostS
 
 
 
-router.patch('/services/:ServiceId', decodeIDToken, ensureAuthorized("Admin"), ValidatePatchService, SwaggerDocs.patch_Service_ServiceId,
+router.patch('/services/:ServiceId', //decodeIDToken, ensureAuthorized("Admin"), 
+	ValidatePatchService, SwaggerDocs.patch_Service_ServiceId,
 	// @ts-ignore
 	asyncHandler(PatchServices)
 );
