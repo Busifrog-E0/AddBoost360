@@ -4,9 +4,10 @@ import dataHandling from '../../functions.js';
  * @typedef {object} PortfolioData
  * @property {string} Title
  * @property {string} ImageUrl
- * @property {string} Description1
- * @property {string} Description2
- * @property {Array<string>} ServiceList
+ * @property {string} Type
+ * @property {string} LinkToProject
+ * @property {string} ButtonMessage1
+ * @property {Array<string>} ImpactPoints
  * @property {number} Priority
  * @property {string} DocId
  * @property {string} CreatedIndex
