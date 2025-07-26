@@ -135,7 +135,7 @@ const ReviewSection = () => {
                 <h2 className="text-md font-semibold text-gray-900">
                   {review.Title}
                 </h2>
-                <p className="text-sm text-gray-500">{review.designation}</p>
+                <p className="text-sm text-gray-500">{review.Designation}</p>
               </div>
             </div>
           </div>

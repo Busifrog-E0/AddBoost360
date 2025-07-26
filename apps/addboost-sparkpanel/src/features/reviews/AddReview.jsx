@@ -12,7 +12,7 @@ const AddReview = ({
   initialValue = {
     Title: "",
     Priority: "",
-    designation: "",
+    Designation: "",
     Description1: "",
     image: null,
     ImageUrl: "",
@@ -93,8 +93,8 @@ const AddReview = ({
   const validateForm = () => {
     const newErrors = {};
     if (!formData.Title.trim()) newErrors.Title = "Name is required";
-    if (!formData.designation.trim())
-      newErrors.designation = "Designation is required";
+    if (!formData.Designation.trim())
+      newErrors.Designation = "Designation is required";
     if (!formData.Description1.trim())
       newErrors.Description1 = "Review is required";
     if (!formData.ImageUrl) newErrors.ImageUrl = "Image is required";
@@ -208,17 +208,17 @@ const AddReview = ({
             </label>
             <input
               type="text"
-              value={formData.designation}
-              onChange={(e) => handleInputChange("designation", e.target.value)}
+              value={formData.Designation}
+              onChange={(e) => handleInputChange("Designation", e.target.value)}
               className={`w-full px-4 py-3 border rounded-lg ${
-                errors.designation
+                errors.Designation
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
               }`}
               placeholder="e.g., CEO, Startup Inc."
             />
-            {errors.designation && (
-              <p className="text-sm text-red-600">{errors.designation}</p>
+            {errors.Designation && (
+              <p className="text-sm text-red-600">{errors.Designation}</p>
             )}
           </div>
 
