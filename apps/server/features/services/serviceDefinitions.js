@@ -3,6 +3,7 @@ const ServiceData = {
   ImageUrl: "example",
   Description1: "example",
   Description2: "example",
+  Type: "example",
   ServiceList: [],
   ButtonMessage1: "example",
   Priority: 5,
