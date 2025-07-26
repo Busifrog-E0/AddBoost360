@@ -8,6 +8,7 @@ import {
   Quote,
   Home,
   LogOut,
+  Image,
 } from "lucide-react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../features/auth/context/AuthProvider";
@@ -29,6 +30,7 @@ const Sidebar = ({
     { id: "companies", label: "Companies", icon: Building2 },
     { id: "form", label: "Leads", icon: UserSearch },
     { id: "review", label: "Review", icon: Quote },
+    { id: "Company logo", label: "Company Logo", icon: Image },
   ];
 
   return (

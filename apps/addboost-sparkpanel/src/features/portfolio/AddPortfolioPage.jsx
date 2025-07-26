@@ -15,7 +15,7 @@ const AddPortfolioPage = ({
     ButtonMessage1: "",
     Type: "",
     Priority: "",
-    linkToProject: "",
+    LinkToProject: "",
   },
   title,
   description,
@@ -110,7 +110,7 @@ const AddPortfolioPage = ({
   };
 
   const removeImage = () => {
-    setFormData((prev) => ({ ...prev, image: null, imagePreview: "" }));
+    setFormData((prev) => ({ ...prev, image: null, ImageUrl: "" }));
   };
 
   const validateForm = () => {
@@ -119,8 +119,8 @@ const AddPortfolioPage = ({
     if (!formData.ButtonMessage1.trim())
       newErrors.ButtonMessage1 = "Button text is required";
     if (!formData.Type.trim()) newErrors.Type = "Type is required";
-    if (!formData.linkToProject.trim())
-      newErrors.linkToProject = "Project Link is required";
+    if (!formData.LinkToProject.trim())
+      newErrors.LinkToProject = "Project Link is required";
     if (!formData.ImageUrl) newErrors.ImageUrl = "Project image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -320,7 +320,7 @@ const AddPortfolioPage = ({
                 )}
               </div>
             </div>
-            {/*linkToProject */}
+            {/*LinkToProject */}
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -328,19 +328,19 @@ const AddPortfolioPage = ({
               </label>
               <input
                 Type="text"
-                value={formData.linkToProject}
+                value={formData.LinkToProject}
                 onChange={(e) =>
-                  handleInputChange("linkToProject", e.target.value)
+                  handleInputChange("LinkToProject", e.target.value)
                 }
                 className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.linkToProject
+                  errors.LinkToProject
                     ? "border-red-300 bg-red-50"
                     : "border-gray-300"
                 }`}
                 placeholder="e.g., https://google.com"
               />
-              {errors.linkToProject && (
-                <p className="text-sm text-red-600">{errors.linkToProject}</p>
+              {errors.LinkToProject && (
+                <p className="text-sm text-red-600">{errors.LinkToProject}</p>
               )}
             </div>
             {/* Image Upload */}

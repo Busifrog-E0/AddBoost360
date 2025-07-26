@@ -1,32 +1,18 @@
 import React, { useState } from "react";
 import { Eye } from "lucide-react";
 import FormDetailsPage from "./FormDetailsPage";
+import useGetList from "../../hooks/api/useGetList";
 
 const FormListPage = () => {
   const [selectedForm, setSelectedForm] = useState(null);
 
-  const formSubmissions = [
-    {
-      id: 1,
-      area: "Digital Marketing Strategy",
-      name: "Swapna",
-      email: "swapna103@example.com",
-      phoneNumber: "9876543210",
-      startup: "TechieStart",
-      comments: "Looking for early-stage funding support.",
-      DateTime: "10-9-2025 10:30 AM",
-    },
-    {
-      id: 2,
-      area: "Bangalore",
-      name: "Arjun Das",
-      email: "arjun@startuphub.com",
-      phoneNumber: "9999988888",
-      startup: "Epoq Zeo Private Ltd",
-      comments: "Interested in mentorship programs.",
-      DateTime: "09-07-2025 11:00 AM",
-    },
-  ];
+  const {
+    data: forms,
+    isLoading,
+    isLoadingMore,
+    isPageDisabled,
+    getList,
+  } = useGetList({ endpoint: "forms" });
 
   if (selectedForm) {
     return (
@@ -53,11 +39,11 @@ const FormListPage = () => {
             </tr>
           </thead>
           <tbody>
-            {formSubmissions.map((form) => (
-              <tr key={form.id} className="border-t hover:bg-gray-50">
-                <td className="py-3 px-4">{form.name}</td>
-                <td className="py-3 px-4">{form.email}</td>
-                <td className="py-3 px-4">{form.phoneNumber}</td>
+            {forms.map((form) => (
+              <tr key={form.DocId} className="border-t hover:bg-gray-50">
+                <td className="py-3 px-4">{form.FullName}</td>
+                <td className="py-3 px-4">{form.Email}</td>
+                <td className="py-3 px-4">{form.Phone}</td>
                 <td className="py-3 px-4">
                   <div className="flex justify-center">
                     <button
@@ -74,7 +60,7 @@ const FormListPage = () => {
           </tbody>
         </table>
 
-        {formSubmissions.length === 0 && (
+        {forms.length === 0 && (
           <div className="text-center p-8 text-gray-500">
             No submissions yet.
           </div>

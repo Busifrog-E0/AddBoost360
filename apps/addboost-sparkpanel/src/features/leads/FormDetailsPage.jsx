@@ -23,22 +23,22 @@ const FormDetailsPage = ({ form, onBack }) => {
       {/* Card Layout */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <Detail label="Full name" value={form.name} />
-          <Detail label="Email Address" value={form.email} />
-          <Detail label="Phone Number" value={form.phoneNumber} />
-          <Detail label="Choose Your Focus Area" value={form.area} />
+          <Detail label="Full name" value={form.FullName} />
+          <Detail label="Email Address" value={form.Email} />
+          <Detail label="Phone Number" value={form.Phone} />
+          <Detail label="Choose Your Focus Area" value={form.FocusArea} />
           <Detail
             label="Business / Startup Name (if any)"
-            value={form.startup}
+            value={form.BusinessName}
           />
-          <Detail label="Preferred Date & Time" value={form.DateTime} />
+          <Detail label="Preferred Date & Time" value={new Date(form.PreferredDate).toLocaleDateString()} />
         </div>
 
         <div className="mt-6">
           <p className="text-gray-600 font-semibold mb-1">
             Additional Notes or Questions:
           </p>
-          <p className="text-gray-900 whitespace-pre-line">{form.comments}</p>
+          <p className="text-gray-900 whitespace-pre-line">{form.Notes}</p>
         </div>
       </div>
     </div>

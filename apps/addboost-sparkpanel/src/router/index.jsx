@@ -18,15 +18,15 @@ import LoginPage from "../features/auth/LoginPage";
 import CompanySection from "../features/companies/CompanySection";
 import AuthLayout from "../features/auth/layouts/AuthLayout";
 import UnAuthLayout from "../features/auth/layouts/UnAuthLayout";
+import CompanyLogoSection from "../features/company logo/CompanyLogoSection";
 
 // ✅ Render LoginPage OUTSIDE MainLayout
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       {/* Standalone Login page */}
-      <Route path="/login" element={<UnAuthLayout/>}>
-      <Route index element={<LoginPage />} />
-
+      <Route path="/login" element={<UnAuthLayout />}>
+        <Route index element={<LoginPage />} />
       </Route>
       <Route path="/" element={<AuthLayout />}>
         {/* All other routes use MainLayout */}
@@ -40,6 +40,7 @@ export const router = createBrowserRouter(
 
           <Route path="/form" element={<FormListPage />} />
           <Route path="/review" element={<ReviewSection />} />
+          <Route path="/Company logo" element={<CompanyLogoSection />} />
         </Route>
       </Route>
     </>
