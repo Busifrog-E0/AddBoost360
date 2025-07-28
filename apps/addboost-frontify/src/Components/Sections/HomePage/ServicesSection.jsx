@@ -6,36 +6,46 @@ const ServicesSection = ({ isSlideIndicatorsEnabled = false }) => {
       id: 1,
       title: "DIGITAL MARKETING & SEO",
       description: "Drive growth with ROI-focused campaigns.",
-      image:
+      ImageUrl: [
         "https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg",
+        "https://images.pexels.com/photos/6476589/pexels-photo-6476589.jpeg",
+      ],
     },
     {
       id: 2,
       title: "WEB & E-COMMERCE DEVELOPMENT",
       description: "Scalable websites & online stores.",
-      image:
+      ImageUrl: [
         "https://images.pexels.com/photos/6476589/pexels-photo-6476589.jpeg",
+        "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      ],
     },
     {
       id: 3,
       title: "AI & AUTOMATION",
       description: "Smarter customer experiences with tech tools.",
-      image:
-        "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop", // AI/tech-related
+      ImageUrl: [
+        "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+        "https://images.pexels.com/photos/6476589/pexels-photo-6476589.jpeg",
+      ],
     },
     {
       id: 4,
       title: "BRANDING & DESIGN",
       description: "Logos, packaging, and complete identity kits.",
-      image:
-        "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop", // Creative/branding
+      ImageUrl: [
+        "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+        "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      ],
     },
     {
       id: 5,
       title: "DIGITAL TRAINING",
       description: "Masterclasses for entrepreneurs & teams.",
-      image:
-        "https://images.pexels.com/photos/4144222/pexels-photo-4144222.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop", // Training session
+      ImageUrl: [
+        "https://images.pexels.com/photos/4144222/pexels-photo-4144222.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+        "https://images.pexels.com/photos/4348404/pexels-photo-4348404.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      ],
     },
   ];
 
