@@ -42,9 +42,9 @@ const FormListPage = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <h1 className="text-2xl font-bold text-gray-900">Form Submissions</h1>
-      <p className="text-gray-600">View basic info of all submissions</p>
+    <div className="space-y-2">
+      <h1 className="text-2xl font-bold text-gray-900 ">Form Submissions</h1>
+      <p className="text-gray-600 ">View basic info of all submissions</p>
 
       <div className="bg-white rounded-xl shadow-sm border overflow-x-auto">
         <table className="w-full">
