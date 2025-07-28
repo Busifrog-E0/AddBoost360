@@ -28,7 +28,7 @@ const StartupCard = ({ startup }) => {
             {startup.Tags?.map((tag, index) => (
               <span
                 key={index}
-                className="text-xs sm:text-sm md:text-base px-3 py-1 bg-gray-100 border border-gray-300 rounded-none font-inter"
+                className="text-xs sm:text-sm md:text-base px-3 py-1 bg-white/10 border border-white/20 text-white/80 rounded-md font-inter"
               >
                 {tag}
               </span>

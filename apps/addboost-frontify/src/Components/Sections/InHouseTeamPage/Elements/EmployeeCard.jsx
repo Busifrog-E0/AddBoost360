@@ -14,7 +14,7 @@ const EmployeeCard = ({ employee }) => {
         {/* Wrapper to position logo above employee image */}
         <div className="relative inline-block">
           {/* Boost Logo Positioned on Top */}
-          <img src={ADDBOOSTlogo} alt="Boost Logo" className="w-20 ml-6 mt-2" />
+          <img src={ADDBOOSTlogo} alt="Boost Logo" className="w-24 ml-6 mt-2" />
 
           {/* Employee Image */}
           <img

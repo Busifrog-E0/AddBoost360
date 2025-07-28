@@ -49,7 +49,7 @@ const SearchStartupsPage = () => {
         <input
           type="text"
           placeholder="Search here"
-          className="p-3 bg-transparent border border-white/20 rounded-md text-white placeholder-white/40 outline-none focus:border-white/30 duration-300 transition-all mt-5"
+          className="p-4 lg:px-5 bg-transparent border border-white/20 rounded-md text-white placeholder-white/40 outline-none focus:border-white/30 duration-300 transition-all mt-5"
           value={filters.Keyword}
           onChange={(e) =>
             changeSingleFilter('Keyword', e.target.value)
