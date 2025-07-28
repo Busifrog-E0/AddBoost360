@@ -157,8 +157,9 @@ const AddCompanyLogo = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="Company Name"
             />
             {errors.Title && (
@@ -176,8 +177,9 @@ const AddCompanyLogo = ({
               onChange={(e) =>
                 handleInputChange("Priority", Number(e.target.value))
               }
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="Order Priority"
             />
             {errors.Priority && (
@@ -192,10 +194,11 @@ const AddCompanyLogo = ({
             <div className="overflow-hidden w-[250px] h-[150px]">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed p-6 text-center ${errors.ImageUrl
+                  className={`border-2 border-dashed p-6 text-center ${
+                    errors.ImageUrl
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                    }`}
+                  }`}
                 >
                   <input
                     type="file"
@@ -238,23 +241,33 @@ const AddCompanyLogo = ({
         </div>
 
         <div className="flex justify-end bg-white border rounded-xl p-6">
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
-          >
-            {isLoading ? (
-              <>
-                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                <span>Saving...</span>
-              </>
-            ) : (
-              <>
-                <Save className="w-4 h-4" />
-                <span>Save Logo</span>
-              </>
-            )}
-          </button>
+          {/* Footer Buttons */}
+          <div className="flex items-center justify-end space-x-4 bg-white rounded-xl shadow-sm border p-6">
+            <button
+              type="button"
+              onClick={onBack}
+              className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
+            >
+              {isLoading ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span>Saving...</span>
+                </>
+              ) : (
+                <>
+                  <Save className="w-4 h-4" />
+                  <span>Save Company logo </span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </form>
     </div>
