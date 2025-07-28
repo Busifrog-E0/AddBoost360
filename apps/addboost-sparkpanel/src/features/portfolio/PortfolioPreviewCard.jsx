@@ -39,7 +39,7 @@ const ProjectPreviewCard = ({ project }) => {
 
       {/* Title */}
       <h2 className="text-base font-bold uppercase text-gray-900 mb-2">
-        {Title?.trim() || "{{Project Title}}"}
+        {Title?.trim() || "{{Project Name}}"}
       </h2>
 
       {/* Achievements */}

@@ -180,14 +180,14 @@ const AddTeamPage = ({
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6 ">
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-6">
             Team Member Information
           </h2>
 
           {/* Name */}
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Name *
             </label>
@@ -205,7 +205,7 @@ const AddTeamPage = ({
             )}
           </div>
           {/* Priority */}
-          <div className="space-y-6">
+          <div className="space-y-6 mb-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1 mt-1">
                 Priority *
@@ -230,7 +230,7 @@ const AddTeamPage = ({
           </div>
 
           {/* Designation */}
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1 mt-2 ">
               Designation *
             </label>
@@ -251,7 +251,7 @@ const AddTeamPage = ({
           </div>
 
           {/* Type Dropdown */}
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1 mt-1">
               Categories *
             </label>
@@ -260,7 +260,7 @@ const AddTeamPage = ({
               onChange={(e) =>
                 handleInputChange("Description1", e.target.value)
               }
-              className={`w-full px-4 py-3 border rounded-lg appearance-none bg-white ${
+              className={`w-full px-4 py-3 border rounded-lg appearance-none ${
                 errors.Description1
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
@@ -283,7 +283,7 @@ const AddTeamPage = ({
           </div>
 
           {/*State */}
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1 mt-2">
               State *
             </label>
@@ -302,7 +302,7 @@ const AddTeamPage = ({
           </div>
 
           {/* Country */}
-          <div>
+          <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mt-1 mb-1">
               Country *
             </label>
@@ -325,7 +325,7 @@ const AddTeamPage = ({
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Member Image *
             </label>
-            <div className="overflow-hidden w-[250px] h-[200px]">
+            <div className="overflow-hidden w-[200px] h-[200px]">
               {!formData.ImageUrl ? (
                 <div
                   className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
