@@ -21,27 +21,27 @@ const router = e.Router();
 
 
 
-router.get('/forms', decodeIDToken, ensureAuthorized(), ValidateGetForm, QueryParameterFormatting, SwaggerDocs.get_Form,
-    //@ts-ignore
-asyncHandler(GetForms));
+router.get('/forms', decodeIDToken, ensureAuthorized("Admin"), ValidateGetForm, QueryParameterFormatting, SwaggerDocs.get_Form,
+	//@ts-ignore
+	asyncHandler(GetForms));
 
 
 
-router.get('/forms/:FormId', decodeIDToken, ensureAuthorized(), SwaggerDocs.get_Form_FormId,
+router.get('/forms/:FormId', decodeIDToken, ensureAuthorized("Admin"), SwaggerDocs.get_Form_FormId,
 	// @ts-ignore
 	asyncHandler(GetOneFromForms)
 );
 
 
 
-router.post('/forms', decodeIDToken, ensureAuthorized(),ValidatePostForm, SwaggerDocs.post_Form,
+router.post('/forms', ValidatePostForm, SwaggerDocs.post_Form,
 	// @ts-ignore
 	asyncHandler(PostForms)
 );
 
 
 
-router.patch('/forms/:FormId', decodeIDToken, ensureAuthorized(),ValidatePatchForm, SwaggerDocs.patch_Form_FormId,
+router.patch('/forms/:FormId', decodeIDToken, ensureAuthorized("Admin"), ValidatePatchForm, SwaggerDocs.patch_Form_FormId,
 	// @ts-ignore
 	asyncHandler(PatchForms)
 );
@@ -49,7 +49,7 @@ router.patch('/forms/:FormId', decodeIDToken, ensureAuthorized(),ValidatePatchFo
 
 
 
-router.delete('/forms/:FormId', decodeIDToken, ensureAuthorized(), SwaggerDocs.delete_Form_FormId,
+router.delete('/forms/:FormId', decodeIDToken, ensureAuthorized("Admin"), SwaggerDocs.delete_Form_FormId,
 	// @ts-ignore
 	asyncHandler(DeleteForms)
 );

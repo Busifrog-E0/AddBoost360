@@ -21,27 +21,27 @@ const router = e.Router();
 
 
 
-router.get('/portfolios', decodeIDToken, ensureAuthorized(), ValidateGetPortfolio, QueryParameterFormatting, SwaggerDocs.get_Portfolio,
-    //@ts-ignore
-asyncHandler(GetPortfolios));
+router.get('/portfolios', ValidateGetPortfolio, QueryParameterFormatting, SwaggerDocs.get_Portfolio,
+	//@ts-ignore
+	asyncHandler(GetPortfolios));
 
 
 
-router.get('/portfolios/:PortfolioId', decodeIDToken, ensureAuthorized(), SwaggerDocs.get_Portfolio_PortfolioId,
+router.get('/portfolios/:PortfolioId', SwaggerDocs.get_Portfolio_PortfolioId,
 	// @ts-ignore
 	asyncHandler(GetOneFromPortfolios)
 );
 
 
 
-router.post('/portfolios', decodeIDToken, ensureAuthorized(),ValidatePostPortfolio, SwaggerDocs.post_Portfolio,
+router.post('/portfolios', decodeIDToken, ensureAuthorized("Admin"), ValidatePostPortfolio, SwaggerDocs.post_Portfolio,
 	// @ts-ignore
 	asyncHandler(PostPortfolios)
 );
 
 
 
-router.patch('/portfolios/:PortfolioId', decodeIDToken, ensureAuthorized(),ValidatePatchPortfolio, SwaggerDocs.patch_Portfolio_PortfolioId,
+router.patch('/portfolios/:PortfolioId', decodeIDToken, ensureAuthorized("Admin"), ValidatePatchPortfolio, SwaggerDocs.patch_Portfolio_PortfolioId,
 	// @ts-ignore
 	asyncHandler(PatchPortfolios)
 );
@@ -49,7 +49,7 @@ router.patch('/portfolios/:PortfolioId', decodeIDToken, ensureAuthorized(),Valid
 
 
 
-router.delete('/portfolios/:PortfolioId', decodeIDToken, ensureAuthorized(), SwaggerDocs.delete_Portfolio_PortfolioId,
+router.delete('/portfolios/:PortfolioId', decodeIDToken, ensureAuthorized("Admin"), SwaggerDocs.delete_Portfolio_PortfolioId,
 	// @ts-ignore
 	asyncHandler(DeletePortfolios)
 );

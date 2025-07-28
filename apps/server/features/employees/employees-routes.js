@@ -21,27 +21,27 @@ const router = e.Router();
 
 
 
-router.get('/employees', decodeIDToken, ensureAuthorized(), ValidateGetEmployee, QueryParameterFormatting, SwaggerDocs.get_Employee,
-    //@ts-ignore
-asyncHandler(GetEmployees));
+router.get('/employees', ValidateGetEmployee, QueryParameterFormatting, SwaggerDocs.get_Employee,
+	//@ts-ignore
+	asyncHandler(GetEmployees));
 
 
 
-router.get('/employees/:EmployeeId', decodeIDToken, ensureAuthorized(), SwaggerDocs.get_Employee_EmployeeId,
+router.get('/employees/:EmployeeId', SwaggerDocs.get_Employee_EmployeeId,
 	// @ts-ignore
 	asyncHandler(GetOneFromEmployees)
 );
 
 
 
-router.post('/employees', decodeIDToken, ensureAuthorized(),ValidatePostEmployee, SwaggerDocs.post_Employee,
+router.post('/employees', decodeIDToken, ensureAuthorized("Admin"), ValidatePostEmployee, SwaggerDocs.post_Employee,
 	// @ts-ignore
 	asyncHandler(PostEmployees)
 );
 
 
 
-router.patch('/employees/:EmployeeId', decodeIDToken, ensureAuthorized(),ValidatePatchEmployee, SwaggerDocs.patch_Employee_EmployeeId,
+router.patch('/employees/:EmployeeId', decodeIDToken, ensureAuthorized("Admin"), ValidatePatchEmployee, SwaggerDocs.patch_Employee_EmployeeId,
 	// @ts-ignore
 	asyncHandler(PatchEmployees)
 );
@@ -49,7 +49,7 @@ router.patch('/employees/:EmployeeId', decodeIDToken, ensureAuthorized(),Validat
 
 
 
-router.delete('/employees/:EmployeeId', decodeIDToken, ensureAuthorized(), SwaggerDocs.delete_Employee_EmployeeId,
+router.delete('/employees/:EmployeeId', decodeIDToken, ensureAuthorized("Admin"), SwaggerDocs.delete_Employee_EmployeeId,
 	// @ts-ignore
 	asyncHandler(DeleteEmployees)
 );

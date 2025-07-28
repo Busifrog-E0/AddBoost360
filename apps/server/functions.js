@@ -80,8 +80,12 @@ async function Update(collectionName, data, docName, operation = ["$set"], dataS
             if (data.LastUpdated === undefined && LastUpdated) {
                 if (operation.includes("$set")) {
                     const SetIndex = operation.indexOf("$set");
-                    dataSets[SetIndex - 1].LastUpdated = `${Date.now()}`;
-                    data.LastUpdated = `${Date.now()}`;
+                    if (SetIndex !== 0) {
+                        dataSets[SetIndex - 1].LastUpdated = `${Date.now()}`;
+                    }
+                    else {
+                        data.LastUpdated = `${Date.now()}`;
+                    }
                 }
                 else {
                     dataSets.push({ LastUpdated: `${Date.now()}` });

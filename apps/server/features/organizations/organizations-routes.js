@@ -21,27 +21,27 @@ const router = e.Router();
 
 
 
-router.get('/organizations', decodeIDToken, ensureAuthorized(), ValidateGetOrganization, QueryParameterFormatting, SwaggerDocs.get_Organization,
-    //@ts-ignore
-asyncHandler(GetOrganizations));
+router.get('/organizations', ValidateGetOrganization, QueryParameterFormatting, SwaggerDocs.get_Organization,
+	//@ts-ignore
+	asyncHandler(GetOrganizations));
 
 
 
-router.get('/organizations/:OrganizationId', decodeIDToken, ensureAuthorized(), SwaggerDocs.get_Organization_OrganizationId,
+router.get('/organizations/:OrganizationId', SwaggerDocs.get_Organization_OrganizationId,
 	// @ts-ignore
 	asyncHandler(GetOneFromOrganizations)
 );
 
 
 
-router.post('/organizations', decodeIDToken, ensureAuthorized(),ValidatePostOrganization, SwaggerDocs.post_Organization,
+router.post('/organizations', decodeIDToken, ensureAuthorized("Admin"), ValidatePostOrganization, SwaggerDocs.post_Organization,
 	// @ts-ignore
 	asyncHandler(PostOrganizations)
 );
 
 
 
-router.patch('/organizations/:OrganizationId', decodeIDToken, ensureAuthorized(),ValidatePatchOrganization, SwaggerDocs.patch_Organization_OrganizationId,
+router.patch('/organizations/:OrganizationId', decodeIDToken, ensureAuthorized("Admin"), ValidatePatchOrganization, SwaggerDocs.patch_Organization_OrganizationId,
 	// @ts-ignore
 	asyncHandler(PatchOrganizations)
 );
@@ -49,7 +49,7 @@ router.patch('/organizations/:OrganizationId', decodeIDToken, ensureAuthorized()
 
 
 
-router.delete('/organizations/:OrganizationId', decodeIDToken, ensureAuthorized(), SwaggerDocs.delete_Organization_OrganizationId,
+router.delete('/organizations/:OrganizationId', decodeIDToken, ensureAuthorized("Admin"), SwaggerDocs.delete_Organization_OrganizationId,
 	// @ts-ignore
 	asyncHandler(DeleteOrganizations)
 );

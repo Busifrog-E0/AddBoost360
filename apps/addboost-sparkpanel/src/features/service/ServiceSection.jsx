@@ -122,7 +122,7 @@ const ServiceSection = () => {
                       <div className="flex items-center space-x-4">
                         <div className="flex-shrink-0">
                           <img
-                            src={service.ImageUrl}
+                            src={service.ImageUrl[0]}
                             alt={service.Title}
                             className="w-12 h-12 rounded-full object-cover border border-gray-200"
                           />

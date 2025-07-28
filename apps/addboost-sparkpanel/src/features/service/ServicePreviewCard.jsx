@@ -21,9 +21,9 @@ const ServicePreviewCard = ({ service }) => {
 
       {/* Image */}
       <div className="w-full mb-4">
-        {ImageUrl?.trim() ? (
+        {ImageUrl && ImageUrl[0]?.trim() ? (
           <img
-            src={ImageUrl}
+            src={ImageUrl[0]}
             alt="Service"
             className="w-full h-48 object-cover rounded-md"
           />
