@@ -105,11 +105,11 @@ const CompanyLogoSection = () => {
           >
             {/* Image + Info Section */}
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 overflow-hidden rounded-full border">
+              <div className="w-20 h-14 overflow-hidden rounded-md border">
                 <img
                   src={logo.ImageUrl}
                   alt={logo.Title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
               <div>
