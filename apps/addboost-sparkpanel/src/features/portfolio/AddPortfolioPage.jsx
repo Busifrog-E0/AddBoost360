@@ -112,18 +112,49 @@ const AddPortfolioPage = ({
   const removeImage = () => {
     setFormData((prev) => ({ ...prev, image: null, ImageUrl: "" }));
   };
-
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.Title.trim()) newErrors.Title = "Project name is required";
-    if (!formData.ButtonMessage1.trim())
+    let isValid = true;
+
+    // Other field validations...
+    if (!formData.Title.trim()) {
+      newErrors.Title = "Project name is required";
+      isValid = false;
+    }
+
+    if (!formData.ButtonMessage1.trim()) {
       newErrors.ButtonMessage1 = "Button text is required";
-    if (!formData.Type.trim()) newErrors.Type = "Type is required";
-    if (!formData.LinkToProject.trim())
+      isValid = false;
+    }
+
+    if (!formData.Type.trim()) {
+      newErrors.Type = "Type is required";
+      isValid = false;
+    }
+
+    // ✅ Validate ImpactPoints
+    const impactPointErrors = formData.ImpactPoints.map((point) =>
+      !point.trim() ? "This field is required" : ""
+    );
+    if (impactPointErrors.some((msg) => msg !== "")) {
+      newErrors.ImpactPoints = impactPointErrors;
+      isValid = false;
+    }
+
+    // Validate project link
+    if (!formData.LinkToProject.trim()) {
       newErrors.LinkToProject = "Project Link is required";
-    if (!formData.ImageUrl) newErrors.ImageUrl = "Project image is required";
+      isValid = false;
+    }
+
+    // Validate image
+    if (!formData.ImageUrl) {
+      newErrors.ImageUrl = "Project image is required";
+      isValid = false;
+    }
+
     setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
+    return isValid;
   };
 
   const handleFormSubmit = (fileUrl) => {
@@ -266,60 +297,68 @@ const AddPortfolioPage = ({
                 type="text"
                 value={formData.Type}
                 onChange={(e) => handleInputChange("Type", e.target.value)}
-                className={`w-full px-4 mb-3 py-3 border rounded-lg ${
+                className={`w-full px-4 mb-2 py-3 border rounded-lg ${
                   errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
                 placeholder="e.g., Website Design, Branding, Social Media Marketing"
               />
               {errors.Type && (
-                <p className="mt-1 text-sm text-red-600">{errors.Type}</p>
+                <p className=" text-sm text-red-600">{errors.Type}</p>
               )}
             </div>
 
             {/* Impact Points */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                ImpactPoints
+                Impact Points*
               </label>
 
               {formData.ImpactPoints.map((item, index) => (
-                <input
-                  key={index}
-                  Type="text"
-                  value={item}
-                  onChange={(e) =>
-                    handleListChange("ImpactPoints", index, e.target.value)
-                  }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
-                  placeholder={`ImpactPoints ${index + 1}`}
-                />
+                <div key={index} className="flex items-start space-x-2 mb-2">
+                  <div className="w-full">
+                    <input
+                      type="text"
+                      value={item}
+                      onChange={(e) =>
+                        handleListChange("ImpactPoints", index, e.target.value)
+                      }
+                      className={`w-full px-4 py-3 border rounded-lg ${
+                        errors.ImpactPoints?.[index]
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
+                      }`}
+                      placeholder={`Impact Point ${index + 1}`}
+                    />
+                    {errors.ImpactPoints?.[index] && (
+                      <p className="text-sm text-red-600 mt-1">
+                        {errors.ImpactPoints[index]}
+                      </p>
+                    )}
+                  </div>
+
+                  {formData.ImpactPoints.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeListItem("ImpactPoints", index)}
+                      className="text-red-500  mt-2"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  )}
+                </div>
               ))}
 
               <div className="flex items-center space-x-2 mt-2">
                 <button
-                  Type="button"
+                  type="button"
                   onClick={() => addListItem("ImpactPoints")}
                   className="flex items-center text-blue-600 hover:underline"
                 >
                   <Plus className="w-4 h-4 mr-1" /> Add Impact Point
                 </button>
-
-                {formData.ImpactPoints.length > 1 && (
-                  <button
-                    Type="button"
-                    onClick={() =>
-                      removeListItem(
-                        "impactPoints",
-                        formData.ImpactPoints.length - 1
-                      )
-                    }
-                    className="flex items-center justify-center border border-red-500 text-red-500 rounded-md p-2 hover:bg-red-50"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                )}
               </div>
             </div>
+
             {/*LinkToProject */}
 
             <div>
