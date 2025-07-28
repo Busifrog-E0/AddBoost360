@@ -40,7 +40,7 @@ export const router = createBrowserRouter(
 
           <Route path="/form" element={<FormListPage />} />
           <Route path="/review" element={<ReviewSection />} />
-          <Route path="/Company logo" element={<CompanyLogoSection />} />
+          <Route path="/providers" element={<CompanyLogoSection />} />
         </Route>
       </Route>
     </>
