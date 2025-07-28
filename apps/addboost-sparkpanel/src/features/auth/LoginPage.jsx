@@ -29,7 +29,7 @@ const LoginPage = ({ onLogin }) => {
           <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-100 rounded-xl mb-4 shadow-sm">
             <Home className="w-7 h-7 text-blue-600" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">Welcome Back</h2>
+          <h2 className="text-2xl font-bold text-gray-800">Add Boost 360</h2>
           <p className="text-sm text-gray-500">Sign in to your admin panel</p>
         </div>
 
@@ -56,11 +56,10 @@ const LoginPage = ({ onLogin }) => {
                   if (errors.username)
                     setErrors((prev) => ({ ...prev, username: "" }));
                 }}
-                className={`w-full pl-10 pr-3 py-3 rounded-lg border focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all bg-white ${
-                  errors.username
+                className={`w-full pl-10 pr-3 py-3 rounded-lg border focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all bg-white ${errors.username
                     ? "border-red-300 bg-red-50"
                     : "border-gray-300"
-                }`}
+                  }`}
                 placeholder="Enter your username"
               />
             </div>
@@ -90,11 +89,10 @@ const LoginPage = ({ onLogin }) => {
                   if (errors.password)
                     setErrors((prev) => ({ ...prev, password: "" }));
                 }}
-                className={`w-full pl-10 pr-12 py-3 rounded-lg border focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all bg-white ${
-                  errors.password
+                className={`w-full pl-10 pr-12 py-3 rounded-lg border focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all bg-white ${errors.password
                     ? "border-red-300 bg-red-50"
                     : "border-gray-300"
-                }`}
+                  }`}
                 placeholder="Enter your password"
               />
               <button
