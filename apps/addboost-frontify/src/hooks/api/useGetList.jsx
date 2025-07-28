@@ -22,7 +22,7 @@ export default function useGetList(options) {
   const [filters, setFilters] = useState({
     OrderBy: "Index",
     Keyword: "",
-    Limit: 10,
+    Limit: 30,
     StartDate: null,
     EndDate: null,
     ...initialFilters,

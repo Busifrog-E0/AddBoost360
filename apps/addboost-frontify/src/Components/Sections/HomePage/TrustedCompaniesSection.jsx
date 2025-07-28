@@ -5,6 +5,8 @@ import judopaylogo from "../../.././assets/CompanyLogo/judopaylogo.svg";
 import paypallogo from "../../.././assets/CompanyLogo/paypallogo.png";
 import stripelogo from "../../.././assets/CompanyLogo/stripelogo.png";
 import worldpaylogo from "../../.././assets/CompanyLogo/worldpaylogo.png";
+import useGetList from "../../../hooks/api/useGetList";
+import LoaderSection from "../Loader/LoeaderSection";
 
 const logos = [
   { src: judopaylogo, title: "Judopay" },
@@ -16,6 +18,20 @@ const logos = [
 ];
 
 const TrustedCompaniesSection = () => {
+
+  const {
+    data: logos,
+    isLoading,
+    isLoadingMore,
+    isPageDisabled,
+    getList,
+  } = useGetList({ endpoint: "companyLogos" });
+
+
+  if (isLoading) {
+    return <LoaderSection />
+  }
+
   return (
     <div
       className="px-6 md:px-14 2xl:px-60 3xl:px-80 
@@ -23,11 +39,11 @@ const TrustedCompaniesSection = () => {
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
   13xl:px-340 14xl:px-360 15xl:px-400
-   py-14 md:py-20 lg:py-24 
+   py-14 md:py-20 lg:py-36 
   4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
 8xl:py-80 9xl:py-96 10xl:py-112 
 11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200 bg-PrimaryDarkBlue"
+14xl:py-180 15xl:py-200  bg-PrimaryDarkBlue"
     >
       <h2 className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite">
         supported BY TOP providers
@@ -38,9 +54,9 @@ const TrustedCompaniesSection = () => {
         <div className="flex animate-scroll gap-28 w-max">
           {[...logos, ...logos].map((logo, i) => (
             <img
-              key={i}
-              src={logo.src}
-              alt={logo.title}
+              key={logo.DocId}
+              src={logo.ImageUrl}
+              alt={logo.Title}
               className={"h-9 object-contain filter invert brightness-0 "}
             />
           ))}

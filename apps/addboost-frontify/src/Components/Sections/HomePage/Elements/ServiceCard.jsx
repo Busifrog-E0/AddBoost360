@@ -6,29 +6,33 @@
 import React, { useEffect, useState } from "react";
 import noice from '../../../../assets/noice.png'
 
-const ServiceCard = ({ service }) => {
+const ServiceCard = ({ service, index }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const [showNoise, setShowNoise] = useState(false);
-
   useEffect(() => {
     if (!service.ImageUrl || service.ImageUrl.length <= 1) return;
 
-    const interval = setInterval(() => {
-      setIsFading(true);
-      setShowNoise(true);
+    const startDelay = setTimeout(() => {
+      const interval = setInterval(() => {
+        setIsFading(true);
+        setShowNoise(true);
 
-      setTimeout(() => {
-        setCurrentImageIndex((prevIndex) =>
-          (prevIndex + 1) % service.ImageUrl.length
-        );
-        setIsFading(false);
-        setTimeout(() => setShowNoise(false), 300);
-      }, 400);
-    }, 3000);
+        setTimeout(() => {
+          setCurrentImageIndex((prevIndex) =>
+            (prevIndex + 1) % service.ImageUrl.length
+          );
+          setIsFading(false);
+          setTimeout(() => setShowNoise(false), 300);
+        }, 400);
+      }, 3000);
 
-    return () => clearInterval(interval);
-  }, [service.ImageUrl]);
+      return () => clearInterval(interval);
+    }, index * 800); // 🔁 Increased lag between cards
+
+    return () => clearTimeout(startDelay);
+  }, [service.ImageUrl, index]);
+
 
   return (
     <div className="h-full">
@@ -39,7 +43,7 @@ const ServiceCard = ({ service }) => {
             <img
               src={service.ImageUrl[currentImageIndex]}
               alt={service.title}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isFading ? "opacity-0" : "opacity-100"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isFading ? "opacity-0" : "opacity-100"
                 }`}
             />
           }
@@ -62,10 +66,10 @@ const ServiceCard = ({ service }) => {
         <div className="pt-4 flex flex-col justify-between flex-grow">
           <div>
             <h3 className="font-anton text-xl lg:text-2xl text-PrimaryWhite mb-2 uppercase">
-              {service.title}
+              {service.Title}
             </h3>
             <p className="font-inter text-sm lg:text-base text-white leading-relaxed m-0">
-              {service.description}
+              {service.Description2}
             </p>
           </div>
         </div>

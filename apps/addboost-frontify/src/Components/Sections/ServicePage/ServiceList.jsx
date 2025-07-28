@@ -11,7 +11,7 @@ const ServiceList = ({ services }) => {
           : "bg-BackgroundGradientright";
 
         return (
-          <div key={service.id}>
+          <div key={service.DocId}>
             <div className="hidden lg:block">
               <ServiceCard
                 reverse={!isEven}

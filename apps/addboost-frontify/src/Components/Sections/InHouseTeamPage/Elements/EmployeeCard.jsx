@@ -18,22 +18,22 @@ const EmployeeCard = ({ employee }) => {
 
           {/* Employee Image */}
           <img
-            src={employee.image}
-            alt={employee.title}
+            src={employee.ImageUrl}
+            alt={employee.FullName}
             className="w-24 h-24 mt-2 mx-auto rounded-full object-cover border-4 border-white"
           />
         </div>
 
-        <h3 className="mt-4 text-sm sm:text-lg md:text-xl text-white font-arya">
-          {employee.title}
+        <h3 className="mt-4 text-sm sm:text-lg md:text-xl text-white font-arya capitalize">
+          {employee.FullName}
         </h3>
 
-        <p className="text-[#76B0FF] font-medium text-xs sm:text-base md:text-lg font-inter">
-          {employee.designation}
+        <p className="text-[#76B0FF] font-medium text-xs sm:text-base md:text-lg font-inter capitalize">
+          {employee.Designation}
         </p>
 
-        <p className="text-gray-300 text-xs sm:text-sm md:text-base font-inter mb-5">
-          {employee.country}
+        <p className="text-gray-300 text-xs sm:text-sm md:text-base font-inter mb-5 capitalize">
+          {employee.State}, {employee.Country}
         </p>
       </div>
     </div>
