@@ -33,7 +33,13 @@ const GetOneFromEmployees = async (req, res) => {
  * @returns {Promise<e.Response<Array<EmployeeData>>>}
  */
 const GetEmployees = async (req, res) => {
-	const { Filter, NextId, Limit, OrderBy } = req.query;
+	const { Filter, NextId, Limit, OrderBy, Keyword } = req.query;
+	if (Keyword) {
+		//@ts-ignore
+		Filter['$or'] = [
+			{ 'FullName': { $regex: Keyword, $options: 'i' } },
+		]
+	}
 	// @ts-ignore
 	const data = await ReadEmployees(Filter, NextId, Limit, OrderBy);
 	return res.json(data);

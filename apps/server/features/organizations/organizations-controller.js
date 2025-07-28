@@ -33,7 +33,14 @@ const GetOneFromOrganizations = async (req, res) => {
  * @returns {Promise<e.Response<Array<OrganizationData>>>}
  */
 const GetOrganizations = async (req, res) => {
-	const { Filter, NextId, Limit, OrderBy } = req.query;
+	const { Filter, NextId, Limit, OrderBy, Keyword } = req.query;
+	if (Keyword) {
+		//@ts-ignore
+		Filter['$or'] = [
+			{ 'Title': { $regex: Keyword, $options: 'i' } },
+			{ 'Tags': { $regex: Keyword, $options: 'i' } },
+		]
+	}
 	// @ts-ignore
 	const data = await ReadOrganizations(Filter, NextId, Limit, OrderBy);
 	return res.json(data);

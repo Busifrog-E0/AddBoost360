@@ -1266,6 +1266,10 @@
           "type": "string",
           "example": "example"
         },
+        "Designation": {
+          "type": "string",
+          "example": "example"
+        },
         "Priority": {
           "type": "number",
           "example": 5
@@ -1298,6 +1302,10 @@
             "example": "example"
           },
           "ImageUrl": {
+            "type": "string",
+            "example": "example"
+          },
+          "Designation": {
             "type": "string",
             "example": "example"
           },
@@ -1566,28 +1574,38 @@
       "properties": {
         "Title": {
           "type": "string",
-          "example": "example"
+          "example": "Responsive Portfolio Website"
         },
         "ImageUrl": {
           "type": "string",
-          "example": "example"
+          "example": "https://example.com/images/portfolio-thumbnail.jpg"
         },
-        "Description1": {
+        "Type": {
           "type": "string",
-          "example": "example"
+          "example": "Web Development"
         },
-        "Description2": {
+        "LinkToProject": {
           "type": "string",
-          "example": "example"
+          "example": "https://github.com/user/portfolio-website"
         },
-        "ServiceList": {
+        "ButtonMessage1": {
+          "type": "string",
+          "example": "View Project"
+        },
+        "ImpactPoints": {
           "type": "array",
-          "example": [],
-          "items": {}
+          "example": [
+            "Built with HTML, CSS, and JavaScript",
+            "Responsive design for all screen sizes",
+            "Deployed using GitHub Pages"
+          ],
+          "items": {
+            "type": "string"
+          }
         },
         "Priority": {
           "type": "number",
-          "example": 5
+          "example": 1
         },
         "DocId": {
           "type": "string",
@@ -1610,28 +1628,38 @@
         "properties": {
           "Title": {
             "type": "string",
-            "example": "example"
+            "example": "Responsive Portfolio Website"
           },
           "ImageUrl": {
             "type": "string",
-            "example": "example"
+            "example": "https://example.com/images/portfolio-thumbnail.jpg"
           },
-          "Description1": {
+          "Type": {
             "type": "string",
-            "example": "example"
+            "example": "Web Development"
           },
-          "Description2": {
+          "LinkToProject": {
             "type": "string",
-            "example": "example"
+            "example": "https://github.com/user/portfolio-website"
           },
-          "ServiceList": {
+          "ButtonMessage1": {
+            "type": "string",
+            "example": "View Project"
+          },
+          "ImpactPoints": {
             "type": "array",
-            "example": [],
-            "items": {}
+            "example": [
+              "Built with HTML, CSS, and JavaScript",
+              "Responsive design for all screen sizes",
+              "Deployed using GitHub Pages"
+            ],
+            "items": {
+              "type": "string"
+            }
           },
           "Priority": {
             "type": "number",
-            "example": 5
+            "example": 1
           },
           "DocId": {
             "type": "string",
@@ -1667,6 +1695,10 @@
           "type": "string",
           "example": "example"
         },
+        "Type": {
+          "type": "string",
+          "example": "example"
+        },
         "ServiceList": {
           "type": "array",
           "example": [],
@@ -1675,6 +1707,10 @@
         "ButtonMessage1": {
           "type": "string",
           "example": "example"
+        },
+        "Priority": {
+          "type": "number",
+          "example": 5
         },
         "DocId": {
           "type": "string",
@@ -1711,6 +1747,10 @@
             "type": "string",
             "example": "example"
           },
+          "Type": {
+            "type": "string",
+            "example": "example"
+          },
           "ServiceList": {
             "type": "array",
             "example": [],
@@ -1719,6 +1759,10 @@
           "ButtonMessage1": {
             "type": "string",
             "example": "example"
+          },
+          "Priority": {
+            "type": "number",
+            "example": 5
           },
           "DocId": {
             "type": "string",
