@@ -66,10 +66,10 @@ const ServiceCard = ({ service, index }) => {
         <div className="pt-4 flex flex-col justify-between flex-grow">
           <div>
             <h3 className="font-anton text-xl lg:text-2xl text-PrimaryWhite mb-2 uppercase">
-              {service.title}
+              {service.Title}
             </h3>
             <p className="font-inter text-sm lg:text-base text-white leading-relaxed m-0">
-              {service.description}
+              {service.Description2}
             </p>
           </div>
         </div>

@@ -7,7 +7,7 @@ const PortfoliList = ({ projects }) => {
       {projects.map((project, index) => {
         const bgColor = index % 2 === 0 ? "bg-BackgroundGradientleft" : "bg-BackgroundGradientright";
         return (
-          <div key={project.id} className="">
+          <div key={project.DocId} className="">
             {/* Desktop */}
             <div className="hidden lg:block">
               <PortfolioCard

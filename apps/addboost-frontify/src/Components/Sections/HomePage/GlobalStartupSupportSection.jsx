@@ -4,33 +4,33 @@ import ServicesListView from "./Elements/ServicesListView";
 const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
   const services = [
     {
-      id: 1,
-      title: "Wholesale Product Sourcing",
-      description: "Verified suppliers from China, India, UAE & more",
+      DocId: 1,
+      Title: "Wholesale Product Sourcing",
+      Description2: "Verified suppliers from China, India, UAE & more",
       ImageUrl: [
         "https://images.pexels.com/photos/5827062/pexels-photo-5827062.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       ],
     },
     {
-      id: 2,
-      title: "Escrow Payment Protection",
-      description: "Funds held safely until product delivery",
+      DocId: 2,
+      Title: "Escrow Payment Protection",
+      Description2: "Funds held safely until product delivery",
       ImageUrl: [
         "https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       ],
     },
     {
-      id: 3,
-      title: "Shop Setup & Branding",
-      description: "Full setup for physical or online stores",
+      DocId: 3,
+      Title: "Shop Setup & Branding",
+      Description2: "Full setup for physical or online stores",
       ImageUrl: [
         "https://images.pexels.com/photos/4475523/pexels-photo-4475523.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       ],
     },
     {
-      id: 4,
-      title: "1-Month Free Marketing",
-      description: "Included in our launch packages",
+      DocId: 4,
+      Title: "1-Month Free Marketing",
+      Description2: "Included in our launch packages",
       ImageUrl: [
         "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
       ],

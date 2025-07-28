@@ -5,6 +5,8 @@ import judopaylogo from "../../.././assets/CompanyLogo/judopaylogo.svg";
 import paypallogo from "../../.././assets/CompanyLogo/paypallogo.png";
 import stripelogo from "../../.././assets/CompanyLogo/stripelogo.png";
 import worldpaylogo from "../../.././assets/CompanyLogo/worldpaylogo.png";
+import useGetList from "../../../hooks/api/useGetList";
+import LoaderSection from "../Loader/LoeaderSection";
 
 const logos = [
   { src: judopaylogo, title: "Judopay" },
@@ -16,6 +18,20 @@ const logos = [
 ];
 
 const TrustedCompaniesSection = () => {
+
+  const {
+    data: logos,
+    isLoading,
+    isLoadingMore,
+    isPageDisabled,
+    getList,
+  } = useGetList({ endpoint: "companyLogos" });
+
+
+  if (isLoading) {
+    return <LoaderSection />
+  }
+
   return (
     <div
       className="px-6 md:px-14 2xl:px-60 3xl:px-80 
@@ -38,9 +54,9 @@ const TrustedCompaniesSection = () => {
         <div className="flex animate-scroll gap-28 w-max">
           {[...logos, ...logos].map((logo, i) => (
             <img
-              key={i}
-              src={logo.src}
-              alt={logo.title}
+              key={logo.DocId}
+              src={logo.ImageUrl}
+              alt={logo.Title}
               className={"h-9 object-contain filter invert brightness-0 "}
             />
           ))}

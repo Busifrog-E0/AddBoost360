@@ -6,14 +6,14 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
   const TextContent = (
     <div className="flex flex-col gap-5">
       <h2 className="font-anton text-white text-2xl 2xl:text-4xl mt-0">
-        {project.title}
+        {project.Title}
       </h2>
       <p className="font-inter text-base 2xl:text-lg text-white">
-        {project.description}
+        {project.Description1}
       </p>
       <h3 className="font-anton text-xl text-white">Impact:</h3>
       <div className="p-2 font-inter text-sm leading-relaxed">
-        {project.impactPoints.map((item, index) => (
+        {project.ImpactPoints.map((item, index) => (
           <p className="text-white" key={index}>
             ▪ {item}
           </p>
@@ -25,7 +25,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
           bgColor="bg-white"
           textColor="text-[#1C1C1C]"
           border="border border-black"
-          text={project.buttonText}
+          text={project.ButtonMessage1}
           iconColor="black"
           hoverBgColor="bg-gray-300"
           hoverTextColor="text-black"
@@ -40,14 +40,14 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
   const ImageBlock = (
     <div className="relative rounded-md">
       <img
-        src={project.image}
+        src={project.ImageUrl}
         alt="project"
         className="w-full h-full object-cover rounded-md relative z-10"
       />
       <div className="absolute -bottom-9 left-0 right-6 md:right-8 xl:right-16 z-30">
         <div className="w-10 h-10 sm:w-8 sm:h-8 lg:w-12 lg:h-12 p-3 lg:p-4 sm:p-2 bg-primary">
           <a
-            href={project.linkToProject}
+            href={project.LinkToProject}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -61,7 +61,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
         <div className="flex bg-white">
           <div className="p-2 md:p-3 lg:p-4 md:px-4 lg:px-6">
             <p className="text-sm sm:text-sm md:text-xl font-anton text-PrimaryDarkBlue mt-1">
-              {project.type}
+              {project.Type}
             </p>
           </div>
         </div>

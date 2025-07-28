@@ -12,14 +12,14 @@ const ServiceCard = ({
   const TextContent = (
     <div className="flex flex-col gap-5">
       <h className="font-anton text-white text-2xl 2xl:text-4xl 2xl:pt-10 uppercase">
-        {service.title}
+        {service.Title}
       </h>
       <p className="font-inter text-base 2xl:text-lg text-gray-200">
-        {service.description}
+        {service.Description2}
       </p>
-      <h className="font-anton text-xl text-white">{service.subtitle}</h>
+      <h className="font-anton text-xl text-white">{service.Description1}</h>
       <div className="p-2 font-inter text-sm leading-relaxed">
-        {service.services.map((item, index) => (
+        {service.ServiceList.map((item, index) => (
           <p className="text-white" key={index}>
             ▪ {item}
           </p>
@@ -31,7 +31,7 @@ const ServiceCard = ({
           bgColor="bg-white"
           textColor="text-[#1C1C1C]"
           border="border border-black"
-          text={service.buttonText}
+          text={service.ButtonMessage1}
           iconColor="black"
           hoverBgColor="bg-gray-300"
           hoverTextColor="text-black"
@@ -44,8 +44,8 @@ const ServiceCard = ({
   const ImageBlock = (
     <div className="relative mt-6 h-[350px] w-full">
       <img
-        src={service.image}
-        alt={service.title}
+        src={service.ImageUrl}
+        alt={service.Title}
         className="w-full h-full object-cover rounded-md"
       />
     </div>

@@ -10,7 +10,7 @@ const TestimonialCard = ({ currentTestimonial }) => {
           <div className="w-24 h-24 lg:w-32 lg:h-32 bg-white  rounded-full overflow-hidden border-4 border-gray-100 shadow-lg">
             <img
               src={
-                currentTestimonial.image ? currentTestimonial.image : Profile
+                currentTestimonial.ImageUrl ? currentTestimonial.ImageUrl : Profile
               }
               alt="Client"
               className="w-full h-full object-cover transition-all duration-500"
@@ -23,13 +23,13 @@ const TestimonialCard = ({ currentTestimonial }) => {
       </div>
       <div className="text-center space-y-6 ">
         <p className="font-inter text-sm lg:text-base text-white">
-          {currentTestimonial.quote}
+          {currentTestimonial.Description1}
         </p>
         <div className="pt-4 border-t border-PrimaryDarkBlue">
           <p className=" font-anton uppercase text-white text-base lg:text-lg ">
-            {currentTestimonial.designation +
+            {currentTestimonial.Title +
               ", " +
-              currentTestimonial.location}
+              currentTestimonial.Designation}
           </p>
         </div>
       </div>

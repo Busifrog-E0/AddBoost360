@@ -3,7 +3,7 @@ import Button from "../../Button";
 import usePostData from "../../../hooks/api/usePostData";
 
 const Formsection = () => {
-  const [formData, setFormData] = useState({
+  const initialValue = {
     FocusArea: "",
     FullName: "",
     Email: "",
@@ -11,7 +11,8 @@ const Formsection = () => {
     BusinessName: "",
     Notes: "",
     PreferredDate: new Date().getTime(),
-  });
+  }
+  const [formData, setFormData] = useState(initialValue);
   const { isLoading, postData } = usePostData({});
   const [errors, setErrors] = useState({});
   const [showPopup, setShowPopup] = useState(false);
@@ -44,7 +45,10 @@ const Formsection = () => {
     postData({
       endpoint: "forms",
       payload: formData,
-      onsuccess: (result) => {},
+      onsuccess: (result) => {
+        setShowPopup(true);
+        setFormData(initialValue)
+      },
     });
 
     const newErrors = {};
@@ -66,11 +70,17 @@ const Formsection = () => {
 
     if (Object.keys(newErrors).length === 0) {
       console.log("Form submitted:", formData);
-      setShowPopup(true);
+
     }
   };
 
   const closePopup = () => setShowPopup(false);
+
+  const toLocalDateTimeInputValue = (date) => {
+    const local = new Date(date);
+    local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
+    return local.toISOString().slice(0, 16);
+  };
 
   // ✅ Close popup when clicking outside
   useEffect(() => {
@@ -101,11 +111,10 @@ const Formsection = () => {
             name="FocusArea"
             value={formData.FocusArea}
             onChange={handleChange}
-            className={`p-3 border rounded-md outline-none w-full ${
-              errors.FocusArea
-                ? "border-red-500 bg-red-50 text-black"
-                : "border-gray-600 bg-white text-black"
-            }`}
+            className={`p-3 border rounded-md outline-none w-full ${errors.FocusArea
+              ? "border-red-500 bg-red-50 text-black"
+              : "border-gray-600 bg-white text-black"
+              }`}
           >
             <option value="">-- Select an option --</option>
             <option>Digital Marketing Strategy</option>
@@ -134,11 +143,10 @@ const Formsection = () => {
             onChange={handleChange}
             type="text"
             placeholder="Enter your full FullName"
-            className={`p-3 border rounded-md outline-none ${
-              errors.FullName
-                ? "border-red-500 bg-red-50 text-black"
-                : "border-gray-600 bg-white text-black"
-            }`}
+            className={`p-3 border rounded-md outline-none ${errors.FullName
+              ? "border-red-500 bg-red-50 text-black"
+              : "border-gray-600 bg-white text-black"
+              }`}
           />
           {errors.FullName && (
             <span className="text-sm text-red-500 mt-1">{errors.FullName}</span>
@@ -156,11 +164,10 @@ const Formsection = () => {
             onChange={handleChange}
             type="Email"
             placeholder="Enter your Email address"
-            className={`p-3 border rounded-md outline-none ${
-              errors.Email
-                ? "border-red-500 bg-red-50 text-black"
-                : "border-gray-600 bg-white text-black"
-            }`}
+            className={`p-3 border rounded-md outline-none ${errors.Email
+              ? "border-red-500 bg-red-50 text-black"
+              : "border-gray-600 bg-white text-black"
+              }`}
           />
           {errors.Email && (
             <span className="text-sm text-red-500 mt-1">{errors.Email}</span>
@@ -200,7 +207,7 @@ const Formsection = () => {
           <label className="text-sm mb-2">Preferred Date & Time</label>
           <input
             name="PreferredDate"
-            value={new Date(formData.PreferredDate).toISOString().slice(0, 16)}
+            value={toLocalDateTimeInputValue(formData.PreferredDate)}
             onChange={handleChange}
             type="datetime-local"
             className="p-3 bg-white border border-gray-600 rounded-md text-black outline-none w-full"

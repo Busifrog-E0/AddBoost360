@@ -117,8 +117,8 @@ const ServicesListView = ({
             onClick={handlePrevious}
             disabled={currentSlide === 0}
             className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === 0
-                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
               }`}
           >
             <img
@@ -132,8 +132,8 @@ const ServicesListView = ({
             onClick={handleNext}
             disabled={currentSlide === maxSlide}
             className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === maxSlide
-                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
               }`}
           >
             <img
@@ -165,7 +165,7 @@ const ServicesListView = ({
         >
           {services.map((service, index) => (
             <div
-              key={service.id}
+              key={service.DocId}
               className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 "
               style={{ maxWidth: `calc(${100 / itemsPerView}% - 1rem)` }}
             >
