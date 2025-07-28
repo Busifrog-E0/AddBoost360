@@ -95,7 +95,7 @@ const AddReview = ({
     if (!formData.Title.trim()) newErrors.Title = "Name is required";
     if (!formData.Designation.trim())
       newErrors.Designation = "Designation is required";
-    
+
     if (!formData.Description1.trim())
       newErrors.Description1 = "Review is required";
     if (!formData.ImageUrl) newErrors.ImageUrl = "Image is required";
@@ -249,7 +249,7 @@ const AddReview = ({
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Customer Image *
             </label>
-            <div className="overflow-hidden w-[250px] h-[150px]">
+            <div className="overflow-hidden w-[200px] h-[200px]">
               {!formData.ImageUrl ? (
                 <div
                   className={`border-2 border-dashed  p-6 text-center ${
