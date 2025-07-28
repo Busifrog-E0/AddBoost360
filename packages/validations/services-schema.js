@@ -6,7 +6,7 @@ import Joi from 'joi';
 const ServiceSchema = Joi.object({
   Title: Joi.string().required(),
   ImageUrl: Joi.array()
-    .items(Joi.string().uri().required())
+    .items(Joi.string().required())
     .min(1)
     .required(),
   Description1: Joi.string().required(),
