@@ -173,7 +173,7 @@ const AddReview = ({
               className={`w-full px-4 py-3 border rounded-lg ${
                 errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
-              placeholder="Customer Title"
+              placeholder="Customer Title / Company Name"
             />
             {errors.Title && (
               <p className="text-sm text-red-600">{errors.Title}</p>
@@ -215,7 +215,7 @@ const AddReview = ({
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
               }`}
-              placeholder="e.g., CEO, Startup Inc."
+              placeholder="Designation / Location"
             />
             {errors.Designation && (
               <p className="text-sm text-red-600">{errors.Designation}</p>

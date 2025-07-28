@@ -54,7 +54,7 @@ const CompanyLogoSection = () => {
     return (
       <AddCompanyLogo
         isEditing={false}
-        title="Add Company Logo"
+        title="Add Service Providers"
         description="Upload a new company logo"
         onBack={handleBack}
         onSave={handleSave}
@@ -66,7 +66,7 @@ const CompanyLogoSection = () => {
     return (
       <AddCompanyLogo
         isEditing={true}
-        title="Edit Company Logo"
+        title="Edit Service Providers"
         description="Update the selected company logo"
         onBack={handleBack}
         onSave={handleSave}
@@ -81,7 +81,7 @@ const CompanyLogoSection = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-gray-800">
-            Company Logos
+            Service Providers
           </h1>
           <p className="text-gray-500 text-sm">
             Manage logos of featured companies
