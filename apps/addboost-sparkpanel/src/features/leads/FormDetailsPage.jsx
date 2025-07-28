@@ -26,12 +26,21 @@ const FormDetailsPage = ({ form, onBack }) => {
           <Detail label="Full name" value={form.FullName} />
           <Detail label="Email Address" value={form.Email} />
           <Detail label="Phone Number" value={form.Phone} />
-          <Detail label="Choose Your Focus Area" value={form.FocusArea} />
+          <Detail label="Focus Area" value={form.FocusArea} />
           <Detail
             label="Business / Startup Name (if any)"
             value={form.BusinessName}
           />
-          <Detail label="Preferred Date & Time" value={new Date(form.PreferredDate).toLocaleDateString()} />
+          <Detail label="Preferred Date & Time" value={new Date(form.PreferredDate).toLocaleString(undefined, {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+          })} />
         </div>
 
         <div className="mt-6">
