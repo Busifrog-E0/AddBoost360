@@ -122,6 +122,11 @@ const AddPortfolioPage = ({
       isValid = false;
     }
 
+    if (!formData.Priority) {
+      newErrors.Priority = "Priority is required";
+      isValid = false;
+    }
+
     if (!formData.ButtonMessage1.trim()) {
       newErrors.ButtonMessage1 = "Button text is required";
       isValid = false;
@@ -253,14 +258,14 @@ const AddPortfolioPage = ({
                     handleInputChange("Priority", Number(e.target.value))
                   }
                   className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.title
+                    errors.Priority
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
                   }`}
                   placeholder="Order Priority"
                 />
-                {errors.title && (
-                  <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+                {errors.Priority && (
+                  <p className="mt-1 text-sm text-red-600">{errors.Priority}</p>
                 )}
               </div>
             </div>
@@ -382,46 +387,51 @@ const AddPortfolioPage = ({
                 <p className="text-sm text-red-600">{errors.LinkToProject}</p>
               )}
             </div>
+
             {/* Image Upload */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Project Image *
               </label>
               <div className="overflow-hidden w-[250px] h-[200px]">
                 {!formData.ImageUrl ? (
                   <div
-                    className={`border-2 border-dashed p-6 text-center ${
-                      errors.image
+                    className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
+                      errors.ImageUrl
                         ? "border-red-300 bg-red-50"
                         : "border-gray-300"
                     }`}
                   >
                     <input
-                      Type="file"
+                      type="file"
                       accept="image/*"
                       onChange={handleImageUpload}
                       className="hidden"
                       id="image-upload"
                     />
-                    <label htmlFor="image-upload" className="cursor-pointer">
-                      <div className="flex flex-col items-center space-y-2">
-                        <Upload className="w-6 h-6 text-gray-500" />
-                        <p className="text-sm text-gray-700">Click to upload</p>
+                    <label htmlFor="image-upload" className="cursor-pointer ">
+                      <div className="flex flex-col items-center space-y-3  h-full justify-center">
+                        <div className="p-3 bg-gray-100 rounded-full">
+                          <Upload className="w-6 h-6 text-gray-600" />
+                        </div>
+                        <p className="text-sm font-medium text-gray-900 ">
+                          Click to upload image
+                        </p>
                         <p className="text-xs text-gray-500">
-                          PNG, JPG under 5MB
+                          PNG, JPG, GIF up to 5MB
                         </p>
                       </div>
                     </label>
                   </div>
                 ) : (
-                  <div className="relative">
+                  <div className="relative w-full h-full rounded-lg">
                     <img
                       src={formData.ImageUrl}
-                      alt="preview"
+                      alt="Team member preview"
                       className="w-full h-48 object-cover rounded-lg border"
                     />
                     <button
-                      Type="button"
+                      type="button"
                       onClick={removeImage}
                       className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
                     >
@@ -429,10 +439,11 @@ const AddPortfolioPage = ({
                     </button>
                   </div>
                 )}
-                {errors.ImageUrl && (
-                  <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
-                )}
               </div>
+
+              {errors.ImageUrl && (
+                <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
+              )}
             </div>
           </div>
 

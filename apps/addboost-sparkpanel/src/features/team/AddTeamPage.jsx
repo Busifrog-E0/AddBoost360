@@ -260,7 +260,7 @@ const AddTeamPage = ({
               onChange={(e) =>
                 handleInputChange("Description1", e.target.value)
               }
-              className={`w-full px-4 py-3 border rounded-lg appearance-none bg-white ${
+              className={`w-full px-4 py-3 border rounded-lg appearance-none ${
                 errors.Description1
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
@@ -325,7 +325,7 @@ const AddTeamPage = ({
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Member Image *
             </label>
-            <div className="overflow-hidden w-[250px] h-[200px]">
+            <div className="overflow-hidden w-[200px] h-[200px]">
               {!formData.ImageUrl ? (
                 <div
                   className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
