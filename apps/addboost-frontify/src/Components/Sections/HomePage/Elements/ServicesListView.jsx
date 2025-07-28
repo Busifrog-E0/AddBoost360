@@ -163,7 +163,7 @@ const ServicesListView = ({
             cursor: isDragging ? "grabbing" : "grab",
           }}
         >
-          {services.map((service, index) => (
+          {services.slice(0, 6).map((service, index) => (
             <div
               key={service.DocId}
               className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 "
@@ -185,6 +185,22 @@ const ServicesListView = ({
           />
         </div>
       )}
+      {
+        showAllServicesButton &&
+        <div className="flex  justify-center mt-10 ">
+          <Button
+            bgColor="bg-white"
+            textColor="text-black"
+            iconColor="black"
+            text="View all services"
+            hoverBgColor="bg-gray-300"
+            hoverTextColor="text-black"
+            onClick={() => {
+              navigate("/services");
+            }}
+          />
+        </div>
+      }
     </div>
   );
 };
