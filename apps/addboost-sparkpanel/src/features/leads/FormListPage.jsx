@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Eye } from "lucide-react";
+import { Eye, Trash2 } from "lucide-react";
 import FormDetailsPage from "./FormDetailsPage";
 import useGetList from "../../hooks/api/useGetList";
+import useDeleteData from "../../hooks/api/UseDeleteData";
 
 const FormListPage = () => {
   const [selectedForm, setSelectedForm] = useState(null);
+  const { deleteData } = useDeleteData({});
 
   const {
     data: forms,
@@ -12,8 +14,24 @@ const FormListPage = () => {
     isLoadingMore,
     isPageDisabled,
     getList,
-  } = useGetList({ endpoint: "forms" });
+  } = useGetList({ endpoint: "forms", initialFilters: { OrderBy: "Index" } });
 
+  const handleDeleteData = (id) => {
+    if (window.confirm("Are you sure you want to delete this data?")) {
+      deleteData({
+        endpoint: `forms/${id}`,
+        onsuccess: (result) => {
+          if (result) {
+            OnDelete();
+          }
+        },
+      });
+    }
+  };
+
+  const OnDelete = () => {
+    getList([]);
+  };
   if (selectedForm) {
     return (
       <FormDetailsPage
@@ -46,6 +64,13 @@ const FormListPage = () => {
                 <td className="py-3 px-4">{form.Phone}</td>
                 <td className="py-3 px-4">
                   <div className="flex justify-center">
+                    {/* <button
+                      onClick={() => handleDeleteData(form.DocId)}
+                      className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      title="Delete data"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button> */}
                     <button
                       onClick={() => setSelectedForm(form)}
                       className="text-blue-600 hover:underline flex items-center gap-1"
