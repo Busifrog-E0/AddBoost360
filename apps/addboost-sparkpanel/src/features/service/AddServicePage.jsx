@@ -24,7 +24,7 @@ const AddServicePage = ({
 }) => {
   const { isLoading, postData } = usePostData({});
   const { updateData } = useUpdateData({});
-  const [formData, setFormData] = useState(initialValue);
+  const [formData, setFormData] = useState({ ...initialValue, images: [] });
 
   const [errors, setErrors] = useState({});
 
@@ -303,11 +303,10 @@ const AddServicePage = ({
                   type="text"
                   value={formData.Title}
                   onChange={(e) => handleInputChange("Title", e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.title
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.title
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   placeholder="e.g., Web Development"
                 />
                 {errors.title && (
@@ -327,11 +326,10 @@ const AddServicePage = ({
                     onChange={(e) =>
                       handleInputChange("Priority", Number(e.target.value))
                     }
-                    className={`w-full px-4 py-3 border rounded-lg ${
-                      errors.title
+                    className={`w-full px-4 py-3 border rounded-lg ${errors.title
                         ? "border-red-300 bg-red-50"
                         : "border-gray-300"
-                    }`}
+                      }`}
                     placeholder="Order Priority"
                   />
                   {errors.title && (
@@ -350,11 +348,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description2", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg resize-none ${
-                    errors.description
+                  className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.description
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   placeholder="Detailed description..."
                 />
 
@@ -374,11 +371,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.subtitle
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.subtitle
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   placeholder="e.g., Modern Web Apps"
                 />
                 {errors.subtitle && (
@@ -435,11 +431,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("ButtonMessage1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.buttonText
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   placeholder="e.g., Contact Us"
                 />
                 {errors.buttonText && (
