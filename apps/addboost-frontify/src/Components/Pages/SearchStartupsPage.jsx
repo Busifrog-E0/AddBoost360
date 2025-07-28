@@ -12,12 +12,14 @@ const SearchStartupsPage = () => {
     isLoadingMore,
     isPageDisabled,
     getList,
-  } = useGetList({ endpoint: "organizations" });
+    filters,
+    changeSingleFilter
+  } = useGetList({ endpoint: "organizations", changeOnFilter: true });
 
 
-  if (isLoading) {
-    return <LoaderSection />
-  }
+  // if (isLoading) {
+  //   return <LoaderSection />
+  // }
 
   return (
     <div
@@ -48,28 +50,63 @@ const SearchStartupsPage = () => {
           type="text"
           placeholder="Search here"
           className="p-3 bg-white border border-gray-300 rounded-md text-black placeholder-gray-400 outline-none mt-5"
+          value={filters.Keyword}
+          onChange={(e) =>
+            changeSingleFilter('Keyword', e.target.value)
+          }
         />
       </div>
 
-      <div className="mt-4 md:mt-6 lg:mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-        {startups.map((startup) => (
-          <div key={startup.DocId} className="w-full">
-            <StartupCard startup={startup} />
+
+
+      <div className="mt-4 md:mt-6 lg:mt-10">
+        {isLoading ?
+          <LoaderSection />
+          :
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {startups.map((startup) => (
+              <div key={startup.DocId} className="w-full">
+                <StartupCard startup={startup} />
+              </div>
+            ))}
           </div>
-        ))}
+        }
       </div>
 
-      <div className="flex items-end justify-center mt-8">
-        <Button
-          bgColor="bg-white"
-          textColor="text-black"
-          hoverBgColor="bg-gray-300"
-          hoverTextColor="text-black"
-          iconColor="black"
-          onClick={() => { }}
-          text="View More"
-        />
-      </div>
+
+
+      {/* <div className="mt-4 md:mt-6 lg:mt-10 ">
+
+        {isLoading ?
+          <LoaderSection />
+          :
+          <>
+            {startups.map((startup) => (
+              <div key={startup.DocId} className="w-full">
+                <StartupCard startup={startup} />
+              </div>
+            ))}
+          </>
+        }
+
+      </div> */}
+
+      {
+        !isPageDisabled &&
+        <div className="flex items-end justify-center mt-8">
+          <Button
+            bgColor="bg-white"
+            textColor="text-black"
+            hoverBgColor="bg-gray-300"
+            hoverTextColor="text-black"
+            iconColor="black"
+            isLoading={isLoadingMore}
+            onClick={() => getList(startups, false)}
+            text="View More"
+          />
+        </div>
+      }
+
     </div>
   );
 };

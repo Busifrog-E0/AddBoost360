@@ -20,7 +20,7 @@ export default function useGetList(options) {
   const [isPageDisabled, setIsPageDisabled] = useState(true);
 
   const [filters, setFilters] = useState({
-    OrderBy: "Index",
+    OrderBy: "-Priority",
     Keyword: "",
     Limit: 30,
     StartDate: null,
@@ -63,6 +63,7 @@ export default function useGetList(options) {
     : [...extraDependencies];
 
   const getList = runOnce((temp, fromUpdate = true) => {
+    console.log(filters)
     const query = `${endpoint}?${jsonToQuery({
       ...filters,
       ...extraParams,
