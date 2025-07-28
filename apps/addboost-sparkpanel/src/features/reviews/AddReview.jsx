@@ -95,6 +95,7 @@ const AddReview = ({
     if (!formData.Title.trim()) newErrors.Title = "Name is required";
     if (!formData.Designation.trim())
       newErrors.Designation = "Designation is required";
+    
     if (!formData.Description1.trim())
       newErrors.Description1 = "Review is required";
     if (!formData.ImageUrl) newErrors.ImageUrl = "Image is required";

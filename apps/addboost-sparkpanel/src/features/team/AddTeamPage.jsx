@@ -107,6 +107,10 @@ const AddTeamPage = ({
     if (!formData.FullName.trim()) newErrors.FullName = "Name is required";
     if (!formData.Designation.trim())
       newErrors.Designation = "Designation is required";
+    if (!formData.Description1.trim())
+      newErrors.Description1 = "Category is required";
+    if (!formData.Priority) newErrors.Priority = "Priority is required";
+    if (!formData.State.trim()) newErrors.State = "State is required";
     if (!formData.Country.trim()) newErrors.Country = "Country is required";
     if (!formData.ImageUrl)
       newErrors.ImageUrl = "Team member image is required";
@@ -191,19 +195,19 @@ const AddTeamPage = ({
               type="text"
               value={formData.FullName}
               onChange={(e) => handleInputChange("FullName", e.target.value)}
-              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
                 errors.FullName ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., John Doe"
             />
             {errors.FullName && (
-              <p className=" mt-1 text-sm text-red-600">{errors.FullName}</p>
+              <p className="  text-sm text-red-600">{errors.FullName}</p>
             )}
           </div>
           {/* Priority */}
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1 mt-1">
                 Priority *
               </label>
               <input
@@ -213,12 +217,14 @@ const AddTeamPage = ({
                   handleInputChange("Priority", Number(e.target.value))
                 }
                 className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                  errors.Priority
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                 }`}
                 placeholder="Order Priority"
               />
-              {errors.title && (
-                <p className=" mt-1 text-sm text-red-600">{errors.title}</p>
+              {errors.Priority && (
+                <p className=" mt-1 text-sm text-red-600">{errors.Priority}</p>
               )}
             </div>
           </div>
@@ -232,7 +238,7 @@ const AddTeamPage = ({
               type="text"
               value={formData.Designation}
               onChange={(e) => handleInputChange("Designation", e.target.value)}
-              className={`w-full px-4 mb-3 py-3 border rounded-lg ${
+              className={`w-full px-4 mb-2 py-3 border rounded-lg ${
                 errors.Designation
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
@@ -240,13 +246,13 @@ const AddTeamPage = ({
               placeholder="e.g., Frontend Developer"
             />
             {errors.Designation && (
-              <p className=" mt-1 text-sm text-red-600">{errors.Designation}</p>
+              <p className="  text-sm text-red-600">{errors.Designation}</p>
             )}
           </div>
 
           {/* Type Dropdown */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1 mt-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1 mt-1">
               Categories *
             </label>
             <select
@@ -255,7 +261,7 @@ const AddTeamPage = ({
                 handleInputChange("Description1", e.target.value)
               }
               className={`w-full px-4 py-3 border rounded-lg appearance-none bg-white ${
-                errors.TyDescription1pe
+                errors.Description1
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
               }`}
@@ -285,7 +291,7 @@ const AddTeamPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
                 errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., kerala"
@@ -297,14 +303,14 @@ const AddTeamPage = ({
 
           {/* Country */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mt-1 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mt-1 mb-1">
               Country *
             </label>
             <input
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4 mb-3 py-3 border rounded-lg ${
+              className={`w-full px-4 mb-2 py-3 border rounded-lg ${
                 errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., India"
@@ -319,7 +325,7 @@ const AddTeamPage = ({
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Member Image *
             </label>
-            <div className="overflow-hidden w-[250px] h-[250px]">
+            <div className="overflow-hidden w-[250px] h-[200px]">
               {!formData.ImageUrl ? (
                 <div
                   className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
