@@ -9,7 +9,6 @@ const AddServicePage = ({
   onSave,
   title,
   description,
-
   isEditing = false,
   initialValue = {
     Title: "",
@@ -24,15 +23,20 @@ const AddServicePage = ({
 }) => {
   const { isLoading, postData } = usePostData({});
   const { updateData } = useUpdateData({});
-  const [formData, setFormData] = useState({ ...initialValue, images: [] });
+
+  const [formData, setFormData] = useState(() => ({
+    ...initialValue,
+    images: [],
+    ImageUrl: Array.isArray(initialValue.ImageUrl)
+      ? [...initialValue.ImageUrl]
+      : [],
+  }));
 
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors((prev) => ({ ...prev, [field]: "" }));
-    }
+    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
   const handleServiceChange = (index, value) => {
@@ -49,73 +53,19 @@ const AddServicePage = ({
   };
 
   const removeService = (index) => {
-    const newServices = formData.ServiceList.filter((_, i) => i !== index);
-    setFormData((prev) => ({ ...prev, ServiceList: newServices }));
+    setFormData((prev) => ({
+      ...prev,
+      ServiceList: prev.ServiceList.filter((_, i) => i !== index),
+    }));
   };
-
-  // const handleImageUpload = (e) => {
-  //   const file = e.target.files?.[0];
-  //   if (!file) return;
-
-  //   // ——— Validate type & size ———
-  //   if (!file.type.startsWith("image/")) {
-  //     setErrors((prev) => ({
-  //       ...prev,
-  //       image: "Please select a valid image file",
-  //     }));
-  //     return;
-  //   }
-  //   if (file.size > 5 * 1024 * 1024) {
-  //     setErrors((prev) => ({
-  //       ...prev,
-  //       image: "Image size should be less than 5MB",
-  //     }));
-  //     return;
-  //   }
-
-  //   // ——— Read as ArrayBuffer ———
-  //   const reader = new FileReader();
-  //   reader.onload = (loadEvent) => {
-  //     const arrayBuffer = loadEvent.target.result; // true ArrayBuffer
-  //     const byteArray = Array.from(new Uint8Array(arrayBuffer));
-
-  //     // Create a blob URL for preview
-  //     const previewUrl = URL.createObjectURL(file);
-
-  //     setFormData((prev) => ({
-  //       ...prev,
-  //       ImageUrl: previewUrl,
-  //       image: {
-  //         FileType: file.type,
-  //         FileData: byteArray,
-  //         FileName: file.name,
-  //       },
-  //     }));
-  //     setErrors((prev) => ({
-  //       ...prev,
-  //       image: "",
-  //       ImageUrl: "",
-  //     }));
-  //   };
-
-  //   reader.onerror = (err) => {
-  //     console.error("FileReader error:", err);
-  //     setErrors((prev) => ({
-  //       ...prev,
-  //       image: "Failed to read file. Please try again.",
-  //     }));
-  //   };
-
-  //   reader.readAsArrayBuffer(file);
-  // };
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files || []);
-    const validFiles = [];
+    const newImages = [];
 
     files.forEach((file) => {
-      if (!file.type.startsWith("image/")) return;
-      if (file.size > 5 * 1024 * 1024) return;
+      if (!file.type.startsWith("image/") || file.size > 5 * 1024 * 1024)
+        return;
 
       const reader = new FileReader();
       reader.onload = (loadEvent) => {
@@ -140,8 +90,7 @@ const AddServicePage = ({
       reader.readAsArrayBuffer(file);
     });
 
-    // Reset errors
-    setErrors((prev) => ({ ...prev, image: "", ImageUrl: "" }));
+    setErrors((prev) => ({ ...prev, ImageUrl: "" }));
   };
 
   const removeImage = (index) => {
@@ -152,20 +101,6 @@ const AddServicePage = ({
     }));
   };
 
-  // const validateForm = () => {
-  //   const newErrors = {};
-  //   if (!formData.Title.trim()) newErrors.title = "Title is required";
-  //   if (!formData.Description1.trim())
-  //     newErrors.subtitle = "Subtitle is required";
-  //   if (!formData.Description2.trim())
-  //     newErrors.description = "Description is required";
-
-  //   if (!formData.ButtonMessage1.trim())
-  //     newErrors.buttonText = "Button text is required";
-  //   if (!formData.ImageUrl) newErrors.ImageUrl = "Service image is required";
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
   const validateForm = () => {
     const newErrors = {};
     if (!formData.Title.trim()) newErrors.title = "Title is required";
@@ -181,35 +116,13 @@ const AddServicePage = ({
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  // const handleFormSubmit = (fileUrl) => {
-  //   const { image, ImageUrl, ...rest } = formData;
-  //   const payload = { ...rest, ImageUrl: fileUrl };
 
-  //   if (isEditing) {
-  //     updateData({
-  //       endpoint: `services/${formData.DocId}`,
-  //       payload: payload,
-  //       onsuccess: (result) => {
-  //         if (result) {
-  //           onSave();
-  //         }
-  //       },
-  //     });
-  //   } else {
-  //     postData({
-  //       endpoint: "services",
-  //       payload: payload,
-  //       onsuccess: (result) => {
-  //         if (result) {
-  //           onSave();
-  //         }
-  //       },
-  //     });
-  //   }
-  // };
   const handleFormSubmit = (uploadedUrls) => {
-    const { images, ImageUrl, ...rest } = formData;
-    const payload = { ...rest, ImageUrl: uploadedUrls };
+    const { images, ...rest } = formData;
+    const payload = {
+      ...rest,
+      ImageUrl: [...formData.ImageUrl.filter((url) => !url.startsWith("blob:")), ...uploadedUrls],
+    };
 
     const action = isEditing ? updateData : postData;
     const endpoint = isEditing ? `services/${formData.DocId}` : "services";
@@ -222,50 +135,36 @@ const AddServicePage = ({
       },
     });
   };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (!validateForm()) return;
 
-  //   if (formData.image) {
-  //     postData({
-  //       endpoint: "files/admin",
-  //       payload: formData.image,
-  //       onsuccess: (result) => {
-  //         handleFormSubmit(result.FileUrl);
-  //       },
-  //     });
-  //   } else {
-  //     handleFormSubmit(formData.ImageUrl);
-  //   }
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
+    const uploadedUrls = [];
+
+    const uploadNext = (index) => {
+      if (index >= formData.images.length) {
+        handleFormSubmit(uploadedUrls);
+        return;
+      }
+
+      postData({
+        endpoint: "files/admin",
+        payload: formData.images[index],
+        onsuccess: (result) => {
+          uploadedUrls.push(result.FileUrl);
+          uploadNext(index + 1);
+        },
+      });
+    };
+
     if (formData.images.length > 0) {
-      const uploadedUrls = [];
-
-      const uploadNext = (index) => {
-        if (index >= formData.images.length) {
-          handleFormSubmit(uploadedUrls);
-          return;
-        }
-
-        postData({
-          endpoint: "files/admin",
-          payload: formData.images[index],
-          onsuccess: (result) => {
-            uploadedUrls.push(result.FileUrl);
-            uploadNext(index + 1);
-          },
-        });
-      };
-
       uploadNext(0);
     } else {
-      handleFormSubmit(formData.ImageUrl);
+      handleFormSubmit([]);
     }
   };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -285,7 +184,6 @@ const AddServicePage = ({
       </div>
 
       {/* Form */}
-
       <div className="grid lg:grid-cols-3 gap-3">
         <form onSubmit={handleSubmit} className="space-y-6 lg:col-span-2">
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
@@ -294,7 +192,8 @@ const AddServicePage = ({
             </h2>
 
             {/* Title */}
-            <div className="space-y-6 ">
+            <div className="space-y-6">
+              {/* Title Field */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Service Title *
@@ -303,9 +202,7 @@ const AddServicePage = ({
                   type="text"
                   value={formData.Title}
                   onChange={(e) => handleInputChange("Title", e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.title
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
                     }`}
                   placeholder="e.g., Web Development"
                 />
@@ -314,29 +211,28 @@ const AddServicePage = ({
                 )}
               </div>
 
-              {/* Priority */}
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Priority *
-                  </label>
-                  <input
-                    type="number"
-                    value={formData.Priority}
-                    onChange={(e) =>
-                      handleInputChange("Priority", Number(e.target.value))
-                    }
-                    className={`w-full px-4 py-3 border rounded-lg ${errors.title
-                        ? "border-red-300 bg-red-50"
-                        : "border-gray-300"
-                      }`}
-                    placeholder="Order Priority"
-                  />
-                  {errors.title && (
-                    <p className="mt-1 text-sm text-red-600">{errors.title}</p>
-                  )}
-                </div>
+              {/* Priority Field */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Priority *
+                </label>
+                <input
+                  type="number"
+                  value={formData.Priority || ""}
+                  onChange={(e) =>
+                    handleInputChange("Priority", Number(e.target.value))
+                  }
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.priority
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                    }`}
+                  placeholder="Order Priority"
+                />
+                {errors.priority && (
+                  <p className="mt-1 text-sm text-red-600">{errors.priority}</p>
+                )}
               </div>
+
               {/* Description */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -354,7 +250,6 @@ const AddServicePage = ({
                     }`}
                   placeholder="Detailed description..."
                 />
-
                 {errors.description && (
                   <p className="text-sm text-red-600">{errors.description}</p>
                 )}
@@ -378,52 +273,16 @@ const AddServicePage = ({
                   placeholder="e.g., Modern Web Apps"
                 />
                 {errors.subtitle && (
-                  <p className="mt-1 text-sm text-red-600">{errors.subtitle}</p>
+                  <p className="mt-1 text-sm text-red-600">
+                    {errors.subtitle}
+                  </p>
                 )}
               </div>
 
-              {/* Services List */}
+              {/* CTA Button */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  List of Services
-                </label>
-
-                {formData.ServiceList.map((service, index) => (
-                  <div key={index} className="flex items-center space-x-2 mb-2">
-                    <input
-                      type="text"
-                      value={service}
-                      onChange={(e) =>
-                        handleServiceChange(index, e.target.value)
-                      }
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
-                      placeholder={`Service ${index + 1}`}
-                    />
-                    <button
-                      type="button"
-                      onClick={() => removeService(index)}
-                      className="text-red-500 hover:text-red-700"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                  </div>
-                ))}
-
-                <div className="flex items-center space-x-2 mt-2">
-                  <button
-                    type="button"
-                    onClick={addService}
-                    className="flex items-center mt-2 text-blue-600 hover:underline"
-                  >
-                    <Plus className="w-4 h-4 mr-1" /> Add New Service
-                  </button>
-                </div>
-              </div>
-
-              {/* Button Text */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Call-to-Action Button Text *
+                  Button Text *
                 </label>
                 <input
                   type="text"
@@ -444,7 +303,42 @@ const AddServicePage = ({
                 )}
               </div>
 
-              {/* Image Upload */}
+              {/* Services List */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  List of Services
+                </label>
+                {formData.ServiceList.map((service, index) => (
+                  <div key={index} className="flex items-center space-x-2 mb-2">
+                    <input
+                      type="text"
+                      value={service}
+                      onChange={(e) =>
+                        handleServiceChange(index, e.target.value)
+                      }
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      placeholder={`Service ${index + 1}`}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removeService(index)}
+                      className="text-red-500 hover:text-red-700"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={addService}
+                  className="text-blue-600 hover:underline mt-2 flex items-center"
+                >
+                  <Plus className="w-4 h-4 mr-1" />
+                  Add New Service
+                </button>
+              </div>
+
+              {/* Images */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Service Images *
@@ -486,14 +380,16 @@ const AddServicePage = ({
                   </label>
                 </div>
                 {errors.ImageUrl && (
-                  <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
+                  <p className="text-sm text-red-600 mt-1">
+                    {errors.ImageUrl}
+                  </p>
                 )}
               </div>
             </div>
           </div>
 
-          {/* Footer Buttons */}
-          <div className="flex items-center justify-end space-x-4 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+          {/* Submit Buttons */}
+          <div className="flex justify-end space-x-4 bg-white border rounded-xl p-6">
             <button
               type="button"
               onClick={onBack}
@@ -520,6 +416,8 @@ const AddServicePage = ({
             </button>
           </div>
         </form>
+
+        {/* Preview */}
         <div className="">
           <ServicePreviewCard service={formData} />
         </div>
