@@ -149,7 +149,7 @@ const TeamSection = () => {
                     <div className="flex items-center justify-center space-x-2">
                       <button
                         onClick={() => handleEditMember(member)}
-                        className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         title="Edit member"
                       >
                         <Edit className="w-5 h-5" />
@@ -157,7 +157,7 @@ const TeamSection = () => {
 
                       <button
                         onClick={() => handleDeleteMember(member.DocId)}
-                        className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                         title="Delete member"
                       >
                         <Trash2 className="w-5 h-5" />

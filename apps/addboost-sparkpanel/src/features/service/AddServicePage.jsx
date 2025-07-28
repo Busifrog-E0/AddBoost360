@@ -219,20 +219,7 @@ const AddServicePage = ({
                   <p className="mt-1 text-sm text-red-600">{errors.title}</p>
                 )}
               </div>
-              <select
-                id="cars"
-                name="cars"
-                onChange={(e) => {
-                  console.log(e.target.value);
-                  handleInputChange("Type", e.target.value);
-                }}
-              >
-                <option value="volvo">Volvo XC90</option>
-                <option value="saab">Saab 95</option>
-                <option value="mercedes">Mercedes SLK</option>
-                <option value="audi">Audi TT</option>
-              </select>
-
+         
               {/* Priority */}
               <div className="space-y-6">
                 <div>

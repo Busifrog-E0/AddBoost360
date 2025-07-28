@@ -30,7 +30,7 @@ const ReviewSection = () => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this service?")) {
+    if (window.confirm("Are you sure you want to delete this review?")) {
       deleteData({
         endpoint: `testimonialss/${id}`,
         onsuccess: (result) => {
@@ -42,7 +42,7 @@ const ReviewSection = () => {
     }
   };
 
-  const handleSave = (reviewData) => {
+  const handleSave = () => {
     setShowAddReview(false);
     setShowEditReview(false);
     setReviewToBeEdited(null);
@@ -66,6 +66,7 @@ const ReviewSection = () => {
       />
     );
   }
+
   if (showeditReview) {
     return (
       <AddReview
@@ -105,7 +106,7 @@ const ReviewSection = () => {
             key={review.DocId}
             className="relative bg-white border border-gray-200 rounded-xl shadow-sm p-6 pr-14 flex gap-4 items-start hover:shadow-md transition"
           >
-            {/* Icons */}
+            {/* Top Right Icons */}
             <div className="absolute top-4 right-4 flex gap-2">
               <button
                 onClick={() => handleEdit(review)}
@@ -121,12 +122,14 @@ const ReviewSection = () => {
               </button>
             </div>
 
-            {/* Content */}
+            {/* Review Image */}
             <img
               src={review.ImageUrl}
               alt={review.Title}
               className="w-14 h-14 rounded-full object-cover border-2 border-blue-500"
             />
+
+            {/* Review Content */}
             <div className="flex-1">
               <p className="text-gray-700 text-sm italic mb-3 line-clamp-3">
                 “{review.Description1}”
@@ -136,11 +139,19 @@ const ReviewSection = () => {
                   {review.Title}
                 </h2>
                 <p className="text-sm text-gray-500">{review.Designation}</p>
+
+                {/* Priority below Designation */}
+                {review.Priority && (
+                  <span className="mt-1 inline-block bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full ml-0">
+                    Priority: {review.Priority}
+                  </span>
+                )}
               </div>
             </div>
           </div>
         ))}
 
+        {/* Empty State */}
         {testimonialss.length === 0 && (
           <div className="text-center py-12 col-span-2">
             <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">

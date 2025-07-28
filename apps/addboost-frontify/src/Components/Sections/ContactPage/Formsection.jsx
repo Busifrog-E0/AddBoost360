@@ -23,8 +23,9 @@ const Formsection = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-   
-    const transformedValue = name==='PreferredDate'? new Date(value).getTime():value
+
+    const transformedValue =
+      name === "PreferredDate" ? new Date(value).getTime() : value;
 
     setFormData((prev) => ({
       ...prev,
@@ -43,9 +44,7 @@ const Formsection = () => {
     postData({
       endpoint: "forms",
       payload: formData,
-      onsuccess: (result) => {
-        
-      },
+      onsuccess: (result) => {},
     });
 
     const newErrors = {};

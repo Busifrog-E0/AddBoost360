@@ -116,7 +116,7 @@ const CompanyLogoSection = () => {
                 <h3 className="text-lg font-semibold text-gray-800">
                   {logo.Title}
                 </h3>
-                <span className="inline-block mt-1 text-xs font-medium px-2 py-0.5 rounded bg-red-100 text-red-600">
+                <span className=" inline-block bg-red-100 text-red-600 text-xs font-medium px-2 py-1 rounded-full">
                   Priority: {logo.Priority}
                 </span>
               </div>

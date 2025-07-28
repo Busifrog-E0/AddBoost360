@@ -59,17 +59,18 @@ const PortfolioSection = () => {
       <AddPortfolioPage
         isEditing={false}
         title="Add New Project"
-        description=" Create a new project offering for your business"
+        description="Create a new project offering for your business"
         onBack={handleBack}
         onSave={handleSaveProject}
       />
     );
   }
+
   if (showEditProject) {
     return (
       <AddPortfolioPage
         isEditing={true}
-        title=" Edit Portfolio Project"
+        title="Edit Portfolio Project"
         description="Edit the details of your existing project offering"
         onBack={handleBack}
         onSave={handleSaveProject}
@@ -77,6 +78,7 @@ const PortfolioSection = () => {
       />
     );
   }
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -111,20 +113,23 @@ const PortfolioSection = () => {
               <div className="flex justify-between items-start">
                 <div>
                   <h3 className="font-semibold text-lg">{item.Title}</h3>
-                  {item.type && (
-                    <p className="text-xs text-gray-500 mt-1">{item.Type}</p>
+
+                  {item.Priority && (
+                    <span className="bg-red-100 text-red-600 text-xs font-medium px-2 py-1 rounded-full">
+                      Priority: {item.Priority}
+                    </span>
                   )}
                 </div>
                 <div className="flex space-x-2">
                   <button
                     onClick={() => handleEditProject(item)}
-                    className="p-1.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded"
+                    className="p-1.5  text-blue-600 hover:bg-blue-50 rounded"
                   >
                     <Edit className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => handleDeleteProject(item.DocId)}
-                    className="p-1.5 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded"
+                    className="p-1.5 text-red-600 hover:bg-red-50 rounded"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -166,7 +171,7 @@ const PortfolioSection = () => {
             onClick={handleAddProject}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
-            Add Your First portfolio
+            Add Your First Portfolio
           </button>
         </div>
       )}

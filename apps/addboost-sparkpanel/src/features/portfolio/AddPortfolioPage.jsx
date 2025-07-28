@@ -25,6 +25,13 @@ const AddPortfolioPage = ({
   const { updateData } = useUpdateData({});
   const [formData, setFormData] = useState(initialValue);
   const [errors, setErrors] = useState({});
+  const typeOptions = [
+    "Website Design",
+    "Branding",
+    "Social Media Marketing",
+    "Mobile App",
+    "UI/UX Design",
+  ];  
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -257,20 +264,27 @@ const AddPortfolioPage = ({
               )}
             </div>
 
-            {/*Type*/}
+            {/* Type Dropdown */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Type *
               </label>
-              <input
-                Type="text"
+              <select
                 value={formData.Type}
                 onChange={(e) => handleInputChange("Type", e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg ${
+                className={`w-full px-4 py-3 border rounded-lg appearance-none bg-white ${
                   errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
-                placeholder="e.g., Website Design, Branding, Social Media Marketing"
-              />
+              >
+                <option value="" disabled>
+                  Select a type
+                </option>
+                {typeOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
               {errors.Type && (
                 <p className="text-sm text-red-600">{errors.Type}</p>
               )}

@@ -58,7 +58,7 @@ const ServiceSection = () => {
     return (
       <AddServicePage
         title="Add New Service"
-        description=" Create a new service offering for your business"
+        description="Create a new service offering for your business"
         isEditing={false}
         onBack={handleBackToServices}
         onSave={handleSaveService}
@@ -135,12 +135,12 @@ const ServiceSection = () => {
                       </div>
                     </td>
 
-                    {/* Actions */}
+                    {/* Actions + Priority */}
                     <td className="py-4 px-6">
                       <div className="flex items-center justify-center space-x-2">
                         <button
                           onClick={() => handleEditService(service)}
-                          className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                          className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                           title="Edit service"
                         >
                           <Edit className="w-5 h-5" />
@@ -148,11 +148,18 @@ const ServiceSection = () => {
 
                         <button
                           onClick={() => handleDeleteService(service.DocId)}
-                          className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                           title="Delete service"
                         >
                           <Trash2 className="w-5 h-5" />
                         </button>
+
+                        {/* Priority badge */}
+                        {service.Priority && (
+                          <span className="inline-block mt-2 px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-600   rounded-full">
+                            Priority: {service.Priority}
+                          </span>
+                        )}
                       </div>
                     </td>
                   </tr>

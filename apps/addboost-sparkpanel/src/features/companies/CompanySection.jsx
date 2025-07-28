@@ -154,14 +154,14 @@ const CompanySection = () => {
                     <div className="flex items-center justify-center space-x-2">
                       <button
                         onClick={() => handleEditCompany(company)}
-                        className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         title="Edit company"
                       >
                         <Edit className="w-5 h-5" />
                       </button>
                       <button
                         onClick={() => handleDeleteCompany(company.DocId)}
-                        className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                         title="Delete company"
                       >
                         <Trash2 className="w-5 h-5" />
