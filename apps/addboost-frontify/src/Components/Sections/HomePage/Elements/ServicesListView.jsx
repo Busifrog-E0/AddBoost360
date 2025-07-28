@@ -185,6 +185,22 @@ const ServicesListView = ({
           />
         </div>
       )}
+      {
+        showAllServicesButton &&
+        <div className="flex  justify-center mt-10 ">
+          <Button
+            bgColor="bg-white"
+            textColor="text-black"
+            iconColor="black"
+            text="View all services"
+            hoverBgColor="bg-gray-300"
+            hoverTextColor="text-black"
+            onClick={() => {
+              navigate("/services");
+            }}
+          />
+        </div>
+      }
     </div>
   );
 };
