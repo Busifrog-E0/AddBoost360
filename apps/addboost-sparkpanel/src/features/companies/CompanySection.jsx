@@ -136,10 +136,12 @@ const CompanySection = () => {
                       <div className="min-w-0 flex-1">
                         <p className="text-base font-semibold text-gray-900">
                           {company.Title}
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          {company.Tags?.join(", ")}
-                        </p>
+                        </p>{" "}
+                        {company.Priority && (
+                          <span className="inline-block mt-1 px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-600 rounded-full">
+                            Priority: {company.Priority}
+                          </span>
+                        )}
                       </div>
                     </div>
                   </td>
