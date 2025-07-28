@@ -18,7 +18,7 @@ const AddTeamPage = ({
     image: null,
     ImageUrl: "",
     Description1: "",
-    Priority: "",
+    Priority: "5",
   },
 }) => {
   const [formData, setFormData] = useState(initialValue);
@@ -27,6 +27,14 @@ const AddTeamPage = ({
 
   const [errors, setErrors] = useState({});
   const { updateData } = useUpdateData({});
+
+  const typeOptions = [
+    "Website Design",
+    "Branding",
+    "Social Media Marketing",
+    "Mobile App",
+    "UI/UX Design",
+  ];
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -215,23 +223,9 @@ const AddTeamPage = ({
             </div>
           </div>
 
-          <select
-            id="cars"
-            name="cars"
-            onChange={(e) => {
-              console.log(e.target.value);
-              handleInputChange("Description1", e.target.value);
-            }}
-          >
-            <option value="volvo">Volvo XC90</option>
-            <option value="saab">Saab 95</option>
-            <option value="mercedes">Mercedes SLK</option>
-            <option value="audi">Audi TT</option>
-          </select>
-
           {/* Designation */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-2 mt-2">
               Designation *
             </label>
             <input
@@ -247,6 +241,36 @@ const AddTeamPage = ({
             />
             {errors.Designation && (
               <p className="mt-1 text-sm text-red-600">{errors.Designation}</p>
+            )}
+          </div>
+
+          {/* Type Dropdown */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Type *
+            </label>
+            <select
+              value={formData.Description1}
+              onChange={(e) =>
+                handleInputChange("Description1", e.target.value)
+              }
+              className={`w-full px-4 py-3 border rounded-lg appearance-none bg-white ${
+                errors.TyDescription1pe
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+              }`}
+            >
+              <option value="" disabled>
+                Select a type
+              </option>
+              {typeOptions.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            {errors.Description1 && (
+              <p className="text-sm text-red-600">{errors.Description1}</p>
             )}
           </div>
 

@@ -14,7 +14,7 @@ const AddPortfolioPage = ({
     ImageUrl: "",
     ButtonMessage1: "",
     Type: "",
-    Priority: "",
+    Priority: "5",
     LinkToProject: "",
   },
   title,
@@ -25,13 +25,6 @@ const AddPortfolioPage = ({
   const { updateData } = useUpdateData({});
   const [formData, setFormData] = useState(initialValue);
   const [errors, setErrors] = useState({});
-  const typeOptions = [
-    "Website Design",
-    "Branding",
-    "Social Media Marketing",
-    "Mobile App",
-    "UI/UX Design",
-  ];  
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -264,29 +257,22 @@ const AddPortfolioPage = ({
               )}
             </div>
 
-            {/* Type Dropdown */}
+            {/* Type */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Type *
               </label>
-              <select
+              <input
+                type="text"
                 value={formData.Type}
                 onChange={(e) => handleInputChange("Type", e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg appearance-none bg-white ${
+                className={`w-full px-4 mb-3 py-3 border rounded-lg ${
                   errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
-              >
-                <option value="" disabled>
-                  Select a type
-                </option>
-                {typeOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
+                placeholder="e.g., Website Design, Branding, Social Media Marketing"
+              />
               {errors.Type && (
-                <p className="text-sm text-red-600">{errors.Type}</p>
+                <p className="mt-1 text-sm text-red-600">{errors.Type}</p>
               )}
             </div>
 
