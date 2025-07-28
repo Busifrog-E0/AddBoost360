@@ -108,6 +108,7 @@ const TeamSection = () => {
                 <th className="text-left py-4 px-6 font-medium text-gray-700">
                   Designation
                 </th>
+
                 <th className="text-center py-4 px-6 font-medium text-gray-700">
                   Actions
                 </th>
@@ -132,6 +133,14 @@ const TeamSection = () => {
                       <div className="min-w-0 flex-1">
                         <p className="text-base font-semibold text-gray-900">
                           {member.FullName}
+                          <p>
+                            {" "}
+                            {member.Priority && (
+                              <span className="inline-block mt-1 px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-600 rounded-full">
+                                Priority: {member.Priority}
+                              </span>
+                            )}
+                          </p>
                         </p>
                       </div>
                     </div>
@@ -154,7 +163,6 @@ const TeamSection = () => {
                       >
                         <Edit className="w-5 h-5" />
                       </button>
-
                       <button
                         onClick={() => handleDeleteMember(member.DocId)}
                         className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
@@ -190,6 +198,7 @@ const TeamSection = () => {
             </button>
           </div>
         )}
+
         {/* Load More Button */}
         {!isPageDisabled && (
           <div className="flex justify-center mt-6">
