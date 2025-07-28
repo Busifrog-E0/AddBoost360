@@ -20,7 +20,7 @@ export default function useGetList(options) {
   const [isPageDisabled, setIsPageDisabled] = useState(true);
 
   const [filters, setFilters] = useState({
-    OrderBy: "Index",
+    OrderBy: "-Priority",
     Keyword: "",
     Limit: 10,
     StartDate: null,

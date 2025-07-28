@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Eye, EyeOff, Lock, User, Home } from "lucide-react";
 import useLogin from "./hooks/useLogin";
-
+import ADDBOOSTlogoOrg from '../../assets/ADDBOOSTlogoOrg.png'
 const LoginPage = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -25,10 +25,15 @@ const LoginPage = ({ onLogin }) => {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-md p-8 space-y-8">
         {/* Logo & Title */}
-        <div className="text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-100 rounded-xl mb-4 shadow-sm">
+        <div className=" flex  flex-col items-center ">
+          <img
+            src={ADDBOOSTlogoOrg}
+            alt="Logo"
+            className="w-32 object-contain"
+          />
+          {/* <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-100 rounded-xl mb-4 shadow-sm">
             <Home className="w-7 h-7 text-blue-600" />
-          </div>
+          </div> */}
           <h2 className="text-2xl font-bold text-gray-800">Add Boost 360</h2>
           <p className="text-sm text-gray-500">Sign in to your admin panel</p>
         </div>
@@ -57,8 +62,8 @@ const LoginPage = ({ onLogin }) => {
                     setErrors((prev) => ({ ...prev, username: "" }));
                 }}
                 className={`w-full pl-10 pr-3 py-3 rounded-lg border focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all bg-white ${errors.username
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
                   }`}
                 placeholder="Enter your username"
               />
@@ -90,8 +95,8 @@ const LoginPage = ({ onLogin }) => {
                     setErrors((prev) => ({ ...prev, password: "" }));
                 }}
                 className={`w-full pl-10 pr-12 py-3 rounded-lg border focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all bg-white ${errors.password
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
                   }`}
                 placeholder="Enter your password"
               />
