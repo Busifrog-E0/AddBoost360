@@ -30,7 +30,8 @@ const Sidebar = ({
     { id: "companies", label: "Companies", icon: Building2 },
     { id: "form", label: "Leads", icon: UserSearch },
     { id: "review", label: "Review", icon: Quote },
-    { id: "Company logo", label: "Company Logo", icon: Image },
+    { id: "providers", label: "Service Providers", icon: Image },
+    { id: "review", label: "Success Stories", icon: Quote },
   ];
 
   return (

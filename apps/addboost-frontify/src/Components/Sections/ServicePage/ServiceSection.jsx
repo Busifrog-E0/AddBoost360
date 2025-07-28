@@ -77,7 +77,7 @@ const ServiceSection = () => {
       description:
         "Launch Your Store with Confidence. We handle the rest. We support startups with sourcing, supplier negotiation, and purchase management.",
       buttonText: "SOURCE PRODUCTS SAFELY",
-      image: "https://images.pexels.com/photos/4483776/pexels-photo-4483776.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+      image: "https://www.moersourcing.com/wp-content/uploads/2023/07/China-Sourcing-Companyy.jpg",
       services: [
         "Global Wholesale Product Sourcing (China, India, UAE, etc.)",
         "Verified Suppliers: Marketplace Verified Connections",
