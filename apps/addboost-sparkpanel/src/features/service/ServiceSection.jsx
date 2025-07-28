@@ -117,9 +117,9 @@ const ServiceSection = () => {
                     key={service.DocId}
                     className="hover:bg-gray-50 transition-colors"
                   >
-                    {/* Service Info with Image */}
+                    {/* Service Info with Image and Priority */}
                     <td className="py-3 px-5">
-                      <div className="flex items-center space-x-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-2 sm:space-y-0">
                         <div className="flex-shrink-0">
                           <img
                             src={service.ImageUrl[0]}
@@ -131,11 +131,16 @@ const ServiceSection = () => {
                           <p className="text-base font-semibold text-gray-900">
                             {service.Title}
                           </p>
+                          {service.Priority && (
+                            <span className="inline-block mt-1 px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-600 rounded-full">
+                              Priority: {service.Priority}
+                            </span>
+                          )}
                         </div>
                       </div>
                     </td>
 
-                    {/* Actions + Priority */}
+                    {/* Actions */}
                     <td className="py-4 px-6">
                       <div className="flex items-center justify-center space-x-2">
                         <button
@@ -153,13 +158,6 @@ const ServiceSection = () => {
                         >
                           <Trash2 className="w-5 h-5" />
                         </button>
-
-                        {/* Priority badge */}
-                        {service.Priority && (
-                          <span className="inline-block mt-2 px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-600   rounded-full">
-                            Priority: {service.Priority}
-                          </span>
-                        )}
                       </div>
                     </td>
                   </tr>
