@@ -29,9 +29,9 @@ const AddTeamPage = ({
   const { updateData } = useUpdateData({});
 
   const typeOptions = [
-    "Website Design",
-    "Branding",
-    "Social Media Marketing",
+    "HR",
+    "Team Lead",
+    "Project Lead",
     "Mobile App",
     "UI/UX Design",
   ];
@@ -184,7 +184,7 @@ const AddTeamPage = ({
 
           {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Name *
             </label>
             <input
@@ -197,13 +197,13 @@ const AddTeamPage = ({
               placeholder="e.g., John Doe"
             />
             {errors.FullName && (
-              <p className="mt-1 text-sm text-red-600">{errors.FullName}</p>
+              <p className=" mt-1 text-sm text-red-600">{errors.FullName}</p>
             )}
           </div>
           {/* Priority */}
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Priority *
               </label>
               <input
@@ -218,14 +218,14 @@ const AddTeamPage = ({
                 placeholder="Order Priority"
               />
               {errors.title && (
-                <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+                <p className=" mt-1 text-sm text-red-600">{errors.title}</p>
               )}
             </div>
           </div>
 
           {/* Designation */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2 mt-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1 mt-2 ">
               Designation *
             </label>
             <input
@@ -240,14 +240,14 @@ const AddTeamPage = ({
               placeholder="e.g., Frontend Developer"
             />
             {errors.Designation && (
-              <p className="mt-1 text-sm text-red-600">{errors.Designation}</p>
+              <p className=" mt-1 text-sm text-red-600">{errors.Designation}</p>
             )}
           </div>
 
           {/* Type Dropdown */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Type *
+            <label className="block text-sm font-medium text-gray-700 mb-1 mt-2">
+              Categories *
             </label>
             <select
               value={formData.Description1}
@@ -261,7 +261,7 @@ const AddTeamPage = ({
               }`}
             >
               <option value="" disabled>
-                Select a type
+                Select a Category
               </option>
               {typeOptions.map((option) => (
                 <option key={option} value={option}>
@@ -270,13 +270,15 @@ const AddTeamPage = ({
               ))}
             </select>
             {errors.Description1 && (
-              <p className="text-sm text-red-600">{errors.Description1}</p>
+              <p className=" mt-1 text-sm text-red-600">
+                {errors.Description1}
+              </p>
             )}
           </div>
 
           {/*State */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1 mt-2">
               State *
             </label>
             <input
@@ -295,7 +297,7 @@ const AddTeamPage = ({
 
           {/* Country */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mt-1 mb-2">
               Country *
             </label>
             <input
@@ -352,7 +354,7 @@ const AddTeamPage = ({
                   <img
                     src={formData.ImageUrl}
                     alt="Team member preview"
-                    className="w-full h-48 object-cover rounded-lg border"
+                    className="w-full h-48 object-contain rounded-lg border"
                   />
                   <button
                     type="button"

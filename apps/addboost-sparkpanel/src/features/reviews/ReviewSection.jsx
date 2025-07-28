@@ -126,7 +126,7 @@ const ReviewSection = () => {
             <img
               src={review.ImageUrl}
               alt={review.Title}
-              className="w-14 h-14 rounded-full object-cover border-2 border-blue-500"
+              className="w-14 h-14 rounded-full object-contain border-2 border-blue-500"
             />
 
             {/* Review Content */}
