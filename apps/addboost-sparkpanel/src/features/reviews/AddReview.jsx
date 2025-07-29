@@ -165,7 +165,7 @@ const AddReview = ({
         <div className="bg-white rounded-xl shadow-sm border p-6 space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Name *
+              Customer Title / Company Name *
             </label>
             <input
               type="text"
@@ -203,7 +203,7 @@ const AddReview = ({
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Designation *
+              Designation / Location *
             </label>
             <input
               type="text"
