@@ -11,7 +11,7 @@ const AddCompanyLogo = ({
   isEditing = false,
   initialValue = {
     Title: "",
-    Priority: "",
+    Priority: 5,
     image: null,
     ImageUrl: "",
   },
@@ -172,9 +172,9 @@ const AddCompanyLogo = ({
             </label>
             <input
               type="number"
-              value={formData.Priority}
+              value={formData.Priority ?? ""}
               onChange={(e) =>
-                handleInputChange("Priority", Number(e.target.value))
+                handleInputChange("Priority", e.target.value === "" ? "" : Number(e.target.value))
               }
               className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
@@ -193,8 +193,8 @@ const AddCompanyLogo = ({
               {!formData.ImageUrl ? (
                 <div
                   className={`border-2 border-dashed p-6 text-center ${errors.ImageUrl
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                 >
                   <input

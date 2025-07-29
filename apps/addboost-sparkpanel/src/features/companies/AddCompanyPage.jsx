@@ -184,9 +184,8 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
-                errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., Razorpay"
             />
             {errors.title && (
@@ -202,13 +201,12 @@ const AddCompanyPage = ({
               </label>
               <input
                 type="number"
-                value={formData.Priority}
+                value={formData.Priority ?? ""}
                 onChange={(e) =>
-                  handleInputChange("Priority", Number(e.target.value))
+                  handleInputChange("Priority", e.target.value === "" ? "" : Number(e.target.value))
                 }
-                className={`w-full px-4 py-3 mb-2 border rounded-lg ${
-                  errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+                className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
                 placeholder="Order Priority"
               />
               {errors.title && (
@@ -233,9 +231,8 @@ const AddCompanyPage = ({
                     updated[index] = e.target.value;
                     handleInputChange("Tags", updated);
                   }}
-                  className={`w-full px-4 mb-2 py-3 border rounded-lg ${
-                    errors.Tags ? "border-red-300 bg-red-50" : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 mb-2 py-3 border rounded-lg ${errors.Tags ? "border-red-300 bg-red-50" : "border-gray-300"
+                    }`}
                   placeholder={`Category ${index + 1}`}
                 />
               </div>
@@ -280,9 +277,8 @@ const AddCompanyPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
-                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., India"
             />
             {errors.State && (
@@ -298,9 +294,8 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
-                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., India"
             />
             {errors.Country && (
@@ -316,11 +311,10 @@ const AddCompanyPage = ({
             <div className="overflow-hidden w-[250px] h-[200px]">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed p-8 text-center ${
-                    errors.image
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`border-2 border-dashed p-8 text-center ${errors.image
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                 >
                   <input
                     type="file"

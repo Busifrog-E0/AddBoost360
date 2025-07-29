@@ -54,7 +54,7 @@ const Formsection = () => {
     const newErrors = {};
 
     if (!formData.FocusArea.trim())
-      newErrors.FocusArea = "Please select a focus FocusArea";
+      newErrors.FocusArea = "Please select a focus Focus Area";
     if (!formData.FullName.trim()) newErrors.FullName = "Name is required";
     if (!formData.Email.trim()) newErrors.Email = "Email is required";
 

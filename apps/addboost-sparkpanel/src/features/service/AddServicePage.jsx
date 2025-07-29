@@ -218,13 +218,11 @@ const AddServicePage = ({
                 </label>
                 <input
                   type="number"
-                  value={formData.Priority || ""}
+                  value={formData.Priority ?? ""}
                   onChange={(e) =>
-                    handleInputChange("Priority", Number(e.target.value))
+                    handleInputChange("Priority", e.target.value === "" ? "" : Number(e.target.value))
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.priority
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
                     }`}
                   placeholder="Order Priority"
                 />
@@ -245,8 +243,8 @@ const AddServicePage = ({
                     handleInputChange("Description2", e.target.value)
                   }
                   className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.description
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                   placeholder="Detailed description..."
                 />
@@ -267,8 +265,8 @@ const AddServicePage = ({
                     handleInputChange("Description1", e.target.value)
                   }
                   className={`w-full px-4 py-3 border rounded-lg ${errors.subtitle
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                   placeholder="e.g., Modern Web Apps"
                 />
@@ -291,8 +289,8 @@ const AddServicePage = ({
                     handleInputChange("ButtonMessage1", e.target.value)
                   }
                   className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                   placeholder="e.g., Contact Us"
                 />
