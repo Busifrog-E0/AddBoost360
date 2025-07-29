@@ -295,6 +295,13 @@ const AddReview = ({
 
         <div className="flex justify-end bg-white border rounded-xl p-6">
           <button
+            type="button"
+            onClick={onBack}
+            className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
+          >
+            Cancel
+          </button>
+          <button
             type="submit"
             disabled={isLoading}
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"

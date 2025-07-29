@@ -97,7 +97,8 @@ const TeamSection = () => {
       </div>
 
       {/* Team Table */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100">
+        {/* Scrollable wrapper for mobile */}
         <div className="w-full overflow-x-auto">
           <table className="min-w-full table-auto">
             <thead className="bg-gray-200 border-b border-gray-200">
