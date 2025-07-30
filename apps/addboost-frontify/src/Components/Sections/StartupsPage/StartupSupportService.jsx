@@ -23,7 +23,7 @@ const StartupSupportService = () => {
       {/* Left Column */}
       <div>
         <p className="uppercase text-[#A8A8A8] font-arya text-sm mb-3">
-          Supporting our vision
+          FUELING YOUR BUSINESS DREAMS
         </p>
 
         {/* Responsive image stacking */}

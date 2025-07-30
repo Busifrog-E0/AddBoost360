@@ -137,7 +137,7 @@ const CompanySection = () => {
                             <img
                               src={company.ImageUrl}
                               alt={company.Title}
-                              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-gray-200"
+                              className="w-20 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-gray-200"
                             />
                           </div>
                           <div className="min-w-0 flex-1">
