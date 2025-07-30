@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Settings,
   Briefcase,
@@ -10,7 +10,7 @@ import {
   LogOut,
   Handshake,
 } from "lucide-react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { useAuth } from "../../features/auth/context/AuthProvider";
 
 const Sidebar = ({
@@ -22,6 +22,7 @@ const Sidebar = ({
 }) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const menuItems = [
     { id: "services", label: "Services", icon: Settings },
@@ -32,7 +33,12 @@ const Sidebar = ({
     { id: "providers", label: "Service Providers", icon: Handshake },
     { id: "review", label: "Success Stories", icon: Quote },
   ];
-
+  useEffect(() => {
+    const currentPath = location.pathname.split("/")[1]; // Get first segment
+    if (currentPath) {
+      setActiveSection(currentPath);
+    }
+  }, [location.pathname, setActiveSection]);
   return (
     <div
       className={`bg-slate-900 text-white h-full transition-all duration-300 ease-in-out transform

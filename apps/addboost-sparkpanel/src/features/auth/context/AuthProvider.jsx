@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setCurrentUserData(null);
     _clear();
-    window.location.reload();
+
   };
 
   const value = {

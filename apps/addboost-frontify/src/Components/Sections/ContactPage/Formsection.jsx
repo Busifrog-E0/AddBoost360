@@ -12,6 +12,15 @@ const Formsection = () => {
     Notes: "",
     PreferredDate: new Date().getTime(),
   }
+  const focusAreaOptions = [
+    "Digital Marketing Strategy",
+    "Branding & Logo Identity",
+    "Website or E-Commerce Development",
+    "Startup Launch & Product Sourcing",
+    "AI Tools & Automation",
+    "Training or Empowerment Program",
+    "Something Else"
+  ];
   const [formData, setFormData] = useState(initialValue);
   const { isLoading, postData } = usePostData({});
   const [errors, setErrors] = useState({});
@@ -54,7 +63,7 @@ const Formsection = () => {
     const newErrors = {};
 
     if (!formData.FocusArea.trim())
-      newErrors.FocusArea = "Please select a focus FocusArea";
+      newErrors.FocusArea = "Please select a focus Focus Area";
     if (!formData.FullName.trim()) newErrors.FullName = "Name is required";
     if (!formData.Email.trim()) newErrors.Email = "Email is required";
 
@@ -111,19 +120,15 @@ const Formsection = () => {
             name="FocusArea"
             value={formData.FocusArea}
             onChange={handleChange}
-            className={`p-3 border rounded-md outline-none w-full ${errors.FocusArea
-              ? "border-red-500 bg-red-50 text-black"
-              : "border-gray-600 bg-white text-black"
-              }`}
+            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full text-white placeholder-white/40 outline-none transition-all duration-300
+    ${errors.FocusArea ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30"}`}
           >
-            <option value="">-- Select an option --</option>
-            <option>Digital Marketing Strategy</option>
-            <option>Branding & Logo Identity</option>
-            <option>Website or E-Commerce Development</option>
-            <option>Startup Launch & Product Sourcing</option>
-            <option>AI Tools & Automation</option>
-            <option>Training or Empowerment Program</option>
-            <option>Something Else</option>
+            <option value="" className="text-black">-- Select an option --</option>
+            {focusAreaOptions.map((option) => (
+              <option key={option} value={option} className="text-black">
+                {option}
+              </option>
+            ))}
           </select>
           {errors.FocusArea && (
             <span className="text-sm text-red-500 mt-1">
@@ -142,12 +147,11 @@ const Formsection = () => {
             value={formData.FullName}
             onChange={handleChange}
             type="text"
-            placeholder="Enter your full FullName"
-            className={`p-3 border rounded-md outline-none ${errors.FullName
-              ? "border-red-500 bg-red-50 text-black"
-              : "border-gray-600 bg-white text-black"
-              }`}
+            placeholder="Enter your full name"
+            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
+    ${errors.FullName ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
           />
+
           {errors.FullName && (
             <span className="text-sm text-red-500 mt-1">{errors.FullName}</span>
           )}
@@ -162,13 +166,12 @@ const Formsection = () => {
             name="Email"
             value={formData.Email}
             onChange={handleChange}
-            type="Email"
-            placeholder="Enter your Email address"
-            className={`p-3 border rounded-md outline-none ${errors.Email
-              ? "border-red-500 bg-red-50 text-black"
-              : "border-gray-600 bg-white text-black"
-              }`}
+            type="email"
+            placeholder="Enter your email address"
+            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
+    ${errors.Email ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
           />
+
           {errors.Email && (
             <span className="text-sm text-red-500 mt-1">{errors.Email}</span>
           )}
@@ -183,8 +186,10 @@ const Formsection = () => {
             onChange={handleChange}
             type="tel"
             placeholder="Enter your phone number"
-            className="p-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 outline-none"
+            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
+    ${errors.Phone ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
           />
+
         </div>
 
         {/* Startup Name */}
@@ -198,20 +203,40 @@ const Formsection = () => {
             onChange={handleChange}
             type="text"
             placeholder="Enter your Business / Startup Name"
-            className="p-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 outline-none"
+            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
+    ${errors.BusinessName ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
           />
+
         </div>
 
         {/* Date & Time */}
         <div className="flex flex-col">
           <label className="text-sm mb-2">Preferred Date & Time</label>
-          <input
-            name="PreferredDate"
-            value={toLocalDateTimeInputValue(formData.PreferredDate)}
-            onChange={handleChange}
-            type="datetime-local"
-            className="p-3 bg-white border border-gray-600 rounded-md text-black outline-none w-full"
-          />
+          <div className="relative">
+            <input
+              type="datetime-local"
+              name="PreferredDate"
+              value={toLocalDateTimeInputValue(formData.PreferredDate)}
+              onChange={handleChange}
+              className={`p-4 lg:px-5 bg-transparent border border-white/20 rounded-md text-white placeholder-white/40 outline-none w-full focus:border-white/30 transition-all duration-300 appearance-none`}
+            />
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white pointer-events-none">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* Comments */}
@@ -223,8 +248,10 @@ const Formsection = () => {
             onChange={handleChange}
             rows={4}
             placeholder="Enter your Notes"
-            className="p-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 outline-none"
+            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
+    ${errors.Notes ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
           />
+
         </div>
 
         {/* Submit Button */}

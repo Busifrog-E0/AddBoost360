@@ -39,11 +39,11 @@ const TrustedCompaniesSection = () => {
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
   13xl:px-340 14xl:px-360 15xl:px-400
-   py-14 md:py-20 lg:py-36 
-  4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
-8xl:py-80 9xl:py-96 10xl:py-112 
-11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200  bg-PrimaryDarkBlue"
+   pt-14 md:pt-20 lg:pt-36 
+  4xl:pt-48 5xl:pt-56 6xl:pt-64 7xl:pt-72 
+8xl:pt-80 9xl:pt-96 10xl:pt-112 
+11xl:pt-128 12xl:pt-144 13xl:pt-160 
+14xl:pt-180 15xl:pt-200  bg-PrimaryDarkBlue"
     >
       <h2 className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite">
         supported BY TOP providers

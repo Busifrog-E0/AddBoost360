@@ -11,7 +11,7 @@ const AddReview = ({
   isEditing = false,
   initialValue = {
     Title: "",
-    Priority: "",
+    Priority: 5,
     Designation: "",
     Description1: "",
     image: null,
@@ -165,15 +165,14 @@ const AddReview = ({
         <div className="bg-white rounded-xl shadow-sm border p-6 space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Name *
+              Customer Title / Company Name *
             </label>
             <input
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="Customer Title / Company Name"
             />
             {errors.Title && (
@@ -189,13 +188,12 @@ const AddReview = ({
               </label>
               <input
                 type="number"
-                value={formData.Priority}
+                value={formData.Priority ?? ""}
                 onChange={(e) =>
-                  handleInputChange("Priority", Number(e.target.value))
+                  handleInputChange("Priority", e.target.value === "" ? "" : Number(e.target.value))
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+                className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
                 placeholder="Order Priority"
               />
               {errors.title && (
@@ -205,17 +203,16 @@ const AddReview = ({
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Designation *
+              Designation / Location *
             </label>
             <input
               type="text"
               value={formData.Designation}
               onChange={(e) => handleInputChange("Designation", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.Designation
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border rounded-lg ${errors.Designation
+                ? "border-red-300 bg-red-50"
+                : "border-gray-300"
+                }`}
               placeholder="Designation / Location"
             />
             {errors.Designation && (
@@ -233,11 +230,10 @@ const AddReview = ({
                 handleInputChange("Description1", e.target.value)
               }
               rows={4}
-              className={`w-full px-4 py-3 border rounded-lg resize-none ${
-                errors.Description1
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.Description1
+                ? "border-red-300 bg-red-50"
+                : "border-gray-300"
+                }`}
               placeholder="Customer feedback or success story"
             />
             {errors.Description1 && (
@@ -252,11 +248,10 @@ const AddReview = ({
             <div className="overflow-hidden w-[200px] h-[200px]">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed  p-6 text-center ${
-                    errors.ImageUrl
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`border-2 border-dashed  p-6 text-center ${errors.ImageUrl
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                 >
                   <input
                     type="file"
