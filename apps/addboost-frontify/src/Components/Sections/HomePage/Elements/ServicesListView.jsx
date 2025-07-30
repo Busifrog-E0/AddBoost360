@@ -6,7 +6,19 @@ import Arrowbackward from "../../../../assets/Arrowbackwardwhite.svg";
 import Button from "../../../Button";
 import SlideIndicators from "./SlideIndicators";
 import { useNavigate } from "react-router";
-
+import { motion } from "framer-motion";
+const bounceRight = {
+  hidden: { opacity: 0, x: 100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+    },
+  },
+};
 const ServicesListView = ({
   isSlideIndicatorsEnabled = false,
   title,
@@ -116,10 +128,11 @@ const ServicesListView = ({
           <button
             onClick={handlePrevious}
             disabled={currentSlide === 0}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === 0
-              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
-              }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
+              currentSlide === 0
+                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
+            }`}
           >
             <img
               src={Arrowbackward}
@@ -131,10 +144,11 @@ const ServicesListView = ({
           <button
             onClick={handleNext}
             disabled={currentSlide === maxSlide}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === maxSlide
-              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
-              }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
+              currentSlide === maxSlide
+                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
+            }`}
           >
             <img
               src={Arrowforward}
@@ -164,13 +178,21 @@ const ServicesListView = ({
           }}
         >
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={service.DocId}
-              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 "
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{
+                delay: index * 0.1,
+                duration: 0.5,
+                ease: "easeOut",
+              }}
+              viewport={{ once: true }}
+              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3"
               style={{ maxWidth: `calc(${100 / itemsPerView}% - 1rem)` }}
             >
               <ServiceCard index={index} service={service} />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -185,22 +207,23 @@ const ServicesListView = ({
           />
         </div>
       )}
-      {
-        showAllServicesButton &&
+      {showAllServicesButton && (
         <div className="flex  justify-center mt-10 ">
-          <Button
-            bgColor="bg-white"
-            textColor="text-black"
-            iconColor="black"
-            text="View all services"
-            hoverBgColor="bg-gray-300"
-            hoverTextColor="text-black"
-            onClick={() => {
-              navigate("/services");
-            }}
-          />
+          <motion.div variants={bounceRight}>
+            <Button
+              bgColor="bg-white"
+              textColor="text-black"
+              iconColor="black"
+              text="View all services"
+              hoverBgColor="bg-gray-300"
+              hoverTextColor="text-black"
+              onClick={() => {
+                navigate("/services");
+              }}
+            />
+          </motion.div>
         </div>
-      }
+      )}
     </div>
   );
 };
