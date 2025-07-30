@@ -51,13 +51,13 @@ const TrustedCompaniesSection = () => {
 
       <div className="relative overflow-hidden mt-16">
         {/* Scrolling container */}
-        <div className="flex animate-scroll gap-28 w-max">
+        <div className="flex animate-scroll gap-16 md:gap-24 lg:gap-32 w-max">
           {[...logos, ...logos].map((logo, i) => (
             <img
               key={logo.DocId}
               src={logo.ImageUrl}
               alt={logo.Title}
-              className={"h-9 object-contain filter invert brightness-0 "}
+              className={"h-5 md:h-6 lg:h-8 object-contain filter invert brightness-0 "}
             />
           ))}
         </div>
