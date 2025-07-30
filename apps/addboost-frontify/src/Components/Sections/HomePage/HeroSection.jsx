@@ -3,17 +3,40 @@ import Button from "../../Button";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const line = {
-  hidden: { opacity: 0, y: 40 },
-  show: (i = 1) => ({
+const popIn = {
+  hidden: { opacity: 0, scale: 0.8 },
+  show: {
     opacity: 1,
-    y: 0,
+    scale: 1,
     transition: {
-      duration: 0.8,
-      ease: "easeInOut",
-      delay: i * 0.5,
+      duration: 0.7,
+      ease: "easeOut",
     },
-  }),
+  },
+};
+const blurFade = {
+  hidden: { opacity: 0, filter: "blur(10px)" },
+  show: {
+    opacity: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.9,
+      ease: "easeOut",
+    },
+  },
+};
+
+const bounceRight = {
+  hidden: { opacity: 0, x: 100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+    },
+  },
 };
 
 const HeroSection = () => {
@@ -61,7 +84,7 @@ const HeroSection = () => {
           {/* Animated Title */}
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-anton uppercase"
-            variants={line}
+            variants={popIn}
             initial="hidden"
             animate="show"
             custom={0}
@@ -72,7 +95,7 @@ const HeroSection = () => {
           {/* Animated Description */}
           <motion.p
             className="text-lg font-inter"
-            variants={line}
+            variants={blurFade}
             initial="hidden"
             animate="show"
             custom={1}
@@ -82,7 +105,7 @@ const HeroSection = () => {
 
           {/* Animated Button */}
           <motion.div
-            variants={line}
+            variants={bounceRight}
             initial="hidden"
             animate="show"
             custom={2}
