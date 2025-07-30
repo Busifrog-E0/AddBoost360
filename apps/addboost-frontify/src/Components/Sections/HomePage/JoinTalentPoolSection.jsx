@@ -39,7 +39,7 @@ const blurFade = {
     opacity: 1,
     filter: "blur(0px)",
     transition: {
-      duration: 2,
+      duration: 0.8,
       ease: "easeOut",
     },
   },
