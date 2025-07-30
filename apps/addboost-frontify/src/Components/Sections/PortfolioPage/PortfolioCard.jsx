@@ -3,23 +3,39 @@ import Button from "../../Button";
 import Play from "../../../assets/Play.svg";
 import { motion } from "framer-motion";
 
-// Container for staggered text lines
+// Staggered animation for lines
 const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 };
 
-// Animation for each line
 const lineVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeInOut" },
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const buttonVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      delay: 0.6, // Appears after the lines
+    },
   },
 };
 
@@ -29,7 +45,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.2 }}
       className="flex flex-col gap-5"
     >
       <motion.h2
@@ -64,11 +80,15 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
         ))}
       </motion.div>
 
+      {/* Button comes after all text with a delay */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
-        viewport={{ once: true, amount: 0.3 }}
+        transition={{
+          duration: 0.6,
+          ease: "easeIn",
+          delay: 0.6, // ⬅️ ensure this comes after the text
+        }}
         className="grid md:flex lg:grid xl:flex flex-row gap-6"
       >
         <Button
@@ -79,9 +99,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
           iconColor="black"
           hoverBgColor="bg-gray-300"
           hoverTextColor="text-black"
-          onClick={() => {
-            window.open(project.LinkToProject, "_blank");
-          }}
+          onClick={() => window.open(project.LinkToProject, "_blank")}
         />
       </motion.div>
     </motion.div>
@@ -91,8 +109,8 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
     <motion.div
       initial={{ opacity: 0, x: reverse ? -100 : 100 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.2 }}
       className="relative rounded-md"
     >
       <img
@@ -129,7 +147,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
     <div className={`${bgColor}`}>
       <div
         className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-start px-6 md:px-14 2xl:px-60 3xl:px-80 
-      py-14 md:py-20 lg:py-24"
+        py-14 md:py-20 lg:py-24"
       >
         {reverse ? (
           <>

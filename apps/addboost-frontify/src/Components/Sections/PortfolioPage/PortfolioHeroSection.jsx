@@ -16,6 +16,18 @@ const line = {
   }),
 };
 
+const imageVariants = {
+  hidden: { opacity: 0, y: 50 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: "easeOut",
+    },
+  },
+};
+
 const PortfolioHeroSection = () => {
   return (
     <div className="bg-cover bg-center bg-no-repeat">
@@ -71,8 +83,13 @@ const PortfolioHeroSection = () => {
           </motion.p>
         </div>
 
-        {/* Image Section (Desktop Only) */}
-        <div className="hidden lg:block relative w-[300px] h-[350px]">
+        {/* Image Section (Desktop Only) with Animation */}
+        <motion.div
+          className="hidden lg:block relative w-[300px] h-[350px]"
+          variants={imageVariants}
+          initial="hidden"
+          animate="show"
+        >
           {/* Back Image */}
           <img
             src={ProtfolioImage}
@@ -86,7 +103,7 @@ const PortfolioHeroSection = () => {
             alt="Front"
             className="absolute top-40 left-32 w-[240px] h-[240px] object-cover rounded-md shadow-xl border-2 border-white"
           />
-        </div>
+        </motion.div>
       </div>
     </div>
   );
