@@ -1,26 +1,76 @@
 import React from "react";
 import Button from "../../Button";
 import Play from "../../../assets/Play.svg";
+import { motion } from "framer-motion";
+
+// Container for staggered text lines
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+// Animation for each line
+const lineVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeInOut" },
+  },
+};
 
 const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
   const TextContent = (
-    <div className="flex flex-col gap-5">
-      <h2 className="font-anton text-white text-2xl 2xl:text-4xl mt-0">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="flex flex-col gap-5"
+    >
+      <motion.h2
+        variants={lineVariants}
+        className="font-anton text-white text-2xl 2xl:text-4xl mt-0"
+      >
         {project.Title}
-      </h2>
-      <p className="font-inter text-base 2xl:text-lg text-white">
-        {project.Description1}
-      </p>
-      <h3 className="font-anton text-xl text-white">Impact:</h3>
-      <div className="p-2 font-inter text-sm leading-relaxed">
-        {project.ImpactPoints.map((item, index) => (
-          <p className="text-white" key={index}>
-            ▪ {item}
-          </p>
-        ))}
-      </div>
+      </motion.h2>
 
-      <div className="grid md:flex lg:grid xl:flex flex-row gap-6">
+      <motion.p
+        variants={lineVariants}
+        className="font-inter text-base 2xl:text-lg text-white"
+      >
+        {project.Description1}
+      </motion.p>
+
+      <motion.h3
+        variants={lineVariants}
+        className="font-anton text-xl text-white"
+      >
+        Impact:
+      </motion.h3>
+
+      <motion.div
+        variants={containerVariants}
+        className="p-2 font-inter text-sm leading-relaxed"
+      >
+        {project.ImpactPoints.map((item, index) => (
+          <motion.p variants={lineVariants} className="text-white" key={index}>
+            ▪ {item}
+          </motion.p>
+        ))}
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="grid md:flex lg:grid xl:flex flex-row gap-6"
+      >
         <Button
           bgColor="bg-white"
           textColor="text-[#1C1C1C]"
@@ -30,15 +80,21 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
           hoverBgColor="bg-gray-300"
           hoverTextColor="text-black"
           onClick={() => {
-            window.open(project.linkToProject, "_blank");
+            window.open(project.LinkToProject, "_blank");
           }}
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 
   const ImageBlock = (
-    <div className="relative rounded-md">
+    <motion.div
+      initial={{ opacity: 0, x: reverse ? -100 : 100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="relative rounded-md"
+    >
       <img
         src={project.ImageUrl}
         alt="project"
@@ -66,7 +122,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 
   return (
