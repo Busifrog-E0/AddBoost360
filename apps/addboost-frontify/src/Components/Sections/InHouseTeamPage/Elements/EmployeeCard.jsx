@@ -2,52 +2,88 @@ import Cornerchipwhite from "../../../../assets/Cornerchipwhite.svg";
 import ADDBOOSTlogo from "../../../../assets/ADDBOOSTlogo.png";
 const EmployeeCard = ({ employee }) => {
   const gradientMap = {
-    "HR": {
-      background: "from-pink-100/20 to-pink-400/20",
+    // Existing
+    "Branding & Creative Design": {
+      background: "from-pink-100/40 to-pink-300/30",
       textColor: "text-white"
     },
-    "Team Lead": {
-      background: "from-purple-100/20 to-purple-400/20",
+    "Web & App Development": {
+      background: "from-indigo-100/40 to-indigo-300/30",
       textColor: "text-white"
     },
-    "Project Lead": {
-      background: "from-indigo-100/20 to-indigo-400/20",
+    "Search Engine Optimization (SEO)": {
+      background: "from-green-100/40 to-green-300/30",
       textColor: "text-white"
     },
-    "Mobile App": {
-      background: "from-blue-100/20 to-blue-400/20",
+    "Content Marketing": {
+      background: "from-orange-100/40 to-orange-300/30",
       textColor: "text-white"
     },
-    "UI/UX Design": {
-      background: "from-teal-100/20 to-teal-400/20",
+    "Social Media Marketing": {
+      background: "from-blue-100/40 to-blue-300/30",
       textColor: "text-white"
     },
-    "Marketing": {
-      background: "from-green-100/20 to-green-400/20",
+    "Search Engine Marketing (SEM/PPC)": {
+      background: "from-yellow-100/40 to-yellow-300/30",
       textColor: "text-white"
     },
-    "Business Analyst": {
-      background: "from-lime-100/20 to-lime-400/20",
+    "Email & SMS Marketing": {
+      background: "from-rose-100/40 to-rose-300/30",
       textColor: "text-white"
     },
-    "Backend Developer": {
-      background: "from-yellow-100/20 to-yellow-400/20",
+    "Affiliate & Referral Marketing": {
+      background: "from-purple-100/40 to-purple-300/30",
       textColor: "text-white"
     },
-    "Frontend Developer": {
-      background: "from-orange-100/20 to-orange-400/20",
+    "Marketing Automation & CRM": {
+      background: "from-teal-100/40 to-teal-300/30",
       textColor: "text-white"
     },
-    "Intern": {
-      background: "from-rose-100/20 to-rose-400/20",
+    "Analytics & Data Intelligence": {
+      background: "from-slate-100/40 to-slate-300/30",
       textColor: "text-white"
     },
+
+    // Newly added
+    "Business Formation & Strategy": {
+      background: "from-emerald-100/40 to-emerald-300/30",
+      textColor: "text-white"
+    },
+    "Finance & Accounting": {
+      background: "from-lime-100/40 to-lime-300/30",
+      textColor: "text-white"
+    },
+    "Legal & Compliance": {
+      background: "from-red-100/40 to-red-300/30",
+      textColor: "text-white"
+    },
+    "Human Resources & Talent": {
+      background: "from-cyan-100/40 to-cyan-300/30",
+      textColor: "text-white"
+    },
+    "IT Infrastructure & Security": {
+      background: "from-zinc-100/40 to-zinc-300/30",
+      textColor: "text-white"
+    },
+    "Sales & Business Development": {
+      background: "from-fuchsia-100/40 to-fuchsia-300/30",
+      textColor: "text-white"
+    },
+    "Customer Support & Experience": {
+      background: "from-sky-100/40 to-sky-300/30",
+      textColor: "text-white"
+    },
+    "Training & Capacity Building": {
+      background: "from-violet-100/40 to-violet-300/30",
+      textColor: "text-white"
+    },
+
+    // Fallback
     default: {
-      background: "from-slate-100/20 to-slate-400/20",
+      background: "from-gray-100/40 to-gray-200/60",
       textColor: "text-white"
     }
   };
-
 
   const typeStyles = gradientMap[employee.Description1] || gradientMap.default;
   return (
