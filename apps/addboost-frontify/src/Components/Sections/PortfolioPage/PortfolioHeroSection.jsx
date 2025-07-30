@@ -73,7 +73,7 @@ const PortfolioHeroSection = () => {
           </motion.h1>
 
           <motion.p
-            className="font-inter text-base md:text-lg font-lato mt-6 max-w-xl text-white"
+            className="font-inter text-base md:text-lg font-inter mt-6 max-w-xl text-white"
             variants={line}
             initial="hidden"
             animate="show"
