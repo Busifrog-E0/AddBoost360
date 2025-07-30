@@ -1,8 +1,41 @@
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WhyCard from "./WhyCard";
 import Button from "../../../Button";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
+
+const containerVariant = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
+
+const cardVariant = {
+  hidden: { opacity: 0, scale: 0.9 },
+  show: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 const WhySectionView = ({
   title,
@@ -19,23 +52,52 @@ const WhySectionView = ({
 
   return (
     <>
-      {/*// Global creative*/}
-      <div className=" flex flex-col gap-2">
-        <p className="text-[#77B0FF]  font-inter text-base 2xl:text-lg">
+      {/* Title Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={containerVariant}
+        className="flex flex-col gap-2"
+      >
+        <motion.p
+          className="text-[#77B0FF] font-inter text-base 2xl:text-lg"
+          variants={fadeUp}
+        >
           {subtitle}
-        </p>
-        <h className="uppercase text-3xl 2xl:text-5xl font-anton  text-PrimaryWhite ">
+        </motion.p>
+        <motion.h2
+          className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite"
+          variants={fadeUp}
+        >
           {title}
-        </h>
-      </div>
-      {/*//creative list*/}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-14">
+        </motion.h2>
+      </motion.div>
+
+      {/* Card List */}
+      <motion.div
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-14"
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+        variants={containerVariant}
+      >
         {whyItems.map((item, index) => (
-          <WhyCard key={index} item={item} />
+          <motion.div key={index} variants={cardVariant}>
+            <WhyCard item={item} />
+          </motion.div>
         ))}
-      </div>
-      {
-        <div className="flex  justify-center mt-10 ">
+      </motion.div>
+
+      {/* Button */}
+      {showLearnMoreButton && (
+        <motion.div
+          className="flex justify-center mt-10"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <Button
             bgColor="bg-white"
             textColor="text-black"
@@ -43,12 +105,10 @@ const WhySectionView = ({
             text="LEARN MORE ABOUT US"
             hoverBgColor="bg-gray-300"
             hoverTextColor="text-black"
-            onClick={() => {
-              navigate("/startups-and-sourcing");
-            }}
+            onClick={() => navigate("/startups-and-sourcing")}
           />
-        </div>
-      }
+        </motion.div>
+      )}
     </>
   );
 };

@@ -24,6 +24,18 @@ const ServiceHeroSection = () => {
     },
   };
 
+  const imageAnim = {
+    hidden: { opacity: 0, y: 60 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.4,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <div className="bg-PrimaryDarkBlue grid grid-cols-1 lg:grid-cols-2 min-h-screen">
       {/* Text Section */}
@@ -71,14 +83,20 @@ const ServiceHeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Image Section - No padding applied */}
-      <div className="hidden lg:block">
+      {/* Image Section with Animation */}
+      <motion.div
+        variants={imageAnim}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="hidden lg:block"
+      >
         <img
           src={ServiceHeroImage}
           alt="Hero"
           className="w-full h-full object-cover block"
         />
-      </div>
+      </motion.div>
     </div>
   );
 };
