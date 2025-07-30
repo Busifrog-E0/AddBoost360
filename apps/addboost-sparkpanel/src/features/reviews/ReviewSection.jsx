@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import useGetList from "../../hooks/api/useGetList";
 import useDeleteData from "../../hooks/api/UseDeleteData";
+import Loader from "../../components/Loader";
 
 import AddReview from "./AddReview";
 
@@ -90,6 +91,14 @@ const ReviewSection = () => {
             Manage reviews shared by your clients
           </p>
         </div>
+        {/* <button
+          onClick={handleAdd}
+          className="w-full sm:w-auto bg-blue-600 text-white px-4 py-2 text-sm sm:text-base rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center sm:justify-start space-x-2"
+        >
+          <Plus className="w-4 h-4" />
+          <span>Add Review</span>
+        </button> */}
+
         <button
           onClick={handleAdd}
           className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
@@ -98,80 +107,85 @@ const ReviewSection = () => {
           <span>Add Review</span>
         </button>
       </div>
+      {isLoading ? (
+        <div>
+          <Loader />
+        </div>
+      ) : (
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Review Cards */}
+          {testimonialss.map((review) => (
+            <div
+              key={review.DocId}
+              className="relative bg-white border border-gray-200 rounded-xl shadow-sm p-6 pr-14 flex gap-4 items-start hover:shadow-md transition"
+            >
+              {/* Top Right Icons */}
+              <div className="absolute top-4 right-4 flex gap-2">
+                <button
+                  onClick={() => handleEdit(review)}
+                  className="text-blue-600 hover:text-blue-800"
+                >
+                  <Edit size={18} />
+                </button>
+                <button
+                  onClick={() => handleDelete(review.DocId)}
+                  className="text-red-600 hover:text-red-800"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </div>
 
-      {/* Review Cards */}
-      <div className="grid md:grid-cols-2 gap-6">
-        {testimonialss.map((review) => (
-          <div
-            key={review.DocId}
-            className="relative bg-white border border-gray-200 rounded-xl shadow-sm p-6 pr-14 flex gap-4 items-start hover:shadow-md transition"
-          >
-            {/* Top Right Icons */}
-            <div className="absolute top-4 right-4 flex gap-2">
-              <button
-                onClick={() => handleEdit(review)}
-                className="text-blue-600 hover:text-blue-800"
-              >
-                <Edit size={18} />
-              </button>
-              <button
-                onClick={() => handleDelete(review.DocId)}
-                className="text-red-600 hover:text-red-800"
-              >
-                <Trash2 size={18} />
-              </button>
-            </div>
+              {/* Review Image */}
+              <img
+                src={review.ImageUrl}
+                alt={review.Title}
+                className="w-14 h-14 rounded-full object-contain border-2 border-blue-500"
+              />
 
-            {/* Review Image */}
-            <img
-              src={review.ImageUrl}
-              alt={review.Title}
-              className="w-14 h-14 rounded-full object-contain border-2 border-blue-500"
-            />
+              {/* Review Content */}
+              <div className="flex-1">
+                <p className="text-gray-700 text-sm italic mb-3 line-clamp-3">
+                  “{review.Description1}”
+                </p>
+                <div>
+                  <h2 className="text-md font-semibold text-gray-900">
+                    {review.Title}
+                  </h2>
+                  <p className="text-sm text-gray-500">{review.Designation}</p>
 
-            {/* Review Content */}
-            <div className="flex-1">
-              <p className="text-gray-700 text-sm italic mb-3 line-clamp-3">
-                “{review.Description1}”
-              </p>
-              <div>
-                <h2 className="text-md font-semibold text-gray-900">
-                  {review.Title}
-                </h2>
-                <p className="text-sm text-gray-500">{review.Designation}</p>
-
-                {/* Priority below Designation */}
-                {review.Priority && (
-                  <span className="mt-1 inline-block bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full ml-0">
-                    Priority: {review.Priority}
-                  </span>
-                )}
+                  {/* Priority below Designation */}
+                  {review.Priority && (
+                    <span className="mt-1 inline-block bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full ml-0">
+                      Priority: {review.Priority}
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
 
-        {/* Empty State */}
-        {testimonialss.length === 0 && (
-          <div className="text-center py-12 col-span-2">
-            <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
-              <Plus className="w-8 h-8 text-gray-400" />
+          {/* Empty State */}
+          {testimonialss.length === 0 && (
+            <div className="text-center py-12 col-span-2">
+              <div className="w-16 h-16 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-4">
+                <Plus className="w-8 h-8 text-gray-400" />
+              </div>
+              <h3 className="text-lg font-medium text-gray-900 mb-2">
+                No reviews added
+              </h3>
+              <p className="text-gray-500 mb-4">
+                Get started by adding your first customer review.
+              </p>
+              <button
+                onClick={handleAdd}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              >
+                Add Review
+              </button>
             </div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
-              No reviews added
-            </h3>
-            <p className="text-gray-500 mb-4">
-              Get started by adding your first customer review.
-            </p>
-            <button
-              onClick={handleAdd}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Add Review
-            </button>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

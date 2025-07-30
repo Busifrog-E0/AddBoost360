@@ -3,6 +3,7 @@ import { Eye, Trash2 } from "lucide-react";
 import FormDetailsPage from "./FormDetailsPage";
 import useGetList from "../../hooks/api/useGetList";
 import useDeleteData from "../../hooks/api/UseDeleteData";
+import Loader from "../../components/Loader";
 
 const FormListPage = () => {
   const [selectedForm, setSelectedForm] = useState(null);
@@ -56,33 +57,42 @@ const FormListPage = () => {
               <th className="text-center py-3 px-4 text-gray-700">Action</th>
             </tr>
           </thead>
-          <tbody>
-            {forms.map((form) => (
-              <tr key={form.DocId} className="border-t hover:bg-gray-50">
-                <td className="py-3 px-4">{form.FullName}</td>
-                <td className="py-3 px-4">{form.Email}</td>
-                <td className="py-3 px-4">{form.Phone}</td>
-                <td className="py-3 px-4">
-                  <div className="flex justify-center">
-                    {/* <button
+          {isLoading ? (
+            <div>
+              <Loader />
+            </div>
+          ) : (
+            <>
+              {" "}
+              <tbody>
+                {forms.map((form) => (
+                  <tr key={form.DocId} className="border-t hover:bg-gray-50">
+                    <td className="py-3 px-4">{form.FullName}</td>
+                    <td className="py-3 px-4">{form.Email}</td>
+                    <td className="py-3 px-4">{form.Phone}</td>
+                    <td className="py-3 px-4">
+                      <div className="flex justify-center">
+                        {/* <button
                       onClick={() => handleDeleteData(form.DocId)}
                       className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                       title="Delete data"
                     >
                       <Trash2 className="w-5 h-5" />
                     </button> */}
-                    <button
-                      onClick={() => setSelectedForm(form)}
-                      className="text-blue-600 hover:underline flex items-center gap-1"
-                    >
-                      <Eye className="w-4 h-4" />
-                      <span>View Full Details</span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+                        <button
+                          onClick={() => setSelectedForm(form)}
+                          className="text-blue-600 hover:underline flex items-center gap-1"
+                        >
+                          <Eye className="w-4 h-4" />
+                          <span>View Full Details</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </>
+          )}
         </table>
 
         {forms.length === 0 && (
