@@ -3,50 +3,51 @@ import ADDBOOSTlogo from "../../../../assets/ADDBOOSTlogo.png";
 const EmployeeCard = ({ employee }) => {
   const gradientMap = {
     "HR": {
-      background: "from-white/10 to-white/15",
+      background: "from-pink-100/20 to-pink-400/20",
       textColor: "text-white"
     },
     "Team Lead": {
-      background: "from-white/15 to-white/20",
+      background: "from-purple-100/20 to-purple-400/20",
       textColor: "text-white"
     },
     "Project Lead": {
-      background: "from-white/20 to-white/25",
+      background: "from-indigo-100/20 to-indigo-400/20",
       textColor: "text-white"
     },
     "Mobile App": {
-      background: "from-white/25 to-white/30",
+      background: "from-blue-100/20 to-blue-400/20",
       textColor: "text-white"
     },
     "UI/UX Design": {
-      background: "from-white/30 to-white/35",
+      background: "from-teal-100/20 to-teal-400/20",
       textColor: "text-white"
     },
     "Marketing": {
-      background: "from-white/35 to-white/40",
+      background: "from-green-100/20 to-green-400/20",
       textColor: "text-white"
     },
     "Business Analyst": {
-      background: "from-white/40 to-white/45",
+      background: "from-lime-100/20 to-lime-400/20",
       textColor: "text-white"
     },
     "Backend Developer": {
-      background: "from-white/45 to-white/50",
+      background: "from-yellow-100/20 to-yellow-400/20",
       textColor: "text-white"
     },
     "Frontend Developer": {
-      background: "from-white/50 to-white/55",
+      background: "from-orange-100/20 to-orange-400/20",
       textColor: "text-white"
     },
     "Intern": {
-      background: "from-white/55 to-white/60",
+      background: "from-rose-100/20 to-rose-400/20",
       textColor: "text-white"
     },
     default: {
-      background: "from-white/60 to-white/70",
+      background: "from-slate-100/20 to-slate-400/20",
       textColor: "text-white"
     }
   };
+
 
   const typeStyles = gradientMap[employee.Description1] || gradientMap.default;
   return (
