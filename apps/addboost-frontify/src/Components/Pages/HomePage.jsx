@@ -17,7 +17,7 @@ const HomePage = () => {
       <ServicesSection />
       <WhySection />
       <GlobalStartupSupportSection />
-      <WhyItWorksSection />
+      {/* <WhyItWorksSection /> */}
       <JoinTalentPoolSection />
       <TrustedCompaniesSection />
       <SuccessStoriesSection />
