@@ -21,7 +21,6 @@ export default {
       },
       fontFamily: {
         anton: ["Fjalla One", "sans-serif"],
-        garamond: ["Cormorant Garamond", "sans-serif"],
         arya: ["Arya", "sans-serif"],
         inter: ["inter", "sans-serif"],
       },
