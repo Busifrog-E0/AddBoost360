@@ -120,7 +120,7 @@ const Formsection = () => {
             name="FocusArea"
             value={formData.FocusArea}
             onChange={handleChange}
-            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full text-white placeholder-white/40 outline-none transition-all duration-300
+            className={`appearance-none p-4 lg:px-5 bg-transparent border rounded-md w-full text-white placeholder-white/40 outline-none transition-all duration-300
     ${errors.FocusArea ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30"}`}
           >
             <option value="" className="text-black">-- Select an option --</option>

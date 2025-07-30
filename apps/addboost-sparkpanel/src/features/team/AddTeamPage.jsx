@@ -269,14 +269,14 @@ const AddTeamPage = ({
             <select
               value={formData.Description1}
               onChange={(e) => handleInputChange("Description1", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg appearance-none ${errors.Description1 ? "border-red-300 bg-red-50" : "border-gray-300"
+              className={`w-full px-4 py-3 border rounded-lg ${errors.Description1 ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
             >
               <option value="" disabled>
                 Select a Position
               </option>
 
-              <optgroup label="Digital Marketing">
+              <optgroup label="A. Digital Marketing">
                 {digitalMarketingTypeOptions.map((option) => (
                   <option key={`dm-${option}`} value={option}>
                     {option}
@@ -284,7 +284,7 @@ const AddTeamPage = ({
                 ))}
               </optgroup>
 
-              <optgroup label="Business Professional Support">
+              <optgroup label="B. Business Professional Support">
                 {businessSupportTypeOptions.map((option) => (
                   <option key={`bs-${option}`} value={option}>
                     {option}
