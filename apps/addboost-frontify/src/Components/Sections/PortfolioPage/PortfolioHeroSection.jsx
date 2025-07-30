@@ -22,7 +22,7 @@ const imageVariants = {
     opacity: 0.6,
     y: 0,
     transition: {
-      duration: 1,
+      duration: 0.8,
       ease: "easeOut",
       delay: 0.5, // comes after the last text line
     },
