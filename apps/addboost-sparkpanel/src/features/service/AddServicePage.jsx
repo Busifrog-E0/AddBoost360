@@ -17,12 +17,11 @@ const AddServicePage = ({
     Description1: "",
     Description2: "",
     ButtonMessage1: "",
-
-    image: null,
-    ImageUrl: "",
+    images: [],
+    ImageUrl: [],
     ServiceList: [""],
-  },
-}) => { 
+  }
+}) => {
   const { isLoading, postData } = usePostData({});
   const { updateData } = useUpdateData({});
   const [formData, setFormData] = useState(initialValue);
@@ -54,123 +53,215 @@ const AddServicePage = ({
     setFormData((prev) => ({ ...prev, ServiceList: newServices }));
   };
 
+  // const handleImageUpload = (e) => {
+  //   const file = e.target.files?.[0];
+  //   if (!file) return;
+
+  //   // ——— Validate type & size ———
+  //   if (!file.type.startsWith("image/")) {
+  //     setErrors((prev) => ({
+  //       ...prev,
+  //       image: "Please select a valid image file",
+  //     }));
+  //     return;
+  //   }
+  //   if (file.size > 5 * 1024 * 1024) {
+  //     setErrors((prev) => ({
+  //       ...prev,
+  //       image: "Image size should be less than 5MB",
+  //     }));
+  //     return;
+  //   }
+
+  //   // ——— Read as ArrayBuffer ———
+  //   const reader = new FileReader();
+  //   reader.onload = (loadEvent) => {
+  //     const arrayBuffer = loadEvent.target.result; // true ArrayBuffer
+  //     const byteArray = Array.from(new Uint8Array(arrayBuffer));
+
+  //     // Create a blob URL for preview
+  //     const previewUrl = URL.createObjectURL(file);
+
+  //     setFormData((prev) => ({
+  //       ...prev,
+  //       ImageUrl: previewUrl,
+  //       image: {
+  //         FileType: file.type,
+  //         FileData: byteArray,
+  //         FileName: file.name,
+  //       },
+  //     }));
+  //     setErrors((prev) => ({
+  //       ...prev,
+  //       image: "",
+  //       ImageUrl: "",
+  //     }));
+  //   };
+
+  //   reader.onerror = (err) => {
+  //     console.error("FileReader error:", err);
+  //     setErrors((prev) => ({
+  //       ...prev,
+  //       image: "Failed to read file. Please try again.",
+  //     }));
+  //   };
+
+  //   reader.readAsArrayBuffer(file);
+  // };
+
   const handleImageUpload = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const files = Array.from(e.target.files || []);
+    const validFiles = [];
 
-    // ——— Validate type & size ———
-    if (!file.type.startsWith("image/")) {
-      setErrors((prev) => ({
-        ...prev,
-        image: "Please select a valid image file",
-      }));
-      return;
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      setErrors((prev) => ({
-        ...prev,
-        image: "Image size should be less than 5MB",
-      }));
-      return;
-    }
+    files.forEach((file) => {
+      if (!file.type.startsWith("image/")) return;
+      if (file.size > 5 * 1024 * 1024) return;
 
-    // ——— Read as ArrayBuffer ———
-    const reader = new FileReader();
-    reader.onload = (loadEvent) => {
-      const arrayBuffer = loadEvent.target.result; // true ArrayBuffer
-      const byteArray = Array.from(new Uint8Array(arrayBuffer));
+      const reader = new FileReader();
+      reader.onload = (loadEvent) => {
+        const arrayBuffer = loadEvent.target.result;
+        const byteArray = Array.from(new Uint8Array(arrayBuffer));
+        const previewUrl = URL.createObjectURL(file);
 
-      // Create a blob URL for preview
-      const previewUrl = URL.createObjectURL(file);
+        setFormData((prev) => ({
+          ...prev,
+          ImageUrl: [...prev.ImageUrl, previewUrl],
+          images: [
+            ...prev.images,
+            {
+              FileType: file.type,
+              FileData: byteArray,
+              FileName: file.name,
+            },
+          ],
+        }));
+      };
 
-      setFormData((prev) => ({
-        ...prev,
-        ImageUrl: previewUrl,
-        image: {
-          FileType: file.type,
-          FileData: byteArray,
-          FileName: file.name,
-        },
-      }));
-      setErrors((prev) => ({
-        ...prev,
-        image: "",
-        ImageUrl: "",
-      }));
-    };
+      reader.readAsArrayBuffer(file);
+    });
 
-    reader.onerror = (err) => {
-      console.error("FileReader error:", err);
-      setErrors((prev) => ({
-        ...prev,
-        image: "Failed to read file. Please try again.",
-      }));
-    };
-
-    reader.readAsArrayBuffer(file);
+    // Reset errors
+    setErrors((prev) => ({ ...prev, image: "", ImageUrl: "" }));
   };
 
-  const removeImage = () => {
-    setFormData((prev) => ({ ...prev, image: null, ImageUrl: "" }));
+  const removeImage = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      ImageUrl: prev.ImageUrl.filter((_, i) => i !== index),
+      images: prev.images.filter((_, i) => i !== index),
+    }));
   };
 
+  // const validateForm = () => {
+  //   const newErrors = {};
+  //   if (!formData.Title.trim()) newErrors.title = "Title is required";
+  //   if (!formData.Description1.trim())
+  //     newErrors.subtitle = "Subtitle is required";
+  //   if (!formData.Description2.trim())
+  //     newErrors.description = "Description is required";
+
+  //   if (!formData.ButtonMessage1.trim())
+  //     newErrors.buttonText = "Button text is required";
+  //   if (!formData.ImageUrl) newErrors.ImageUrl = "Service image is required";
+  //   setErrors(newErrors);
+  //   return Object.keys(newErrors).length === 0;
+  // };
   const validateForm = () => {
     const newErrors = {};
     if (!formData.Title.trim()) newErrors.title = "Title is required";
-    if (!formData.Description1.trim())
-      newErrors.subtitle = "Subtitle is required";
-    if (!formData.Description2.trim())
-      newErrors.description = "Description is required";
+    if (!formData.Description1.trim()) newErrors.subtitle = "Subtitle is required";
+    if (!formData.Description2.trim()) newErrors.description = "Description is required";
+    if (!formData.ButtonMessage1.trim()) newErrors.buttonText = "Button text is required";
+    if (formData.ImageUrl.length === 0) newErrors.ImageUrl = "At least one image is required";
 
-    if (!formData.ButtonMessage1.trim())
-      newErrors.buttonText = "Button text is required";
-    if (!formData.ImageUrl) newErrors.ImageUrl = "Service image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  const handleFormSubmit = (fileUrl) => {
-    const { image, ImageUrl, ...rest } = formData;
-    const payload = { ...rest, ImageUrl: fileUrl };
+  // const handleFormSubmit = (fileUrl) => {
+  //   const { image, ImageUrl, ...rest } = formData;
+  //   const payload = { ...rest, ImageUrl: fileUrl };
 
-    if (isEditing) {
-      updateData({
-        endpoint: `services/${formData.DocId}`,
-        payload: payload,
-        onsuccess: (result) => {
-          if (result) {
-            onSave();
-          }
-        },
-      });
-    } else {
-      postData({
-        endpoint: "services",
-        payload: payload,
-        onsuccess: (result) => {
-          if (result) {
-            onSave();
-          }
-        },
-      });
-    }
+  //   if (isEditing) {
+  //     updateData({
+  //       endpoint: `services/${formData.DocId}`,
+  //       payload: payload,
+  //       onsuccess: (result) => {
+  //         if (result) {
+  //           onSave();
+  //         }
+  //       },
+  //     });
+  //   } else {
+  //     postData({
+  //       endpoint: "services",
+  //       payload: payload,
+  //       onsuccess: (result) => {
+  //         if (result) {
+  //           onSave();
+  //         }
+  //       },
+  //     });
+  //   }
+  // };
+  const handleFormSubmit = (uploadedUrls) => {
+    const { images, ImageUrl, ...rest } = formData;
+    const payload = { ...rest, ImageUrl: uploadedUrls };
+
+    const action = isEditing ? updateData : postData;
+    const endpoint = isEditing ? `services/${formData.DocId}` : "services";
+
+    action({
+      endpoint,
+      payload,
+      onsuccess: (result) => {
+        if (result) onSave();
+      },
+    });
   };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (!validateForm()) return;
+
+  //   if (formData.image) {
+  //     postData({
+  //       endpoint: "files/admin",
+  //       payload: formData.image,
+  //       onsuccess: (result) => {
+  //         handleFormSubmit(result.FileUrl);
+  //       },
+  //     });
+  //   } else {
+  //     handleFormSubmit(formData.ImageUrl);
+  //   }
+  // };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
-    if (formData.image) {
-      postData({
-        endpoint: "files/admin",
-        payload: formData.image,
-        onsuccess: (result) => {
-          handleFormSubmit(result.FileUrl);
-        },
-      });
+    if (formData.images.length > 0) {
+      const uploadedUrls = [];
+
+      const uploadNext = (index) => {
+        if (index >= formData.images.length) {
+          handleFormSubmit(uploadedUrls);
+          return;
+        }
+
+        postData({
+          endpoint: "files/admin",
+          payload: formData.images[index],
+          onsuccess: (result) => {
+            uploadedUrls.push(result.FileUrl);
+            uploadNext(index + 1);
+          },
+        });
+      };
+
+      uploadNext(0);
     } else {
       handleFormSubmit(formData.ImageUrl);
     }
   };
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -208,30 +299,16 @@ const AddServicePage = ({
                   type="text"
                   value={formData.Title}
                   onChange={(e) => handleInputChange("Title", e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.title
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.title
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="e.g., Web Development"
                 />
                 {errors.title && (
                   <p className="mt-1 text-sm text-red-600">{errors.title}</p>
                 )}
               </div>
-              <select
-                id="cars"
-                name="cars"
-                onChange={(e) => {
-                  console.log(e.target.value);
-                  handleInputChange("Type", e.target.value);
-                }}
-              >
-                <option value="volvo">Volvo XC90</option>
-                <option value="saab">Saab 95</option>
-                <option value="mercedes">Mercedes SLK</option>
-                <option value="audi">Audi TT</option>
-              </select>
 
               {/* Priority */}
               <div className="space-y-6">
@@ -245,11 +322,10 @@ const AddServicePage = ({
                     onChange={(e) =>
                       handleInputChange("Priority", Number(e.target.value))
                     }
-                    className={`w-full px-4 py-3 border rounded-lg ${
-                      errors.title
-                        ? "border-red-300 bg-red-50"
-                        : "border-gray-300"
-                    }`}
+                    className={`w-full px-4 py-3 border rounded-lg ${errors.title
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                      }`}
                     placeholder="Order Priority"
                   />
                   {errors.title && (
@@ -268,11 +344,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description2", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg resize-none ${
-                    errors.description
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.description
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="Detailed description..."
                 />
 
@@ -292,11 +367,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.subtitle
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.subtitle
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="e.g., Modern Web Apps"
                 />
                 {errors.subtitle && (
@@ -358,11 +432,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("ButtonMessage1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.buttonText
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="e.g., Contact Us"
                 />
                 {errors.buttonText && (
@@ -375,60 +448,44 @@ const AddServicePage = ({
               {/* Image Upload */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Service Image *
+                  Service Images *
                 </label>
-                <div className="overflow-hidden w-[250px] h-[200px]">
-                  {!formData.ImageUrl ? (
-                    <div
-                      className={`border-2 border-dashed p-8 text-center ${
-                        errors.ImageUrl
-                          ? "border-red-300 bg-red-50"
-                          : "border-gray-300"
-                      }`}
-                    >
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageUpload}
-                        className="hidden"
-                        id="image-upload"
-                      />
-                      <label htmlFor="image-upload" className="cursor-pointer">
-                        <div className="flex flex-col items-center space-y-3">
-                          <div className="p-3 bg-gray-100 rounded-full">
-                            <Upload className="w-6 h-6 text-gray-600" />
-                          </div>
-                          <p className="text-sm font-medium text-gray-900">
-                            Click to upload image
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            PNG, JPG, GIF up to 5MB
-                          </p>
-                        </div>
-                      </label>
-                    </div>
-                  ) : (
-                    <div className="relative">
+                <div className="flex flex-wrap gap-4">
+                  {formData.ImageUrl.map((url, index) => (
+                    <div key={index} className="relative w-[150px] h-[120px] border rounded-md">
                       <img
-                        src={formData.ImageUrl}
-                        alt="Service preview"
-                        className="w-full h-48 object-cover rounded-lg border"
+                        src={url}
+                        alt={`Preview ${index}`}
+                        className="w-full h-full object-cover rounded-md"
                       />
                       <button
                         type="button"
-                        onClick={removeImage}
-                        className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
+                        onClick={() => removeImage(index)}
+                        className="absolute top-1 right-1 p-1.5 bg-red-600 text-white rounded-full"
                       >
                         <X className="w-4 h-4" />
                       </button>
                     </div>
-                  )}
-                  {errors.ImageUrl && (
-                    <p className="text-sm text-red-600 mt-1">
-                      {errors.ImageUrl}
-                    </p>
-                  )}
+                  ))}
+                  <label
+                    htmlFor="image-upload"
+                    className="w-[150px] h-[120px] border-2 border-dashed flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-md"
+                  >
+                    <Upload className="w-6 h-6 mb-1" />
+                    Upload
+                    <input
+                      type="file"
+                      id="image-upload"
+                      multiple
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                    />
+                  </label>
                 </div>
+                {errors.ImageUrl && (
+                  <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
+                )}
               </div>
             </div>
           </div>

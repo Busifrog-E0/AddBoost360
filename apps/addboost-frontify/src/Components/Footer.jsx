@@ -123,7 +123,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="md:ml-60 space-y-2">
+          <div className="md:ml-60 ">
             <p className="text-white font-arya text-lg">
               <a
                 href={`mailto:${footerData.email}`}

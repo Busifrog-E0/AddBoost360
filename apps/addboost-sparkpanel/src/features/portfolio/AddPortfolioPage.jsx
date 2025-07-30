@@ -1,26 +1,37 @@
 import React, { useState } from "react";
 import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
 import ProjectPreviewCard from "./PortfolioPreviewCard";
+import usePostData from "../../hooks/api/usePostData";
+import useUpdateData from "../../hooks/api/useUpdateData";
 
 const AddPortfolioPage = ({
   onBack,
   onSave,
   initialValue = {
     Title: "",
-    ServiceList: [""],
+    ImpactPoints: [""],
     image: null,
     ImageUrl: "",
-    buttonText: "",
-    type: "",
-    linkToProject: "",
+    ButtonMessage1: "",
+    Type: "",
+    Priority: "",
+    LinkToProject: "",
   },
   title,
   description,
   isEditing = false,
 }) => {
+  const { isLoading, postData } = usePostData({});
+  const { updateData } = useUpdateData({});
   const [formData, setFormData] = useState(initialValue);
   const [errors, setErrors] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
+  const typeOptions = [
+    "Website Design",
+    "Branding",
+    "Social Media Marketing",
+    "Mobile App",
+    "UI/UX Design",
+  ];  
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -51,62 +62,118 @@ const AddPortfolioPage = ({
 
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (!file.type.startsWith("image/")) {
-        setErrors((prev) => ({
-          ...prev,
-          image: "Please select a valid image file",
-        }));
-        return;
-      }
-      if (file.size > 5 * 1024 * 1024) {
-        setErrors((prev) => ({
-          ...prev,
-          image: "Image size should be less than 5MB",
-        }));
-        return;
-      }
+    if (!file) return;
 
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setFormData((prev) => ({
-          ...prev,
-          image: file,
-          imagePreview: event.target.result,
-        }));
-      };
-      reader.readAsDataURL(file);
-      setErrors((prev) => ({ ...prev, image: "" }));
+    // ——— Validate type & size ———
+    if (!file.type.startsWith("image/")) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Please select a valid image file",
+      }));
+      return;
     }
+    if (file.size > 5 * 1024 * 1024) {
+      setErrors((prev) => ({
+        ...prev,
+        image: "Image size should be less than 5MB",
+      }));
+      return;
+    }
+
+    // ——— Read as ArrayBuffer ———
+    const reader = new FileReader();
+    reader.onload = (loadEvent) => {
+      const arrayBuffer = loadEvent.target.result; // true ArrayBuffer
+      const byteArray = Array.from(new Uint8Array(arrayBuffer));
+
+      // Create a blob URL for preview
+      const previewUrl = URL.createObjectURL(file);
+
+      setFormData((prev) => ({
+        ...prev,
+        ImageUrl: previewUrl,
+        image: {
+          FileType: file.type,
+          FileData: byteArray,
+          FileName: file.name,
+        },
+      }));
+      setErrors((prev) => ({
+        ...prev,
+        image: "",
+        ImageUrl: "",
+      }));
+    };
+
+    reader.onerror = (err) => {
+      console.error("FileReader error:", err);
+      setErrors((prev) => ({
+        ...prev,
+        image: "Failed to read file. Please try again.",
+      }));
+    };
+
+    reader.readAsArrayBuffer(file);
   };
 
   const removeImage = () => {
-    setFormData((prev) => ({ ...prev, image: null, imagePreview: "" }));
+    setFormData((prev) => ({ ...prev, image: null, ImageUrl: "" }));
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.title.trim()) newErrors.title = "Project name is required";
-    if (!formData.buttonText.trim())
-      newErrors.buttonText = "Button text is required";
-    if (!formData.type.trim()) newErrors.type = "Type is required";
-    if (!formData.linkToProject.trim())
-      newErrors.linkToProject = "Project Link is required";
-    if (!formData.imagePreview)
-      newErrors.imagePreview = "Project image is required";
+    if (!formData.Title.trim()) newErrors.Title = "Project name is required";
+    if (!formData.ButtonMessage1.trim())
+      newErrors.ButtonMessage1 = "Button text is required";
+    if (!formData.Type.trim()) newErrors.Type = "Type is required";
+    if (!formData.LinkToProject.trim())
+      newErrors.LinkToProject = "Project Link is required";
+    if (!formData.ImageUrl) newErrors.ImageUrl = "Project image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleFormSubmit = (fileUrl) => {
+    const { image, ImageUrl, ...rest } = formData;
+    const payload = { ...rest, ImageUrl: fileUrl };
+
+    if (isEditing) {
+      updateData({
+        endpoint: `portfolios/${formData.DocId}`,
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    } else {
+      postData({
+        endpoint: "portfolios",
+        payload: payload,
+        onsuccess: (result) => {
+          if (result) {
+            onSave();
+          }
+        },
+      });
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
-    setIsLoading(true);
-    setTimeout(() => {
-      onSave(formData);
-      setIsLoading(false);
-    }, 1500);
+    if (formData.image) {
+      postData({
+        endpoint: "files/admin",
+        payload: formData.image,
+        onsuccess: (result) => {
+          handleFormSubmit(result.FileUrl);
+        },
+      });
+    } else {
+      handleFormSubmit(formData.ImageUrl);
+    }
   };
 
   return (
@@ -137,17 +204,41 @@ const AddPortfolioPage = ({
                 Project Name *
               </label>
               <input
-                type="text"
-                value={formData.title}
-                onChange={(e) => handleInputChange("title", e.target.value)}
+                Type="text"
+                value={formData.Title}
+                onChange={(e) => handleInputChange("Title", e.target.value)}
                 className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                  errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
                 placeholder="e.g., E-commerce Platform"
               />
-              {errors.title && (
+              {errors.Title && (
                 <p className="text-sm text-red-600">{errors.title}</p>
               )}
+            </div>
+            {/* Priority */}
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Priority *
+                </label>
+                <input
+                  type="number"
+                  value={formData.Priority}
+                  onChange={(e) =>
+                    handleInputChange("Priority", Number(e.target.value))
+                  }
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.title
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
+                  placeholder="Order Priority"
+                />
+                {errors.title && (
+                  <p className="mt-1 text-sm text-red-600">{errors.title}</p>
+                )}
+              </div>
             </div>
 
             {/* Button Text */}
@@ -156,39 +247,46 @@ const AddPortfolioPage = ({
                 Call-to-Action Button Text *
               </label>
               <input
-                type="text"
-                value={formData.buttonText}
+                Type="text"
+                value={formData.ButtonMessage1}
                 onChange={(e) =>
-                  handleInputChange("buttonText", e.target.value)
+                  handleInputChange("ButtonMessage1", e.target.value)
                 }
                 className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.buttonText
+                  errors.ButtonMessage1
                     ? "border-red-300 bg-red-50"
                     : "border-gray-300"
                 }`}
                 placeholder="e.g., View Website"
               />
-              {errors.buttonText && (
-                <p className="text-sm text-red-600">{errors.buttonText}</p>
+              {errors.ButtonMessage1 && (
+                <p className="text-sm text-red-600">{errors.ButtonMessage1}</p>
               )}
             </div>
 
-            {/*Type*/}
+            {/* Type Dropdown */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Type *
               </label>
-              <input
-                type="text"
-                value={formData.type}
-                onChange={(e) => handleInputChange("type", e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.type ? "border-red-300 bg-red-50" : "border-gray-300"
+              <select
+                value={formData.Type}
+                onChange={(e) => handleInputChange("Type", e.target.value)}
+                className={`w-full px-4 py-3 border rounded-lg appearance-none bg-white ${
+                  errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
-                placeholder="e.g., Website Design, Branding, Social Media Marketing"
-              />
-              {errors.type && (
-                <p className="text-sm text-red-600">{errors.type}</p>
+              >
+                <option value="" disabled>
+                  Select a type
+                </option>
+                {typeOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+              {errors.Type && (
+                <p className="text-sm text-red-600">{errors.Type}</p>
               )}
             </div>
 
@@ -198,13 +296,13 @@ const AddPortfolioPage = ({
                 ImpactPoints
               </label>
 
-              {formData.impactPoints.map((item, index) => (
+              {formData.ImpactPoints.map((item, index) => (
                 <input
                   key={index}
-                  type="text"
+                  Type="text"
                   value={item}
                   onChange={(e) =>
-                    handleListChange("impactPoints", index, e.target.value)
+                    handleListChange("ImpactPoints", index, e.target.value)
                   }
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2"
                   placeholder={`ImpactPoints ${index + 1}`}
@@ -213,20 +311,20 @@ const AddPortfolioPage = ({
 
               <div className="flex items-center space-x-2 mt-2">
                 <button
-                  type="button"
-                  onClick={() => addListItem("impactPoints")}
+                  Type="button"
+                  onClick={() => addListItem("ImpactPoints")}
                   className="flex items-center text-blue-600 hover:underline"
                 >
                   <Plus className="w-4 h-4 mr-1" /> Add Impact Point
                 </button>
 
-                {formData.impactPoints.length > 1 && (
+                {formData.ImpactPoints.length > 1 && (
                   <button
-                    type="button"
+                    Type="button"
                     onClick={() =>
                       removeListItem(
                         "impactPoints",
-                        formData.impactPoints.length - 1
+                        formData.ImpactPoints.length - 1
                       )
                     }
                     className="flex items-center justify-center border border-red-500 text-red-500 rounded-md p-2 hover:bg-red-50"
@@ -236,27 +334,27 @@ const AddPortfolioPage = ({
                 )}
               </div>
             </div>
-            {/*linkToProject */}
+            {/*LinkToProject */}
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Project Link *
               </label>
               <input
-                type="text"
-                value={formData.linkToProject}
+                Type="text"
+                value={formData.LinkToProject}
                 onChange={(e) =>
-                  handleInputChange("linkToProject", e.target.value)
+                  handleInputChange("LinkToProject", e.target.value)
                 }
                 className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.linkToProject
+                  errors.LinkToProject
                     ? "border-red-300 bg-red-50"
                     : "border-gray-300"
                 }`}
                 placeholder="e.g., https://google.com"
               />
-              {errors.linkToProject && (
-                <p className="text-sm text-red-600">{errors.linkToProject}</p>
+              {errors.LinkToProject && (
+                <p className="text-sm text-red-600">{errors.LinkToProject}</p>
               )}
             </div>
             {/* Image Upload */}
@@ -265,7 +363,7 @@ const AddPortfolioPage = ({
                 Project Image *
               </label>
               <div className="overflow-hidden w-[250px] h-[200px]">
-                {!formData.imagePreview ? (
+                {!formData.ImageUrl ? (
                   <div
                     className={`border-2 border-dashed p-6 text-center ${
                       errors.image
@@ -274,7 +372,7 @@ const AddPortfolioPage = ({
                     }`}
                   >
                     <input
-                      type="file"
+                      Type="file"
                       accept="image/*"
                       onChange={handleImageUpload}
                       className="hidden"
@@ -293,12 +391,12 @@ const AddPortfolioPage = ({
                 ) : (
                   <div className="relative">
                     <img
-                      src={formData.imagePreview}
+                      src={formData.ImageUrl}
                       alt="preview"
                       className="w-full h-48 object-cover rounded-lg border"
                     />
                     <button
-                      type="button"
+                      Type="button"
                       onClick={removeImage}
                       className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
                     >
@@ -306,10 +404,8 @@ const AddPortfolioPage = ({
                     </button>
                   </div>
                 )}
-                {errors.imagePreview && (
-                  <p className="text-sm text-red-600 mt-1">
-                    {errors.imagePreview}
-                  </p>
+                {errors.ImageUrl && (
+                  <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
                 )}
               </div>
             </div>
@@ -318,14 +414,14 @@ const AddPortfolioPage = ({
           {/* Footer Buttons */}
           <div className="flex items-center justify-end space-x-4 bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <button
-              type="button"
+              Type="button"
               onClick={onBack}
               className="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50"
             >
               Cancel
             </button>
             <button
-              type="submit"
+              Type="submit"
               disabled={isLoading}
               className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
             >

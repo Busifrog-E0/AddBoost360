@@ -5,7 +5,10 @@ import Joi from 'joi';
  */
 const ServiceSchema = Joi.object({
   Title: Joi.string().required(),
-  ImageUrl: Joi.string().required(),
+  ImageUrl: Joi.array()
+    .items(Joi.string().required())
+    .min(1)
+    .required(),
   Description1: Joi.string().required(),
   Description2: Joi.string().required(),
   ServiceList: Joi.array().items(Joi.string().trim().allow("")).required(),
