@@ -13,6 +13,7 @@ const AddServicePage = ({
   initialValue = {
     Title: "",
     Type: "",
+    Priority: "5",
     Description1: "",
     Description2: "",
     ButtonMessage1: "",
@@ -121,7 +122,10 @@ const AddServicePage = ({
     const { images, ...rest } = formData;
     const payload = {
       ...rest,
-      ImageUrl: [...formData.ImageUrl.filter((url) => !url.startsWith("blob:")), ...uploadedUrls],
+      ImageUrl: [
+        ...formData.ImageUrl.filter((url) => !url.startsWith("blob:")),
+        ...uploadedUrls,
+      ],
     };
 
     const action = isEditing ? updateData : postData;
@@ -202,8 +206,11 @@ const AddServicePage = ({
                   type="text"
                   value={formData.Title}
                   onChange={(e) => handleInputChange("Title", e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.title
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="e.g., Web Development"
                 />
                 {errors.title && (
@@ -220,10 +227,16 @@ const AddServicePage = ({
                   type="number"
                   value={formData.Priority ?? ""}
                   onChange={(e) =>
-                    handleInputChange("Priority", e.target.value === "" ? "" : Number(e.target.value))
+                    handleInputChange(
+                      "Priority",
+                      e.target.value === "" ? "" : Number(e.target.value)
+                    )
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.Priority
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="Order Priority"
                 />
                 {errors.priority && (
@@ -242,10 +255,11 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description2", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.description
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg resize-none ${
+                    errors.description
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="Detailed description..."
                 />
                 {errors.description && (
@@ -264,16 +278,15 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.subtitle
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.subtitle
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="e.g., Modern Web Apps"
                 />
                 {errors.subtitle && (
-                  <p className="mt-1 text-sm text-red-600">
-                    {errors.subtitle}
-                  </p>
+                  <p className="mt-1 text-sm text-red-600">{errors.subtitle}</p>
                 )}
               </div>
 
@@ -288,10 +301,11 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("ButtonMessage1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.buttonText
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="e.g., Contact Us"
                 />
                 {errors.buttonText && (
@@ -378,9 +392,7 @@ const AddServicePage = ({
                   </label>
                 </div>
                 {errors.ImageUrl && (
-                  <p className="text-sm text-red-600 mt-1">
-                    {errors.ImageUrl}
-                  </p>
+                  <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
                 )}
               </div>
             </div>
