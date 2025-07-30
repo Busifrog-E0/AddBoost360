@@ -84,7 +84,7 @@ const ServiceCard = ({ service, index }) => {
 
         {/* Zoom-in Title & Description */}
         <motion.div
-          className="pt-4 flex flex-col justify-between flex-grow"
+          className="pt-4"
           variants={textZoomVariants}
           initial="hidden"
           animate="visible"

@@ -16,9 +16,9 @@ const NewBusinessStartupSection = () => {
 14xl:py-180 15xl:py-200 "
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <h className="uppercase text-white font-anton text-2xl 2xl:text-5xl 2xl:pt-10 block ">
+        <h1 className="uppercase text-white font-anton text-2xl 2xl:text-5xl 2xl:pt-10 block ">
           Empowering New Businesses with Products, Strategy & Security
-        </h>
+        </h1>
       </div>
 
       <div className="mt-12 lg:mt-36 grid grid-cols-1 md:grid-cols-2 sm:gap-0 md:ml-20">

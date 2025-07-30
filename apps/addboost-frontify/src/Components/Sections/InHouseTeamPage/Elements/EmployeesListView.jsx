@@ -110,17 +110,18 @@ const EmployeesListView = ({
     <div className="select-none">
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
-        <h className="uppercase font-anton text-3xl 2xl:text-5xl text-white ">
+        <h1 className="uppercase font-anton text-3xl 2xl:text-5xl text-white ">
           {title}
-        </h>
+        </h1>
         <div className="flex items-center gap-2 flex-shrink-0 mt-2 md:mt-0">
           <button
             onClick={handlePrevious}
             disabled={currentSlide === 0}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === 0
-              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-              : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
-              }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
+              currentSlide === 0
+                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+                : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
+            }`}
           >
             <img
               src={Arrowbackward}
@@ -132,10 +133,11 @@ const EmployeesListView = ({
           <button
             onClick={handleNext}
             disabled={currentSlide === maxSlide}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === maxSlide
-              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-              : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
-              }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
+              currentSlide === maxSlide
+                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+                : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
+            }`}
           >
             <img
               src={Arrowforward}

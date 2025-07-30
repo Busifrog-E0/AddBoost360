@@ -13,9 +13,9 @@ const ContactPage = () => {
           Let's Unlock Your Brand's Full Potential — Together.
         </p>
 
-        <h className="font-anton text-white uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 ">
+        <h1 className="font-anton text-white uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 ">
           Book a free consultation
-        </h>
+        </h1>
 
         <p className="text-base font-inter text-[#C8C8C8] mt-2">
           Launching a startup, scaling up, or upgrading online? Get a free
@@ -26,7 +26,6 @@ const ContactPage = () => {
         <Formsection />
 
         {/* Submit Button */}
-
       </div>
       <ContactSupportSection />
     </div>

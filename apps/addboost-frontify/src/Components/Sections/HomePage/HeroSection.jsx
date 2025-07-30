@@ -27,16 +27,16 @@ const blurFade = {
 };
 
 const bounceRight = {
-  hidden: { opacity: 0, x: 100 },
-  show: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      stiffness: 80,
-      damping: 15,
-    },
-  },
+  // hidden: { opacity: 0, x: 100 },
+  // show: {
+  //   opacity: 1,
+  //   x: 0,
+  //   transition: {
+  //     type: "spring",
+  //     stiffness: 80,
+  //     damping: 15,
+  //   },
+  // },
 };
 
 const HeroSection = () => {
@@ -80,7 +80,7 @@ const HeroSection = () => {
           11xl:py-128 12xl:py-144 13xl:py-160 
           14xl:py-180 15xl:py-200"
       >
-        <div className="flex flex-col gap-8 text-white">
+        <div className="flex flex-col gap-8 text-white overflow-hidden">
           {/* Animated Title */}
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-anton uppercase"
