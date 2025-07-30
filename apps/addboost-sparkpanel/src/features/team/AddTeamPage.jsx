@@ -276,7 +276,7 @@ const AddTeamPage = ({
                 Select a Position
               </option>
 
-              <optgroup label="Digital Marketing">
+              <optgroup label="A. Digital Marketing">
                 {digitalMarketingTypeOptions.map((option) => (
                   <option key={`dm-${option}`} value={option}>
                     {option}
@@ -284,7 +284,7 @@ const AddTeamPage = ({
                 ))}
               </optgroup>
 
-              <optgroup label="Business Professional Support">
+              <optgroup label="B. Business Professional Support">
                 {businessSupportTypeOptions.map((option) => (
                   <option key={`bs-${option}`} value={option}>
                     {option}
