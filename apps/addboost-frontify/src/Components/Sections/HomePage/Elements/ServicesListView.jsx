@@ -163,7 +163,7 @@ const ServicesListView = ({
             cursor: isDragging ? "grabbing" : "grab",
           }}
         >
-          {services.slice(0, 6).map((service, index) => (
+          {services.map((service, index) => (
             <div
               key={service.DocId}
               className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 "
