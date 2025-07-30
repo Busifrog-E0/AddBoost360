@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../../Button";
 import { useNavigate } from "react-router";
+import { motion } from "framer-motion";
 
 const ServiceCard = ({
   service,
@@ -9,24 +10,76 @@ const ServiceCard = ({
 }) => {
   const navigate = useNavigate();
 
-  const TextContent = (
-    <div className="flex flex-col gap-5">
-      <h className="font-anton text-white text-2xl 2xl:text-4xl 2xl:pt-10 uppercase">
-        {service.Title}
-      </h>
-      <p className="font-inter text-base 2xl:text-lg text-gray-200">
-        {service.Description2}
-      </p>
-      <h className="font-anton text-xl text-white">{service.Description1}</h>
-      <div className="p-2 font-inter text-sm leading-relaxed">
-        {service.ServiceList.map((item, index) => (
-          <p className="text-white" key={index}>
-            ▪ {item}
-          </p>
-        ))}
-      </div>
+  // Animation container for staggered lines
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
-      <div className="grid md:flex lg:grid xl:flex flex-row gap-6">
+  // Individual line animation
+  const lineVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeIn" },
+    },
+  };
+
+  const TextContent = (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="flex flex-col gap-5"
+    >
+      <motion.h2
+        variants={lineVariants}
+        className="font-anton text-white text-2xl 2xl:text-4xl 2xl:pt-10 uppercase"
+      >
+        {service.Title}
+      </motion.h2>
+
+      <motion.p
+        variants={lineVariants}
+        className="font-inter text-base 2xl:text-lg text-gray-200"
+      >
+        {service.Description2}
+      </motion.p>
+
+      <motion.h3
+        variants={lineVariants}
+        className="font-anton text-xl text-white"
+      >
+        {service.Description1}
+      </motion.h3>
+
+      <motion.div
+        variants={containerVariants}
+        className="p-2 font-inter text-sm leading-relaxed"
+      >
+        {service.ServiceList.map((item, index) => (
+          <motion.p variants={lineVariants} className="text-white" key={index}>
+            ▪ {item}
+          </motion.p>
+        ))}
+      </motion.div>
+
+      {/* Button comes after all text with a delay */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          ease: "easeIn",
+        }}
+        className="grid md:flex lg:grid xl:flex flex-row gap-6"
+      >
         <Button
           bgColor="bg-white"
           textColor="text-[#1C1C1C]"
@@ -37,18 +90,24 @@ const ServiceCard = ({
           hoverTextColor="text-black"
           onClick={() => navigate("/contact")}
         />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 
   const ImageBlock = (
-    <div className="relative mt-6 h-[350px] w-full">
+    <motion.div
+      initial={{ opacity: 0, x: reverse ? -100 : 100 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.6, ease: "easeIn" }}
+      className="relative mt-6 h-[350px] w-full"
+    >
       <img
         src={service.ImageUrl}
         alt={service.Title}
         className="w-full h-full object-cover rounded-md"
       />
-    </div>
+    </motion.div>
   );
 
   return (
