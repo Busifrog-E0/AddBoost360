@@ -1,0 +1,57 @@
+import {
+
+	GetOneFrom{{properCase entity}}s,
+	Get{{properCase entity}}s,
+	Post{{properCase entity}}s,
+	Patch{{properCase entity}}s,
+	Delete{{properCase entity}}s,
+} from './{{camelCase entity}}s-controller.js';
+
+
+import asyncHandler from 'express-async-handler';
+
+import { decodeIDToken, ensureAuthorized } from '../auth/auth-middleware.js';
+
+import { ValidatePost{{properCase entity}}, ValidateGet{{properCase entity}}, ValidatePatch{{properCase entity}} } from './{{camelCase entity}}s-validations.js';
+
+import { QueryParameterFormatting } from '../../common/middleware/common.js';
+import SwaggerDocs from './{{camelCase entity}}s-swaggerDocs.js'
+import e from 'express';
+const router = e.Router();
+
+
+
+router.get('/{{camelCase entity}}s', decodeIDToken, ensureAuthorized(), ValidateGet{{properCase entity}}, QueryParameterFormatting, SwaggerDocs.get_{{pascalCase entity}},
+    //@ts-ignore
+asyncHandler(Get{{properCase entity}}s));
+
+
+
+router.get('/{{camelCase entity}}s/:{{pascalCase entity}}Id', decodeIDToken, ensureAuthorized(), SwaggerDocs.get_{{pascalCase entity}}_{{pascalCase entity}}Id,
+	// @ts-ignore
+	asyncHandler(GetOneFrom{{properCase entity}}s)
+);
+
+
+
+router.post('/{{camelCase entity}}s', decodeIDToken, ensureAuthorized(),ValidatePost{{properCase entity}}, SwaggerDocs.post_{{pascalCase entity}},
+	// @ts-ignore
+	asyncHandler(Post{{properCase entity}}s)
+);
+
+
+
+router.patch('/{{camelCase entity}}s/:{{pascalCase entity}}Id', decodeIDToken, ensureAuthorized(),ValidatePatch{{properCase entity}}, SwaggerDocs.patch_{{pascalCase entity}}_{{pascalCase entity}}Id,
+	// @ts-ignore
+	asyncHandler(Patch{{properCase entity}}s)
+);
+
+
+
+
+router.delete('/{{camelCase entity}}s/:{{pascalCase entity}}Id', decodeIDToken, ensureAuthorized(), SwaggerDocs.delete_{{pascalCase entity}}_{{pascalCase entity}}Id,
+	// @ts-ignore
+	asyncHandler(Delete{{properCase entity}}s)
+);
+
+export default router;

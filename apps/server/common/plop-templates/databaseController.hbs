@@ -1,0 +1,69 @@
+import dataHandling from '../../functions.js';
+
+/**
+ * @typedef {object} {{properCase entity}}Data
+{{#each fields}}
+ * @property {{wrapBraces type}} {{name}}
+{{/each}}
+ * @property {string} DocId
+ * @property {string} CreatedIndex
+ * @property {number} Index
+ */
+
+/**
+ *
+ * @param {undefined|object} Where
+ * @param {undefined|string} NextIndex
+ * @param {undefined|number} Limit
+ * @param {undefined|object} orderBy
+ * @returns {Promise<Array<{{properCase entity}}Data>>} Returns {{properCase entity}}Data
+ */
+const Read{{properCase entity}}s = async (Where, NextIndex, Limit, orderBy) => {
+	return dataHandling.Read('{{properCase entity}}', undefined, NextIndex, Limit, Where, orderBy);
+};
+
+/**
+ *
+ * @param {string} DocId
+ * @returns {Promise<{{properCase entity}}Data>}
+ */
+const ReadOneFrom{{properCase entity}}s = async (DocId) => {
+	return dataHandling.Read('{{properCase entity}}', DocId);
+};
+
+/**
+ *
+ * @param {{properCase entity}}Data|object data
+ * @param {string} DocId
+ * @returns {Promise<boolean>}
+ */
+const Update{{properCase entity}}s = async (data, DocId) => {
+	return dataHandling.Update('{{properCase entity}}', data, DocId);
+};
+
+/**
+ *
+ * @param {{properCase entity}}Data|object data
+ * @param {string|undefined} DocId
+ * @returns {Promise<string>}
+ */
+const Create{{properCase entity}}s = async (data, DocId = undefined) => {
+	return dataHandling.Create('{{properCase entity}}', data, DocId);
+};
+
+/**
+ *
+ * @param {string} DocId
+ * @returns {Promise<boolean>}
+ */
+const Remove{{properCase entity}}s = async (DocId) => {
+	return dataHandling.Delete('{{properCase entity}}', DocId);
+};
+
+export {
+	Read{{properCase entity}}s,
+	ReadOneFrom{{properCase entity}}s,
+	Update{{properCase entity}}s,
+	Create{{properCase entity}}s,
+	Remove{{properCase entity}}s,
+};

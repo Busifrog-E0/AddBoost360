@@ -1,0 +1,47 @@
+import Joi from "joi";
+import express from "express";
+
+import { QueryParametersSchema } from "validations";
+
+import { {{properCase entity}}Schema } from "validations"
+
+
+/**
+ * Validate POST /{{camelCase entity}}
+ */
+const ValidatePost{{properCase entity}} = (req, res, next) => {
+  const { error, value } = {{properCase entity}}Schema.validate(req.body, { stripUnknown: true });
+  if (error) return void res.status(400).json(error.details);
+  req.body = value;
+  return next();
+};
+
+/**
+ * Validate GET /{{camelCase entity}}
+ */
+const ValidateGet{{properCase entity}} = (req, res, next) => {
+  const schema = QueryParametersSchema
+  // .keys({
+  //  // Add additional query validation fields if needed
+  // });
+  const { error, value } = schema.validate(req.query, { convert: true, stripUnknown: true });
+  if (error) return void res.status(400).json({ error: error.details.map(d => d.message).join(", ") });
+  req.query = value;
+  return next();
+};
+
+/**
+ * Validate PATCH /{{camelCase entity}}
+ */
+const ValidatePatch{{properCase entity}} = (req, res, next) => {
+  const { error, value } = {{properCase entity}}Schema.validate(req.body, { stripUnknown: true });
+  if (error) return void res.status(400).json(error.details);
+  req.body = value;
+  return next();
+};
+
+export {
+  ValidatePost{{properCase entity}},
+  ValidateGet{{properCase entity}},
+  ValidatePatch{{properCase entity}},
+};

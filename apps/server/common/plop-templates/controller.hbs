@@ -1,0 +1,83 @@
+import e from 'express';
+
+import {
+
+	ReadOneFrom{{properCase entity}}s,
+	Read{{properCase entity}}s,
+	Update{{properCase entity}}s,
+	Create{{properCase entity}}s,
+	Remove{{properCase entity}}s,
+} from './{{camelCase entity}}s-databaseController.js';
+
+
+/**
+ * @typedef {import('./{{camelCase entity}}s-databaseController.js').{{properCase entity}}Data} {{properCase entity}}Data
+ */
+
+/**
+ *
+ * @param {e.Request} req
+ * @param {e.Response} res
+ * @returns {Promise<e.Response<{{properCase entity}}Data>>}
+ */
+const GetOneFrom{{properCase entity}}s = async (req, res) => {
+	const { {{pascalCase entity}}Id } = req.params;
+	const data = await ReadOneFrom{{properCase entity}}s({{pascalCase entity}}Id);
+	return res.json(data);
+};
+
+/**
+ *
+ * @param {e.Request} req
+ * @param {e.Response} res
+ * @returns {Promise<e.Response<Array<{{properCase entity}}Data>>>}
+ */
+const Get{{properCase entity}}s = async (req, res) => {
+	const { Filter, NextId, Limit, OrderBy } = req.query;
+	// @ts-ignore
+	const data = await Read{{properCase entity}}s(Filter, NextId, Limit, OrderBy);
+	return res.json(data);
+};
+
+/**
+ *
+ * @param {e.Request} req
+ * @param {e.Response} res
+ * @returns {Promise<e.Response<true>>}
+ */
+const Post{{properCase entity}}s = async (req, res) => {
+	await Create{{properCase entity}}s(req.body);
+	return res.json(true);
+};
+
+/**
+ *
+ * @param {e.Request} req
+ * @param {e.Response} res
+ * @returns {Promise<e.Response<true>>}
+ */
+const Patch{{properCase entity}}s = async (req, res) => {
+	const { {{pascalCase entity}}Id } = req.params;
+	await Update{{properCase entity}}s(req.body, {{pascalCase entity}}Id);
+	return res.json(true);
+};
+
+/**
+ *
+ * @param {e.Request} req
+ * @param {e.Response} res
+ * @returns {Promise<e.Response<true>>}
+ */
+const Delete{{properCase entity}}s = async (req, res) => {
+	const { {{pascalCase entity}}Id } = req.params;
+	await Remove{{properCase entity}}s({{pascalCase entity}}Id);
+	return res.json(true);
+};
+
+export {
+	GetOneFrom{{properCase entity}}s,
+	Get{{properCase entity}}s,
+	Post{{properCase entity}}s,
+	Patch{{properCase entity}}s,
+	Delete{{properCase entity}}s,
+};

@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 import Arrowforward from "../../../assets/arrowforwardwhite.svg";
 import Arrowbackward from "../../../assets/Arrowbackwardwhite.svg";
 import Cornerchip from "../../../assets/Cornerchip.svg";
 import Quote from "../../../assets/Quote.svg";
 import JoinTalentPool from "../../../assets/JoinTalentPool.png";
-import SlideIndicators from './Elements/SlideIndicators';
-import Button from '../../Button';
-import { useNavigate } from 'react-router';
-
+import SlideIndicators from "./Elements/SlideIndicators";
+import Button from "../../Button";
+import { useNavigate } from "react-router";
 
 const JoinTalentPoolSection = () => {
   const navigate = useNavigate();
@@ -21,23 +20,26 @@ const JoinTalentPoolSection = () => {
       number: "01",
       title: "highly competent professionals",
       description: "Must have 3+ years' experience, strong portfolio",
-      image: "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
+      image:
+        "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
     },
     {
       id: 2,
       number: "02",
       title: "Intern-Level Freelancers",
-      description: "For passionate learners ready to grow through guided real-time projects. ",
-      image: "https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop"
-    }
+      description:
+        "For passionate learners ready to grow through guided real-time projects. ",
+      image:
+        "https://images.pexels.com/photos/4226140/pexels-photo-4226140.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+    },
   ];
 
   const handlePrevious = () => {
-    setCurrentSlide(prev => prev === 0 ? slides.length - 1 : prev - 1);
+    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentSlide(prev => prev === slides.length - 1 ? 0 : prev + 1);
+    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
   };
 
   const handleTouchStart = (e) => {
@@ -67,20 +69,35 @@ const JoinTalentPoolSection = () => {
   const currentSlideData = slides[currentSlide];
 
   return (
-    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 py-14 md:py-20 lg:py-24  ">
+    <div className="px-6 md:px-14 2xl:px-60 3xl:px-80 
+  4xl:px-120 5xl:px-160 6xl:px-180
+  7xl:px-220 8xl:px-240 9xl:px-260
+  10xl:px-280 11xl:px-300 12xl:px-320
+  13xl:px-340 14xl:px-360 15xl:px-400
+   py-14 md:py-20 lg:py-36 
+  4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
+8xl:py-80 9xl:py-96 10xl:py-112 
+11xl:py-128 12xl:py-144 13xl:py-160 
+14xl:py-180 15xl:py-200  bg-BackgroundGradientleft  ">
       <div className="grid lg:grid-cols-2 gap-32 items-start">
         <div className=" flex flex-col gap-2">
-          <p className="text-primary  font-inter text-base 2xl:text-lg">In-House Team</p>
-          <h className="uppercase text-3xl 2xl:text-5xl font-anton ">
+          <p className="text-[#76B0FF]  font-inter text-base 2xl:text-lg">
+            Talent Pool
+          </p>
+          <h className="uppercase text-3xl 2xl:text-5xl font-anton text-white ">
             JOIN OUR GLOBAL TALENT Pool
           </h>
-          <p className="mt-2 text-sm leading-loose font-inter">
-            We recruit only the best. Whether you're a seasoned expert or a passionate intern, ADD BOOST 360 offers flexible, remote freelance opportunities in digital  design, marketing, development, and more.
+          <p className="mt-2 text-sm leading-loose font-inter text-white">
+            We recruit only the best. Whether you're a seasoned expert or a
+            passionate intern, ADD BOOST 360 offers flexible, remote freelance
+            opportunities in digital design, marketing, development, and more.
           </p>
-          <div onTouchStart={handleTouchStart}
+          <div
+            onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}>
-            <div className="bg-primary rounded-md p-6 text-white flex flex-col justify-between">
+            onTouchEnd={handleTouchEnd}
+          >
+            <div className="bg-PrimaryDarkBlue rounded-md p-6 text-white flex flex-col justify-between">
               <div className="flex-grow">
                 <div className="text-lg 2xl:text-xl  opacity-50 font-anton">
                   {currentSlideData.number}
@@ -93,7 +110,11 @@ const JoinTalentPoolSection = () => {
                 </p>
               </div>
               <div className="flex items-end justify-between mt-8 gap-3">
-                <SlideIndicators items={slides} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} activeColor='bg-white' />
+                <SlideIndicators
+                  items={slides}
+                  currentSlide={currentSlide}
+                  setCurrentSlide={setCurrentSlide}
+                />
                 <div className="flex items-center gap-2">
                   <button
                     onClick={handlePrevious}
@@ -116,7 +137,6 @@ const JoinTalentPoolSection = () => {
             <Button
               bgColor="bg-white "
               textColor="text-black"
-              border="border border-black"
               text="APPLY AS A FREELANCER"
               iconColor="black"
               hoverBgColor="bg-gray-300"
@@ -126,12 +146,15 @@ const JoinTalentPoolSection = () => {
           </div>
         </div>
         <div className="relative overflow-hidden hidden lg:block">
-          <img src={JoinTalentPool} alt="Join Talent Pool" className="w-full h-full object-cover rounded-md" />
+          <img
+            src={JoinTalentPool}
+            alt="Join Talent Pool"
+            className="w-full h-full object-cover rounded-md"
+          />
         </div>
       </div>
     </div>
-  )
-
+  );
 };
 
 export default JoinTalentPoolSection;

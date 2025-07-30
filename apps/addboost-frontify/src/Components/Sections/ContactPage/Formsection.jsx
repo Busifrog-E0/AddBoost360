@@ -1,17 +1,19 @@
 import React, { useState, useRef, useEffect } from "react";
 import Button from "../../Button";
+import usePostData from "../../../hooks/api/usePostData";
 
 const Formsection = () => {
-  const [formData, setFormData] = useState({
-    area: "",
-    name: "",
-    email: "",
-    phoneNumber: "",
-    startup: "",
-    comments: "",
-    dateTime: "",
-  });
-
+  const initialValue = {
+    FocusArea: "",
+    FullName: "",
+    Email: "",
+    Phone: "",
+    BusinessName: "",
+    Notes: "",
+    PreferredDate: new Date().getTime(),
+  }
+  const [formData, setFormData] = useState(initialValue);
+  const { isLoading, postData } = usePostData({});
   const [errors, setErrors] = useState({});
   const [showPopup, setShowPopup] = useState(false);
 
@@ -23,43 +25,62 @@ const Formsection = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    const transformedValue =
+      name === "PreferredDate" ? new Date(value).getTime() : value;
+
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: transformedValue,
     }));
 
-    if (value.trim() !== "") {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
-    }
+    // if (transformedValue.trim() !== "") {
+    //   setErrors((prev) => ({
+    //     ...prev,
+    //     [name]: "",
+    //   }));
+    // }
   };
 
   const handleSubmit = () => {
+    postData({
+      endpoint: "forms",
+      payload: formData,
+      onsuccess: (result) => {
+        setShowPopup(true);
+        setFormData(initialValue)
+      },
+    });
+
     const newErrors = {};
 
-    if (!formData.area.trim()) newErrors.area = "Please select a focus area";
-    if (!formData.name.trim()) newErrors.name = "Name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
+    if (!formData.FocusArea.trim())
+      newErrors.FocusArea = "Please select a focus Focus Area";
+    if (!formData.FullName.trim()) newErrors.FullName = "Name is required";
+    if (!formData.Email.trim()) newErrors.Email = "Email is required";
 
     setErrors(newErrors);
 
     const firstError = Object.keys(newErrors)[0];
-    if (firstError === "area")
+    if (firstError === "FocusArea")
       areaRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-    if (firstError === "name")
+    if (firstError === "FullName")
       nameRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
-    if (firstError === "email")
+    if (firstError === "Email")
       emailRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
 
     if (Object.keys(newErrors).length === 0) {
       console.log("Form submitted:", formData);
-      setShowPopup(true);
+
     }
   };
 
   const closePopup = () => setShowPopup(false);
+
+  const toLocalDateTimeInputValue = (date) => {
+    const local = new Date(date);
+    local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
+    return local.toISOString().slice(0, 16);
+  };
 
   // ✅ Close popup when clicking outside
   useEffect(() => {
@@ -87,14 +108,13 @@ const Formsection = () => {
             Choose Your Focus Area<span className="text-[#FF0004] ml-1">*</span>
           </label>
           <select
-            name="area"
-            value={formData.area}
+            name="FocusArea"
+            value={formData.FocusArea}
             onChange={handleChange}
-            className={`p-3 border rounded-md outline-none ${
-              errors.area
-                ? "border-red-500 bg-red-50 text-black"
-                : "border-gray-600 bg-white text-black"
-            }`}
+            className={`p-3 border rounded-md outline-none w-full ${errors.FocusArea
+              ? "border-red-500 bg-red-50 text-black"
+              : "border-gray-600 bg-white text-black"
+              }`}
           >
             <option value="">-- Select an option --</option>
             <option>Digital Marketing Strategy</option>
@@ -105,8 +125,10 @@ const Formsection = () => {
             <option>Training or Empowerment Program</option>
             <option>Something Else</option>
           </select>
-          {errors.area && (
-            <span className="text-sm text-red-500 mt-1">{errors.area}</span>
+          {errors.FocusArea && (
+            <span className="text-sm text-red-500 mt-1">
+              {errors.FocusArea}
+            </span>
           )}
         </div>
 
@@ -116,19 +138,18 @@ const Formsection = () => {
             Full Name<span className="ml-1 text-[#FF0004]">*</span>
           </label>
           <input
-            name="name"
-            value={formData.name}
+            name="FullName"
+            value={formData.FullName}
             onChange={handleChange}
             type="text"
-            placeholder="Enter your full name"
-            className={`p-3 border rounded-md outline-none ${
-              errors.name
-                ? "border-red-500 bg-red-50 text-black"
-                : "border-gray-600 bg-white text-black"
-            }`}
+            placeholder="Enter your full FullName"
+            className={`p-3 border rounded-md outline-none ${errors.FullName
+              ? "border-red-500 bg-red-50 text-black"
+              : "border-gray-600 bg-white text-black"
+              }`}
           />
-          {errors.name && (
-            <span className="text-sm text-red-500 mt-1">{errors.name}</span>
+          {errors.FullName && (
+            <span className="text-sm text-red-500 mt-1">{errors.FullName}</span>
           )}
         </div>
 
@@ -138,19 +159,18 @@ const Formsection = () => {
             Email Address<span className="ml-1 text-[#FF0004]">*</span>
           </label>
           <input
-            name="email"
-            value={formData.email}
+            name="Email"
+            value={formData.Email}
             onChange={handleChange}
-            type="email"
-            placeholder="Enter your email address"
-            className={`p-3 border rounded-md outline-none ${
-              errors.email
-                ? "border-red-500 bg-red-50 text-black"
-                : "border-gray-600 bg-white text-black"
-            }`}
+            type="Email"
+            placeholder="Enter your Email address"
+            className={`p-3 border rounded-md outline-none ${errors.Email
+              ? "border-red-500 bg-red-50 text-black"
+              : "border-gray-600 bg-white text-black"
+              }`}
           />
-          {errors.email && (
-            <span className="text-sm text-red-500 mt-1">{errors.email}</span>
+          {errors.Email && (
+            <span className="text-sm text-red-500 mt-1">{errors.Email}</span>
           )}
         </div>
 
@@ -158,8 +178,8 @@ const Formsection = () => {
         <div className="flex flex-col">
           <label className="text-sm mb-2">Phone Number</label>
           <input
-            name="phoneNumber"
-            value={formData.phoneNumber}
+            name="Phone"
+            value={formData.Phone}
             onChange={handleChange}
             type="tel"
             placeholder="Enter your phone number"
@@ -173,8 +193,8 @@ const Formsection = () => {
             Business / Startup Name (if any)
           </label>
           <input
-            name="startup"
-            value={formData.startup}
+            name="BusinessName"
+            value={formData.BusinessName}
             onChange={handleChange}
             type="text"
             placeholder="Enter your Business / Startup Name"
@@ -186,11 +206,11 @@ const Formsection = () => {
         <div className="flex flex-col">
           <label className="text-sm mb-2">Preferred Date & Time</label>
           <input
-            name="dateTime"
-            value={formData.dateTime}
+            name="PreferredDate"
+            value={toLocalDateTimeInputValue(formData.PreferredDate)}
             onChange={handleChange}
             type="datetime-local"
-            className="p-3 bg-white border border-gray-600 rounded-md text-black outline-none"
+            className="p-3 bg-white border border-gray-600 rounded-md text-black outline-none w-full"
           />
         </div>
 
@@ -198,11 +218,11 @@ const Formsection = () => {
         <div className="flex flex-col">
           <label className="text-sm mb-2">Additional Notes or Questions</label>
           <textarea
-            name="comments"
-            value={formData.comments}
+            name="Notes"
+            value={formData.Notes}
             onChange={handleChange}
             rows={4}
-            placeholder="Enter your comments"
+            placeholder="Enter your Notes"
             className="p-3 bg-white border border-gray-600 rounded-md text-black placeholder-gray-400 outline-none"
           />
         </div>
@@ -218,7 +238,7 @@ const Formsection = () => {
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
           <div
             ref={popupRef}
-            className="relative bg-white rounded-xl shadow-xl p-6 md:p-8 w-full max-w-sm text-center animate-fade-in"
+            className="relative bg-white rounded-md shadow-xl p-6 md:p-8 w-full max-w-sm text-center animate-fade-in"
           >
             {/* Close Icon */}
             <button
@@ -229,8 +249,10 @@ const Formsection = () => {
             </button>
 
             <div className="text-4xl mb-4">✅</div>
-            <h2 className="text-lg font-semibold text-gray-800">Thank you!</h2>
-            <p className="text-sm text-gray-600 mt-2">
+            <h2 className="text-xl mt-4 font-semibold text-gray-800 font-anton">
+              Thank you!
+            </h2>
+            <p className="text-sm text-gray-600 mt-4 font-inter">
               Your submission has been received. Our team will get back to you
               shortly.
             </p>

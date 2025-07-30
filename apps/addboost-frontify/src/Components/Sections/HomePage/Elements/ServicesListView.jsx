@@ -1,13 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import ServiceCard from './ServiceCard';
+import React, { useState, useEffect } from "react";
+import ServiceCard from "./ServiceCard";
 
-import Arrowforward from "../../../../assets/arrowforward.svg";
-import Arrowbackward from "../../../../assets/Arrowbackward.svg";
-import Button from '../../../Button';
-import SlideIndicators from './SlideIndicators';
-import { useNavigate } from 'react-router';
+import Arrowforward from "../../../../assets/arrowforwardwhite.svg";
+import Arrowbackward from "../../../../assets/Arrowbackwardwhite.svg";
+import Button from "../../../Button";
+import SlideIndicators from "./SlideIndicators";
+import { useNavigate } from "react-router";
 
-const ServicesListView = ({ isSlideIndicatorsEnabled = false, title, services = [], showAllServicesButton = false }) => {
+const ServicesListView = ({
+  isSlideIndicatorsEnabled = false,
+  title,
+  services = [],
+  showAllServicesButton = false,
+}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [itemsPerView, setItemsPerView] = useState(3);
   const [startX, setStartX] = useState(null);
@@ -29,18 +34,18 @@ const ServicesListView = ({ isSlideIndicatorsEnabled = false, title, services = 
     };
 
     updateItemsPerView();
-    window.addEventListener('resize', updateItemsPerView);
-    return () => window.removeEventListener('resize', updateItemsPerView);
+    window.addEventListener("resize", updateItemsPerView);
+    return () => window.removeEventListener("resize", updateItemsPerView);
   }, [services]);
 
   const maxSlide = Math.max(0, services.length - itemsPerView);
 
   const handlePrevious = () => {
-    setCurrentSlide(prev => Math.max(0, prev - 1));
+    setCurrentSlide((prev) => Math.max(0, prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentSlide(prev => Math.min(maxSlide, prev + 1));
+    setCurrentSlide((prev) => Math.min(maxSlide, prev + 1));
   };
 
   const getTransformValue = () => {
@@ -104,7 +109,7 @@ const ServicesListView = ({ isSlideIndicatorsEnabled = false, title, services = 
     <div className="select-none">
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
-        <h className="uppercase font-anton text-3xl 2xl:text-5xl ">
+        <h className="uppercase font-anton text-3xl 2xl:text-5xl text-PrimaryWhite ">
           {title}
         </h>
         <div className="flex items-center gap-2 flex-shrink-0 mt-2 md:mt-0">
@@ -112,22 +117,30 @@ const ServicesListView = ({ isSlideIndicatorsEnabled = false, title, services = 
             onClick={handlePrevious}
             disabled={currentSlide === 0}
             className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === 0
-              ? 'border-gray-300 text-gray-300 cursor-not-allowed opacity-50'
-              : 'border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0'
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
               }`}
           >
-            <img src={Arrowbackward} alt="Previous" className="w-3 h-3 lg:w-8 lg:h-8" />
+            <img
+              src={Arrowbackward}
+              alt="Previous"
+              className="w-3 h-3 lg:w-8 lg:h-8"
+            />
           </button>
 
           <button
             onClick={handleNext}
             disabled={currentSlide === maxSlide}
             className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === maxSlide
-              ? 'border-gray-300 text-gray-300 cursor-not-allowed opacity-50'
-              : 'border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0'
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
               }`}
           >
-            <img src={Arrowforward} alt="Next" className="w-3 h-3 lg:w-8 lg:h-8" />
+            <img
+              src={Arrowforward}
+              alt="Next"
+              className="w-3 h-3 lg:w-8 lg:h-8"
+            />
           </button>
         </div>
       </div>
@@ -147,16 +160,16 @@ const ServicesListView = ({ isSlideIndicatorsEnabled = false, title, services = 
           className="flex transition-transform duration-500 gap-4 ease-in-out"
           style={{
             transform: `translateX(${getTransformValue()}%)`,
-            cursor: isDragging ? 'grabbing' : 'grab',
+            cursor: isDragging ? "grabbing" : "grab",
           }}
         >
-          {services.map((service) => (
+          {services.slice(0, 6).map((service, index) => (
             <div
-              key={service.id}
+              key={service.DocId}
               className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 "
               style={{ maxWidth: `calc(${100 / itemsPerView}% - 1rem)` }}
             >
-              <ServiceCard service={service} />
+              <ServiceCard index={index} service={service} />
             </div>
           ))}
         </div>
@@ -165,15 +178,29 @@ const ServicesListView = ({ isSlideIndicatorsEnabled = false, title, services = 
       {/* Indicators */}
       {isSlideIndicatorsEnabled && totalSlides > 1 && (
         <div className="mt-12 gap-2">
-          <SlideIndicators items={Array.from({ length: totalSlides })} currentSlide={currentSlide} setCurrentSlide={setCurrentSlide} />
+          <SlideIndicators
+            items={Array.from({ length: totalSlides })}
+            currentSlide={currentSlide}
+            setCurrentSlide={setCurrentSlide}
+          />
         </div>
       )}
-
-      {showAllServicesButton && (
-        <div className="flex items-end justify-center mt-8">
-          <Button onClick={() => navigate('/services')} bgColor="bg-black" text="EXPLORE ALL SERVICES" />
+      {
+        showAllServicesButton &&
+        <div className="flex  justify-center mt-10 ">
+          <Button
+            bgColor="bg-white"
+            textColor="text-black"
+            iconColor="black"
+            text="View all services"
+            hoverBgColor="bg-gray-300"
+            hoverTextColor="text-black"
+            onClick={() => {
+              navigate("/services");
+            }}
+          />
         </div>
-      )}
+      }
     </div>
   );
 };
