@@ -19,11 +19,12 @@ const line = {
 const imageVariants = {
   hidden: { opacity: 0, y: 50 },
   show: {
-    opacity: 1,
+    opacity: 0.6,
     y: 0,
     transition: {
       duration: 1,
       ease: "easeOut",
+      delay: 0.5, // comes after the last text line
     },
   },
 };
