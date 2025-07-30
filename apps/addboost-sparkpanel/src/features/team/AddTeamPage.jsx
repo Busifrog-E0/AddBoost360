@@ -27,13 +27,17 @@ const AddTeamPage = ({
 
   const [errors, setErrors] = useState({});
   const { updateData } = useUpdateData({});
-
   const typeOptions = [
     "HR",
     "Team Lead",
     "Project Lead",
     "Mobile App",
     "UI/UX Design",
+    "Marketing",
+    "Business Analyst",
+    "Backend Developer",
+    "Frontend Developer",
+    "Intern"
   ];
 
   const handleInputChange = (field, value) => {
