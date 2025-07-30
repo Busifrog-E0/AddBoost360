@@ -64,9 +64,9 @@ const WhyItWorksSection = () => {
         <p className="text-[#76B0FF] font-inter text-base 2xl:text-lg">
           Global Wholesale Hub
         </p>
-        <h className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite">
+        <h1 className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite">
           Direct Deals with Trusted Global Suppliers
-        </h>
+        </h1>
       </motion.div>
 
       {/* Subtext */}

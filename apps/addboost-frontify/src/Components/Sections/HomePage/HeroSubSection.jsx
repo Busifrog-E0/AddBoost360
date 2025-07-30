@@ -85,7 +85,7 @@ const HeroSubSection = () => {
         14xl:py-180 15xl:py-200"
     >
       {/* Left Content */}
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 overflow-hidden">
         <motion.h2
           className="font-anton text-3xl 2xl:text-5xl 2xl:pt-10 uppercase text-PrimaryWhite"
           variants={popIn}
@@ -104,7 +104,7 @@ const HeroSubSection = () => {
         </motion.p>
 
         <motion.div
-          className="grid md:flex lg:grid xl:flex flex-row gap-6"
+          className="grid md:flex lg:grid xl:flex flex-row gap-6 "
           variants={bounceRight}
         >
           <Button

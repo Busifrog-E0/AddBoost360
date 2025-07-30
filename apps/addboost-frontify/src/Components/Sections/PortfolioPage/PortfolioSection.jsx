@@ -12,13 +12,12 @@ const PortfolioSection = () => {
     getList,
   } = useGetList({ endpoint: "portfolios" });
 
-
   if (isLoading) {
-    return <LoaderSection />
+    return <LoaderSection />;
   }
   return (
     <div>
-      <div className="">
+      <div className="overflow-hidden">
         <PortfoliList howAllServicesButton={true} projects={portfolios} />
       </div>
     </div>

@@ -121,9 +121,9 @@ const ServicesListView = ({
     <div className="select-none">
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
-        <h className="uppercase font-anton text-3xl 2xl:text-5xl text-PrimaryWhite ">
+        <h1 className="uppercase font-anton text-3xl 2xl:text-5xl text-PrimaryWhite ">
           {title}
-        </h>
+        </h1>
         <div className="flex items-center gap-2 flex-shrink-0 mt-2 md:mt-0">
           <button
             onClick={handlePrevious}
