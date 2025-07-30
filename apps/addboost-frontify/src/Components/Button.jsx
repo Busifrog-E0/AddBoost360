@@ -46,7 +46,7 @@ const Button = ({
             </div>
           )}
 
-          <div className="relative z-10 origin-center transform transition-transform duration-500 ease-in-out group-hover:rotate-45 group-hover:translate-x-1">
+          <div className="relative z-10 origin-center transform transition-transform duration-500 ease-in-out group-hover:rotate-45 group-hover:translate-x-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="20px"

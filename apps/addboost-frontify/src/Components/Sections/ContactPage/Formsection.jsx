@@ -220,7 +220,7 @@ const Formsection = () => {
               onChange={handleChange}
               className={`p-4 lg:px-5 bg-transparent border border-white/20 rounded-md text-white placeholder-white/40 outline-none w-full focus:border-white/30 transition-all duration-300 appearance-none`}
             />
-            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white pointer-events-none">
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

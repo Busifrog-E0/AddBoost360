@@ -27,18 +27,30 @@ const AddTeamPage = ({
 
   const [errors, setErrors] = useState({});
   const { updateData } = useUpdateData({});
-  const typeOptions = [
-    "HR",
-    "Team Lead",
-    "Project Lead",
-    "Mobile App",
-    "UI/UX Design",
-    "Marketing",
-    "Business Analyst",
-    "Backend Developer",
-    "Frontend Developer",
-    "Intern"
-  ];
+  const digitalMarketingTypeOptions = [
+    "Branding & Creative Design",
+    "Web & App Development",
+    "Search Engine Optimization (SEO)",
+    "Content Marketing",
+    "Social Media Marketing",
+    "Search Engine Marketing (SEM/PPC)",
+    "Email & SMS Marketing",
+    "Affiliate & Referral Marketing",
+    "Marketing Automation & CRM",
+    "Analytics & Data Intelligence",
+
+  ]
+  const businessSupportTypeOptions = [
+
+    "Business Formation & Strategy",
+    "Finance & Accounting",
+    "Legal & Compliance",
+    "Human Resources & Talent",
+    "IT Infrastructure & Security",
+    "Sales & Business Development",
+    "Customer Support & Experience",
+    "Training & Capacity Building"
+  ]
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -112,7 +124,7 @@ const AddTeamPage = ({
     if (!formData.Designation.trim())
       newErrors.Designation = "Designation is required";
     if (!formData.Description1.trim())
-      newErrors.Description1 = "Category is required";
+      newErrors.Description1 = "Position is required";
     if (!formData.Priority) newErrors.Priority = "Priority is required";
     if (!formData.State.trim()) newErrors.State = "State is required";
     if (!formData.Country.trim()) newErrors.Country = "Country is required";
@@ -252,26 +264,33 @@ const AddTeamPage = ({
           {/* Type Dropdown */}
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1 mt-1">
-              Categories *
+              Position *
             </label>
             <select
               value={formData.Description1}
-              onChange={(e) =>
-                handleInputChange("Description1", e.target.value)
-              }
-              className={`w-full px-4 py-3 border rounded-lg appearance-none ${errors.Description1
-                ? "border-red-300 bg-red-50"
-                : "border-gray-300"
+              onChange={(e) => handleInputChange("Description1", e.target.value)}
+              className={`w-full px-4 py-3 border rounded-lg appearance-none ${errors.Description1 ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
             >
               <option value="" disabled>
-                Select a Category
+                Select a Position
               </option>
-              {typeOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
+
+              <optgroup label="Digital Marketing">
+                {digitalMarketingTypeOptions.map((option) => (
+                  <option key={`dm-${option}`} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </optgroup>
+
+              <optgroup label="Business Professional Support">
+                {businessSupportTypeOptions.map((option) => (
+                  <option key={`bs-${option}`} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </optgroup>
             </select>
             {errors.Description1 && (
               <p className=" mt-1 text-sm text-red-600">
