@@ -9,6 +9,7 @@ const EmployeeSchema = Joi.object({
   State: Joi.string().required(),
   Country: Joi.string().required(),
   Designation: Joi.string().required(),
+  ID: Joi.string().required(),
   Description1: Joi.string().required(),
   Priority: Joi.number().required(),
 });
