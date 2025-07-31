@@ -169,7 +169,6 @@ const CategoriesListView = ({
               style={{ maxWidth: `calc(${100 / itemsPerView}% - 1rem)` }}
               variants={cardVariant}
               whileTap={{ scale: 1.03 }}
-              whileHover={{ scale: 1.02 }}
             >
               <CategoryCard service={service} />
             </motion.div>
