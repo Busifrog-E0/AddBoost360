@@ -25,10 +25,10 @@ const SearchEmployeesPage = () => {
 
   return (
     <div className="px-6 md:px-10 2xl:px-24 3xl:px-32
-4xl:px-44 5xl:px-56 6xl:px-72 7xl:px-84
-8xl:px-96 9xl:px-112 10xl:px-120
-11xl:px-140 12xl:px-160 13xl:px-180
-14xl:px-200 15xl:px-220
+4xl:px-60 5xl:px-80 6xl:px-180
+  7xl:px-220 8xl:px-240 9xl:px-260
+  10xl:px-280 11xl:px-300 12xl:px-320
+  13xl:px-340 14xl:px-360 15xl:px-400
 
 py-10 md:py-14 lg:py-20
 4xl:py-24 5xl:py-28 6xl:py-32 7xl:py-36
