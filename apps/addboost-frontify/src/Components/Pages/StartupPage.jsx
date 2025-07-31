@@ -8,7 +8,7 @@ const StartupPage = () => {
   return (
     <div>
       <StartupHeroSection />
-      <StartupsSection />
+      {/* <StartupsSection /> */}
       <NewBusinessStartupSection />
       <StartupSupportService />
     </div>
