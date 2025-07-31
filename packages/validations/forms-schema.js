@@ -8,9 +8,9 @@ const FormSchema = Joi.object({
   FullName: Joi.string().required(),
   Email: Joi.string().required(),
   Phone: Joi.string().required(),
-  BusinessName: Joi.string().required(),
-  PreferredDate: Joi.number().required(),
-  Notes: Joi.string().required(),
+  BusinessName: Joi.string().allow(""),
+  PreferredDate: Joi.number(),
+  Notes: Joi.string().allow(""),
 });
 
 export { FormSchema };

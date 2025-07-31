@@ -13,6 +13,7 @@ const AddTeamPage = ({
     id: 1,
     FullName: "",
     Designation: "",
+    ID: "",
     Country: "",
     State: "",
     image: null,
@@ -126,6 +127,8 @@ const AddTeamPage = ({
     if (!formData.FullName.trim()) newErrors.FullName = "Name is required";
     if (!formData.Designation.trim())
       newErrors.Designation = "Designation is required";
+    if (!formData.ID.trim())
+      newErrors.ID = "ID is required";
     if (!formData.Description1.trim())
       newErrors.Description1 = "Position is required";
     if (!formData.Priority) newErrors.Priority = "Priority is required";
@@ -243,7 +246,25 @@ const AddTeamPage = ({
               )}
             </div>
           </div>
-
+          {/* ID */}
+          <div className="mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-1 mt-2 ">
+              ID *
+            </label>
+            <input
+              type="text"
+              value={formData.ID}
+              onChange={(e) => handleInputChange("ID", e.target.value)}
+              className={`w-full px-4 mb-2 py-3 border rounded-lg ${errors.ID
+                ? "border-red-300 bg-red-50"
+                : "border-gray-300"
+                }`}
+              placeholder="e.g., ID-43"
+            />
+            {errors.ID && (
+              <p className="  text-sm text-red-600">{errors.ID}</p>
+            )}
+          </div>
           {/* Designation */}
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-1 mt-2 ">
