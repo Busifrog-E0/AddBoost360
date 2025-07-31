@@ -364,7 +364,7 @@ const AddTeamPage = ({
                         Click to upload image
                       </p>
                       <p className="text-xs text-gray-500">
-                        JPG or WEBP • Max 5MB
+                        JPG or WEBP • Max 2MB
                       </p>
                     </div>
                   </label>

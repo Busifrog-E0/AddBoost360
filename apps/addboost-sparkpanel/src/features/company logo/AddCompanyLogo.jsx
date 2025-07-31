@@ -213,7 +213,7 @@ const AddCompanyLogo = ({
                         Click to upload image
                       </p>
                       <p className="text-xs text-gray-500">
-                        JPG or WEBP • Max 5MB • 16:9 aspect ratio
+                        JPG or WEBP • Max 2MB • 16:9 aspect ratio
                       </p>
                     </div>
                   </label>
