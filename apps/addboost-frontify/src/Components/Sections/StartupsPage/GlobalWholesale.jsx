@@ -22,7 +22,7 @@ const GlobalWholesale = () => {
         type: "spring",
         stiffness: 80,
         damping: 15,
-        delay: 1.6,
+        delay: 0.8,
       },
     },
   };
@@ -88,14 +88,14 @@ py-10 md:py-14 lg:py-20
 11xl:py-52 12xl:py-56 13xl:py-60
 14xl:py-64 15xl:py-72"
         >
-          <h2 className="font-anton text-xl md:text-2xl uppercase mb-4 text-white ">
+          <h2 className="font-anton text-xl md:text-4xl  mb-4 text-white ">
             Global Wholesale Sourcing Made Simple
           </h2>
 
           <div className="flex flex-col p-5 sm:p-8 md:p-2 gap-6">
             {/* Heading & Paragraph */}
             <div>
-              <p className="font-inter text-sm text-gray-400 mt-3 leading-relaxed">
+              <p className="font-inter text-xl text-gray-400 mt-3 leading-relaxed">
                 Easily connect with verified wholesale suppliers through our
                 secure global sourcing platform.
               </p>
@@ -103,7 +103,7 @@ py-10 md:py-14 lg:py-20
 
             {/* List */}
             <div>
-              <h4 className="font-anton text-base md:text-lg mb-4 text-white ">
+              <h4 className="font-anton text-base md:text-2xl mb-4 text-white ">
                 How It Works:
               </h4>
               <motion.div
@@ -129,7 +129,7 @@ py-10 md:py-14 lg:py-20
                   " All deals backed by legal agreementsp",
                 ].map((item, index) => (
                   <motion.div
-                    className="flex items-start gap-2"
+                    className="flex items-start  gap-2"
                     key={index}
                     variants={{
                       hidden: { opacity: 0, y: 20 },
