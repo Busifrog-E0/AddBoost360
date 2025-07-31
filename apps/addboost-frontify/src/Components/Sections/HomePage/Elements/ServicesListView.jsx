@@ -31,6 +31,7 @@ const ServicesListView = ({
   const [endX, setEndX] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
 
+  const maxSlide = Math.max(0, services.length - itemsPerView);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,7 +51,20 @@ const ServicesListView = ({
     return () => window.removeEventListener("resize", updateItemsPerView);
   }, [services]);
 
-  const maxSlide = Math.max(0, services.length - itemsPerView);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => {
+        if (prev < maxSlide) {
+          return prev + 1;
+        } else {
+          return 0; // Loop back to first slide
+        }
+      });
+    }, 3000); // Adjust delay (in ms) as needed
+
+    return () => clearInterval(interval); // Cleanup
+  }, [maxSlide]);
+
 
   const handlePrevious = () => {
     setCurrentSlide((prev) => Math.max(0, prev - 1));
