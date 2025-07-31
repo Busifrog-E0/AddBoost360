@@ -6,6 +6,9 @@ import youtube from "../assets/SocialMediaIcon/Youtube.svg";
 import Ukflag from "../assets/Ukflag.png";
 import ADDBOOSTlogo from "../assets/ADDBOOSTlogo.png";
 
+import refundPDF from "../assets/docs/refund-and-cancellation.pdf";
+import privacyPDF from "../assets/docs/privacy-policy.pdf";
+
 const Footer = () => {
   const [footerData, setFooterData] = React.useState({
     email: "info@addboost360.com",
@@ -27,6 +30,8 @@ const Footer = () => {
       youtube: "https://www.youtube.com/your-page",
     },
     copywrite: "© 2025 ADD BOOST 360 LIMITED. All Rights Reserved.",
+    refundPDF: refundPDF,
+    privacyPDF: privacyPDF,
   });
 
   return (
@@ -144,8 +149,31 @@ py-10 md:py-14 lg:py-20
         </div>
 
         {/* Bottom: Copyright & Subscribe */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center text-xs text-gray-500 mt-2 font-inter gap-4">
-          <p>{footerData.copywrite}</p>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end text-xs text-gray-500 mt-2 font-inter gap-4">
+          <div>
+            <div className="flex flex-wrap gap-4 items-center text-xs text-gray-500 mt-4 font-inter mb-3">
+              <a
+                href={footerData.refundPDF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:underline hover:text-white transition duration-200 outline-none"
+              >
+                Refund & Cancellation Policy
+              </a>
+              <a
+                href={footerData.privacyPDF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:underline hover:text-white transition duration-200 outline-none"
+              >
+                Privacy Policy
+              </a>
+            </div>
+            <p>{footerData.copywrite}</p>
+          </div>
+
+
+
 
           <p className="text-gray-500 font-inter text-xs">
             Want to stay updated with digital trends, offers and sourcing
