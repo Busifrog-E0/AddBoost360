@@ -10,7 +10,7 @@ const Formsection = () => {
     Phone: "",
     BusinessName: "",
     Notes: "",
-    PreferredDate: new Date().getTime(),
+    PreferredDate: "",
   };
   const focusAreaOptions = [
     "Digital Marketing Strategy",
@@ -86,6 +86,7 @@ const Formsection = () => {
   const closePopup = () => setShowPopup(false);
 
   const toLocalDateTimeInputValue = (date) => {
+    if (!date) return "";
     const local = new Date(date);
     local.setMinutes(local.getMinutes() - local.getTimezoneOffset());
     return local.toISOString().slice(0, 16);
