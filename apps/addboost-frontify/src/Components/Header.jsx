@@ -3,9 +3,16 @@ import { NavLink, useNavigate } from "react-router";
 import MenuIcon from "./MenuIcon";
 import Sidebar from "./Sidebar";
 import ADDBOOSTlogo from "../assets/ADDBOOSTlogo.png";
+import email from "../assets/email.png";
 import call from "../assets/call.png";
 
 const Header = () => {
+
+  const [headerData, setHeaderData] = React.useState({
+    email: "info@addboost360.com",
+    phone: "+44 (0)20-1234-5678",
+  });
+
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -64,19 +71,36 @@ const Header = () => {
 
           </div>
           {/* Phone */}
-          <div className="hidden md:flex items-center text-sm font-inter gap-2 outline-none">
-            <img
-              src={call}
-              alt="Phone"
-              className="w-4 object-contain outline-none"
-            />
-            <a
-              href="tel:+442012345678"
-              className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
-            >
-              +44 (0)20-1234-5678
-            </a>
+          <div className="hidden md:flex items-center gap-6 lg:gap-12">
+            <div className="flex items-center text-sm font-inter gap-2 outline-none">
+              <img
+                src={call}
+                alt="Phone"
+                className="w-4 object-contain outline-none"
+              />
+              <a
+                href={`tel:${headerData.phone}`}
+                className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
+              >
+                {headerData.phone}
+              </a>
+            </div>
+            <div className="flex items-center text-sm font-inter gap-2 outline-none">
+              <img
+                src={email}
+                alt="Email"
+                className="w-4 object-contain outline-none"
+              />
+              <a
+                href={`mailto:${headerData.email}`}
+                className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
+              >
+                {headerData.email}
+              </a>
+            </div>
           </div>
+
+
           {/* Nav Items */}
           <nav className="hidden xl:flex gap-8 text-sm font-arya uppercase">
             {navItems.map((item) => (
