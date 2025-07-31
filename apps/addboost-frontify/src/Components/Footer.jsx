@@ -30,8 +30,17 @@ const Footer = () => {
       youtube: "https://www.youtube.com/your-page",
     },
     copywrite: "© 2025 ADD BOOST 360 LIMITED. All Rights Reserved.",
-    refundPDF: refundPDF,
-    privacyPDF: privacyPDF,
+    policies: [
+      {
+        label: "Privacy Policy",
+        url: privacyPDF,
+      },
+
+      {
+        label: "Refund Policy",
+        url: refundPDF,
+      },
+    ]
   });
 
   return (
@@ -151,23 +160,22 @@ py-10 md:py-14 lg:py-20
         {/* Bottom: Copyright & Subscribe */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end text-xs text-gray-500 mt-2 font-inter gap-4">
           <div>
-            <div className="flex flex-wrap gap-4 items-center text-xs text-gray-500 mt-4 font-inter mb-3">
-              <a
-                href={footerData.refundPDF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:underline hover:text-white transition duration-200 outline-none"
-              >
-                Refund & Cancellation Policy
-              </a>
-              <a
-                href={footerData.privacyPDF}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:underline hover:text-white transition duration-200 outline-none"
-              >
-                Privacy Policy
-              </a>
+            <div className="flex flex-wrap gap-2 items-center text-xs text-gray-500 mt-4 font-inter mb-3">
+              {footerData.policies.map((policy, index) => (
+                <React.Fragment key={index}>
+                  <a
+                    href={policy.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-500 hover:underline hover:text-white transition duration-200 outline-none"
+                  >
+                    {policy.label}
+                  </a>
+                  {index < footerData.policies.length - 1 && (
+                    <span className=" text-gray-500">▪</span>
+                  )}
+                </React.Fragment>
+              ))}
             </div>
             <p>{footerData.copywrite}</p>
           </div>
