@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import Button from "../../Button";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ScrollToBottom from "../../ScrollToBottom";
 
 const popIn = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -53,7 +54,10 @@ const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative w-full h-[100vh] overflow-hidden">
+    <div className="relative w-full h-[100svh] overflow-hidden">
+      {/* Top Gradient to show Header clearly */}
+      <div className="absolute top-0 left-0 w-full h-60 z-10 bg-gradient-to-b from-black/50 via-black/10 to-transparent pointer-events-none" />
+
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
@@ -118,6 +122,9 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* ScrollToBottom */}
+      <ScrollToBottom />
     </div>
   );
 };

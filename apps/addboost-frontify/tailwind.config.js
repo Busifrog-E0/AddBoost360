@@ -71,11 +71,24 @@ export default {
       keyframes: {
         scroll: {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" }, // half, for seamless loop
+          "100%": { transform: "translateX(-50%)" },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(6px)' },
+        },
+        oscillator: {
+          '0%': { transform: 'translateY(0)' },
+          '25%': { transform: 'translateY(4px)' },
+          '50%': { transform: 'translateY(-2px)' },
+          '75%': { transform: 'translateY(3px)' },
+          '100%': { transform: 'translateY(0)' },
         },
       },
       animation: {
-        scroll: "scroll 20s linear infinite", // slower continuous scroll
+        scroll: "scroll 20s linear infinite",
+        float: 'float 2s ease-in-out infinite',
+        oscillator: 'oscillator 3s ease-in-out infinite',
       },
     },
   },

@@ -3,9 +3,16 @@ import { NavLink, useNavigate } from "react-router";
 import MenuIcon from "./MenuIcon";
 import Sidebar from "./Sidebar";
 import ADDBOOSTlogo from "../assets/ADDBOOSTlogo.png";
+import email from "../assets/email.png";
 import call from "../assets/call.png";
 
 const Header = () => {
+
+  const [headerData, setHeaderData] = React.useState({
+    email: "info@addboost360.com",
+    phone: "+44 (0)20-1234-5678",
+  });
+
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -34,12 +41,12 @@ const Header = () => {
         className={`fixed top-0 left-0 right-0 z-[999] text-white transition-all duration-300
           ${scrolled
             ? "bg-black/30 backdrop-blur-md shadow-md "
-            : "bg-black/10 backdrop-blur-md shadow-md "
+            : "bg-transparent"
           }`}
       >
+        {/* 2xl:px-60 3xl:px-80  */}
         <div
           className="select-none flex items-center justify-between gap-3 px-4 md:px-10 py-3
-            2xl:px-60 3xl:px-80 
             4xl:px-120 5xl:px-160 6xl:px-180
             7xl:px-220 8xl:px-240 9xl:px-260
             10xl:px-280 11xl:px-300 12xl:px-320
@@ -64,19 +71,36 @@ const Header = () => {
 
           </div>
           {/* Phone */}
-          <div className="hidden md:flex items-center text-sm font-inter gap-2 outline-none">
-            <img
-              src={call}
-              alt="Phone"
-              className="w-4 object-contain outline-none"
-            />
-            <a
-              href="tel:+442012345678"
-              className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
-            >
-              +44 (0)20-1234-5678
-            </a>
+          <div className="hidden md:flex items-center gap-6 lg:gap-12">
+            <div className="flex items-center text-sm font-inter gap-2 outline-none">
+              <img
+                src={call}
+                alt="Phone"
+                className="w-4 object-contain outline-none"
+              />
+              <a
+                href={`tel:${headerData.phone}`}
+                className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
+              >
+                {headerData.phone}
+              </a>
+            </div>
+            <div className="flex items-center text-sm font-inter gap-2 outline-none">
+              <img
+                src={email}
+                alt="Email"
+                className="w-4 object-contain outline-none"
+              />
+              <a
+                href={`mailto:${headerData.email}`}
+                className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
+              >
+                {headerData.email}
+              </a>
+            </div>
           </div>
+
+
           {/* Nav Items */}
           <nav className="hidden xl:flex gap-8 text-sm font-arya uppercase">
             {navItems.map((item) => (

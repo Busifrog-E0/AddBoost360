@@ -1,6 +1,7 @@
 import React from "react";
 import ServiceHeroImage from "../../../assets/ServiceHeroImage.png";
 import { motion } from "framer-motion";
+import ScrollToBottom from "../../ScrollToBottom";
 
 const ServiceHeroSection = () => {
   const container = {
@@ -37,9 +38,12 @@ const ServiceHeroSection = () => {
   };
 
   return (
-    <div className="bg-PrimaryDarkBlue grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+    <div className="bg-PrimaryDarkBlue grid grid-cols-1 lg:grid-cols-2 min-h-screen relative">
+      {/* Top Gradient to show Header clearly */}
+      <div className="absolute top-0 left-0 w-full h-60 z-10 bg-gradient-to-b from-black/80 via-black/10 to-transparent pointer-events-none" />
       {/* Text Section */}
       <div className="relative">
+
         {/* Background image only on mobile */}
         <div
           className="absolute inset-0 lg:hidden bg-cover bg-center z-0"
@@ -97,6 +101,9 @@ const ServiceHeroSection = () => {
           className="w-full h-full object-cover block"
         />
       </motion.div>
+
+      {/* ScrollToBottom */}
+      <ScrollToBottom />
     </div>
   );
 };
