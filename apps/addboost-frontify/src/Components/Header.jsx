@@ -9,7 +9,7 @@ import call from "../assets/call.png";
 const Header = () => {
   const [headerData, setHeaderData] = React.useState({
     email: "info@addboost360.com",
-    phone: "+44 (0)20-1234-5678",
+    phone: "+44 7309 651130",
   });
 
   const navigate = useNavigate();
@@ -40,9 +40,10 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[999] text-white transition-all duration-300
-          ${scrolled
-            ? "bg-black/30 backdrop-blur-md shadow-md "
-            : "bg-transparent"
+          ${
+            scrolled
+              ? "bg-black/30 backdrop-blur-md shadow-md "
+              : "bg-transparent"
           }`}
       >
         {/* 2xl:px-60 3xl:px-80  */}
@@ -103,7 +104,8 @@ const Header = () => {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `text-xs 2xl:text-sm hover:underline transition duration-150 ${isActive ? "underline " : ""
+                  `text-xs 2xl:text-sm hover:underline transition duration-150 ${
+                    isActive ? "underline " : ""
                   }`
                 }
               >
