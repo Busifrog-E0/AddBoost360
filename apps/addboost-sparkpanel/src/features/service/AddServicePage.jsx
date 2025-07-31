@@ -206,11 +206,10 @@ const AddServicePage = ({
                   type="text"
                   value={formData.Title}
                   onChange={(e) => handleInputChange("Title", e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.title
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.title
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="e.g., Web Development"
                 />
                 {errors.title && (
@@ -232,11 +231,10 @@ const AddServicePage = ({
                       e.target.value === "" ? "" : Number(e.target.value)
                     )
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.Priority
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="Order Priority"
                 />
                 {errors.priority && (
@@ -255,11 +253,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description2", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg resize-none ${
-                    errors.description
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.description
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="Detailed description..."
                 />
                 {errors.description && (
@@ -278,11 +275,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.subtitle
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.subtitle
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="e.g., Modern Web Apps"
                 />
                 {errors.subtitle && (
@@ -301,11 +297,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("ButtonMessage1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.buttonText
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.buttonText
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="e.g., Contact Us"
                 />
                 {errors.buttonText && (
@@ -359,7 +354,7 @@ const AddServicePage = ({
                   {formData.ImageUrl.map((url, index) => (
                     <div
                       key={index}
-                      className="relative w-[150px] h-[120px] border rounded-md"
+                      className="relative w-[200px] aspect-video border rounded-md"
                     >
                       <img
                         src={url}
@@ -377,7 +372,7 @@ const AddServicePage = ({
                   ))}
                   <label
                     htmlFor="image-upload"
-                    className="w-[150px] h-[120px] border-2 border-dashed flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-md"
+                    className="w-[200px] aspect-video border-2 border-dashed flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-md"
                   >
                     <Upload className="w-6 h-6 mb-1" />
                     Upload
