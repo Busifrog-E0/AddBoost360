@@ -15,7 +15,7 @@ const flipY = {
 const WhyCard = ({ item }) => {
   return (
     <motion.div
-      className="flex flex-col items-center text-center p-6 md:p-10 rounded-lg bg-black/20 border border-black/20 min-h-[240px]"
+      className="flex flex-col items-center text-center p-6 md:p-10 rounded-lg bg-black/20 border border-black/20 min-h-[240px] h-full"
       variants={flipY}
       initial="hidden"
       whileInView="show"
