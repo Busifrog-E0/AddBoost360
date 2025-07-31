@@ -128,12 +128,11 @@ const HeroSubSection = () => {
       </div>
 
       {/* Right Image */}
-      <motion.div className="relative z-1 mt-6" variants={flipY}>
-        <div className="absolute top-2 left-2 lg:top-4 lg:left-4 w-full h-full bg-PrimaryDarkBlue rounded-md z-0"></div>
+      <motion.div className="mt-6 aspect-video" variants={flipY}>
         <img
           src={Global}
           alt="black"
-          className="w-full h-full object-cover rounded-md relative z-10"
+          className="w-full h-full object-cover rounded-md"
         />
       </motion.div>
     </motion.div>

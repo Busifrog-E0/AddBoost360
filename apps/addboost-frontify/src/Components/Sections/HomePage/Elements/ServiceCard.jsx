@@ -54,7 +54,7 @@ const ServiceCard = ({ service, index }) => {
       <div className="h-full flex flex-col">
         {/* Zoom-in Image */}
         <motion.div
-          className="relative rounded-xl h-28 md:h-36 lg:h-44 xl:h-64 overflow-hidden flex-shrink-0"
+          className="relative rounded-md lg:rounded-xl aspect-video overflow-hidden flex-shrink-0"
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
@@ -63,9 +63,8 @@ const ServiceCard = ({ service, index }) => {
             <img
               src={service.ImageUrl[currentImageIndex]}
               alt={service.title}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                isFading ? "opacity-0" : "opacity-100"
-              }`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isFading ? "opacity-0" : "opacity-100"
+                }`}
             />
           )}
 

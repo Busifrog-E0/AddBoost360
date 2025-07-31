@@ -210,7 +210,7 @@ const JoinTalentPoolSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="relative overflow-hidden hidden lg:block"
+          className="relative overflow-hidden hidden lg:block aspect-square"
         >
           <img
             src={JoinTalentPool}

@@ -111,7 +111,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.2 }}
-      className="relative rounded-md"
+      className="relative rounded-md aspect-video"
     >
       <img
         src={project.ImageUrl}

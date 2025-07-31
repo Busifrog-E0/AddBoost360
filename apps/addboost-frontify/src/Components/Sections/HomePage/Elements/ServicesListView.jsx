@@ -36,7 +36,7 @@ const ServicesListView = ({
   useEffect(() => {
     const updateItemsPerView = () => {
       if (window.innerWidth < 640) {
-        setItemsPerView(2);
+        setItemsPerView(1);
       } else if (window.innerWidth < 1024) {
         setItemsPerView(2);
       } else {
@@ -128,11 +128,10 @@ const ServicesListView = ({
           <button
             onClick={handlePrevious}
             disabled={currentSlide === 0}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
-              currentSlide === 0
-                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
-            }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === 0
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
+              }`}
           >
             <img
               src={Arrowbackward}
@@ -144,11 +143,10 @@ const ServicesListView = ({
           <button
             onClick={handleNext}
             disabled={currentSlide === maxSlide}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
-              currentSlide === maxSlide
-                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
-            }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === maxSlide
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
+              }`}
           >
             <img
               src={Arrowforward}
@@ -161,7 +159,7 @@ const ServicesListView = ({
 
       {/* Carousel */}
       <div
-        className="relative overflow-hidden rounded-xl mt-14"
+        className="relative rounded-xl mt-14"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}

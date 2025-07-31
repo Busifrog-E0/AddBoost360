@@ -119,7 +119,7 @@ const EmployeeCard = ({ employee }) => {
         </div>
       </div>
       <div
-        className={`w-full h-8 flex items-center justify-center text-sm font-semibold uppercase bg-gradient-to-l ${typeStyles.background} ${typeStyles.textColor}`}
+        className={`w-full px-2 py-2.5 flex items-center justify-center text-center text-sm font-arya uppercase bg-gradient-to-l ${typeStyles.background} ${typeStyles.textColor}`}
       >
         {employee.Description1 || "Team Member"}
         {/* {typeStyles.textColor} */}

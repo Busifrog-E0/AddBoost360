@@ -100,7 +100,7 @@ const ServiceCard = ({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6, ease: "easeIn" }}
-      className="relative mt-6 h-[350px] w-full"
+      className="relative mt-6 aspect-video"
     >
       <img
         src={service.ImageUrl}
