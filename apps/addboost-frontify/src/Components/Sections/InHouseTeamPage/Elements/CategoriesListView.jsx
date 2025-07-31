@@ -184,7 +184,7 @@ const CategoriesListView = ({
             hoverBgColor="bg-gray-300"
             hoverTextColor="text-black"
             iconColor="black"
-            onClick={() => {}}
+            onClick={() => navigate("/contact")}
             text="Become a Freelancer"
           />
         </div>

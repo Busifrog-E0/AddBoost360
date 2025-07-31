@@ -11,7 +11,7 @@ const Formsection = () => {
     BusinessName: "",
     Notes: "",
     PreferredDate: new Date().getTime(),
-  }
+  };
   const focusAreaOptions = [
     "Digital Marketing Strategy",
     "Branding & Logo Identity",
@@ -19,7 +19,7 @@ const Formsection = () => {
     "Startup Launch & Product Sourcing",
     "AI Tools & Automation",
     "Training or Empowerment Program",
-    "Something Else"
+    "Something Else",
   ];
   const [formData, setFormData] = useState(initialValue);
   const { isLoading, postData } = usePostData({});
@@ -56,7 +56,7 @@ const Formsection = () => {
       payload: formData,
       onsuccess: (result) => {
         setShowPopup(true);
-        setFormData(initialValue)
+        setFormData(initialValue);
       },
     });
 
@@ -66,6 +66,7 @@ const Formsection = () => {
       newErrors.FocusArea = "Please select a focus Focus Area";
     if (!formData.FullName.trim()) newErrors.FullName = "Name is required";
     if (!formData.Email.trim()) newErrors.Email = "Email is required";
+    if (!formData.Phone.trim()) newErrors.Phone = "Phone Number is required";
 
     setErrors(newErrors);
 
@@ -79,7 +80,6 @@ const Formsection = () => {
 
     if (Object.keys(newErrors).length === 0) {
       console.log("Form submitted:", formData);
-
     }
   };
 
@@ -121,9 +121,15 @@ const Formsection = () => {
             value={formData.FocusArea}
             onChange={handleChange}
             className={`appearance-none p-4 lg:px-5 bg-transparent border rounded-md w-full text-white placeholder-white/40 outline-none transition-all duration-300
-    ${errors.FocusArea ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30"}`}
+    ${
+      errors.FocusArea
+        ? "border-red-500 bg-red-50 text-white"
+        : "border-white/20 focus:border-white/30"
+    }`}
           >
-            <option value="" className="text-black">-- Select an option --</option>
+            <option value="" className="text-black">
+              -- Select an option --
+            </option>
             {focusAreaOptions.map((option) => (
               <option key={option} value={option} className="text-black">
                 {option}
@@ -149,7 +155,11 @@ const Formsection = () => {
             type="text"
             placeholder="Enter your full name"
             className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${errors.FullName ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
+    ${
+      errors.FullName
+        ? "border-red-500 bg-red-50 text-white"
+        : "border-white/20 focus:border-white/30 text-white"
+    }`}
           />
 
           {errors.FullName && (
@@ -169,7 +179,11 @@ const Formsection = () => {
             type="email"
             placeholder="Enter your email address"
             className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${errors.Email ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
+    ${
+      errors.Email
+        ? "border-red-500 bg-red-50 text-white"
+        : "border-white/20 focus:border-white/30 text-white"
+    }`}
           />
 
           {errors.Email && (
@@ -179,7 +193,9 @@ const Formsection = () => {
 
         {/* Phone Number */}
         <div className="flex flex-col">
-          <label className="text-sm mb-2">Phone Number</label>
+          <label className="text-sm mb-2">
+            Phone Number<span className="ml-1 text-[#FF0004]">*</span>
+          </label>
           <input
             name="Phone"
             value={formData.Phone}
@@ -187,9 +203,15 @@ const Formsection = () => {
             type="tel"
             placeholder="Enter your phone number"
             className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${errors.Phone ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
+    ${
+      errors.Phone
+        ? "border-red-500 bg-red-50 text-white"
+        : "border-white/20 focus:border-white/30 text-white"
+    }`}
           />
-
+          {errors.Phone && (
+            <span className="text-sm text-red-500 mt-1">{errors.Phone}</span>
+          )}
         </div>
 
         {/* Startup Name */}
@@ -204,9 +226,12 @@ const Formsection = () => {
             type="text"
             placeholder="Enter your Business / Startup Name"
             className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${errors.BusinessName ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
+    ${
+      errors.BusinessName
+        ? "border-red-500 bg-red-50 text-white"
+        : "border-white/20 focus:border-white/30 text-white"
+    }`}
           />
-
         </div>
 
         {/* Date & Time */}
@@ -249,9 +274,12 @@ const Formsection = () => {
             rows={4}
             placeholder="Enter your Notes"
             className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${errors.Notes ? "border-red-500 bg-red-50 text-white" : "border-white/20 focus:border-white/30 text-white"}`}
+    ${
+      errors.Notes
+        ? "border-red-500 bg-red-50 text-white"
+        : "border-white/20 focus:border-white/30 text-white"
+    }`}
           />
-
         </div>
 
         {/* Submit Button */}
