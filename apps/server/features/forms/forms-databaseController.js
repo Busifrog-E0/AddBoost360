@@ -7,7 +7,7 @@ import dataHandling from '../../functions.js';
  * @property {string} Email
  * @property {string} Phone
  * @property {string} BusinessName
- * @property {number} PreferredDate
+ * @property {number} [PreferredDate]
  * @property {string} Notes
  * @property {string} DocId
  * @property {string} CreatedIndex
