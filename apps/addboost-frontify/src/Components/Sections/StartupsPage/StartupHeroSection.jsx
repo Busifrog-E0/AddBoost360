@@ -39,11 +39,11 @@ const StartupHeroSection = () => {
 
   return (
     <div>
-      <div className="bg-PrimaryDarkBlue grid grid-cols-1 lg:grid-cols-2 min-h-screen relative">
+      <div className="bg-PrimaryDarkBlue grid grid-cols-1 lg:grid-cols-2 h-[100svh] relative">
         {/* Top Gradient to show Header clearly */}
         <div className="absolute top-0 left-0 w-full h-60 z-10 bg-gradient-to-b from-black/80 via-black/10 to-transparent pointer-events-none" />
         {/* Text Section */}
-        <div className="relative">
+        <div className="">
 
 
           {/* Mobile Background Image */}
@@ -88,7 +88,7 @@ const StartupHeroSection = () => {
           animate="show"
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
-          className="hidden lg:block"
+          className="hidden lg:block w-full h-[100svh]"
         >
           <motion.img
             src={StartupHeroImg}
