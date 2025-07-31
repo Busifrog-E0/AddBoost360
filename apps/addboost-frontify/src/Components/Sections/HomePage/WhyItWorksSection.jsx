@@ -215,7 +215,7 @@ py-10 md:py-14 lg:py-20
           <img
             src={WhyItWorksHome}
             alt="Live Session"
-            className="w-full rounded-md"
+            className="w-4/5 rounded-md"
           />
         </motion.div>
       </div>
