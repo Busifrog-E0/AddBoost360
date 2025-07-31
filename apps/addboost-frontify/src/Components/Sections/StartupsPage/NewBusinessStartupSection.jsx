@@ -55,7 +55,7 @@ py-10 md:py-14 lg:py-20
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+        className=" "
       >
         <h1 className="uppercase text-white font-anton text-2xl 2xl:text-5xl 2xl:pt-10 block">
           Empowering New Businesses with Products, Strategy & Security
@@ -67,7 +67,7 @@ py-10 md:py-14 lg:py-20
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="mt-12 lg:mt-36 grid grid-cols-1 md:grid-cols-2 sm:gap-0 md:ml-20"
+        className="mt-12 lg:mt-32 grid grid-cols-1 md:grid-cols-2 sm:gap-0 md:ml-20"
       >
         {/* Card 1 */}
         <motion.div variants={fadeUp} className="p-8 relative overflow-hidden">
