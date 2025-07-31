@@ -40,9 +40,8 @@ py-10 md:py-14 lg:py-20
         OUR REGISTRARED Global Sourcing Partners
       </h1>
       <p className="text-sm font-inter text-gray-400 mt-2">
-        At ADD BOOST 360 LIMITED, we provide end-to-end digital solutions—from
-        marketing and web development to product sourcing and startup support—to
-        drive global growth and impact.
+        Our Guarantee: You stay protected—both financially and
+        legally—throughout the transaction.
       </p>
 
       <div className="flex flex-col">
