@@ -8,10 +8,11 @@ const TrustedCompaniesSection = () => {
   if (isLoading) {
     return <LoaderSection />;
   }
+  if (logos.length > 0)
 
-  return (
-    <div
-      className="px-6 md:px-10 2xl:px-24 3xl:px-32
+    return (
+      <div
+        className="px-6 md:px-10 2xl:px-24 3xl:px-32
 4xl:px-60 5xl:px-80 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
   10xl:px-280 11xl:px-300 12xl:px-320
@@ -23,25 +24,28 @@ py-10 md:py-14 lg:py-20
 11xl:py-52 12xl:py-56 13xl:py-60
 14xl:py-64 15xl:py-72
         bg-PrimaryDarkBlue"
-    >
-      <h2 className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite">
-        supported BY TOP providers
-      </h2>
+      >
+        <h2 className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite">
+          supported BY TOP providers
+        </h2>
 
-      <div className="relative overflow-hidden mt-16">
-        <div className="flex animate-scroll gap-16 md:gap-24 lg:gap-32 w-max h-5 md:h-6 lg:h-8 aspect-video">
-          {[...logos, ...logos].map((logo, index) => (
-            <img
-              key={`${logo.DocId}-${index}`} // 👈 ensures key is unique
-              src={logo.ImageUrl}
-              alt={logo.Title}
-              className="h-full w-full object-contain filter invert brightness-0"
-            />
-          ))}
+        <div className="relative overflow-hidden mt-16">
+          <div className="flex animate-scroll gap-16 md:gap-24 lg:gap-32 w-max h-5 md:h-6 lg:h-8 aspect-video">
+            {[...logos, ...logos].map((logo, index) => (
+              <img
+                key={`${logo.DocId}-${index}`} // 👈 ensures key is unique
+                src={logo.ImageUrl}
+                alt={logo.Title}
+                className="h-full w-full object-contain"
+              />
+              //  filter invert brightness-0
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+
+  return <></>
 };
 
 export default TrustedCompaniesSection;
