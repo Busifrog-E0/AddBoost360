@@ -248,33 +248,37 @@ const AddReview = ({
             <div className="overflow-hidden w-[200px] h-[200px]">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed  p-6 text-center ${errors.ImageUrl
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
                     ? "border-red-300 bg-red-50"
                     : "border-gray-300"
                     }`}
                 >
                   <input
                     type="file"
-                    accept="image/*"
+                    accept=".jpg, .jpeg, .webp"
                     onChange={handleImageUpload}
                     className="hidden"
                     id="image-upload"
                   />
-                  <label htmlFor="image-upload" className="cursor-pointer">
-                    <div className="flex flex-col items-center space-y-2">
-                      <Upload className="w-6 h-6 text-gray-500" />
-                      <p className="text-sm text-gray-700">Click to upload</p>
+                  <label htmlFor="image-upload" className="cursor-pointer ">
+                    <div className="flex flex-col items-center space-y-2  h-full justify-center">
+                      <div className="p-3 bg-gray-100 rounded-full">
+                        <Upload className="w-6 h-6 text-gray-600" />
+                      </div>
+                      <p className="text-sm font-medium text-gray-900 ">
+                        Click to upload image
+                      </p>
                       <p className="text-xs text-gray-500">
-                        PNG, JPG under 5MB
+                        JPG or WEBP • Max 5MB
                       </p>
                     </div>
                   </label>
                 </div>
               ) : (
-                <div className="relative">
+                <div className="relative w-full h-full rounded-lg">
                   <img
                     src={formData.ImageUrl}
-                    alt="preview"
+                    alt="Team member preview"
                     className="w-full h-48 object-cover rounded-lg border"
                   />
                   <button
@@ -286,10 +290,8 @@ const AddReview = ({
                   </button>
                 </div>
               )}
-              {errors.ImageUrl && (
-                <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
-              )}
             </div>
+
           </div>
         </div>
 

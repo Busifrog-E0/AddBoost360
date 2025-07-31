@@ -370,20 +370,34 @@ const AddServicePage = ({
                       </button>
                     </div>
                   ))}
+
+                  <input
+                    type="file"
+                    id="image-upload"
+                    multiple
+                    accept=".jpg, .jpeg, .webp"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                  />
                   <label
                     htmlFor="image-upload"
-                    className="w-[250px] aspect-video border-2 border-dashed flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-md"
+                    className={`w-[250px] aspect-video border-2 border-dashed p-8 text-center flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-lg ${errors.ImageUrl
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                      }`}
                   >
-                    <Upload className="w-6 h-6 mb-1" />
-                    Upload
-                    <input
-                      type="file"
-                      id="image-upload"
-                      multiple
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      className="hidden"
-                    />
+                    <div className="flex flex-col items-center space-y-2 h-full justify-center">
+                      <div className="p-3 bg-gray-100 rounded-full">
+                        <Upload className="w-6 h-6 text-gray-600" />
+                      </div>
+                      <p className="text-sm font-medium text-gray-900 ">
+                        Click to upload image
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        JPG or WEBP • Max 5MB • 16:9 aspect ratio
+                      </p>
+                    </div>
+
                   </label>
                 </div>
                 {errors.ImageUrl && (

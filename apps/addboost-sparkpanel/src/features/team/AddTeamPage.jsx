@@ -350,13 +350,13 @@ const AddTeamPage = ({
                 >
                   <input
                     type="file"
-                    accept="image/*"
+                    accept=".jpg, .jpeg, .webp"
                     onChange={handleImageUpload}
                     className="hidden"
                     id="image-upload"
                   />
                   <label htmlFor="image-upload" className="cursor-pointer ">
-                    <div className="flex flex-col items-center space-y-3  h-full justify-center">
+                    <div className="flex flex-col items-center space-y-2  h-full justify-center">
                       <div className="p-3 bg-gray-100 rounded-full">
                         <Upload className="w-6 h-6 text-gray-600" />
                       </div>
@@ -364,7 +364,7 @@ const AddTeamPage = ({
                         Click to upload image
                       </p>
                       <p className="text-xs text-gray-500">
-                        PNG, JPG, GIF up to 5MB
+                        JPG or WEBP • Max 5MB
                       </p>
                     </div>
                   </label>
@@ -374,7 +374,7 @@ const AddTeamPage = ({
                   <img
                     src={formData.ImageUrl}
                     alt="Team member preview"
-                    className="w-full h-48 object-contain rounded-lg border"
+                    className="w-full h-48 object-cover rounded-lg border"
                   />
                   <button
                     type="button"

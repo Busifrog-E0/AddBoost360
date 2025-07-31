@@ -189,37 +189,41 @@ const AddCompanyLogo = ({
             <label className="block text-sm font-medium text-gray-700 mb-1">
               Company Logo *
             </label>
-            <div className="overflow-hidden w-[250px] h-[150px]">
+            <div className="overflow-hidden w-[250px] aspect-video">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed p-6 text-center ${errors.ImageUrl
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                 >
                   <input
                     type="file"
-                    accept="image/*"
+                    accept=".jpg, .jpeg, .webp"
                     onChange={handleImageUpload}
                     className="hidden"
                     id="image-upload"
                   />
-                  <label htmlFor="image-upload" className="cursor-pointer">
-                    <div className="flex flex-col items-center space-y-2">
-                      <Upload className="w-6 h-6 text-gray-500" />
-                      <p className="text-sm text-gray-700">Click to upload</p>
+                  <label htmlFor="image-upload" className="cursor-pointer ">
+                    <div className="flex flex-col items-center space-y-2 h-full justify-center">
+                      <div className="p-3 bg-gray-100 rounded-full">
+                        <Upload className="w-6 h-6 text-gray-600" />
+                      </div>
+                      <p className="text-sm font-medium text-gray-900 ">
+                        Click to upload image
+                      </p>
                       <p className="text-xs text-gray-500">
-                        PNG, JPG under 5MB
+                        JPG or WEBP • Max 5MB • 16:9 aspect ratio
                       </p>
                     </div>
                   </label>
                 </div>
               ) : (
-                <div className="relative">
+                <div className="relative w-full aspect-video rounded-lg">
                   <img
                     src={formData.ImageUrl}
-                    alt="preview"
-                    className="w-full h-48 object-contain rounded-lg border"
+                    alt="Team member preview"
+                    className="w-full h-full object-cover rounded-lg border"
                   />
                   <button
                     type="button"
@@ -230,16 +234,13 @@ const AddCompanyLogo = ({
                   </button>
                 </div>
               )}
-              {errors.ImageUrl && (
-                <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
-              )}
             </div>
           </div>
         </div>
 
         <div className="flex justify-end bg-white border rounded-xl p-6">
           {/* Footer Buttons */}
-          <div className="flex items-center justify-end space-x-4 bg-white rounded-xl shadow-sm border p-6">
+          <div className="flex items-center justify-end space-x-4 ">
             <button
               type="button"
               onClick={onBack}
