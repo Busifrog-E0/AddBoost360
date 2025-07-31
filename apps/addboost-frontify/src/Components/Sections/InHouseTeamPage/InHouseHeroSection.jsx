@@ -49,14 +49,14 @@ const InHouseHeroSection = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className="text-white text-center lg:text-left flex flex-col items-center lg:items-start z-10  px-6 md:px-10 2xl:px-24 3xl:px-32
- 
-4xl:py-24 5xl:py-28 6xl:py-32 7xl:py-36
-8xl:py-40 9xl:py-44 10xl:py-48
-11xl:py-52 12xl:py-56 13xl:py-60
-14xl:py-64 15xl:py-72
+        className="text-white text-center lg:text-left flex flex-col items-center lg:items-start z-10     pr-6 md:pr-10 2xl:pr-24 
 
-    py-10 pt-32 md:py-14 md:pt-40 lg:py-20 lg:pt-2 "
+             pl-6 md:pl-10 2xl:pl-24 3xl:pl-32
+4xl:pl-60 5xl:pl-80 6xl:pl-180
+  7xl:pl-220 8xl:pl-240 9xl:pl-260
+  10xl:pl-280 11xl:pl-300 12xl:pl-320
+  13xl:pl-340 14xl:pl-360 15xl:pl-400
+          py-6 sm:py-10 lg:py-20  "
       >
         <motion.p
           variants={textVariant}
@@ -74,7 +74,7 @@ const InHouseHeroSection = () => {
 
         <motion.p
           variants={textVariant}
-          className="text-base md:text-lg font-inter mt-6 text-gray-300"
+          className="text-base md:text-lg font-inter mt-4 text-gray-300"
         >
           Join Our Global Talent Network & Empower the Digital Future
         </motion.p>
