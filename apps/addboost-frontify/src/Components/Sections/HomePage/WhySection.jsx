@@ -3,6 +3,7 @@ import creative2 from "../../../assets/WhySectionIcons/creative2.png";
 import creative3 from "../../../assets/WhySectionIcons/Creative3.png";
 import creative4 from "../../../assets/WhySectionIcons/creative4.png";
 import creative5 from "../../../assets/WhySectionIcons/creative5.png";
+import creative6 from "../../../assets/WhySectionIcons/creative6.png";
 import { useState } from "react";
 import WhySectionView from "./Elements/WhySectionView";
 
@@ -38,6 +39,12 @@ const WhySection = () => {
       description:
         "No surprises—transparent rates and quick delivery without compromising quality.",
     },
+    {
+      icon: creative6,
+      title: "Where Ambition Meets Execution",
+      description: "ADD BOOST 360 supports your brand with full-service design, growth strategies, and global sourcing.",
+    },
+
   ]);
 
   return (

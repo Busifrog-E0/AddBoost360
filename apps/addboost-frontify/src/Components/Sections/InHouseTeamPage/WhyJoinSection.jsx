@@ -3,6 +3,7 @@ import creative2 from "../../../assets/WhyJoinSectionIcon/creative2.png";
 import creative3 from "../../../assets/WhyJoinSectionIcon/Creative3.png";
 import creative4 from "../../../assets/WhyJoinSectionIcon/creative4.png";
 import creative5 from "../../../assets/WhyJoinSectionIcon/creative5.png";
+import creative6 from "../../../assets/WhyJoinSectionIcon/creative6.png";
 import { useState } from "react";
 import WhySectionView from "../HomePage/Elements/WhySectionView";
 
@@ -39,6 +40,13 @@ const WhyJoinSection = () => {
         description:
           "Training on working with diverse clients and managing cultural sensitivities.",
       },
+      {
+        icon: creative6,
+        title: "Career Growth Path",
+        description:
+          "Clear growth plans and performance-based progression across roles and departments.",
+
+      }
     ]
   );
 
