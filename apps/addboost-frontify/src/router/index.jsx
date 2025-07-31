@@ -15,6 +15,7 @@ import ContactPage from "../Components/Pages/ContactPage";
 import SearchEmployeesPage from "../Components/Pages/SearchEmployeesPage";
 import SearchStartupsPage from "../Components/Pages/SearchStartupsPage";
 import PortfolioPage from "../Components/Pages/PortfolioPage";
+import StudioPage from "../Components/Pages/StudioPage";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +31,7 @@ export const router = createBrowserRouter(
         element={<SearchEmployeesPage />}
       />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="/studio" element={<StudioPage />} />
     </Route>
   )
 );

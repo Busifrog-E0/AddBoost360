@@ -24,6 +24,7 @@ const Header = () => {
     { label: "TALENT POOL", to: "/in-house-team" },
 
     { label: "COMPANIES", to: "/companies" },
+    { label: "STUDIO", to: "/studio" },
     { label: "CONTACT", to: "/contact" },
   ];
 
@@ -40,10 +41,9 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[999] text-white transition-all duration-300
-          ${
-            scrolled
-              ? "bg-black/30 backdrop-blur-md shadow-md "
-              : "bg-transparent"
+          ${scrolled
+            ? "bg-black/30 backdrop-blur-md shadow-md "
+            : "bg-transparent"
           }`}
       >
         {/* 2xl:px-60 3xl:px-80  */}
@@ -104,8 +104,7 @@ const Header = () => {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `text-xs 2xl:text-sm hover:underline transition duration-150 ${
-                    isActive ? "underline " : ""
+                  `text-xs 2xl:text-sm hover:underline transition duration-150 ${isActive ? "underline " : ""
                   }`
                 }
               >
