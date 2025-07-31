@@ -1,6 +1,7 @@
 import React from "react";
 import ServiceHeroImage from "../../../assets/ServiceHeroImage.png";
 import { motion } from "framer-motion";
+import ScrollToBottom from "../../ScrollToBottom";
 
 const ServiceHeroSection = () => {
   const container = {
@@ -97,6 +98,9 @@ const ServiceHeroSection = () => {
           className="w-full h-full object-cover block"
         />
       </motion.div>
+
+      {/* ScrollToBottom */}
+      <ScrollToBottom />
     </div>
   );
 };

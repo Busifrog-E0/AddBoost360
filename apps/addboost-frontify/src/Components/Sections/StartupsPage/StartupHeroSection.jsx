@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import StartupHeroImg from "../../../assets/StartupHeroImg.png";
+import ScrollToBottom from "../../ScrollToBottom";
 
 const StartupHeroSection = () => {
   const imageAnim = {
@@ -92,6 +93,9 @@ const StartupHeroSection = () => {
             variants={imageAnim}
           />
         </motion.div>
+
+        {/* ScrollToBottom */}
+        <ScrollToBottom backgroundClassName="bg-PrimaryDarkBlue/70" />
       </div>
     </div>
   );

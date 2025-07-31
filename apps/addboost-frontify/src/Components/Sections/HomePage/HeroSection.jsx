@@ -119,6 +119,8 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* ScrollToBottom */}
       <ScrollToBottom />
     </div>
   );

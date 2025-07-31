@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const ScrollToBottom = () => {
+const ScrollToBottom = ({ backgroundClassName = "" }) => {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
@@ -14,13 +14,13 @@ const ScrollToBottom = () => {
 
     return (
         <div
-            className={`absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center transition-opacity duration-500 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            className={`${backgroundClassName} px-3 py-2 rounded-md absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center transition-opacity duration-500 ${scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'
                 }`}
         >
             <span className="text-white text-xs tracking-widest mb-1 font-arya">SCROLL</span>
 
             <svg
-                className="animate-float text-white text-lg"
+                className="animate-oscillator text-white text-lg"
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
                 viewBox="0 -960 960 960"
