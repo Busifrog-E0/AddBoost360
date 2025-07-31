@@ -44,7 +44,7 @@ const StartupHeroSection = () => {
         <div className="relative">
           {/* Mobile Background Image */}
           <div
-            className="absolute inset-0 lg:hidden bg-cover bg-center z-0 w-full h-[100vh] overflow-hidden"
+            className="absolute inset-0 lg:hidden bg-cover bg-center z-0 w-full h-[100svh] overflow-hidden"
             style={{
               backgroundImage: `url(${StartupHeroImg})`,
               opacity: 0.2,
@@ -95,7 +95,7 @@ const StartupHeroSection = () => {
         </motion.div>
 
         {/* ScrollToBottom */}
-        <ScrollToBottom backgroundClassName="bg-PrimaryDarkBlue/70" />
+        <ScrollToBottom backgroundClassName="lg:bg-PrimaryDarkBlue/70" />
       </div>
     </div>
   );
