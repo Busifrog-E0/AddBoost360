@@ -69,7 +69,7 @@ py-10 md:py-14 lg:py-20
     >
       {/* Heading */}
       <motion.div
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-4 md:text-center md:items-center"
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -81,19 +81,19 @@ py-10 md:py-14 lg:py-20
         <h1 className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite">
           wholesale business hub
         </h1>
-      </motion.div>
 
-      {/* Subtext */}
-      <motion.p
-        className="text-sm sm:text-base md:text-sm font-inter mt-6 sm:mt-8 leading-relaxed text-white"
-        initial={{ y: 30, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        viewport={{ once: true }}
-      >
-        We connect startups with legally contracted wholesale companies across
-        continents through conferencing and escrow-backed platform.
-      </motion.p>
+        {/* Subtext */}
+        <motion.p
+          className="text-sm sm:text-base md:text-sm font-inter  leading-relaxed text-white "
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          We connect startups with legally contracted wholesale companies across
+          continents through conferencing and escrow-backed platform.
+        </motion.p>
+      </motion.div>
 
       {/* Steps */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 text-center py-14 relative">
@@ -133,9 +133,9 @@ py-10 md:py-14 lg:py-20
       </div>
 
       {/* Why It Works Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-16 items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-16 items-start ">
         {/* Text */}
-        <div className="px-4 sm:px-6 md:px-12">
+        <div className="px-4 sm:px-6 md:px-16">
           <motion.h2
             className="uppercase font-anton text-xl sm:text-2xl text-PrimaryWhite"
             initial={{ x: -50, opacity: 0 }}
