@@ -21,14 +21,14 @@ const ProjectPreviewCard = ({ project }) => {
             <img
               src={ImageUrl}
               alt="Project"
-              className="w-full h-48 object-cover rounded-md"
+              className="w-full aspect-video object-cover rounded-md"
             />
             <div className="absolute bottom-0 left-0 bg-white px-3 py-1 rounded text-xs font-semibold text-gray-800 shadow z-10">
               {Type?.trim() || "{{Project Type}}"}
             </div>
           </>
         ) : (
-          <div className="w-full h-48 bg-gray-200 rounded-md flex items-center justify-center text-gray-500 text-sm relative">
+          <div className="w-full aspect-video bg-gray-200 rounded-md flex items-center justify-center text-gray-500 text-sm relative">
             Project Image
             <div className="absolute bottom-0 left-0 bg-white px-3 py-1 rounded text-xs font-semibold text-gray-800 shadow z-10">
               {Type?.trim() || "{{Project Type}}"}

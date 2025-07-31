@@ -111,7 +111,7 @@ const PortfolioSection = () => {
                 <img
                   src={item.ImageUrl}
                   alt={item.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full aspect-video object-cover"
                 />
                 <div className="p-4 space-y-2">
                   {/* Top: Title + Actions */}

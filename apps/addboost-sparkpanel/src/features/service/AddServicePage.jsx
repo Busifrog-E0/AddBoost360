@@ -354,7 +354,7 @@ const AddServicePage = ({
                   {formData.ImageUrl.map((url, index) => (
                     <div
                       key={index}
-                      className="relative w-[200px] aspect-video border rounded-md"
+                      className="relative w-[250px] aspect-video border rounded-md"
                     >
                       <img
                         src={url}
@@ -372,7 +372,7 @@ const AddServicePage = ({
                   ))}
                   <label
                     htmlFor="image-upload"
-                    className="w-[200px] aspect-video border-2 border-dashed flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-md"
+                    className="w-[250px] aspect-video border-2 border-dashed flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-md"
                   >
                     <Upload className="w-6 h-6 mb-1" />
                     Upload

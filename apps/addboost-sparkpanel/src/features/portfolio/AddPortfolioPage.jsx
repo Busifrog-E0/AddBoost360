@@ -236,9 +236,8 @@ const AddPortfolioPage = ({
                 Type="text"
                 value={formData.Title}
                 onChange={(e) => handleInputChange("Title", e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+                className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
                 placeholder="e.g., E-commerce Platform"
               />
               {errors.Title && (
@@ -260,11 +259,10 @@ const AddPortfolioPage = ({
                       e.target.value === "" ? "" : Number(e.target.value)
                     )
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.Priority
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="Order Priority"
                 />
                 {errors.Priority && (
@@ -284,11 +282,10 @@ const AddPortfolioPage = ({
                 onChange={(e) =>
                   handleInputChange("ButtonMessage1", e.target.value)
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.ButtonMessage1
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                }`}
+                className={`w-full px-4 py-3 border rounded-lg ${errors.ButtonMessage1
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+                  }`}
                 placeholder="e.g., View Website"
               />
               {errors.ButtonMessage1 && (
@@ -305,9 +302,8 @@ const AddPortfolioPage = ({
                 type="text"
                 value={formData.Type}
                 onChange={(e) => handleInputChange("Type", e.target.value)}
-                className={`w-full px-4 mb-2 py-3 border rounded-lg ${
-                  errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+                className={`w-full px-4 mb-2 py-3 border rounded-lg ${errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
                 placeholder="e.g., Website Design, Branding, Social Media Marketing"
               />
               {errors.Type && (
@@ -330,11 +326,10 @@ const AddPortfolioPage = ({
                       onChange={(e) =>
                         handleListChange("ImpactPoints", index, e.target.value)
                       }
-                      className={`w-full px-4 py-3 border rounded-lg ${
-                        errors.ImpactPoints?.[index]
-                          ? "border-red-300 bg-red-50"
-                          : "border-gray-300"
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg ${errors.ImpactPoints?.[index]
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
+                        }`}
                       placeholder={`Impact Point ${index + 1}`}
                     />
                     {errors.ImpactPoints?.[index] && (
@@ -389,14 +384,13 @@ const AddPortfolioPage = ({
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Project Image *
               </label>
-              <div className="overflow-hidden w-[250px] h-[200px]">
+              <div className="overflow-hidden w-[250px] aspect-video">
                 {!formData.ImageUrl ? (
                   <div
-                    className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
-                      errors.ImageUrl
-                        ? "border-red-300 bg-red-50"
-                        : "border-gray-300"
-                    }`}
+                    className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                      }`}
                   >
                     <input
                       type="file"
@@ -406,7 +400,7 @@ const AddPortfolioPage = ({
                       id="image-upload"
                     />
                     <label htmlFor="image-upload" className="cursor-pointer ">
-                      <div className="flex flex-col items-center space-y-3  h-full justify-center">
+                      <div className="flex flex-col items-center space-y-3 h-full justify-center">
                         <div className="p-3 bg-gray-100 rounded-full">
                           <Upload className="w-6 h-6 text-gray-600" />
                         </div>
@@ -420,11 +414,11 @@ const AddPortfolioPage = ({
                     </label>
                   </div>
                 ) : (
-                  <div className="relative w-full h-full rounded-lg">
+                  <div className="relative w-full aspect-video rounded-lg">
                     <img
                       src={formData.ImageUrl}
                       alt="Team member preview"
-                      className="w-full h-48 object-cover rounded-lg border"
+                      className="w-full h-full object-cover rounded-lg border"
                     />
                     <button
                       type="button"
