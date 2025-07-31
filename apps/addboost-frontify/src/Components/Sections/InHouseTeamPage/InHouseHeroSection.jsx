@@ -56,7 +56,7 @@ const InHouseHeroSection = () => {
 11xl:py-52 12xl:py-56 13xl:py-60
 14xl:py-64 15xl:py-72
 
-    py-10 pt-32 md:py-14 md:pt-40 lg:py-20 lg:pt-44 "
+    py-10 pt-32 md:py-14 md:pt-40 lg:py-20 lg:pt-2 "
       >
         <motion.p
           variants={textVariant}
