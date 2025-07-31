@@ -136,7 +136,7 @@ py-10 md:py-14 lg:py-20
       {/* Why It Works Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 mt-16 items-start ">
         {/* Text */}
-        <div className="px-4 sm:px-6 md:px-16">
+        <div className="px-4 sm:px-6 md:px-8">
           <motion.h2
             className="uppercase font-anton text-xl sm:text-4xl text-PrimaryWhite"
             initial={{ x: -50, opacity: 0 }}
@@ -158,7 +158,7 @@ py-10 md:py-14 lg:py-20
             here's how we make this easy:
           </motion.p>
 
-          <div className="flex flex-col gap-6 mt-6 sm:mt-8 p-6">
+          <div className="flex flex-col gap-6 mt-6 sm:mt-8 p-2 md:p-4 lg:p-6">
             {processes.map((point, index) => (
               <motion.div
                 key={index}
@@ -178,7 +178,7 @@ py-10 md:py-14 lg:py-20
                 <p className="capitalize font-anton text-lg sm:text-2xl mt-1 text-PrimaryWhite">
                   {point.title}
                 </p>
-                <p className="font-inter text-xs sm:text-sm mt-1 text-white lg:pr-36 ">
+                <p className="font-inter text-xs sm:text-sm mt-1 text-white md:pr-0 lg:pr-36 ">
                   {point.description}
                 </p>
               </motion.div>
@@ -216,7 +216,7 @@ py-10 md:py-14 lg:py-20
           <img
             src={WhyItWorksHome}
             alt="Live Session"
-            className="w-4/5 rounded-md"
+            className="w-full md:w-4/5  rounded-md"
           />
         </motion.div>
       </div>
