@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ServiceCard from "./ServiceCard";
 
 import Arrowforward from "../../../../assets/arrowforwardwhite.svg";
@@ -31,6 +31,10 @@ const ServicesListView = ({
   const [endX, setEndX] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
 
+  const [userInteracted, setUserInteracted] = useState(false);
+  const interactionTimeoutRef = useRef(null);
+  const autoScrollIntervalRef = useRef(null);
+
   const maxSlide = Math.max(0, services.length - itemsPerView);
   const navigate = useNavigate();
 
@@ -52,28 +56,27 @@ const ServicesListView = ({
   }, [services]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => {
-        if (prev < maxSlide) {
-          return prev + 1;
-        } else {
-          return 0; // Loop back to first slide
-        }
-      });
-    }, 3000); // Adjust delay (in ms) as needed
+    if (!userInteracted) {
+      autoScrollIntervalRef.current = setInterval(() => {
+        setCurrentSlide((prev) => (prev < maxSlide ? prev + 1 : 0));
+      }, 3000);
+    }
 
-    return () => clearInterval(interval); // Cleanup
-  }, [maxSlide]);
+    return () => {
+      clearInterval(autoScrollIntervalRef.current);
+    };
+  }, [userInteracted, maxSlide]);
 
+  const handleUserInteraction = () => {
+    setUserInteracted(true);
+    clearTimeout(interactionTimeoutRef.current);
+    clearInterval(autoScrollIntervalRef.current);
 
-  const handlePrevious = () => {
-    setCurrentSlide((prev) => Math.max(0, prev - 1));
+    // Restart auto scroll after 5 seconds of inactivity
+    interactionTimeoutRef.current = setTimeout(() => {
+      setUserInteracted(false);
+    }, 5000); // 5s delay
   };
-
-  const handleNext = () => {
-    setCurrentSlide((prev) => Math.min(maxSlide, prev + 1));
-  };
-
   const getTransformValue = () => {
     const itemWidth = 100 / itemsPerView;
     return -(currentSlide * itemWidth);
@@ -97,8 +100,18 @@ const ServicesListView = ({
     setIsDragging(false);
   };
 
-  // Touch Handlers
+  const handleNext = () => {
+    handleUserInteraction();
+    setCurrentSlide((prev) => Math.min(maxSlide, prev + 1));
+  };
+
+  const handlePrevious = () => {
+    handleUserInteraction();
+    setCurrentSlide((prev) => Math.max(0, prev - 1));
+  };
+
   const handleTouchStart = (e) => {
+    handleUserInteraction();
     setStartX(e.touches[0].clientX);
   };
 
@@ -107,11 +120,12 @@ const ServicesListView = ({
   };
 
   const handleTouchEnd = () => {
+    handleUserInteraction();
     handleSwipe();
   };
 
-  // Mouse Handlers
   const handleMouseDown = (e) => {
+    handleUserInteraction();
     setStartX(e.clientX);
     setIsDragging(true);
   };
@@ -122,12 +136,19 @@ const ServicesListView = ({
   };
 
   const handleMouseUp = () => {
-    if (isDragging) handleSwipe();
+    if (isDragging) {
+      handleUserInteraction();
+      handleSwipe();
+    }
   };
 
   const handleMouseLeave = () => {
-    if (isDragging) handleSwipe();
+    if (isDragging) {
+      handleUserInteraction();
+      handleSwipe();
+    }
   };
+
 
   const totalSlides = maxSlide + 1;
 
