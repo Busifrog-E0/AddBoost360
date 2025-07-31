@@ -28,16 +28,16 @@ const blurFade = {
 };
 
 const bounceRight = {
-  // hidden: { opacity: 0, x: 100 },
-  // show: {
-  //   opacity: 1,
-  //   x: 0,
-  //   transition: {
-  //     type: "spring",
-  //     stiffness: 80,
-  //     damping: 15,
-  //   },
-  // },
+  hidden: { opacity: 0, x: 100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+    },
+  },
 };
 
 const HeroSection = () => {

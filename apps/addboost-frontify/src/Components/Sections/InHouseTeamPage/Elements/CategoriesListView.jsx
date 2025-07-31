@@ -1,11 +1,33 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import CategoryCard from "./CategoryCard";
-
 import Arrowforward from "../../../../assets/arrowforwardwhite.svg";
-
 import Arrowbackward from "../../../../assets/Arrowbackwardwhite.svg";
 import Button from "../../../Button";
 import { useNavigate } from "react-router";
+
+const containerVariant = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 2.6, // Added delay
+    },
+  },
+};
+
+const cardVariant = {
+  hidden: { opacity: 0, x: -100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 12,
+    },
+  },
+};
 
 const CategoriesListView = ({
   isSlideIndicatorsEnabled = false,
@@ -53,73 +75,50 @@ const CategoriesListView = ({
     return -(currentSlide * itemWidth);
   };
 
-  // SWIPE + DRAG support
+  // SWIPE
   const handleSwipe = () => {
     if (startX === null || endX === null) return;
-
     const distance = startX - endX;
     const threshold = 50;
-
-    if (distance > threshold && currentSlide < maxSlide) {
-      handleNext();
-    } else if (distance < -threshold && currentSlide > 0) {
-      handlePrevious();
-    }
-
+    if (distance > threshold && currentSlide < maxSlide) handleNext();
+    else if (distance < -threshold && currentSlide > 0) handlePrevious();
     setStartX(null);
     setEndX(null);
     setIsDragging(false);
   };
 
-  // Touch Handlers
-  const handleTouchStart = (e) => {
-    setStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    setEndX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    handleSwipe();
-  };
-
-  // Mouse Handlers
+  const handleTouchStart = (e) => setStartX(e.touches[0].clientX);
+  const handleTouchMove = (e) => setEndX(e.touches[0].clientX);
+  const handleTouchEnd = () => handleSwipe();
   const handleMouseDown = (e) => {
     setStartX(e.clientX);
     setIsDragging(true);
   };
-
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    setEndX(e.clientX);
-  };
-
-  const handleMouseUp = () => {
-    if (isDragging) handleSwipe();
-  };
-
-  const handleMouseLeave = () => {
-    if (isDragging) handleSwipe();
-  };
-
-  const totalSlides = maxSlide + 1;
+  const handleMouseMove = (e) => isDragging && setEndX(e.clientX);
+  const handleMouseUp = () => isDragging && handleSwipe();
+  const handleMouseLeave = () => isDragging && handleSwipe();
 
   return (
-    <div className="select-none">
+    <motion.div
+      className="select-none"
+      variants={containerVariant}
+      initial="hidden"
+      animate="show"
+    >
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
-        <h1 className="uppercase font-anton text-3xl 2xl:text-5xl text-white ">
+        <h1 className="uppercase font-anton text-3xl 2xl:text-5xl text-white">
           {title}
         </h1>
         <div className="flex items-center gap-2 flex-shrink-0 mt-2 md:mt-0">
           <button
             onClick={handlePrevious}
             disabled={currentSlide === 0}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === 0
-              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-              : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
-              }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
+              currentSlide === 0
+                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+                : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
+            }`}
           >
             <img
               src={Arrowbackward}
@@ -127,14 +126,14 @@ const CategoriesListView = ({
               className="w-3 h-3 lg:w-8 lg:h-8"
             />
           </button>
-
           <button
             onClick={handleNext}
             disabled={currentSlide === maxSlide}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === maxSlide
-              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-              : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
-              }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
+              currentSlide === maxSlide
+                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+                : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
+            }`}
           >
             <img
               src={Arrowforward}
@@ -163,14 +162,17 @@ const CategoriesListView = ({
             cursor: isDragging ? "grabbing" : "grab",
           }}
         >
-          {services.map((service) => (
-            <div
+          {services.map((service, index) => (
+            <motion.div
               key={service.id}
-              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 "
+              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3"
               style={{ maxWidth: `calc(${100 / itemsPerView}% - 1rem)` }}
+              variants={cardVariant}
+              whileTap={{ scale: 1.03 }}
+              whileHover={{ scale: 1.02 }}
             >
               <CategoryCard service={service} />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -183,12 +185,12 @@ const CategoriesListView = ({
             hoverBgColor="bg-gray-300"
             hoverTextColor="text-black"
             iconColor="black"
-            onClick={() => { }}
+            onClick={() => {}}
             text="Become a Freelancer"
           />
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 

@@ -199,7 +199,6 @@ const EmployeesListView = ({
               style={{ maxWidth: `calc(${100 / itemsPerView}% - 1rem)` }}
               variants={cardVariant}
               whileTap={{ scale: 0.95 }}
-              whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <EmployeeCard employee={employee} />

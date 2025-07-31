@@ -37,7 +37,6 @@ const blurFade = {
     },
   },
 };
-
 const bounceRight = {
   hidden: { opacity: 0, x: 100 },
   show: {
