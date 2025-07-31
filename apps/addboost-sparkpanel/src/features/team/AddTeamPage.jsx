@@ -51,7 +51,10 @@ const AddTeamPage = ({
     "Customer Support & Experience",
     "Training & Capacity Building"
   ]
-
+  const allOptionGroups = [
+    { label: "A. Digital Marketing", options: digitalMarketingTypeOptions },
+    { label: "B. Business Professional Support", options: businessSupportTypeOptions },
+  ]
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
@@ -275,22 +278,15 @@ const AddTeamPage = ({
               <option value="" disabled>
                 Select a Position
               </option>
-
-              <optgroup label="A. Digital Marketing">
-                {digitalMarketingTypeOptions.map((option) => (
-                  <option key={`dm-${option}`} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </optgroup>
-
-              <optgroup label="B. Business Professional Support">
-                {businessSupportTypeOptions.map((option) => (
-                  <option key={`bs-${option}`} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </optgroup>
+              {allOptionGroups.map((group, idx) => (
+                <optgroup key={`group-${idx}`} label={group.label}>
+                  {group.options.map((option) => (
+                    <option key={`${idx}-${option}`} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </optgroup>
+              ))}
             </select>
             {errors.Description1 && (
               <p className=" mt-1 text-sm text-red-600">

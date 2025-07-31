@@ -19,6 +19,168 @@ const AddCompanyPage = ({
     Priority: 5,
   },
 }) => {
+
+
+
+  const electronicsTypeOptions = [
+    "Smartphones",
+    "Tablets",
+    "Laptops & Computers",
+    "TV & Home Theater",
+    "Cameras & Drones",
+    "Gaming Consoles & Accessories"
+  ];
+
+  const homeAppliancesTypeOptions = [
+    "Refrigerators & Freezers",
+    "Washing Machines & Dryers",
+    "Kitchen Appliances",
+    "Air Conditioners & Heaters",
+    "Vacuum Cleaners & Home Cleaning"
+  ];
+
+  const furnitureAndHomeDecorTypeOptions = [
+    "Living & Bedroom Furniture",
+    "Kitchen & Dining Furniture",
+    "Home Decor & Accessories",
+    "Bedding & Bath Essentials"
+  ];
+
+  const fashionAndApparelTypeOptions = [
+    "Men's Clothing",
+    "Women's Clothing",
+    "Shoes & Footwear",
+    "Jewelry & Accessories"
+  ];
+
+  const beautyAndPersonalCareTypeOptions = [
+    "Skincare",
+    "Hair Care",
+    "Makeup & Cosmetics",
+    "Fragrances & Perfumes",
+    "Grooming Tools & Appliances"
+  ];
+
+  const healthAndWellnessTypeOptions = [
+    "Vitamins & Supplements",
+    "Health Monitors & Devices",
+    "Medical Supplies & First Aid",
+    "Wellness & Self-Care",
+    "Essential Oils"
+  ];
+
+  const sportsAndOutdoorsTypeOptions = [
+    "Camping & Hiking Gear",
+    "Fitness & Exercise Equipment",
+    "Team Sports Gear",
+    "Cycling & Bikes"
+  ];
+
+  const toysAndGamesTypeOptions = [
+    "Kids' Toys",
+    "Board Games & Puzzles",
+    "Educational & STEM Toys",
+    "Collectibles & Hobby Kits"
+  ];
+
+  const booksAndMediaTypeOptions = [
+    "Books & eBooks",
+    "Movies & TV Shows",
+    "Music & Audio"
+  ];
+
+  const foodAndBeverageTypeOptions = [
+    "Groceries & Pantry Staples",
+    "Snacks & Confectionery",
+    "Beverages (Coffee, Tea, etc.)",
+    "Gourmet & Specialty Foods"
+  ];
+
+  const petSuppliesTypeOptions = [
+    "Pet Food & Treats",
+    "Pet Toys & Accessories",
+    "Pet Grooming & Health",
+    "Pet Beds & Housing"
+  ];
+
+  const babyAndKidsTypeOptions = [
+    "Baby Gear (Strollers & Car Seats)",
+    "Baby Food & Diapers",
+    "Nursery Furniture & Bedding",
+    "Baby & Kids Clothing",
+    "Baby Toys & Gifts"
+  ];
+
+  const officeSuppliesAndStationeryTypeOptions = [
+    "Office Electronics & Printers",
+    "Office Furniture",
+    "Stationery & Office Supplies",
+    "Ink & Toner"
+  ];
+
+  const artsAndCraftsTypeOptions = [
+    "Art Supplies",
+    "Craft Kits & DIY",
+    "Fabric & Sewing Supplies"
+  ];
+
+  const toolsAndHomeImprovementTypeOptions = [
+    "Power Tools & Equipment",
+    "Hand Tools & Hardware",
+    "Home Improvement Supplies",
+    "Garden Tools & Outdoor Equipment"
+  ];
+
+  const industrialAndScientificSuppliesTypeOptions = [
+    "Industrial Machinery & Tools",
+    "Safety & PPE Equipment",
+    "Lab & Scientific Equipment"
+  ];
+
+  const automotiveTypeOptions = [
+    "Auto Parts & Spares",
+    "Car Electronics & Accessories",
+    "Car Care & Maintenance",
+    "Motorcycle & ATV Gear"
+  ];
+
+  const digitalProductsTypeOptions = [
+    "E-books & Online Publications",
+    "Software & Apps",
+    "Online Courses & Tutorials",
+    "Digital Media & Downloads",
+    "Gift Cards & Vouchers"
+  ];
+
+  const professionalServicesTypeOptions = [
+    "Business Consulting",
+    "Graphic Design & Creative",
+    "Marketing & SEO Services",
+    "Web Development & IT Services",
+    "Personal Coaching & Training"
+  ];
+  const allOptionGroups = [
+    { label: "A. Electronics", options: electronicsTypeOptions },
+    { label: "B. Home Appliances", options: homeAppliancesTypeOptions },
+    { label: "C. Furniture & Home Decor", options: furnitureAndHomeDecorTypeOptions },
+    { label: "D. Fashion & Apparel", options: fashionAndApparelTypeOptions },
+    { label: "E. Beauty & Personal Care", options: beautyAndPersonalCareTypeOptions },
+    { label: "F. Health & Wellness", options: healthAndWellnessTypeOptions },
+    { label: "G. Sports & Outdoors", options: sportsAndOutdoorsTypeOptions },
+    { label: "H. Toys & Games", options: toysAndGamesTypeOptions },
+    { label: "I. Books & Media", options: booksAndMediaTypeOptions },
+    { label: "J. Food & Beverage", options: foodAndBeverageTypeOptions },
+    { label: "K. Pet Supplies", options: petSuppliesTypeOptions },
+    { label: "L. Baby & Kids", options: babyAndKidsTypeOptions },
+    { label: "M. Office Supplies & Stationery", options: officeSuppliesAndStationeryTypeOptions },
+    { label: "N. Arts & Crafts", options: artsAndCraftsTypeOptions },
+    { label: "O. Tools & Home Improvement", options: toolsAndHomeImprovementTypeOptions },
+    { label: "P. Industrial & Scientific Supplies", options: industrialAndScientificSuppliesTypeOptions },
+    { label: "Q. Automotive", options: automotiveTypeOptions },
+    { label: "R. Digital Products", options: digitalProductsTypeOptions },
+    { label: "S. Professional Services", options: professionalServicesTypeOptions },
+  ];
+
   const [formData, setFormData] = useState(initialValue);
 
   const [errors, setErrors] = useState({});
@@ -227,20 +389,32 @@ const AddCompanyPage = ({
             </label>
 
             {formData.Tags.map((category, index) => (
-              <div key={index} className="flex items-center space-x-2 mb-2">
-                <input
-                  type="text"
-                  value={category}
-                  onChange={(e) => {
-                    const updated = [...formData.Tags];
-                    updated[index] = e.target.value;
-                    handleInputChange("Tags", updated);
-                  }}
-                  className={`w-full px-4 mb-2 py-3 border rounded-lg ${errors.Tags ? "border-red-300 bg-red-50" : "border-gray-300"
-                    }`}
-                  placeholder={`Service Area ${index + 1}`}
-                />
-              </div>
+              <select key={index}
+                value={category}
+                onChange={(e) => {
+                  const updated = [...formData.Tags];
+                  updated[index] = e.target.value;
+                  handleInputChange("Tags", updated);
+                }}
+
+                className={`w-full px-4 py-3 border rounded-lg mb-2 ${errors.Tags ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
+              >
+                <option value="" disabled>
+                  Select a Category
+                </option>
+
+                {allOptionGroups.map((group, idx) => (
+                  <optgroup key={`group-${idx}`} label={group.label}>
+                    {group.options.map((option) => (
+                      <option key={`${idx}-${option}`} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+
             ))}
 
             <div className="flex items-center space-x-2 mt-2">
@@ -389,8 +563,8 @@ const AddCompanyPage = ({
             )}
           </button>
         </div>
-      </form>
-    </div>
+      </form >
+    </div >
   );
 };
 
