@@ -28,13 +28,13 @@ const TrustedCompaniesSection = () => {
       </h2>
 
       <div className="relative overflow-hidden mt-16">
-        <div className="flex animate-scroll gap-16 md:gap-24 lg:gap-32 w-max">
+        <div className="flex animate-scroll gap-16 md:gap-24 lg:gap-32 w-max h-5 md:h-6 lg:h-8 aspect-video">
           {[...logos, ...logos].map((logo, index) => (
             <img
               key={`${logo.DocId}-${index}`} // 👈 ensures key is unique
               src={logo.ImageUrl}
               alt={logo.Title}
-              className="h-5 md:h-6 lg:h-8 object-contain filter invert brightness-0"
+              className="h-full w-full object-contain filter invert brightness-0"
             />
           ))}
         </div>

@@ -159,7 +159,7 @@ const ServicesListView = ({
 
       {/* Carousel */}
       <div
-        className="relative rounded-xl mt-14"
+        className="relative overflow-hidden rounded-xl mt-14"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}

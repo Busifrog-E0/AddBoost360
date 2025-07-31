@@ -295,7 +295,7 @@ const AddReview = ({
           </div>
         </div>
 
-        <div className="flex justify-end bg-white border rounded-xl p-6">
+        <div className="flex justify-end bg-white border rounded-xl p-6 space-x-4">
           <button
             type="button"
             onClick={onBack}

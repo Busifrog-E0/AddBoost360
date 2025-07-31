@@ -112,7 +112,7 @@ const CompanyLogoSection = () => {
               >
                 {/* Image + Info Section */}
                 <div className="flex items-center gap-4">
-                  <div className="w-20 h-14 p-2 overflow-hidden rounded-md border">
+                  <div className="w-20 aspect-video p-2 overflow-hidden rounded-md border">
                     <img
                       src={logo.ImageUrl}
                       alt={logo.Title}
