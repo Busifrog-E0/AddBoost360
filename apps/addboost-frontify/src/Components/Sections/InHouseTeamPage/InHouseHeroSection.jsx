@@ -37,6 +37,7 @@ const InHouseHeroSection = () => {
     
     relative"
     >
+
       {/* Background Image for Mobile */}
       <div
         className="absolute inset-0 lg:hidden bg-cover bg-center opacity-20 z-0"
