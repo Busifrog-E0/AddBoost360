@@ -98,7 +98,7 @@ const EmployeeCard = ({ employee }) => {
 
   return (
     <motion.div
-      className={`bg-gradient-to-l ${typeStyles.background} rounded-lg shadow-md overflow-hidden`}
+      className={`bg-gradient-to-l ${typeStyles.background} shadow-md overflow-hidden`}
       variants={cardAnimation}
       initial="hidden"
       whileInView="show"
