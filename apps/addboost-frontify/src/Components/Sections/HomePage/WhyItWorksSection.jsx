@@ -52,7 +52,8 @@ const WhyItWorksSection = () => {
   ];
 
   return (
-    <div className="bg-PrimaryDarkBlue
+    <div
+      className="bg-PrimaryDarkBlue
     px-6 md:px-10 2xl:px-24 3xl:px-32
 4xl:px-60 5xl:px-80 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
@@ -64,7 +65,8 @@ py-10 md:py-14 lg:py-20
 8xl:py-40 9xl:py-44 10xl:py-48
 11xl:py-52 12xl:py-56 13xl:py-60
 14xl:py-64 15xl:py-72
-    ">
+    "
+    >
       {/* Heading */}
       <motion.div
         className="flex flex-col gap-4"
@@ -74,10 +76,10 @@ py-10 md:py-14 lg:py-20
         viewport={{ once: true }}
       >
         <p className="text-[#76B0FF] font-inter text-base 2xl:text-lg">
-          Global Wholesale Hub
+          Direct Deals with Trusted Global Suppliers
         </p>
         <h1 className="uppercase text-3xl 2xl:text-5xl font-anton text-PrimaryWhite">
-          Direct Deals with Trusted Global Suppliers
+          wholesale business hub
         </h1>
       </motion.div>
 

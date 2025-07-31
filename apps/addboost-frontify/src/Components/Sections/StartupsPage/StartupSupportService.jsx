@@ -117,7 +117,7 @@ py-10 md:py-14 lg:py-20
       {/* Right Column */}
       <div>
         <h2 className="font-anton text-xl md:text-2xl uppercase mb-4 text-white ">
-          Startup Support Services
+          existing business / startup support services
         </h2>
 
         <div className="flex flex-col p-5 sm:p-8 md:p-10 gap-6">
