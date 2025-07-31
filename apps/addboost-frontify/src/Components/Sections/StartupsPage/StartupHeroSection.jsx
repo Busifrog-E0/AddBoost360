@@ -93,7 +93,7 @@ const StartupHeroSection = () => {
               </motion.p> */}
               <motion.p
                 variants={line}
-                className="mb-5 text-2xl font-bold font-inter"
+                className="mb-5 text-xl font-bold font-inter"
               >
                 How ADD BOOST 360 Fuels Your Journey
               </motion.p>

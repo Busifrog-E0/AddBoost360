@@ -30,7 +30,7 @@ export default function StudioPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.7 }}
                     >
-                        Nurturing Startups to Grow
+                        Visual Thinking for Bold Brands
                     </motion.h1>
 
                     <motion.p
