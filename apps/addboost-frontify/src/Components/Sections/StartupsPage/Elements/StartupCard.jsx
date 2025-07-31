@@ -1,8 +1,27 @@
+import { motion } from "framer-motion";
 import Cornerchipwhite from "../../../../assets/Cornerchipwhite.svg";
+
+const cardAnimation = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 const StartupCard = ({ startup }) => {
   return (
-    <div className="bg-PrimaryDarkBlue transition-colors duration-300  p-5 md:p-6 lg:p-8 relative overflow-hidden h-full">
+    <motion.div
+      className="bg-PrimaryDarkBlue transition-colors duration-300 p-5 md:p-6 lg:p-8 relative overflow-hidden h-full"
+      variants={cardAnimation}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       <div className="absolute top-0 left-0">
         <img src={Cornerchipwhite} alt="Global" className="w-6 h-6" />
       </div>
@@ -16,11 +35,11 @@ const StartupCard = ({ startup }) => {
         </div>
 
         <div className="flex flex-col justify-start gap-2 w-full">
-          <h3 className="text-lg sm:text-xl md:text-2xl  uppercase font-arya text-white ">
+          <h3 className="text-lg sm:text-xl md:text-2xl uppercase font-arya text-white">
             {startup.Title}
           </h3>
 
-          <p className="text-[#76B0FF] text-sm sm:text-base md:text-lg font-inter ">
+          <p className="text-[#76B0FF] text-sm sm:text-base md:text-lg font-inter">
             {startup.State}, {startup.Country}
           </p>
 
@@ -36,7 +55,7 @@ const StartupCard = ({ startup }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
