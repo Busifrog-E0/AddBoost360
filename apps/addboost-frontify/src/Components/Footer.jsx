@@ -31,7 +31,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="bg-black text-white 
+      className="bg-gradient-to-b from-PrimaryDarkBlue to-black text-white 
       px-6 md:px-10 2xl:px-24 3xl:px-32
 4xl:px-60 5xl:px-80 6xl:px-180
   7xl:px-220 8xl:px-240 9xl:px-260
