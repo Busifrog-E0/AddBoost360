@@ -40,18 +40,15 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[999] text-white transition-all duration-300
-          ${
-            scrolled
-              ? "bg-black/30 backdrop-blur-md shadow-md "
-              : "bg-transparent"
+          ${scrolled
+            ? "bg-black/30 backdrop-blur-md shadow-md "
+            : "bg-transparent"
           }`}
       >
         {/* 2xl:px-60 3xl:px-80  */}
         <div
           className="select-none flex items-center justify-between gap-3 
-            px-6 md:px-10 
-py-3 md:py-5
-"
+            px-6 md:px-8 py-3 md:py-4"
         >
           {/* Logo + Brand */}
           <div className="flex items-center gap-6 ">
@@ -64,14 +61,14 @@ py-3 md:py-5
                 alt="Logo"
                 className="w-20 object-contain"
               />
-              <h1 className="text-xl font-anton leading-none">
+              <h1 className="text-lg 2xl:text-xl font-anton leading-none">
                 ADD BOOST <span className="">360</span>
               </h1>
             </div>
           </div>
           {/* Phone */}
-          <div className="hidden md:flex items-center gap-6 lg:gap-12">
-            <div className="flex items-center text-sm font-inter gap-2 outline-none">
+          <div className="hidden md:flex items-center gap-6 2xl:gap-12">
+            <div className="flex flex-nowrap items-center text-sm font-inter gap-2 outline-none">
               <img
                 src={call}
                 alt="Phone"
@@ -79,12 +76,12 @@ py-3 md:py-5
               />
               <a
                 href={`tel:${headerData.phone}`}
-                className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
+                className="text-xs 2xl:text-sm hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
               >
                 {headerData.phone}
               </a>
             </div>
-            <div className="flex items-center text-sm font-inter gap-2 outline-none">
+            <div className="flex flex-nowrap items-center text-sm font-inter gap-2 outline-none">
               <img
                 src={email}
                 alt="Email"
@@ -92,7 +89,7 @@ py-3 md:py-5
               />
               <a
                 href={`mailto:${headerData.email}`}
-                className="hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
+                className="text-xs 2xl:text-sm hover:underline hover:text-[#2174bb] transition duration-200 outline-none"
               >
                 {headerData.email}
               </a>
@@ -106,8 +103,7 @@ py-3 md:py-5
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `hover:underline transition duration-150 ${
-                    isActive ? "underline " : ""
+                  `text-xs 2xl:text-sm hover:underline transition duration-150 ${isActive ? "underline " : ""
                   }`
                 }
               >
