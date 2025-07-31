@@ -17,18 +17,19 @@ const WhyItWorksSection = () => {
       number: "01",
       title: "Faster & safer business deals",
       description:
-        "Speeds up sourcing while reducing risks through verified connections.",
+        "Our platform connects you with pre vetted, legally contracted suppliers and uses an escrow system, so you can source goods quickly while minimising risk.",
     },
     {
       number: "02",
       title: "Legally protected contracts",
-      description: "All agreements are secure and enforceable.",
+      description:
+        "Every transaction is backed by a formal contract that defines quality, delivery and return terms, giving you clear legal protection and peace of mind.",
     },
     {
       number: "03",
       title: "Real-time product confirmation",
       description:
-        "Instant validation of product quality through live interaction.",
+        "You can schedule live video sessions with suppliers to inspect products, ask questions and confirm quality before any payment is released.",
     },
   ];
 
@@ -137,7 +138,7 @@ py-10 md:py-14 lg:py-20
         {/* Text */}
         <div className="px-4 sm:px-6 md:px-16">
           <motion.h2
-            className="uppercase font-anton text-xl sm:text-2xl text-PrimaryWhite"
+            className="uppercase font-anton text-xl sm:text-4xl text-PrimaryWhite"
             initial={{ x: -50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
@@ -171,13 +172,13 @@ py-10 md:py-14 lg:py-20
                 }}
                 viewport={{ once: true }}
               >
-                <span className="text-sm font-arya text-white">
+                <span className="text-xl font-arya text-white">
                   {point.number}
                 </span>
-                <p className="capitalize font-anton text-lg sm:text-xl mt-1 text-PrimaryWhite">
+                <p className="capitalize font-anton text-lg sm:text-2xl mt-1 text-PrimaryWhite">
                   {point.title}
                 </p>
-                <p className="font-inter text-xs sm:text-sm mt-1 text-white ">
+                <p className="font-inter text-xs sm:text-sm mt-1 text-white lg:pr-36 ">
                   {point.description}
                 </p>
               </motion.div>
