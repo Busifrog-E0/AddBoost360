@@ -28,7 +28,7 @@ const CategoriesSection = ({ isSlideIndicatorsEnabled = false }) => {
   4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
 8xl:py-80 9xl:py-96 10xl:py-112 
 11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200  bg-BackgroundGradientright ">
+14xl:py-180 15xl:py-200  bg-BackgroundGradientright overflow-hidden ">
             <CategoriesListView title="Freelancer Categories" showAllServicesButton={true} isSlideIndicatorsEnabled={isSlideIndicatorsEnabled} services={services} />
         </div>
     );
