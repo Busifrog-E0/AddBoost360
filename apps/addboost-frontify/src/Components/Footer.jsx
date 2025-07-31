@@ -9,7 +9,7 @@ import ADDBOOSTlogo from "../assets/ADDBOOSTlogo.png";
 const Footer = () => {
   const [footerData, setFooterData] = React.useState({
     email: "info@addboost360.com",
-    phone: "+44 (0)20-1234-5678",
+    phone: "+44 7309 651130",
     website: "www.addboost360.com",
     description:
       "Empowering Your Digital Future – Globally. Intelligently. Creatively.",
