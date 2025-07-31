@@ -109,7 +109,7 @@ const EmployeeCard = ({ employee }) => {
           <img src={Cornerchipwhite} alt="Global" className="w-6 h-6" />
         </div>
 
-        <div className="text-center">
+        <div className="text-center flex flex-col gap-2 items-center">
           <div className="relative inline-block">
             <img
               src={ADDBOOSTlogo}
@@ -126,10 +126,16 @@ const EmployeeCard = ({ employee }) => {
           <h3 className="mt-4 text-sm sm:text-lg md:text-xl text-white font-arya capitalize">
             {employee.FullName}
           </h3>
+          <span
+            className="text-xs sm:text-sm md:text-base text-center px-3 py-1 bg-white/10 border border-white/20 text-white/80 rounded-md font-inter"
+          >
+            {employee.ID}
+          </span>
 
           <p className="text-[#76B0FF] font-medium text-xs sm:text-base md:text-lg font-inter capitalize">
             {employee.Designation}
           </p>
+
 
           <p className="text-gray-300 text-xs sm:text-sm md:text-base font-inter mb-5 capitalize">
             {employee.State}, {employee.Country}
