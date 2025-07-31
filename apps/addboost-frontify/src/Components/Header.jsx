@@ -7,7 +7,6 @@ import email from "../assets/email.png";
 import call from "../assets/call.png";
 
 const Header = () => {
-
   const [headerData, setHeaderData] = React.useState({
     email: "info@addboost360.com",
     phone: "+44 (0)20-1234-5678",
@@ -23,6 +22,8 @@ const Header = () => {
     { label: "STARTUPS & SOURCING", to: "/startups-and-sourcing" },
     { label: "PORTFOLIO", to: "/portfolio" },
     { label: "TALENT POOL", to: "/in-house-team" },
+
+    { label: "COMPANIES", to: "/companies" },
     { label: "CONTACT", to: "/contact" },
   ];
 
@@ -39,9 +40,10 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-[999] text-white transition-all duration-300
-          ${scrolled
-            ? "bg-black/30 backdrop-blur-md shadow-md "
-            : "bg-transparent"
+          ${
+            scrolled
+              ? "bg-black/30 backdrop-blur-md shadow-md "
+              : "bg-transparent"
           }`}
       >
         {/* 2xl:px-60 3xl:px-80  */}
@@ -66,8 +68,6 @@ py-3 md:py-5
                 ADD BOOST <span className="">360</span>
               </h1>
             </div>
-
-
           </div>
           {/* Phone */}
           <div className="hidden md:flex items-center gap-6 lg:gap-12">
@@ -99,7 +99,6 @@ py-3 md:py-5
             </div>
           </div>
 
-
           {/* Nav Items */}
           <nav className="hidden xl:flex gap-8 text-sm font-arya uppercase">
             {navItems.map((item) => (
@@ -107,7 +106,8 @@ py-3 md:py-5
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `hover:underline transition duration-150 ${isActive ? "underline " : ""
+                  `hover:underline transition duration-150 ${
+                    isActive ? "underline " : ""
                   }`
                 }
               >

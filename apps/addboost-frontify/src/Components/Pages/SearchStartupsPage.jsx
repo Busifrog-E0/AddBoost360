@@ -1,7 +1,7 @@
 import { useState } from "react";
 import StartupCard from "../Sections/StartupsPage/Elements/StartupCard";
 import Button from "../Button";
-import ADDBOOSTlogo from "../../assets/ADDBOOSTlogo.png"
+import ADDBOOSTlogo from "../../assets/ADDBOOSTlogo.png";
 import useGetList from "../../hooks/api/useGetList";
 import LoaderSection from "../Sections/Loader/LoeaderSection";
 
@@ -13,9 +13,8 @@ const SearchStartupsPage = () => {
     isPageDisabled,
     getList,
     filters,
-    changeSingleFilter
+    changeSingleFilter,
   } = useGetList({ endpoint: "organizations", changeOnFilter: true });
-
 
   // if (isLoading) {
   //   return <LoaderSection />
@@ -37,9 +36,9 @@ py-10 md:py-14 lg:py-20
  bg-BackgroundGradientleft "
     >
       <img src={ADDBOOSTlogo} alt="Logo" className="w-32 object-contain" />
-      <h className="font-anton text-white uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 ">
-        OUR Startups
-      </h>
+      <h1 className="font-anton text-white uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 ">
+        OUR REGISTRARED Global Sourcing Partners
+      </h1>
       <p className="text-sm font-inter text-gray-400 mt-2">
         At ADD BOOST 360 LIMITED, we provide end-to-end digital solutions—from
         marketing and web development to product sourcing and startup support—to
@@ -52,18 +51,14 @@ py-10 md:py-14 lg:py-20
           placeholder="Search here"
           className="p-4 lg:px-5 bg-transparent border border-white/20 rounded-md text-white placeholder-white/40 outline-none focus:border-white/30 duration-300 transition-all mt-5"
           value={filters.Keyword}
-          onChange={(e) =>
-            changeSingleFilter('Keyword', e.target.value)
-          }
+          onChange={(e) => changeSingleFilter("Keyword", e.target.value)}
         />
       </div>
 
-
-
       <div className="mt-4 md:mt-6 lg:mt-10">
-        {isLoading ?
+        {isLoading ? (
           <LoaderSection />
-          :
+        ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {startups.map((startup) => (
               <div key={startup.DocId} className="w-full">
@@ -71,10 +66,8 @@ py-10 md:py-14 lg:py-20
               </div>
             ))}
           </div>
-        }
+        )}
       </div>
-
-
 
       {/* <div className="mt-4 md:mt-6 lg:mt-10 ">
 
@@ -92,8 +85,7 @@ py-10 md:py-14 lg:py-20
 
       </div> */}
 
-      {
-        !isPageDisabled &&
+      {!isPageDisabled && (
         <div className="flex items-end justify-center mt-8">
           <Button
             bgColor="bg-white"
@@ -106,8 +98,7 @@ py-10 md:py-14 lg:py-20
             text="View More"
           />
         </div>
-      }
-
+      )}
     </div>
   );
 };

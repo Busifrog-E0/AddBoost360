@@ -22,10 +22,7 @@ export const router = createBrowserRouter(
       <Route index element={<HomePage />} />{" "}
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/startups-and-sourcing" element={<StartupPage />} />
-      <Route
-        path="/startups-and-sourcing/view-startups"
-        element={<SearchStartupsPage />}
-      />
+      <Route path="/companies" element={<SearchStartupsPage />} />
       <Route path="/portfolio" element={<PortfolioPage />} />
       <Route path="/in-house-team" element={<Inhousepage />} />
       <Route
