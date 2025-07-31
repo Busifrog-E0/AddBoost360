@@ -37,9 +37,9 @@ const Header = () => {
             : "bg-black/10 backdrop-blur-md shadow-md "
           }`}
       >
+        {/* 2xl:px-60 3xl:px-80  */}
         <div
           className="select-none flex items-center justify-between gap-3 px-4 md:px-10 py-3
-            2xl:px-60 3xl:px-80 
             4xl:px-120 5xl:px-160 6xl:px-180
             7xl:px-220 8xl:px-240 9xl:px-260
             10xl:px-280 11xl:px-300 12xl:px-320
