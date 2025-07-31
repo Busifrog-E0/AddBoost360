@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import Button from "../../Button";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ScrollToBottom from "../../ScrollToBottom";
 
 const popIn = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -118,6 +119,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
+      <ScrollToBottom />
     </div>
   );
 };

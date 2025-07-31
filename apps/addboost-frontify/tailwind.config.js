@@ -73,9 +73,14 @@ export default {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" }, // half, for seamless loop
         },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(6px)' },
+        },
       },
       animation: {
         scroll: "scroll 20s linear infinite", // slower continuous scroll
+        float: 'float 2s ease-in-out infinite',
       },
     },
   },
