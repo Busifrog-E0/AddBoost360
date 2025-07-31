@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import studiobg from '../../assets/studiobg.webp'
+import ADDBOOSTlogo from "../../assets/ADDBOOSTlogo.png";
 
 export default function StudioPage() {
     return (
@@ -18,12 +19,23 @@ export default function StudioPage() {
 
             {/* 🔹 Foreground Content */}
             <div className="relative z-10 h-full flex items-center justify-center px-6">
+
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center "
+                    className="text-center flex flex-col items-center justify-center "
                 >
+                    <motion.div
+                        className="text-4xl md:text-6xl leading-tight font-arya text-white   "
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1, duration: 0.7 }}
+                    >
+                        <img src={ADDBOOSTlogo} alt="Logo" className="w-36 object-contain mb-2" />
+                    </motion.div>
+
+
                     <motion.h1
                         className="text-4xl md:text-6xl leading-tight font-arya text-white   "
                         initial={{ opacity: 0, y: 20 }}
