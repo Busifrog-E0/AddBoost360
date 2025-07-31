@@ -17,16 +17,19 @@ const Subscribe = () => {
       }}
     >
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-center items-center h-full px-6 md:px-14 2xl:px-60 3xl:px-80 
-  4xl:px-120 5xl:px-160 6xl:px-180
-  7xl:px-220 8xl:px-240 9xl:px-260
-  10xl:px-280 11xl:px-300 12xl:px-320
-  13xl:px-340 14xl:px-360 15xl:px-400
-   py-14 md:py-20 lg:py-36 
-  4xl:py-48 5xl:py-56 6xl:py-64 7xl:py-72 
-8xl:py-80 9xl:py-96 10xl:py-112 
-11xl:py-128 12xl:py-144 13xl:py-160 
-14xl:py-180 15xl:py-200  text-center">
+      <div className="relative z-10 flex flex-col justify-center items-center h-full 
+      px-4 md:px-8 2xl:px-20 3xl:px-28
+4xl:px-36 5xl:px-48 6xl:px-60 7xl:px-72
+8xl:px-80 9xl:px-96 10xl:px-100
+11xl:px-120 12xl:px-140 13xl:px-160
+14xl:px-180 15xl:px-200
+
+py-10 md:py-14 lg:py-20
+4xl:py-24 5xl:py-28 6xl:py-32 7xl:py-36
+8xl:py-40 9xl:py-44 10xl:py-48
+11xl:py-52 12xl:py-56 13xl:py-60
+14xl:py-64 15xl:py-72
+      text-center">
         <h1 className="text-xl md:text-3xl font-anton text-white">
           STAY UPDATED WITH DIGITAL TRENDS, OFFERS &amp; SOURCING OPPORTUNITIES
         </h1>
