@@ -128,7 +128,7 @@ py-10 md:py-14 lg:py-20
 8xl:py-40 9xl:py-44 10xl:py-48
 11xl:py-52 12xl:py-56 13xl:py-60
 14xl:py-64 15xl:py-72 bg-BackgroundGradientleft">
-      <div className="grid lg:grid-cols-2 gap-32 items-start overflow-hidden">
+      <div className="grid lg:grid-cols-2 gap-32 items-start overflow-hidden  ">
         {/* LEFT SECTION */}
         <motion.div
           variants={blurFade}
