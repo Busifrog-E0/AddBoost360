@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import EmployeeCard from "./EmployeeCard";
+import { motion } from "framer-motion";
 
 import Arrowforward from "../../../../assets/arrowforwardwhite.svg";
 import Arrowbackward from "../../../../assets/arrowbackwardwhite.svg";
@@ -7,6 +8,28 @@ import Arrowbackward from "../../../../assets/arrowbackwardwhite.svg";
 import Button from "../../../Button";
 import { useNavigate } from "react-router";
 import SlideIndicators from "../../HomePage/Elements/SlideIndicators";
+
+const containerVariant = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariant = {
+  hidden: { opacity: 0, x: -100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 12,
+    },
+  },
+};
 
 const EmployeesListView = ({
   isSlideIndicatorsEnabled = false,
@@ -54,7 +77,6 @@ const EmployeesListView = ({
     return -(currentSlide * itemWidth);
   };
 
-  // SWIPE + DRAG support
   const handleSwipe = () => {
     if (startX === null || endX === null) return;
 
@@ -72,7 +94,6 @@ const EmployeesListView = ({
     setIsDragging(false);
   };
 
-  // Touch Handlers
   const handleTouchStart = (e) => {
     setStartX(e.touches[0].clientX);
   };
@@ -85,7 +106,6 @@ const EmployeesListView = ({
     handleSwipe();
   };
 
-  // Mouse Handlers
   const handleMouseDown = (e) => {
     setStartX(e.clientX);
     setIsDragging(true);
@@ -107,7 +127,13 @@ const EmployeesListView = ({
   const totalSlides = maxSlide + 1;
 
   return (
-    <div className="select-none">
+    <motion.div
+      className="select-none"
+      variants={containerVariant}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       {/* Header */}
       <div className="flex items-start justify-between gap-2">
         <h1 className="uppercase font-anton text-3xl 2xl:text-5xl text-white ">
@@ -166,14 +192,18 @@ const EmployeesListView = ({
             cursor: isDragging ? "grabbing" : "grab",
           }}
         >
-          {employees.slice(0, 6).map((employee) => (
-            <div
+          {employees.slice(0, 6).map((employee, index) => (
+            <motion.div
               key={employee.DocId}
-              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 "
+              className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3"
               style={{ maxWidth: `calc(${100 / itemsPerView}% - 1rem)` }}
+              variants={cardVariant}
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               <EmployeeCard employee={employee} />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -201,7 +231,7 @@ const EmployeesListView = ({
           />
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
