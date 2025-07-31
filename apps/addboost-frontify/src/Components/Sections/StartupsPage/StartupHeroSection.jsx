@@ -62,11 +62,18 @@ const StartupHeroSection = () => {
             animate="show"
             whileInView="show"
             viewport={{ once: true, amount: 0.3 }}
-            className="relative z-10 pr-6 md:pr-14 xl:pr-28
-            pl-6 md:pl-14 2xl:pl-60 3xl:pl-80 4xl:pl-120 5xl:pl-160
-            6xl:pl-180 7xl:pl-220 8xl:pl-240 9xl:pl-260 10xl:pl-280
-            11xl:pl-300 12xl:pl-320 13xl:pl-340 14xl:pl-360 15xl:pl-400
-            py-6 sm:py-10 lg:py-20 text-white flex flex-col items-center
+            className="relative z-10 
+             pr-6 md:pr-10 2xl:pr-24 
+
+             pl-6 md:pl-10 2xl:pl-24 3xl:pl-32
+4xl:pl-60 5xl:pl-80 6xl:pl-180
+  7xl:pl-220 8xl:pl-240 9xl:pl-260
+  10xl:pl-280 11xl:pl-300 12xl:pl-320
+  13xl:pl-340 14xl:pl-360 15xl:pl-400
+
+            py-6 sm:py-10 lg:py-20
+            
+            text-white flex flex-col items-center
             text-center justify-center min-h-screen lg:items-start lg:text-left"
           >
             <div className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-anton uppercase leading-snug">
