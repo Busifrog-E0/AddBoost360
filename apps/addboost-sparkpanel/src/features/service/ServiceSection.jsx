@@ -129,7 +129,7 @@ const ServiceSection = () => {
                               <img
                                 src={service.ImageUrl[0]}
                                 alt={service.Title}
-                                className="w-20 h-12 rounded-full object-cover border border-gray-200"
+                                className="w-20 aspect-video rounded-md object-cover border border-gray-200"
                               />
                             </div>
                             <div className="min-w-0 flex-1">

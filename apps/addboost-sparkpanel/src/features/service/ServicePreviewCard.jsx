@@ -25,10 +25,10 @@ const ServicePreviewCard = ({ service }) => {
           <img
             src={ImageUrl[0]}
             alt="Service"
-            className="w-full h-48 object-cover rounded-md"
+            className="w-full aspect-video object-cover rounded-md"
           />
         ) : (
-          <div className="w-full h-48 bg-gray-200 rounded-md flex items-center justify-center text-gray-500 text-sm">
+          <div className="w-full aspect-video bg-gray-200 rounded-md flex items-center justify-center text-gray-500 text-sm">
             {"Service Image"}
           </div>
         )}
