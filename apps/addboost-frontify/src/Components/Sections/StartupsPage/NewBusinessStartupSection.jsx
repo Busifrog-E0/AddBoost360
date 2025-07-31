@@ -6,7 +6,7 @@ const container = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.8,
+      staggerChildren: 0.6,
     },
   },
 };
@@ -28,7 +28,7 @@ const chipAnim = {
   show: {
     scale: 1,
     transition: {
-      duration: 0.8,
+      duration: 0.6,
       ease: "backOut",
     },
   },

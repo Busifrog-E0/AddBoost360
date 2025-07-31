@@ -1,11 +1,33 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import StartupCard from "./StartupCard";
-
 import Arrowforward from "../../../../assets/arrowforwardwhite.svg";
 import Arrowbackward from "../../../../assets/Arrowbackwardwhite.svg";
 import Button from "../../../Button";
 import { useNavigate } from "react-router";
 import SlideIndicators from "../../HomePage/Elements/SlideIndicators";
+
+const containerVariant = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariant = {
+  hidden: { opacity: 0, x: -100 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 12,
+    },
+  },
+};
 
 const StartupsListView = ({
   isSlideIndicatorsEnabled = false,
@@ -51,55 +73,31 @@ const StartupsListView = ({
     return -(currentSlide * itemWidth);
   };
 
-  // SWIPE + DRAG support
+  // Swipe + drag
   const handleSwipe = () => {
     if (startX === null || endX === null) return;
-
     const distance = startX - endX;
     const threshold = 50;
-
-    if (distance > threshold && currentSlide < maxSlide) {
-      handleNext();
-    } else if (distance < -threshold && currentSlide > 0) {
-      handlePrevious();
-    }
-
+    if (distance > threshold && currentSlide < maxSlide) handleNext();
+    else if (distance < -threshold && currentSlide > 0) handlePrevious();
     setStartX(null);
     setEndX(null);
     setIsDragging(false);
   };
 
-  // Touch Handlers
-  const handleTouchStart = (e) => {
-    setStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    setEndX(e.touches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    handleSwipe();
-  };
-
-  // Mouse Handlers
+  const handleTouchStart = (e) => setStartX(e.touches[0].clientX);
+  const handleTouchMove = (e) => setEndX(e.touches[0].clientX);
+  const handleTouchEnd = () => handleSwipe();
   const handleMouseDown = (e) => {
     setStartX(e.clientX);
     setIsDragging(true);
   };
-
   const handleMouseMove = (e) => {
     if (!isDragging) return;
     setEndX(e.clientX);
   };
-
-  const handleMouseUp = () => {
-    if (isDragging) handleSwipe();
-  };
-
-  const handleMouseLeave = () => {
-    if (isDragging) handleSwipe();
-  };
+  const handleMouseUp = () => isDragging && handleSwipe();
+  const handleMouseLeave = () => isDragging && handleSwipe();
 
   const totalSlides = maxSlide + 1;
 
@@ -146,7 +144,7 @@ const StartupsListView = ({
       </div>
 
       {/* Carousel */}
-      <div
+      <motion.div
         className="relative overflow-hidden rounded-none mt-14"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
@@ -155,8 +153,12 @@ const StartupsListView = ({
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseLeave}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariant}
       >
-        <div
+        <motion.div
           className="flex transition-transform duration-500 gap-4 ease-in-out"
           style={{
             transform: `translateX(${getTransformValue()}%)`,
@@ -164,16 +166,18 @@ const StartupsListView = ({
           }}
         >
           {startups.slice(0, 6).map((startup) => (
-            <div
+            <motion.div
               key={startup.DocId}
-              className="flex-shrink-0 w-full sm:w-1/2 "
+              className="flex-shrink-0 w-full sm:w-1/2"
               style={{ maxWidth: `calc(${100 / itemsPerView}% - 1rem)` }}
+              variants={cardVariant}
             >
               <StartupCard startup={startup} />
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
+
       {/* Indicators */}
       {isSlideIndicatorsEnabled && totalSlides > 1 && (
         <div className="mt-12 gap-2">
@@ -184,6 +188,7 @@ const StartupsListView = ({
           />
         </div>
       )}
+
       {showAllStartupsButton && (
         <div className="flex items-end justify-center mt-8">
           <Button
