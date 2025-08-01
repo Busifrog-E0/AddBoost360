@@ -24,7 +24,7 @@ const bounceRight = {
       type: "spring",
       stiffness: 80,
       damping: 15,
-      delay: 1.6,
+      delay: 0.8,
     },
   },
 };
