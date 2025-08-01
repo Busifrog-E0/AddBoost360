@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../../Button";
 import usePostData from "../../../hooks/api/usePostData";
+import { useParams } from "react-router";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -25,8 +26,12 @@ const popupVariants = {
 };
 
 const Formsection = () => {
+
+  const { type } = useParams();
+
+
   const initialValue = {
-    FocusArea: "",
+    FocusArea: type ? type : "",
     FullName: "",
     Email: "",
     Phone: "",
@@ -149,11 +154,10 @@ const Formsection = () => {
             name="FocusArea"
             value={formData.FocusArea}
             onChange={handleChange}
-            className={`appearance-none p-4 bg-transparent border rounded-md w-full text-white placeholder-white/40 outline-none transition-all duration-300 ${
-              errors.FocusArea
-                ? "border-red-500 bg-red-50 text-white"
-                : "border-white/20 focus:border-white/30"
-            }`}
+            className={`appearance-none p-4 bg-transparent border rounded-md w-full text-white placeholder-white/40 outline-none transition-all duration-300 ${errors.FocusArea
+              ? "border-red-500 bg-red-50 text-white"
+              : "border-white/20 focus:border-white/30"
+              }`}
           >
             <option value="" className="text-black">
               -- Select an option --
@@ -186,11 +190,10 @@ const Formsection = () => {
             onChange={handleChange}
             type="text"
             placeholder="Enter your full name"
-            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 ${
-              errors.FullName
-                ? "border-red-500 bg-red-50 text-white"
-                : "border-white/20 focus:border-white/30 text-white"
-            }`}
+            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 ${errors.FullName
+              ? "border-red-500 bg-red-50 text-white"
+              : "border-white/20 focus:border-white/30 text-white"
+              }`}
           />
           {errors.FullName && (
             <span className="text-sm text-red-500 mt-1">{errors.FullName}</span>
@@ -212,11 +215,10 @@ const Formsection = () => {
             onChange={handleChange}
             type="email"
             placeholder="Enter your email address"
-            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 ${
-              errors.Email
-                ? "border-red-500 bg-red-50 text-white"
-                : "border-white/20 focus:border-white/30 text-white"
-            }`}
+            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 ${errors.Email
+              ? "border-red-500 bg-red-50 text-white"
+              : "border-white/20 focus:border-white/30 text-white"
+              }`}
           />
           {errors.Email && (
             <span className="text-sm text-red-500 mt-1">{errors.Email}</span>
@@ -234,11 +236,10 @@ const Formsection = () => {
             onChange={handleChange}
             type="tel"
             placeholder="Enter your phone number"
-            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 ${
-              errors.Phone
-                ? "border-red-500 bg-red-50 text-white"
-                : "border-white/20 focus:border-white/30 text-white"
-            }`}
+            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 ${errors.Phone
+              ? "border-red-500 bg-red-50 text-white"
+              : "border-white/20 focus:border-white/30 text-white"
+              }`}
           />
           {errors.Phone && (
             <span className="text-sm text-red-500 mt-1">{errors.Phone}</span>
