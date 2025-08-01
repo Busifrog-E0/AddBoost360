@@ -76,7 +76,7 @@ const WhySectionView = ({
 
       {/* Card List */}
       <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-14"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-14 "
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}

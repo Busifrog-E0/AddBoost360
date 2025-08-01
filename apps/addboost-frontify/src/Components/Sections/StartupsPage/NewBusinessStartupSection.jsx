@@ -133,7 +133,7 @@ const NewBusinessStartupSection = () => {
             <h3 className="text-lg uppercase font-anton text-white">
               {card.title}
             </h3>
-            <p className="text-sm text-gray-400 mt-1 font-inter">
+            <p className="text-sm text-gray-400 mt-1 font-inter text-justify">
               {card.description}
             </p>
           </motion.div>

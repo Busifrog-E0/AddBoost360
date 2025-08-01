@@ -63,8 +63,9 @@ const ServiceCard = ({ service, index }) => {
             <img
               src={service.ImageUrl[currentImageIndex]}
               alt={service.title}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isFading ? "opacity-0" : "opacity-100"
-                }`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                isFading ? "opacity-0" : "opacity-100"
+              }`}
             />
           )}
 
@@ -97,7 +98,7 @@ const ServiceCard = ({ service, index }) => {
           </motion.h3>
 
           <motion.p
-            className="font-inter text-sm lg:text-base text-white leading-relaxed m-0"
+            className="font-inter text-sm lg:text-base text-white leading-relaxed m-0 text-justify"
             variants={childZoom}
             transition={{ duration: 0.5 }}
           >

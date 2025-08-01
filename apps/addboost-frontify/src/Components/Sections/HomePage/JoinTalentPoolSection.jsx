@@ -146,7 +146,7 @@ py-10 md:py-14 lg:py-20
           >
             JOIN OUR GLOBAL TALENT Pool
           </motion.h3>
-          <p className="mt-2 text-sm leading-loose font-inter text-white">
+          <p className="mt-2 text-sm leading-loose font-inter text-white text-justify">
             We recruit only the best. Whether you're a seasoned expert or a
             passionate intern, ADD BOOST 360 offers flexible, remote freelance
             opportunities in digital design, marketing, development, and more.

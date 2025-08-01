@@ -126,7 +126,7 @@ py-10 md:py-14 lg:py-20
             <h3 className="font-anton text-base md:text-lg text-white ">
               Turn Your Business Idea into a Global Brand
             </h3>
-            <p className="font-inter text-sm text-gray-400 mt-3 leading-relaxed">
+            <p className="font-inter text-sm text-gray-400 mt-3 leading-relaxed text-justify">
               We guide you from concept to launch with full-spectrum startup
               solutions, combining digital strategy, product sourcing, and
               growth services.

@@ -48,7 +48,7 @@ const ServiceCard = ({
 
       <motion.p
         variants={lineVariants}
-        className="font-inter text-base 2xl:text-lg text-gray-200"
+        className="font-inter text-base 2xl:text-lg text-gray-200 text-justify"
       >
         {service.Description2}
       </motion.p>

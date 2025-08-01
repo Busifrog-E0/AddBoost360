@@ -39,18 +39,13 @@ const ServiceHeroSection = () => {
   };
 
   return (
-
-
     <>
-
-
       <div>
         <div className="bg-PrimaryDarkBlue grid grid-cols-1 lg:grid-cols-2 h-[100svh] relative">
           {/* Top Gradient to show Header clearly */}
           <div className="absolute top-0 left-0 w-full h-60 z-10 bg-gradient-to-b from-black/80 via-black/10 to-transparent pointer-events-none" />
           {/* Text Section */}
           <div className="">
-
             {/* Background image only on mobile */}
             <div
               className="absolute inset-0 lg:hidden bg-cover bg-center z-0"
@@ -84,11 +79,12 @@ const ServiceHeroSection = () => {
               </div>
 
               {/* Description - Line by line animation */}
-              <div className="text-base md:text-lg font-inter mt-8 space-y-2">
+              <div className="text-base md:text-lg font-inter mt-8 space-y-2 text-justify">
                 <motion.p variants={line}>
-                  At ADD BOOST 360 LIMITED, we provide end-to-end digital solutions—
-                  from marketing and web development to product sourcing and startup
-                  support—to drive global growth and impact.
+                  At ADD BOOST 360 LIMITED, we provide end-to-end digital
+                  solutions— from marketing and web development to product
+                  sourcing and startup support—to drive global growth and
+                  impact.
                 </motion.p>
               </div>
             </motion.div>
@@ -130,7 +126,6 @@ const ServiceHeroSection = () => {
         </div>
       </div>
 
-
       {/* 
 
 
@@ -139,7 +134,6 @@ const ServiceHeroSection = () => {
 
         <ScrollToBottom />
       </div> */}
-
     </>
   );
 };

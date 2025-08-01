@@ -95,7 +95,7 @@ py-10 md:py-14 lg:py-20
           <div className="flex flex-col p-5 sm:p-8 md:p-2 gap-6">
             {/* Heading & Paragraph */}
             <div>
-              <p className="font-inter text-lg md:text-xl text-gray-400  leading-relaxed">
+              <p className="font-inter text-lg md:text-xl text-gray-400  leading-relaxed text-justify">
                 Easily connect with verified wholesale suppliers through our
                 secure global sourcing platform.
               </p>

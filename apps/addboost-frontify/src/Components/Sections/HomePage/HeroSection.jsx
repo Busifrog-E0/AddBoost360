@@ -113,13 +113,16 @@ const HeroSection = () => {
           </motion.div>
 
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-anton uppercase"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-anton uppercase "
             variants={popIn}
           >
             {homePageData.title}
           </motion.h1>
 
-          <motion.p className="text-lg font-inter" variants={blurFade}>
+          <motion.p
+            className="text-lg font-inter text-justify"
+            variants={blurFade}
+          >
             {homePageData.description}
           </motion.p>
 

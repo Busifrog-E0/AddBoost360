@@ -96,7 +96,7 @@ py-10 md:py-14 lg:py-20
         </motion.h2>
 
         <motion.p
-          className="font-inter text-base 2xl:text-lg text-PrimaryWhite"
+          className="font-inter text-base 2xl:text-lg text-PrimaryWhite text-justify"
           variants={blurFade}
         >
           A London-based agency offering global solutions in branding, web

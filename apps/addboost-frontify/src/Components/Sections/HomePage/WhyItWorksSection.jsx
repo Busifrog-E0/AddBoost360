@@ -178,7 +178,7 @@ py-10 md:py-14 lg:py-20
                 <p className="capitalize font-anton text-lg sm:text-2xl mt-1 text-PrimaryWhite">
                   {point.title}
                 </p>
-                <p className="font-inter text-xs sm:text-sm mt-1 text-white md:pr-0 lg:pr-36 ">
+                <p className="font-inter text-xs sm:text-sm mt-1 text-white md:pr-0 lg:pr-36 text-justify ">
                   {point.description}
                 </p>
               </motion.div>

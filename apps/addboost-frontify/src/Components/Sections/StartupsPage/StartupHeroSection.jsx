@@ -99,7 +99,7 @@ const StartupHeroSection = () => {
               </motion.p>
               <motion.p
                 variants={line}
-                className="mb-5 font-inter text-xs md:text-lg"
+                className="mb-5 font-inter text-xs md:text-lg text-justify"
               >
                 Based in London and serving clients globally, ADD BOOST 360
                 LIMITED helps launch and grow brands from the ground up. Whether
@@ -109,7 +109,7 @@ const StartupHeroSection = () => {
               </motion.p>
               <motion.p
                 variants={line}
-                className="font-inter text-xs md:text-lg"
+                className="font-inter text-xs md:text-lg text-justify"
               >
                 Our unique blend of marketing expertise, secure escrow model,
                 and trusted international network ensures you have the tools,

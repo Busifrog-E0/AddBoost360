@@ -26,7 +26,7 @@ const WhyCard = ({ item }) => {
       <h3 className="font-anton text-lg lg:text-xl text-PrimaryWhite">
         {item.title}
       </h3>
-      <p className="mt-2 font-inter text-sm text-white leading-relaxed">
+      <p className="mt-2 font-inter text-sm text-white leading-relaxed ">
         {item.description}
       </p>
     </motion.div>

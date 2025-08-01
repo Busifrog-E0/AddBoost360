@@ -35,7 +35,6 @@ const line = {
   },
 };
 
-
 const InHouseHeroSection = () => {
   return (
     <div className="bg-PrimaryDarkBlue grid grid-cols-1 lg:grid-cols-2 h-[100svh] relative items-center">
@@ -71,29 +70,27 @@ const InHouseHeroSection = () => {
             text-center justify-center min-h-screen lg:items-start lg:text-left"
         >
           <div className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-anton uppercase leading-snug">
-            <motion.p variants={line}>
-              Talent Pool
-            </motion.p>
+            <motion.p variants={line}>Talent Pool</motion.p>
           </div>
           <div className="text-base md:text-lg font-inter mt-8">
             <motion.p
               variants={line}
-              className="mb-5 font-inter text-xs md:text-lg"
+              className="mb-5 font-inter text-xs md:text-lg text-justify"
             >
-              At ADD BOOST 360 LIMITED, we believe talent knows no borders. Whether
-              you're a designer in France, a marketer in the Philippines, or a coder
-              in India, our Talent Pool Program offers a global platform to grow,
-              create, and collaborate with a multicultural team that values
-              creativity and innovation.
+              At ADD BOOST 360 LIMITED, we believe talent knows no borders.
+              Whether you're a designer in France, a marketer in the
+              Philippines, or a coder in India, our Talent Pool Program offers a
+              global platform to grow, create, and collaborate with a
+              multicultural team that values creativity and innovation.
             </motion.p>
             <motion.p
               variants={line}
-              className="font-inter text-xs md:text-lg"
+              className="font-inter text-xs md:text-lg text-justify"
             >
               This isn't just remote work—it's a career launchpad. Through real
               projects, expert mentorship, and global exposure, freelancers gain
-              purpose, visibility, and control over their growth. Join us and let
-              your skills shape the future of business worldwide.
+              purpose, visibility, and control over their growth. Join us and
+              let your skills shape the future of business worldwide.
             </motion.p>
           </div>
         </motion.div>
@@ -116,11 +113,9 @@ const InHouseHeroSection = () => {
         />
       </motion.div>
 
-
       {/* ScrollToBottom */}
       <ScrollToBottom backgroundClassName="lg:bg-PrimaryDarkBlue/70" />
     </div>
-
   );
 };
 
