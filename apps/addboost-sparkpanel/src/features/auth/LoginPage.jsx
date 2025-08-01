@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Eye, EyeOff, Lock, User, Home } from "lucide-react";
 import useLogin from "./hooks/useLogin";
 import ADDBOOSTlogoOrg from '../../assets/ADDBOOSTlogoOrg.png'
+import VersionDisplay from "../../components/ui/VersionDisplay";
 const LoginPage = ({ onLogin }) => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -134,7 +135,7 @@ const LoginPage = ({ onLogin }) => {
           </button>
         </form>
       </div>
-      <p className="text-xs text-gray-600 text-center font-mono">1.0.0</p>
+      <VersionDisplay />
 
     </div>
   );
