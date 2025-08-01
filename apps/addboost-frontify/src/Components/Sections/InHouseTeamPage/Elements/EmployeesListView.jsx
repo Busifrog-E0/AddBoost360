@@ -3,7 +3,7 @@ import EmployeeCard from "./EmployeeCard";
 import { motion } from "framer-motion";
 
 import Arrowforward from "../../../../assets/arrowforwardwhite.svg";
-import Arrowbackward from "../../../../assets/arrowbackwardwhite.svg";
+import Arrowbackward from "../../../../assets/Arrowbackwardwhite.svg";
 
 import Button from "../../../Button";
 import { useNavigate } from "react-router";
@@ -143,11 +143,10 @@ const EmployeesListView = ({
           <button
             onClick={handlePrevious}
             disabled={currentSlide === 0}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
-              currentSlide === 0
-                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
-            }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === 0
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
+              }`}
           >
             <img
               src={Arrowbackward}
@@ -159,11 +158,10 @@ const EmployeesListView = ({
           <button
             onClick={handleNext}
             disabled={currentSlide === maxSlide}
-            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${
-              currentSlide === maxSlide
-                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
-            }`}
+            className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === maxSlide
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-white/10 hover:text-white transform hover:scale-110 flex-shrink-0"
+              }`}
           >
             <img
               src={Arrowforward}
