@@ -13,7 +13,7 @@
 #     runs-on: ubuntu-latest
 #     steps:
 #       - uses: actions/checkout@v4
-#       - run:  cd apps && cd addboost-frontify && npm ci && npm run build
+#       - run:  cd apps && cd addboost-frontify && pnpm ci && pnpm run build
 #       - uses: FirebaseExtended/action-hosting-deploy@v0
 #         with:
 #           repoToken: ${{ secrets.GITHUB_TOKEN }}
