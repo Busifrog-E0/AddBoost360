@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import FillArrow from "../../../assets/FillArrow.png";
 import Button from "../../Button";
 import StartupHeroImg from "../../../assets/StartupHeroImg.png";
+import { useNavigate } from "react-router";
 
 const GlobalWholesale = () => {
+  const navigate = useNavigate();
   const staggerContainer = {
     hidden: {},
     show: {
