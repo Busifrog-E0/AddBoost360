@@ -7,6 +7,7 @@ import JoinTalentPoolSection from "../Sections/HomePage/JoinTalentPoolSection";
 import WhyItWorksSection from "../Sections/HomePage/WhyItWorksSection";
 import TrustedCompaniesSection from "../Sections/HomePage/TrustedCompaniesSection";
 import SuccessStoriesSection from "../Sections/HomePage/SuccessStoriesSection";
+import Footer from "../Footer";
 import LoaderSection from "../Sections/Loader/LoeaderSection";
 
 const HomePage = () => {
@@ -21,6 +22,8 @@ const HomePage = () => {
       <JoinTalentPoolSection />
       <TrustedCompaniesSection />
       <SuccessStoriesSection />
+      <Footer />
+
       {/* <Subscribe /> */}
     </div>
   );
