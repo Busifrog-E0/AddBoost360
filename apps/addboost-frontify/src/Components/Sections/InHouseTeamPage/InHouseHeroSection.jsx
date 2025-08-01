@@ -47,8 +47,8 @@ const InHouseHeroSection = () => {
         <div
           className="absolute inset-0 lg:hidden bg-cover bg-center z-0 w-full h-[100svh] overflow-hidden"
           style={{
-            backgroundImage: `url(${InHouseHeroImage})`
-            // opacity: 0.2,
+            backgroundImage: `url(${InHouseHeroImage})`,
+            opacity: 0.2,
           }}
         ></div>
 
