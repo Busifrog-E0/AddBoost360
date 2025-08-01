@@ -37,7 +37,7 @@ py-10 md:py-14 lg:py-20
     >
       <img src={ADDBOOSTlogo} alt="Logo" className="w-32 object-contain" />
       <h1 className="font-anton text-white uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 ">
-        OUR REGISTRARED Global Sourcing Partners
+        OUR REGISTERED Global Sourcing Partners
       </h1>
       <p className="text-sm font-inter text-gray-400 mt-2">
         Our Guarantee: You stay protected—both financially and
