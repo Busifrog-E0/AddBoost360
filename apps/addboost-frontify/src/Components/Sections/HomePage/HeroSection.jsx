@@ -5,6 +5,16 @@ import { motion } from "framer-motion";
 import ScrollToBottom from "../../ScrollToBottom";
 import Ukflag from "../../../assets/Ukflag.png";
 
+// Animation Variants
+const containerStagger = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
 const popIn = {
   hidden: { opacity: 0, scale: 0.8 },
   show: {
@@ -16,6 +26,7 @@ const popIn = {
     },
   },
 };
+
 const blurFade = {
   hidden: { opacity: 0, filter: "blur(10px)" },
   show: {
@@ -42,7 +53,7 @@ const bounceRight = {
 };
 
 const HeroSection = () => {
-  const [homePageData, setHomePageData] = useState({
+  const [homePageData] = useState({
     title: "Digital Solutions That Empower Your Brand.",
     description:
       "Transform your brand with full-service digital marketing, AI-powered web solutions, global product sourcing, and startup empowerment—powered by experts across the world.",
@@ -56,7 +67,7 @@ const HeroSection = () => {
 
   return (
     <div className="relative w-full h-[100svh] overflow-hidden">
-      {/* Top Gradient to show Header clearly */}
+      {/* Top Gradient */}
       <div className="absolute top-0 left-0 w-full h-60 z-10 bg-gradient-to-b from-black/50 via-black/10 to-transparent pointer-events-none" />
 
       {/* Background Video */}
@@ -76,62 +87,51 @@ const HeroSection = () => {
       <div
         className="relative z-10 w-full h-full grid xl:grid-cols-2 items-center 
         px-6 md:px-10 2xl:px-24 3xl:px-32
-4xl:px-60 5xl:px-80 6xl:px-180
-  7xl:px-220 8xl:px-240 9xl:px-260
-  10xl:px-280 11xl:px-300 12xl:px-320
-  13xl:px-340 14xl:px-360 15xl:px-400
-
-py-10 md:py-14 lg:py-20
-4xl:py-24 5xl:py-28 6xl:py-32 7xl:py-36
-8xl:py-40 9xl:py-44 10xl:py-48
-11xl:py-52 12xl:py-56 13xl:py-60
-14xl:py-64 15xl:py-72"
+        4xl:px-60 5xl:px-80 6xl:px-180
+        7xl:px-220 8xl:px-240 9xl:px-260
+        10xl:px-280 11xl:px-300 12xl:px-320
+        13xl:px-340 14xl:px-360 15xl:px-400
+        py-10 md:py-14 lg:py-20
+        4xl:py-24 5xl:py-28 6xl:py-32 7xl:py-36
+        8xl:py-40 9xl:py-44 10xl:py-48
+        11xl:py-52 12xl:py-56 13xl:py-60
+        14xl:py-64 15xl:py-72"
       >
-        <div className="flex flex-col gap-8 text-white overflow-hidden">
-          {/* Animated Title */}
-          <img
-            src={Ukflag}
-            alt="black"
-            className="w-10  "
-          />
+        {/* Animated Text Content */}
+        <motion.div
+          className="flex flex-col gap-8 text-white overflow-hidden"
+          variants={containerStagger}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div
+            variants={bounceRight}
+            className="flex items-center space-x-2"
+          >
+            <img src={Ukflag} alt="UK flag" className="w-16" />
+          </motion.div>
+
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-anton uppercase"
             variants={popIn}
-            initial="hidden"
-            animate="show"
-            custom={0}
           >
             {homePageData.title}
           </motion.h1>
 
-          {/* Animated Description */}
-          <motion.p
-            className="text-lg font-inter"
-            variants={blurFade}
-            initial="hidden"
-            animate="show"
-            custom={1}
-          >
+          <motion.p className="text-lg font-inter" variants={blurFade}>
             {homePageData.description}
           </motion.p>
 
-          {/* Animated Button */}
-          <motion.div
-            variants={bounceRight}
-            initial="hidden"
-            animate="show"
-            custom={2}
-            className="flex"
-          >
+          <motion.div variants={bounceRight} className="flex">
             <Button
               onClick={() => navigate(homePageData.buttonLink)}
               text={homePageData.buttonText}
             />
           </motion.div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* ScrollToBottom */}
+      {/* Scroll Icon */}
       <ScrollToBottom />
     </div>
   );
