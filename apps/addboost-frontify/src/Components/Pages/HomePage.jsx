@@ -22,7 +22,6 @@ const HomePage = () => {
       <JoinTalentPoolSection />
       <TrustedCompaniesSection />
       <SuccessStoriesSection />
-
       {/* <Subscribe /> */}
     </div>
   );
