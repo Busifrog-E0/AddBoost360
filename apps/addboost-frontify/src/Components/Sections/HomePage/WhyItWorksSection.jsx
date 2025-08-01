@@ -9,6 +9,8 @@ import WhyItWorks3 from "../../../assets/WhyItWorkSectionIcon/WhyItWorks3.png";
 import WhyItWorks4 from "../../../assets/WhyItWorkSectionIcon/WhyItWorks4.png";
 import WhyItWorksHome from "../../../assets/WhyItWorkSectionIcon/WhyItWorksHome.jpg";
 
+
+
 const WhyItWorksSection = () => {
   const navigate = useNavigate();
 
@@ -101,7 +103,7 @@ py-10 md:py-14 lg:py-20
         {steps.map((step, index) => (
           <motion.div
             key={index}
-            className="relative flex flex-col justify-between items-center h-full"
+            className="relative flex flex-col justify-between items-center h-full py-6 px-6 md:px-10 rounded-lg bg-black/20 border border-black/20"
             initial={{ scale: 0.5, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{
@@ -122,7 +124,7 @@ py-10 md:py-14 lg:py-20
               </p>
             </div>
             <div className="relative mt-6">
-              <div className="w-9 h-9 rounded-full bg-[#0000001A]/20 shadow-md flex items-center justify-center text-white font-inter text-sm z-10">
+              <div className="w-9 h-9 rounded-full bg-white/10 shadow-md flex items-center justify-center text-white font-inter text-sm z-10">
                 {index + 1}
               </div>
               {index !== 3 && (
@@ -160,6 +162,7 @@ py-10 md:py-14 lg:py-20
 
           <div className="flex flex-col gap-6 mt-6 sm:mt-8 p-2 md:p-4 lg:p-6">
             {processes.map((point, index) => (
+
               <motion.div
                 key={index}
                 className="flex flex-col"
@@ -172,6 +175,7 @@ py-10 md:py-14 lg:py-20
                 }}
                 viewport={{ once: true }}
               >
+
                 <span className="text-xl font-arya text-white">
                   {point.number}
                 </span>

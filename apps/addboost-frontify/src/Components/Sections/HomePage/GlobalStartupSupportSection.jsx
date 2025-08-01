@@ -4,6 +4,12 @@ import branding from '../../../assets/GlobalStartupSupportSection/branding.webp'
 import escrow from '../../../assets/GlobalStartupSupportSection/escrow.webp'
 import month from '../../../assets/GlobalStartupSupportSection/month.webp'
 import wholesale from '../../../assets/GlobalStartupSupportSection/wholesale.jpeg'
+import branding1 from '../../../assets/GlobalStartupSupportSection/branding1.webp'
+import branding2 from '../../../assets/GlobalStartupSupportSection/branding2.webp'
+import escrow1 from '../../../assets/GlobalStartupSupportSection/escrow1.webp'
+import month1 from '../../../assets/GlobalStartupSupportSection/month1.webp'
+import wholesale1 from '../../../assets/GlobalStartupSupportSection/wholesale1.webp'
+import escrow2 from '../../../assets/GlobalStartupSupportSection/escrow2.webp'
 
 const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
   const services = [
@@ -12,7 +18,8 @@ const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
       Title: "Wholesale Product Sourcing",
       Description2: "Verified suppliers from China, India, UAE & more",
       ImageUrl: [
-        wholesale
+        wholesale,
+        wholesale1
       ],
     },
     {
@@ -20,7 +27,9 @@ const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
       Title: "Escrow Payment Protection",
       Description2: "Funds held safely until product delivery",
       ImageUrl: [
-        escrow
+        escrow,
+        escrow1,
+        escrow2,
       ],
     },
     {
@@ -28,7 +37,9 @@ const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
       Title: "Shop Setup & Branding",
       Description2: "Full setup for physical or online stores",
       ImageUrl: [
-        branding
+        branding,
+        branding1,
+        branding2,
       ],
     },
     {
@@ -36,7 +47,8 @@ const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
       Title: "1-Month Free Marketing",
       Description2: "Included in our launch packages",
       ImageUrl: [
-        month
+        month,
+        month1,
       ],
     },
   ];
