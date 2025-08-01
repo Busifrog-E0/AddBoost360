@@ -59,7 +59,7 @@ const ServicesListView = ({
     if (!userInteracted) {
       autoScrollIntervalRef.current = setInterval(() => {
         setCurrentSlide((prev) => (prev < maxSlide ? prev + 1 : 0));
-      }, 3000);
+      }, 6000);
     }
 
     return () => {
