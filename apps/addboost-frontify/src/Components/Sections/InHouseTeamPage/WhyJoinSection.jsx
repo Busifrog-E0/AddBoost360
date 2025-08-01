@@ -1,9 +1,9 @@
-import creative1 from "../../../assets/WhyJoinSectionIcon/creative1.png";
-import creative2 from "../../../assets/WhyJoinSectionIcon/creative2.png";
+import creative1 from "../../../assets/WhyJoinSectionIcon/Creative1.png";
+import creative2 from "../../../assets/WhyJoinSectionIcon/Creative2.png";
 import creative3 from "../../../assets/WhyJoinSectionIcon/Creative3.png";
-import creative4 from "../../../assets/WhyJoinSectionIcon/creative4.png";
-import creative5 from "../../../assets/WhyJoinSectionIcon/creative5.png";
-import creative6 from "../../../assets/WhyJoinSectionIcon/creative6.png";
+import creative4 from "../../../assets/WhyJoinSectionIcon/Creative4.png";
+import creative5 from "../../../assets/WhyJoinSectionIcon/Creative5.png";
+import creative6 from "../../../assets/WhyJoinSectionIcon/Creative6.png";
 import { useState } from "react";
 import WhySectionView from "../HomePage/Elements/WhySectionView";
 

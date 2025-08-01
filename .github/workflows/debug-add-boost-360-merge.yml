@@ -5,7 +5,7 @@ name: Deploy to Firebase Hosting on merge
 on:
   push:
     branches:
-      - ProductionFrontend
+      - DebugFrontend
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -19,7 +19,7 @@ jobs:
         run: pnpm install
 
       - name: Build app
-        working-directory: apps/addboost-sparkpanel
+        working-directory: apps/addboost-frontify
         run: pnpm run build
      
       - uses: FirebaseExtended/action-hosting-deploy@v0
@@ -28,4 +28,4 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ADD_BOOST_360 }}
           channelId: live
           projectId: add-boost-360
-          entryPoint: apps/addboost-sparkpanel
+          entryPoint: apps/addboost-frontify
