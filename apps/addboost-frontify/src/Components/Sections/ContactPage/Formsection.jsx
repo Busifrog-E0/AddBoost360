@@ -71,7 +71,10 @@ const Formsection = () => {
 
     if (!formData.FocusArea.trim())
       newErrors.FocusArea = "Please select a focus Focus Area";
-    if (!formData.FullName.trim()) newErrors.FullName = "Name is required";
+    if (!formData.FullName.trim()) {
+      newErrors.FullName = "Button text is required";
+      isValid = false;
+    }
     if (!formData.Email.trim()) newErrors.Email = "Email is required";
     if (!formData.Phone.trim()) newErrors.Phone = "Phone Number is required";
 
