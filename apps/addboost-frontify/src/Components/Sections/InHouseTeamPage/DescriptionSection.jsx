@@ -5,6 +5,20 @@ import { useNavigate } from "react-router";
 const DescriptionSection = () => {
   const navigate = useNavigate();
 
+  const bounceRight = {
+    hidden: { opacity: 0, x: 100 },
+    show: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 80,
+        damping: 15,
+        duration: 1,
+      },
+    },
+  };
+
   const fadeRotate = (index) => ({
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
@@ -152,7 +166,10 @@ const DescriptionSection = () => {
         </motion.div>
       </section>
 
-      <div className="flex items-end justify-center mt-14 gap-6">
+      <motion.div
+        className="flex items-end justify-center mt-14 gap-6 "
+        variants={bounceRight}
+      >
         <Button
           bgColor="bg-transparent"
           textColor="text-white"
@@ -160,7 +177,7 @@ const DescriptionSection = () => {
           iconColor="white"
           hoverBgColor="bg-gray-600"
           text="View OUR Policy"
-          onClick={() => window.open(privacyPDF, "_blank")}
+          // onClick={() => window.open(privacyPDF, "_blank")}
         />
         <Button
           bgColor="bg-white"
@@ -171,7 +188,7 @@ const DescriptionSection = () => {
           onClick={() => navigate("/contact/Become a Member")}
           text="Join our global team"
         />
-      </div>
+      </motion.div>
     </div>
   );
 };
