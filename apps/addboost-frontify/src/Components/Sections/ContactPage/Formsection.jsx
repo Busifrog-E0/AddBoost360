@@ -1,6 +1,28 @@
 import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Button from "../../Button";
 import usePostData from "../../../hooks/api/usePostData";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
+const popupVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+  exit: { opacity: 0, scale: 0.8, transition: { duration: 0.2 } },
+};
 
 const Formsection = () => {
   const initialValue = {
@@ -21,6 +43,7 @@ const Formsection = () => {
     "Training or Empowerment Program",
     "Something Else",
   ];
+
   const [formData, setFormData] = useState(initialValue);
   const { isLoading, postData } = usePostData({});
   const [errors, setErrors] = useState({});
@@ -33,7 +56,6 @@ const Formsection = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     const transformedValue =
       name === "PreferredDate" ? new Date(value).getTime() : value;
 
@@ -41,25 +63,9 @@ const Formsection = () => {
       ...prev,
       [name]: transformedValue,
     }));
-
-    // if (transformedValue.trim() !== "") {
-    //   setErrors((prev) => ({
-    //     ...prev,
-    //     [name]: "",
-    //   }));
-    // }
   };
 
   const handleSubmit = () => {
-    postData({
-      endpoint: "forms",
-      payload: formData,
-      onsuccess: (result) => {
-        setShowPopup(true);
-        setFormData(initialValue);
-      },
-    });
-
     const newErrors = {};
 
     if (!formData.FocusArea.trim())
@@ -79,7 +85,14 @@ const Formsection = () => {
       emailRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
 
     if (Object.keys(newErrors).length === 0) {
-      console.log("Form submitted:", formData);
+      postData({
+        endpoint: "forms",
+        payload: formData,
+        onsuccess: () => {
+          setShowPopup(true);
+          setFormData(initialValue);
+        },
+      });
     }
   };
 
@@ -92,7 +105,6 @@ const Formsection = () => {
     return local.toISOString().slice(0, 16);
   };
 
-  // ✅ Close popup when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -111,9 +123,18 @@ const Formsection = () => {
 
   return (
     <div className="relative">
-      <div className="flex flex-col gap-6 mt-10 text-white w-full max-w-xl">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="flex flex-col gap-6 mt-10 text-white w-full max-w-xl"
+      >
         {/* Focus Area */}
-        <div className="flex flex-col" ref={areaRef}>
+        <motion.div
+          className="flex flex-col"
+          ref={areaRef}
+          variants={itemVariants}
+        >
           <label className="text-sm mb-2">
             Choose Your Focus Area<span className="text-[#FF0004] ml-1">*</span>
           </label>
@@ -121,12 +142,11 @@ const Formsection = () => {
             name="FocusArea"
             value={formData.FocusArea}
             onChange={handleChange}
-            className={`appearance-none p-4 lg:px-5 bg-transparent border rounded-md w-full text-white placeholder-white/40 outline-none transition-all duration-300
-    ${
-      errors.FocusArea
-        ? "border-red-500 bg-red-50 text-white"
-        : "border-white/20 focus:border-white/30"
-    }`}
+            className={`appearance-none p-4 bg-transparent border rounded-md w-full text-white placeholder-white/40 outline-none transition-all duration-300 ${
+              errors.FocusArea
+                ? "border-red-500 bg-red-50 text-white"
+                : "border-white/20 focus:border-white/30"
+            }`}
           >
             <option value="" className="text-black">
               -- Select an option --
@@ -142,10 +162,14 @@ const Formsection = () => {
               {errors.FocusArea}
             </span>
           )}
-        </div>
+        </motion.div>
 
         {/* Full Name */}
-        <div className="flex flex-col" ref={nameRef}>
+        <motion.div
+          className="flex flex-col"
+          ref={nameRef}
+          variants={itemVariants}
+        >
           <label className="text-sm mb-2">
             Full Name<span className="ml-1 text-[#FF0004]">*</span>
           </label>
@@ -155,21 +179,23 @@ const Formsection = () => {
             onChange={handleChange}
             type="text"
             placeholder="Enter your full name"
-            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${
-      errors.FullName
-        ? "border-red-500 bg-red-50 text-white"
-        : "border-white/20 focus:border-white/30 text-white"
-    }`}
+            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 ${
+              errors.FullName
+                ? "border-red-500 bg-red-50 text-white"
+                : "border-white/20 focus:border-white/30 text-white"
+            }`}
           />
-
           {errors.FullName && (
             <span className="text-sm text-red-500 mt-1">{errors.FullName}</span>
           )}
-        </div>
+        </motion.div>
 
         {/* Email */}
-        <div className="flex flex-col" ref={emailRef}>
+        <motion.div
+          className="flex flex-col"
+          ref={emailRef}
+          variants={itemVariants}
+        >
           <label className="text-sm mb-2">
             Email Address<span className="ml-1 text-[#FF0004]">*</span>
           </label>
@@ -179,21 +205,19 @@ const Formsection = () => {
             onChange={handleChange}
             type="email"
             placeholder="Enter your email address"
-            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${
-      errors.Email
-        ? "border-red-500 bg-red-50 text-white"
-        : "border-white/20 focus:border-white/30 text-white"
-    }`}
+            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 ${
+              errors.Email
+                ? "border-red-500 bg-red-50 text-white"
+                : "border-white/20 focus:border-white/30 text-white"
+            }`}
           />
-
           {errors.Email && (
             <span className="text-sm text-red-500 mt-1">{errors.Email}</span>
           )}
-        </div>
+        </motion.div>
 
-        {/* Phone Number */}
-        <div className="flex flex-col">
+        {/* Phone */}
+        <motion.div className="flex flex-col" variants={itemVariants}>
           <label className="text-sm mb-2">
             Phone Number<span className="ml-1 text-[#FF0004]">*</span>
           </label>
@@ -203,20 +227,19 @@ const Formsection = () => {
             onChange={handleChange}
             type="tel"
             placeholder="Enter your phone number"
-            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${
-      errors.Phone
-        ? "border-red-500 bg-red-50 text-white"
-        : "border-white/20 focus:border-white/30 text-white"
-    }`}
+            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 ${
+              errors.Phone
+                ? "border-red-500 bg-red-50 text-white"
+                : "border-white/20 focus:border-white/30 text-white"
+            }`}
           />
           {errors.Phone && (
             <span className="text-sm text-red-500 mt-1">{errors.Phone}</span>
           )}
-        </div>
+        </motion.div>
 
-        {/* Startup Name */}
-        <div className="flex flex-col">
+        {/* Business Name */}
+        <motion.div className="flex flex-col" variants={itemVariants}>
           <label className="text-sm mb-2">
             Business / Startup Name (if any)
           </label>
@@ -226,17 +249,11 @@ const Formsection = () => {
             onChange={handleChange}
             type="text"
             placeholder="Enter your Business / Startup Name"
-            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${
-      errors.BusinessName
-        ? "border-red-500 bg-red-50 text-white"
-        : "border-white/20 focus:border-white/30 text-white"
-    }`}
+            className={`p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 border-white/20 focus:border-white/30 text-white`}
           />
-        </div>
+        </motion.div>
 
-        {/* Date & Time */}
-        <div className="flex flex-col">
+        <motion.div className="flex flex-col" variants={itemVariants}>
           <label className="text-sm mb-2">Preferred Date & Time</label>
           <div className="relative">
             <input
@@ -263,10 +280,10 @@ const Formsection = () => {
               </svg>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Comments */}
-        <div className="flex flex-col">
+        {/* Notes */}
+        <motion.div className="flex flex-col" variants={itemVariants}>
           <label className="text-sm mb-2">Additional Notes or Questions</label>
           <textarea
             name="Notes"
@@ -274,47 +291,49 @@ const Formsection = () => {
             onChange={handleChange}
             rows={4}
             placeholder="Enter your Notes"
-            className={`p-4 lg:px-5 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300
-    ${
-      errors.Notes
-        ? "border-red-500 bg-red-50 text-white"
-        : "border-white/20 focus:border-white/30 text-white"
-    }`}
+            className="p-4 bg-transparent border rounded-md w-full placeholder-white/40 outline-none transition-all duration-300 border-white/20 focus:border-white/30 text-white"
           />
-        </div>
+        </motion.div>
 
-        {/* Submit Button */}
-        <div className="mt-6 w-full">
+        {/* Submit */}
+        <motion.div className="mt-6 w-full" variants={itemVariants}>
           <Button onClick={handleSubmit} text="Submit" />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* ✅ Popup Modal */}
-      {showPopup && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
-          <div
-            ref={popupRef}
-            className="relative bg-white rounded-md shadow-xl p-6 md:p-8 w-full max-w-sm text-center animate-fade-in"
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center"
+            initial="hidden"
+            animate="show"
+            exit="exit"
+            variants={popupVariants}
           >
-            {/* Close Icon */}
-            <button
-              onClick={closePopup}
-              className="absolute top-3 right-3 text-gray-500 hover:text-black text-xl font-bold"
+            <motion.div
+              ref={popupRef}
+              className="relative bg-white rounded-md shadow-xl p-6 md:p-8 w-full max-w-sm text-center"
+              variants={popupVariants}
             >
-              &times;
-            </button>
-
-            <div className="text-4xl mb-4">✅</div>
-            <h2 className="text-xl mt-4 font-semibold text-gray-800 font-anton">
-              Thank you!
-            </h2>
-            <p className="text-sm text-gray-600 mt-4 font-inter">
-              Your submission has been received. Our team will get back to you
-              shortly.
-            </p>
-          </div>
-        </div>
-      )}
+              <button
+                onClick={closePopup}
+                className="absolute top-3 right-3 text-gray-500 hover:text-black text-xl font-bold"
+              >
+                &times;
+              </button>
+              <div className="text-4xl mb-4">✅</div>
+              <h2 className="text-xl mt-4 font-semibold text-gray-800 font-anton">
+                Thank you!
+              </h2>
+              <p className="text-sm text-gray-600 mt-4 font-inter">
+                Your submission has been received. Our team will get back to you
+                shortly.
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
