@@ -22,7 +22,7 @@ const LoginPage = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col gap-4 items-center justify-center px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-md p-8 space-y-8">
         {/* Logo & Title */}
         <div className=" flex  flex-col items-center ">
@@ -134,6 +134,8 @@ const LoginPage = ({ onLogin }) => {
           </button>
         </form>
       </div>
+      <p className="text-xs text-gray-600 text-center font-mono">1.0.0</p>
+
     </div>
   );
 };
