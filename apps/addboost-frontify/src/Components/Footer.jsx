@@ -183,7 +183,7 @@ py-10 md:py-14 lg:py-20
 
 
 
-          <p className="text-gray-500 font-inter text-xs">
+          <p className="text-gray-500 font-inter text-base">
             Want to stay updated with digital trends, offers and sourcing
             opportunities?{" "}
             <a
