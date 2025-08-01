@@ -1,5 +1,9 @@
 
 import ServicesListView from "./Elements/ServicesListView";
+import branding from '../../../assets/GlobalStartupSupportSection/branding.webp'
+import escrow from '../../../assets/GlobalStartupSupportSection/escrow.webp'
+import month from '../../../assets/GlobalStartupSupportSection/month.webp'
+import wholesale from '../../../assets/GlobalStartupSupportSection/wholesale.jpeg'
 
 const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
   const services = [
@@ -8,7 +12,7 @@ const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
       Title: "Wholesale Product Sourcing",
       Description2: "Verified suppliers from China, India, UAE & more",
       ImageUrl: [
-        "https://images.pexels.com/photos/5827062/pexels-photo-5827062.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+        wholesale
       ],
     },
     {
@@ -16,7 +20,7 @@ const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
       Title: "Escrow Payment Protection",
       Description2: "Funds held safely until product delivery",
       ImageUrl: [
-        "https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+        escrow
       ],
     },
     {
@@ -24,7 +28,7 @@ const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
       Title: "Shop Setup & Branding",
       Description2: "Full setup for physical or online stores",
       ImageUrl: [
-        "https://images.pexels.com/photos/4475523/pexels-photo-4475523.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+        branding
       ],
     },
     {
@@ -32,7 +36,7 @@ const GlobalStartupSupportSection = ({ isSlideIndicatorsEnabled = false }) => {
       Title: "1-Month Free Marketing",
       Description2: "Included in our launch packages",
       ImageUrl: [
-        "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop",
+        month
       ],
     },
   ];
