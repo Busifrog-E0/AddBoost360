@@ -186,7 +186,7 @@ const CategoriesListView = ({
             hoverTextColor="text-black"
             iconColor="black"
             onClick={() => window.open(privacyPDF, "_blank")}
-            text="Become a Freelancer"
+            text="View Privacy Policy"
           />
         </div>
       )}

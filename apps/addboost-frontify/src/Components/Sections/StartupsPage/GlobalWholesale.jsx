@@ -165,7 +165,7 @@ py-10 md:py-14 lg:py-20
                 hoverTextColor="text-black"
                 iconColor="black"
                 onClick={() => navigate("/contact")}
-                text="LAUNCH MY NEW BUSINESS"
+                text="Start Sourcing Now"
               />
             </motion.div>
           </div>
