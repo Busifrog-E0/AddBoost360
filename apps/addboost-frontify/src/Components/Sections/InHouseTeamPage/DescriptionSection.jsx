@@ -168,7 +168,7 @@ const DescriptionSection = () => {
           hoverBgColor="bg-gray-300"
           hoverTextColor="text-black"
           iconColor="black"
-          onClick={() => navigate("/contact")}
+          onClick={() => navigate("/contact/Become a Member")}
           text="Join our global team"
         />
       </div>
