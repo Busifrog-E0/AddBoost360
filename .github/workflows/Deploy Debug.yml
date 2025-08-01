@@ -48,7 +48,8 @@ jobs:
           echo "        proxy_pass http://localhost:3010;" >> /etc/nginx/sites-available/default
           echo "    }" >> /etc/nginx/sites-available/default
           echo "}" >> /etc/nginx/sites-available/default
-          npm install 
+          npm install -g pnpm
+          pnpm install 
           pm2 restart AddBoost360
         EOF
 
