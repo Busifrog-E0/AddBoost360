@@ -3,6 +3,7 @@ import Button from "../../Button";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollToBottom from "../../ScrollToBottom";
+import Ukflag from "../../../assets/Ukflag.png";
 
 const popIn = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -88,6 +89,11 @@ py-10 md:py-14 lg:py-20
       >
         <div className="flex flex-col gap-8 text-white overflow-hidden">
           {/* Animated Title */}
+          <img
+            src={Ukflag}
+            alt="black"
+            className="w-10  "
+          />
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-anton uppercase"
             variants={popIn}
