@@ -62,7 +62,7 @@ const ServiceCard = ({
 
       <motion.div
         variants={containerVariants}
-        className="p-2 font-inter text-sm leading-relaxed"
+        className="p-2 font-inter text-sm leading-relaxed flex flex-col gap-4"
       >
         {service.ServiceList.map((item, index) => (
           <motion.p
