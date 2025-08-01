@@ -97,14 +97,20 @@ const StartupHeroSection = () => {
               >
                 How ADD BOOST 360 Fuels Your Journey
               </motion.p>
-              <motion.p variants={line} className="mb-5 font-inter">
+              <motion.p
+                variants={line}
+                className="mb-5 font-inter text-xs md:text-lg"
+              >
                 Based in London and serving clients globally, ADD BOOST 360
                 LIMITED helps launch and grow brands from the ground up. Whether
                 you're a new founder or scaling an existing business, we offer
                 end-to-end support—from brand identity and website design to
                 digital growth strategies and global product sourcing.
               </motion.p>
-              <motion.p variants={line} className="font-inter">
+              <motion.p
+                variants={line}
+                className="font-inter text-xs md:text-lg"
+              >
                 Our unique blend of marketing expertise, secure escrow model,
                 and trusted international network ensures you have the tools,
                 talent, and protection to succeed. ADD BOOST 360 is your partner

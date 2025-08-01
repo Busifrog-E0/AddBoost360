@@ -69,8 +69,6 @@ const InHouseHeroSection = () => {
   13xl:pl-340 14xl:pl-360 15xl:pl-400
           py-6 sm:py-10 lg:py-20  "
       >
-      
-
         <motion.h1
           variants={textVariant}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-6xl font-anton uppercase leading-snug"
@@ -80,7 +78,7 @@ const InHouseHeroSection = () => {
 
         <motion.p
           variants={line}
-          className="text-base md:text-lg font-inter mt-4 "
+          className=" text-xs md:text-lg font-inter mt-4 "
         >
           At ADD BOOST 360 LIMITED, we believe talent knows no borders. Whether
           you're a designer in France, a marketer in the Philippines, or a coder
@@ -88,7 +86,10 @@ const InHouseHeroSection = () => {
           create, and collaborate with a multicultural team that values
           creativity and innovation.
         </motion.p>
-        <motion.p variants={line} className="font-inter mt-5">
+        <motion.p
+          variants={line}
+          className="text-xs md:text-lg  font-inter mt-5"
+        >
           This isn't just remote work—it's a career launchpad. Through real
           projects, expert mentorship, and global exposure, freelancers gain
           purpose, visibility, and control over their growth. Join us and let
