@@ -44,7 +44,7 @@ const cardData = [
   {
     title: "Social media & first campaign management",
     description:
-      "the company develops a tailored digital growth plan for the first three to six months, covering SEO, paid ads and content marketing.",
+      "The company develops a tailored digital growth plan for the first three to six months, covering SEO, paid ads and content marketing.",
   },
   {
     title: "Digital growth strategy",
@@ -54,7 +54,7 @@ const cardData = [
   {
     title: "One month free marketing",
     description:
-      "clients who take a full package get their first month of marketing free, giving early momentum to the new business.",
+      "Clients who take a full package get their first month of marketing free, giving early momentum to the new business.",
   },
   {
     title: "Website or e commerce store setup",
@@ -64,22 +64,22 @@ const cardData = [
   {
     title: "Ongoing business mentorship",
     description:
-      "beyond the launch, entrepreneurs receive continual guidance and mentorship to help them grow.",
+      "Beyond the launch, entrepreneurs receive continual guidance and mentorship to help them grow.",
   },
   {
     title: "Global product sourcing & escrow management",
     description:
-      "through the firm's international sourcing platform, entrepreneurs connect with verified suppliers in listed Countries. A step by step process ensures products are selected, suppliers are vetted via live video calls, payments are handled through a secure escrow model payment solution and funds are released only after quality and shipping are verified.",
+      "Through the firm's international sourcing platform, entrepreneurs connect with verified suppliers in listed Countries. A step by step process ensures products are selected, suppliers are vetted via live video calls, payments are handled through a secure escrow model payment solution and funds are released only after quality and shipping are verified.",
   },
   {
     title: "Why the sourcing platform stands out",
     description:
-      "highlight features such as live supplier video verification, model payment solution protection, a global network of pre screened suppliers, multilingual communication and contract backed deals.",
+      "Highlight features such as live supplier video verification, model payment solution protection, a global network of pre screened suppliers, multilingual communication and contract backed deals.",
   },
   {
     title: "Store branding & e commerce support",
     description:
-      "for companies that already have a store or are planning one, ADD BOOST 360 offers store branding and promotion, builds e commerce sites on platforms like Shopify or WooCommerce, integrates payment gateways such as PayPal, Stripe or Razorpay, and provides a free first month of marketing(Terms and conditions applied).",
+      "For companies that already have a store or are planning one, ADD BOOST 360 offers store branding and promotion, builds e commerce sites on platforms like Shopify or WooCommerce, integrates payment gateways such as PayPal, Stripe or Razorpay, and provides a free first month of marketing(Terms and conditions applied).",
   },
 ];
 
