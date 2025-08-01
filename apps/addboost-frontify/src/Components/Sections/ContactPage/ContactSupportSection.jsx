@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowOutward from "../../../assets/arrowOutward.png";
+import ArrowOutward from "../../../assets/ArrowOutward.png";
 
 const ContactSupportSection = () => {
   const supportItems = [
