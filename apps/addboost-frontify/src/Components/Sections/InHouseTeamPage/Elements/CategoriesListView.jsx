@@ -5,6 +5,7 @@ import Arrowforward from "../../../../assets/arrowforwardwhite.svg";
 import Arrowbackward from "../../../../assets/Arrowbackwardwhite.svg";
 import Button from "../../../Button";
 import { useNavigate } from "react-router";
+import privacyPDF from "../../../../assets/docs/privacy-policy.pdf";
 
 const containerVariant = {
   hidden: {},
@@ -184,7 +185,7 @@ const CategoriesListView = ({
             hoverBgColor="bg-gray-300"
             hoverTextColor="text-black"
             iconColor="black"
-            onClick={() => navigate("/contact")}
+            onClick={() => window.open(privacyPDF, "_blank")}
             text="Become a Freelancer"
           />
         </div>
