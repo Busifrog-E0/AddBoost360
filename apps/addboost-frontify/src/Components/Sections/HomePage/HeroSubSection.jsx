@@ -123,6 +123,7 @@ py-10 md:py-14 lg:py-20
             textColor="text-white"
             border="border border-white"
             iconColor="white"
+            hoverBgColor="bg-gray-600"
             text="BOOK A FREE CONSULTATION"
             onClick={() => navigate("/contact")}
           />
