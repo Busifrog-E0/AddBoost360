@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import CornerChipwhite from "../../../assets/CornerChipwhite.svg";
+import CornerChipwhite from "../../../assets/Cornerchipwhite.svg";
 
 const container = {
   hidden: {},
