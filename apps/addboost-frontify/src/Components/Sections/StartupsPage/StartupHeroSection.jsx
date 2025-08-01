@@ -49,7 +49,7 @@ const StartupHeroSection = () => {
           <div
             className="absolute inset-0 lg:hidden bg-cover bg-center z-0 w-full h-[100svh] overflow-hidden"
             style={{
-              backgroundImage: `url(${StartupHeroImg})`,
+              backgroundImage: `url(${Global})`,
               opacity: 0.2,
             }}
           ></div>
