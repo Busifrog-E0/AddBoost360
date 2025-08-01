@@ -30,7 +30,7 @@ const Formsection = () => {
   const { type } = useParams();
 
   const initialValue = {
-    FocusArea: type,
+    FocusArea: type ? type : "",
     FullName: "",
     Email: "",
     Phone: "",
