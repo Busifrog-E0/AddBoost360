@@ -198,7 +198,6 @@ const EmployeesListView = ({
               className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3"
               style={{ maxWidth: `calc(${100 / itemsPerView}% - 1rem)` }}
               variants={cardVariant}
-              whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <EmployeeCard employee={employee} />
