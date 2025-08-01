@@ -11,8 +11,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: pnpm install
-      - run: pnpm --filter addboost-sparkpanel... build
+       
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build app
+        working-directory: apps/addboost-sparkpanel
+        run: pnpm run build
+     
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
