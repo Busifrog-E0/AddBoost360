@@ -30,7 +30,8 @@ export const router = createBrowserRouter(
         path="/in-house-team/view-team"
         element={<SearchEmployeesPage />}
       />
-      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/contact/" element={<ContactPage />} />
+      <Route path="/contact/:type" element={<ContactPage />} />
       <Route path="/studio" element={<StudioPage />} />
     </Route>
   )
