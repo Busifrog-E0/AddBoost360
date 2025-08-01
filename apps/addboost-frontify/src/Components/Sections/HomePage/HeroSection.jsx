@@ -40,7 +40,7 @@ const blurFade = {
 };
 
 const bounceRight = {
-  hidden: { opacity: 0, x: 100 },
+  hidden: { opacity: 0, x: 50 },
   show: {
     opacity: 1,
     x: 0,
@@ -48,6 +48,7 @@ const bounceRight = {
       type: "spring",
       stiffness: 80,
       damping: 15,
+      delay: 0.4,
     },
   },
 };
