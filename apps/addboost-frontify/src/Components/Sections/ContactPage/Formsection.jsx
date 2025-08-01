@@ -41,7 +41,7 @@ const Formsection = () => {
     "Startup Launch & Product Sourcing",
     "AI Tools & Automation",
     "Training or Empowerment Program",
-    "Freelancer Programme",
+    "Become a Member",
     "Something Else",
   ];
 

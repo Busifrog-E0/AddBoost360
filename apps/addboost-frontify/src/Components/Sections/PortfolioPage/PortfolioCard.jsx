@@ -51,7 +51,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
     >
       <motion.h2
         variants={lineVariants}
-        className="font-anton text-white text-2xl 2xl:text-4xl mt-0"
+        className="font-anton text-white text-2xl 2xl:text-4xl mt-4"
       >
         {project.Title}
       </motion.h2>
@@ -72,7 +72,7 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
 
       <motion.div
         variants={containerVariants}
-        className="p-2 font-inter text-sm leading-relaxed"
+        className="p-2 font-inter text-sm leading-relaxed flex flex-col gap-4 "
       >
         {project.ImpactPoints.map((item, index) => (
           <motion.p
