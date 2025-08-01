@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2, Image as ImageIcon } from "lucide-react";
 import useGetList from "../../hooks/api/useGetList";
-import useDeleteData from "../../hooks/api/UseDeleteData";
+import useDeleteData from "../../hooks/api/useDeleteData";
 import AddCompanyLogo from "./AddCompanyLogo";
 import Loader from "../../components/Loader";
 

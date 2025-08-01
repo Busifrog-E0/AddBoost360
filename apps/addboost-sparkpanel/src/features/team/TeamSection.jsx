@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Plus, Edit, Trash2, Eye } from "lucide-react";
 import AddTeamPage from "./AddTeamPage";
 import useGetList from "../../hooks/api/useGetList";
-import useDeleteData from "../../hooks/api/UseDeleteData";
+import useDeleteData from "../../hooks/api/useDeleteData";
 import Loader from "../../components/Loader";
 
 const TeamSection = () => {

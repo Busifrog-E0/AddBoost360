@@ -3,7 +3,7 @@ import { Plus, Edit, Trash2, ExternalLink } from "lucide-react";
 import AddPortfolioPage from "./AddPortfolioPage";
 import useGetList from "../../hooks/api/useGetList";
 import Loader from "../../components/Loader";
-import useDeleteData from "../../hooks/api/UseDeleteData";
+import useDeleteData from "../../hooks/api/useDeleteData";
 
 const PortfolioSection = () => {
   const [showAddProject, setShowAddProject] = useState(false);

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Eye, Trash2 } from "lucide-react";
 import FormDetailsPage from "./FormDetailsPage";
 import useGetList from "../../hooks/api/useGetList";
-import useDeleteData from "../../hooks/api/UseDeleteData";
+import useDeleteData from "../../hooks/api/useDeleteData";
 import Loader from "../../components/Loader";
 
 const FormListPage = () => {

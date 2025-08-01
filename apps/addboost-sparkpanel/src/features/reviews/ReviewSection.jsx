@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import useGetList from "../../hooks/api/useGetList";
-import useDeleteData from "../../hooks/api/UseDeleteData";
+import useDeleteData from "../../hooks/api/useDeleteData";
 import Loader from "../../components/Loader";
 
 import AddReview from "./AddReview";
