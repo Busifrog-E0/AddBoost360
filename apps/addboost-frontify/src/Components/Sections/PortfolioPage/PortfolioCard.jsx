@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../../Button";
 import Play from "../../../assets/Play.svg";
 import { motion } from "framer-motion";
+import FillArrow from "../../../assets/FillArrow.png";
 
 // Staggered animation for lines
 const containerVariants = {
@@ -74,8 +75,13 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
         className="p-2 font-inter text-sm leading-relaxed"
       >
         {project.ImpactPoints.map((item, index) => (
-          <motion.p variants={lineVariants} className="text-white" key={index}>
-            ▪ {item}
+          <motion.p
+            variants={lineVariants}
+            className="text-white flex items-start gap-3"
+            key={index}
+          >
+            <img src={FillArrow} alt="Arrow" className="w-4 mt-1" />
+            <span>{item}</span>
           </motion.p>
         ))}
       </motion.div>
