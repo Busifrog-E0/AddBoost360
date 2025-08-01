@@ -132,7 +132,7 @@ py-10 md:py-14 lg:py-20
 
       {/* Right Image */}
       <motion.div className=" h-full w-full" variants={flipY}>
-        <img src={Global} alt="black" className="w-full h-full object-cover " />
+        <img loading="lazy" src={Global} alt="black" className="w-full h-full object-cover " />
       </motion.div>
     </motion.div>
   );
