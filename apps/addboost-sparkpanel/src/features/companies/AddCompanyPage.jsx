@@ -271,7 +271,7 @@ const AddCompanyPage = ({
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.Title.trim()) newErrors.title = "Company name is required";
+    if (!formData.Title.trim()) newErrors.Title = "Company name is required";
     if (
       !formData.Tags.length ||
       formData.Tags.every((cat) => cat.trim() === "")
@@ -362,12 +362,12 @@ const AddCompanyPage = ({
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
               className={`w-full px-4 py-3 border mb-3 rounded-lg ${
-                errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
+                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., Razorpay"
             />
-            {errors.title && (
-              <p className="text-sm text-red-600 mb-2 ">{errors.title}</p>
+            {errors.Title && (
+              <p className="text-sm text-red-600 mb-2 ">{errors.Title}</p>
             )}
           </div>
           {/* Priority */}
