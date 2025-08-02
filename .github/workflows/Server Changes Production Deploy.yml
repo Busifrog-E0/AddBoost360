@@ -1,4 +1,4 @@
-name: Server Production Deployement Main to DigitalOcean Droplet
+name: Server Production Deployement to DigitalOcean Droplet
 
 on:
   pull_request:
