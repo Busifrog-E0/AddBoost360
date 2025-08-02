@@ -76,7 +76,7 @@ const AddServicePage = ({
 
         setFormData((prev) => ({
           ...prev,
-          ImageUrl: [...prev.ImageUrl, previewUrl],
+          ImageUrl: [...prev.ImageUrl],
           images: [
             ...prev.images,
             {
@@ -98,6 +98,12 @@ const AddServicePage = ({
     setFormData((prev) => ({
       ...prev,
       ImageUrl: prev.ImageUrl.filter((_, i) => i !== index),
+    }));
+  };
+
+  const removeImageFile = (index) => {
+    setFormData((prev) => ({
+      ...prev,
       images: prev.images.filter((_, i) => i !== index),
     }));
   };
@@ -119,6 +125,9 @@ const AddServicePage = ({
   };
 
   const handleFormSubmit = (uploadedUrls) => {
+
+
+    console.log(formData);
     const { images, ...rest } = formData;
     const payload = {
       ...rest,
@@ -370,6 +379,41 @@ const AddServicePage = ({
                       </button>
                     </div>
                   ))}
+
+                  {formData.images.map((item, index) => {
+                    let imageUrl = "";
+
+                    if (item instanceof File) {
+                      imageUrl = URL.createObjectURL(item);
+                    } else if (typeof item === "string") {
+                      imageUrl = item;
+                    }
+
+                    return (
+                      <div
+                        key={index}
+                        className="relative w-[250px] aspect-video border rounded-md"
+                      >
+                        <img
+                          src={imageUrl}
+                          alt={`Preview ${index}`}
+                          className="w-full h-full object-cover rounded-md"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = "/fallback-image.jpg"; // optional fallback
+                          }}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => removeImageFile(index)}
+                          className="absolute top-1 right-1 p-1.5 bg-red-600 text-white rounded-full"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </div>
+                    );
+                  })}
+
 
                   <input
                     type="file"
