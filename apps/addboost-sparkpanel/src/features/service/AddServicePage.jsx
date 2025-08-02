@@ -13,7 +13,7 @@ const AddServicePage = ({
   initialValue = {
     Title: "",
     Type: "",
-    Priority: "5",
+    Priority: 5,
     Description1: "",
     Description2: "",
     ButtonMessage1: "",
@@ -383,11 +383,9 @@ const AddServicePage = ({
                   {formData.images.map((item, index) => {
                     let imageUrl = "";
 
-                    if (item instanceof File) {
-                      imageUrl = URL.createObjectURL(item);
-                    } else if (typeof item === "string") {
-                      imageUrl = item;
-                    }
+                    const byteArray = new Uint8Array(item.FileData);
+                    const blob = new Blob([byteArray], { type: "image/jpeg" }); // or image/png
+                    imageUrl = URL.createObjectURL(blob);
 
                     return (
                       <div
