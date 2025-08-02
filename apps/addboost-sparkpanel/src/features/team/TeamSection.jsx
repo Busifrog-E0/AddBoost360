@@ -140,11 +140,10 @@ const TeamSection = () => {
                               <span className="text-sm sm:text-base font-semibold text-gray-900">
                                 {member.FullName}
                               </span>
-                              {member.Priority && (
-                                <span className="inline-block mt-1 sm:mt-2 px-2 py-0.5 text-[10px] sm:text-xs font-semibold bg-red-100 text-red-600 rounded-full whitespace-nowrap w-max">
-                                  Priority: {member.Priority}
-                                </span>
-                              )}
+
+                              <span className="inline-block mt-1 sm:mt-2 px-2 py-0.5 text-[10px] sm:text-xs font-semibold bg-red-100 text-red-600 rounded-full whitespace-nowrap w-max">
+                                Priority: {member.Priority}
+                              </span>
                             </div>
                           </div>
                         </div>
