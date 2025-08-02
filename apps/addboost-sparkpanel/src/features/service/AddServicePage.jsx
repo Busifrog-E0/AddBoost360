@@ -117,8 +117,19 @@ const AddServicePage = ({
       newErrors.description = "Description is required";
     if (!formData.ButtonMessage1.trim())
       newErrors.buttonText = "Button text is required";
-    if (formData.ImageUrl.length === 0)
-      newErrors.ImageUrl = "At least one image is required";
+    if (isEditing) {
+      const hasImages =
+        formData.images.length > 0 ||
+        formData.ImageUrl.length > 0;
+
+      if (!hasImages) {
+        newErrors.ImageUrl = "At least one image is required";
+      }
+    } else {
+      if (formData.images.length === 0) {
+        newErrors.ImageUrl = "At least one image is required";
+      }
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
