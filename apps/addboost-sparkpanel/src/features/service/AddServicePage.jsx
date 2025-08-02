@@ -116,7 +116,7 @@ const AddServicePage = ({
     if (!formData.Description2.trim())
       newErrors.Description2 = "Description is required";
     if (!formData.ButtonMessage1.trim())
-      newErrors.buttonText = "Button text is required";
+      newErrors.ButtonMessage1 = "Button text is required";
     if (isEditing) {
       const hasImages =
         formData.images.length > 0 || formData.ImageUrl.length > 0;
