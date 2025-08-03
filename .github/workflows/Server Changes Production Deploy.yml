@@ -1,0 +1,30 @@
+name: Server Production Deployement to DigitalOcean Droplet
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true && github.event.pull_request.head.ref == 'DebugServer'
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    - name: Add SSH key
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+            ssh-private-key: ${{ secrets.PRODUCTION_SSH_TOKEN }}
+
+    - name: Pull latest changes and update dependencies on DigitalOcean Droplet
+      run: |
+        ssh -o StrictHostKeyChecking=no root@143.110.247.8 << 'EOF'
+          cd AddBoost360
+          git pull 
+          cd apps/server
+          pnpm install 
+          pm2 restart AddBoost360
+        EOF

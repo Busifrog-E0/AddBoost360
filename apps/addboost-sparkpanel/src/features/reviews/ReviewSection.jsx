@@ -154,11 +154,12 @@ const ReviewSection = () => {
                   <p className="text-sm text-gray-500">{review.Designation}</p>
 
                   {/* Priority below Designation */}
-                  {review.Priority && (
-                    <span className="mt-1 inline-block bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full ml-0">
-                      Priority: {review.Priority}
-                    </span>
-                  )}
+                  {review.Priority !== undefined &&
+                    review.Priority !== null && (
+                      <span className="mt-1 inline-block bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded-full ml-0">
+                        Priority: {review.Priority}
+                      </span>
+                    )}
                 </div>
               </div>
             </div>

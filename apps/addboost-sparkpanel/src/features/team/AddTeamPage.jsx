@@ -39,10 +39,8 @@ const AddTeamPage = ({
     "Affiliate & Referral Marketing",
     "Marketing Automation & CRM",
     "Analytics & Data Intelligence",
-
-  ]
+  ];
   const businessSupportTypeOptions = [
-
     "Business Formation & Strategy",
     "Finance & Accounting",
     "Legal & Compliance",
@@ -50,12 +48,15 @@ const AddTeamPage = ({
     "IT Infrastructure & Security",
     "Sales & Business Development",
     "Customer Support & Experience",
-    "Training & Capacity Building"
-  ]
+    "Training & Capacity Building",
+  ];
   const allOptionGroups = [
     { label: "A. Digital Marketing", options: digitalMarketingTypeOptions },
-    { label: "B. Business Professional Support", options: businessSupportTypeOptions },
-  ]
+    {
+      label: "B. Business Professional Support",
+      options: businessSupportTypeOptions,
+    },
+  ];
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
@@ -127,11 +128,10 @@ const AddTeamPage = ({
     if (!formData.FullName.trim()) newErrors.FullName = "Name is required";
     if (!formData.Designation.trim())
       newErrors.Designation = "Designation is required";
-    if (!formData.ID.trim())
-      newErrors.ID = "ID is required";
+    if (!formData.ID.trim()) newErrors.ID = "ID is required";
     if (!formData.Description1.trim())
       newErrors.Description1 = "Position is required";
-    if (!formData.Priority) newErrors.Priority = "Priority is required";
+
     if (!formData.State.trim()) newErrors.State = "State is required";
     if (!formData.Country.trim()) newErrors.Country = "Country is required";
     if (!formData.ImageUrl)
@@ -217,8 +217,9 @@ const AddTeamPage = ({
               type="text"
               value={formData.FullName}
               onChange={(e) => handleInputChange("FullName", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.FullName ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
+                errors.FullName ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., John Doe"
             />
             {errors.FullName && (
@@ -235,10 +236,16 @@ const AddTeamPage = ({
                 type="number"
                 value={formData.Priority ?? ""}
                 onChange={(e) =>
-                  handleInputChange("Priority", e.target.value === "" ? "" : Number(e.target.value))
+                  handleInputChange(
+                    "Priority",
+                    e.target.value === "" ? "" : Number(e.target.value)
+                  )
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
-                  }`}
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.Priority
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                }`}
                 placeholder="Order Priority"
               />
               {errors.Priority && (
@@ -255,15 +262,12 @@ const AddTeamPage = ({
               type="text"
               value={formData.ID}
               onChange={(e) => handleInputChange("ID", e.target.value)}
-              className={`w-full px-4 mb-2 py-3 border rounded-lg ${errors.ID
-                ? "border-red-300 bg-red-50"
-                : "border-gray-300"
-                }`}
+              className={`w-full px-4 mb-2 py-3 border rounded-lg ${
+                errors.ID ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., ID-43"
             />
-            {errors.ID && (
-              <p className="  text-sm text-red-600">{errors.ID}</p>
-            )}
+            {errors.ID && <p className="  text-sm text-red-600">{errors.ID}</p>}
           </div>
           {/* Designation */}
           <div className="mb-4">
@@ -274,10 +278,11 @@ const AddTeamPage = ({
               type="text"
               value={formData.Designation}
               onChange={(e) => handleInputChange("Designation", e.target.value)}
-              className={`w-full px-4 mb-2 py-3 border rounded-lg ${errors.Designation
-                ? "border-red-300 bg-red-50"
-                : "border-gray-300"
-                }`}
+              className={`w-full px-4 mb-2 py-3 border rounded-lg ${
+                errors.Designation
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+              }`}
               placeholder="e.g., Frontend Developer"
             />
             {errors.Designation && (
@@ -292,9 +297,14 @@ const AddTeamPage = ({
             </label>
             <select
               value={formData.Description1}
-              onChange={(e) => handleInputChange("Description1", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Description1 ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              onChange={(e) =>
+                handleInputChange("Description1", e.target.value)
+              }
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Description1
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+              }`}
             >
               <option value="" disabled>
                 Select a Position
@@ -325,8 +335,9 @@ const AddTeamPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
+                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., kerala"
             />
             {errors.State && (
@@ -343,8 +354,9 @@ const AddTeamPage = ({
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4 mb-2 py-3 border rounded-lg ${errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 mb-2 py-3 border rounded-lg ${
+                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., India"
             />
             {errors.Country && (
@@ -360,10 +372,11 @@ const AddTeamPage = ({
             <div className="overflow-hidden w-[200px] h-[200px]">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
+                    errors.ImageUrl
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                 >
                   <input
                     type="file"

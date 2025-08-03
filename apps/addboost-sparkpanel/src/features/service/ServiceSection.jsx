@@ -136,11 +136,12 @@ const ServiceSection = () => {
                               <p className="text-base font-semibold text-gray-900">
                                 {service.Title}
                               </p>
-                              {service.Priority && (
-                                <span className="inline-block mt-1 px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-600 rounded-full">
-                                  Priority: {service.Priority}
-                                </span>
-                              )}
+                              {service.Priority !== undefined &&
+                                service.Priority !== null && (
+                                  <span className="inline-block mt-1 px-2 py-0.5 text-xs font-semibold bg-red-100 text-red-600 rounded-full">
+                                    Priority: {service.Priority}
+                                  </span>
+                                )}
                             </div>
                           </div>
                         </td>
