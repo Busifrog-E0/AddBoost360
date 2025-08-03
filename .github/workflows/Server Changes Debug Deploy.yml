@@ -1,4 +1,4 @@
-name: Server Debug Deployement Main to DigitalOcean Droplet
+name: Server Debug Deployement to DigitalOcean Droplet
 
 on:
   push:

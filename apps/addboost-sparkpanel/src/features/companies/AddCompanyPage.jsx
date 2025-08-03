@@ -19,16 +19,13 @@ const AddCompanyPage = ({
     Priority: 5,
   },
 }) => {
-
-
-
   const electronicsTypeOptions = [
     "Smartphones",
     "Tablets",
     "Laptops & Computers",
     "TV & Home Theater",
     "Cameras & Drones",
-    "Gaming Consoles & Accessories"
+    "Gaming Consoles & Accessories",
   ];
 
   const homeAppliancesTypeOptions = [
@@ -36,21 +33,21 @@ const AddCompanyPage = ({
     "Washing Machines & Dryers",
     "Kitchen Appliances",
     "Air Conditioners & Heaters",
-    "Vacuum Cleaners & Home Cleaning"
+    "Vacuum Cleaners & Home Cleaning",
   ];
 
   const furnitureAndHomeDecorTypeOptions = [
     "Living & Bedroom Furniture",
     "Kitchen & Dining Furniture",
     "Home Decor & Accessories",
-    "Bedding & Bath Essentials"
+    "Bedding & Bath Essentials",
   ];
 
   const fashionAndApparelTypeOptions = [
     "Men's Clothing",
     "Women's Clothing",
     "Shoes & Footwear",
-    "Jewelry & Accessories"
+    "Jewelry & Accessories",
   ];
 
   const beautyAndPersonalCareTypeOptions = [
@@ -58,7 +55,7 @@ const AddCompanyPage = ({
     "Hair Care",
     "Makeup & Cosmetics",
     "Fragrances & Perfumes",
-    "Grooming Tools & Appliances"
+    "Grooming Tools & Appliances",
   ];
 
   const healthAndWellnessTypeOptions = [
@@ -66,41 +63,41 @@ const AddCompanyPage = ({
     "Health Monitors & Devices",
     "Medical Supplies & First Aid",
     "Wellness & Self-Care",
-    "Essential Oils"
+    "Essential Oils",
   ];
 
   const sportsAndOutdoorsTypeOptions = [
     "Camping & Hiking Gear",
     "Fitness & Exercise Equipment",
     "Team Sports Gear",
-    "Cycling & Bikes"
+    "Cycling & Bikes",
   ];
 
   const toysAndGamesTypeOptions = [
     "Kids' Toys",
     "Board Games & Puzzles",
     "Educational & STEM Toys",
-    "Collectibles & Hobby Kits"
+    "Collectibles & Hobby Kits",
   ];
 
   const booksAndMediaTypeOptions = [
     "Books & eBooks",
     "Movies & TV Shows",
-    "Music & Audio"
+    "Music & Audio",
   ];
 
   const foodAndBeverageTypeOptions = [
     "Groceries & Pantry Staples",
     "Snacks & Confectionery",
     "Beverages (Coffee, Tea, etc.)",
-    "Gourmet & Specialty Foods"
+    "Gourmet & Specialty Foods",
   ];
 
   const petSuppliesTypeOptions = [
     "Pet Food & Treats",
     "Pet Toys & Accessories",
     "Pet Grooming & Health",
-    "Pet Beds & Housing"
+    "Pet Beds & Housing",
   ];
 
   const babyAndKidsTypeOptions = [
@@ -108,40 +105,40 @@ const AddCompanyPage = ({
     "Baby Food & Diapers",
     "Nursery Furniture & Bedding",
     "Baby & Kids Clothing",
-    "Baby Toys & Gifts"
+    "Baby Toys & Gifts",
   ];
 
   const officeSuppliesAndStationeryTypeOptions = [
     "Office Electronics & Printers",
     "Office Furniture",
     "Stationery & Office Supplies",
-    "Ink & Toner"
+    "Ink & Toner",
   ];
 
   const artsAndCraftsTypeOptions = [
     "Art Supplies",
     "Craft Kits & DIY",
-    "Fabric & Sewing Supplies"
+    "Fabric & Sewing Supplies",
   ];
 
   const toolsAndHomeImprovementTypeOptions = [
     "Power Tools & Equipment",
     "Hand Tools & Hardware",
     "Home Improvement Supplies",
-    "Garden Tools & Outdoor Equipment"
+    "Garden Tools & Outdoor Equipment",
   ];
 
   const industrialAndScientificSuppliesTypeOptions = [
     "Industrial Machinery & Tools",
     "Safety & PPE Equipment",
-    "Lab & Scientific Equipment"
+    "Lab & Scientific Equipment",
   ];
 
   const automotiveTypeOptions = [
     "Auto Parts & Spares",
     "Car Electronics & Accessories",
     "Car Care & Maintenance",
-    "Motorcycle & ATV Gear"
+    "Motorcycle & ATV Gear",
   ];
 
   const digitalProductsTypeOptions = [
@@ -149,7 +146,7 @@ const AddCompanyPage = ({
     "Software & Apps",
     "Online Courses & Tutorials",
     "Digital Media & Downloads",
-    "Gift Cards & Vouchers"
+    "Gift Cards & Vouchers",
   ];
 
   const professionalServicesTypeOptions = [
@@ -157,14 +154,20 @@ const AddCompanyPage = ({
     "Graphic Design & Creative",
     "Marketing & SEO Services",
     "Web Development & IT Services",
-    "Personal Coaching & Training"
+    "Personal Coaching & Training",
   ];
   const allOptionGroups = [
     { label: "A. Electronics", options: electronicsTypeOptions },
     { label: "B. Home Appliances", options: homeAppliancesTypeOptions },
-    { label: "C. Furniture & Home Decor", options: furnitureAndHomeDecorTypeOptions },
+    {
+      label: "C. Furniture & Home Decor",
+      options: furnitureAndHomeDecorTypeOptions,
+    },
     { label: "D. Fashion & Apparel", options: fashionAndApparelTypeOptions },
-    { label: "E. Beauty & Personal Care", options: beautyAndPersonalCareTypeOptions },
+    {
+      label: "E. Beauty & Personal Care",
+      options: beautyAndPersonalCareTypeOptions,
+    },
     { label: "F. Health & Wellness", options: healthAndWellnessTypeOptions },
     { label: "G. Sports & Outdoors", options: sportsAndOutdoorsTypeOptions },
     { label: "H. Toys & Games", options: toysAndGamesTypeOptions },
@@ -172,13 +175,25 @@ const AddCompanyPage = ({
     { label: "J. Food & Beverage", options: foodAndBeverageTypeOptions },
     { label: "K. Pet Supplies", options: petSuppliesTypeOptions },
     { label: "L. Baby & Kids", options: babyAndKidsTypeOptions },
-    { label: "M. Office Supplies & Stationery", options: officeSuppliesAndStationeryTypeOptions },
+    {
+      label: "M. Office Supplies & Stationery",
+      options: officeSuppliesAndStationeryTypeOptions,
+    },
     { label: "N. Arts & Crafts", options: artsAndCraftsTypeOptions },
-    { label: "O. Tools & Home Improvement", options: toolsAndHomeImprovementTypeOptions },
-    { label: "P. Industrial & Scientific Supplies", options: industrialAndScientificSuppliesTypeOptions },
+    {
+      label: "O. Tools & Home Improvement",
+      options: toolsAndHomeImprovementTypeOptions,
+    },
+    {
+      label: "P. Industrial & Scientific Supplies",
+      options: industrialAndScientificSuppliesTypeOptions,
+    },
     { label: "Q. Automotive", options: automotiveTypeOptions },
     { label: "R. Digital Products", options: digitalProductsTypeOptions },
-    { label: "S. Professional Services", options: professionalServicesTypeOptions },
+    {
+      label: "S. Professional Services",
+      options: professionalServicesTypeOptions,
+    },
   ];
 
   const [formData, setFormData] = useState(initialValue);
@@ -256,7 +271,7 @@ const AddCompanyPage = ({
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.Title.trim()) newErrors.title = "Company name is required";
+    if (!formData.Title.trim()) newErrors.Title = "Company name is required";
     if (
       !formData.Tags.length ||
       formData.Tags.every((cat) => cat.trim() === "")
@@ -346,39 +361,30 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border mb-3 rounded-lg ${errors.title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
+                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., Razorpay"
             />
-            {errors.title && (
-              <p className="text-sm text-red-600 mb-2 ">{errors.title}</p>
+            {errors.Title && (
+              <p className="text-sm text-red-600 mb-2 ">{errors.Title}</p>
             )}
           </div>
-
           {/* Priority */}
           <div className="space-y-6 mb-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Priority *
+                Priority
               </label>
               <input
                 type="number"
-                value={formData.Priority ?? ""}
+                value={formData.Priority}
                 onChange={(e) =>
-                  handleInputChange(
-                    "Priority",
-                    e.target.value === "" ? "" : Number(e.target.value)
-                  )
+                  handleInputChange("Priority", Number(e.target.value))
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-                  }`}
+                className="w-full px-4 py-3 border rounded-lg border-gray-300"
                 placeholder="Order Priority"
               />
-              {errors.title && (
-                <p className="mt-1 text-sm text-red-600">{errors.title}</p>
-              )}
             </div>
           </div>
 
@@ -389,16 +395,17 @@ const AddCompanyPage = ({
             </label>
 
             {formData.Tags.map((category, index) => (
-              <select key={index}
+              <select
+                key={index}
                 value={category}
                 onChange={(e) => {
                   const updated = [...formData.Tags];
                   updated[index] = e.target.value;
                   handleInputChange("Tags", updated);
                 }}
-
-                className={`w-full px-4 py-3 border rounded-lg mb-2 ${errors.Tags ? "border-red-300 bg-red-50" : "border-gray-300"
-                  }`}
+                className={`w-full px-4 py-3 border rounded-lg mb-2 ${
+                  errors.Tags ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               >
                 <option value="" disabled>
                   Select a Category
@@ -414,7 +421,6 @@ const AddCompanyPage = ({
                   </optgroup>
                 ))}
               </select>
-
             ))}
 
             <div className="flex items-center space-x-2 mt-2">
@@ -456,8 +462,9 @@ const AddCompanyPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
+                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., India"
             />
             {errors.State && (
@@ -473,8 +480,9 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
+                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., India"
             />
             {errors.Country && (
@@ -490,10 +498,11 @@ const AddCompanyPage = ({
             <div className="overflow-hidden w-[250px] aspect-video">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
+                    errors.ImageUrl
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                 >
                   <input
                     type="file"
@@ -563,8 +572,8 @@ const AddCompanyPage = ({
             )}
           </button>
         </div>
-      </form >
-    </div >
+      </form>
+    </div>
   );
 };
 

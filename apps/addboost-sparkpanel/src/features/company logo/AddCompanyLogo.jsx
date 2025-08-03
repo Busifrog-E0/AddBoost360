@@ -87,7 +87,7 @@ const AddCompanyLogo = ({
     const newErrors = {};
     if (!formData.Title.trim()) newErrors.Title = "Title is required";
     if (!formData.ImageUrl) newErrors.ImageUrl = "Image is required";
-    if (!formData.Priority) newErrors.Priority = "Priority is required";
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -157,31 +157,36 @@ const AddCompanyLogo = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="Company Name"
             />
             {errors.Title && (
               <p className="text-sm text-red-600">{errors.Title}</p>
             )}
           </div>
-
+          {/* Priority Field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               Priority *
             </label>
             <input
               type="number"
               value={formData.Priority ?? ""}
               onChange={(e) =>
-                handleInputChange("Priority", e.target.value === "" ? "" : Number(e.target.value))
+                handleInputChange(
+                  "Priority",
+                  e.target.value === "" ? "" : Number(e.target.value)
+                )
               }
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="Order Priority"
             />
-            {errors.Priority && (
-              <p className="text-sm text-red-600">{errors.Priority}</p>
+            {errors.priority && (
+              <p className="mt-1 text-sm text-red-600">{errors.priority}</p>
             )}
           </div>
 
@@ -192,10 +197,11 @@ const AddCompanyLogo = ({
             <div className="overflow-hidden w-[250px] aspect-video">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
+                    errors.ImageUrl
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                 >
                   <input
                     type="file"
