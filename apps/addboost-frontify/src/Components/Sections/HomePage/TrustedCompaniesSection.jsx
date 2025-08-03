@@ -35,7 +35,7 @@ py-10 md:py-14 lg:py-20
           <marquee scrollamount="12">
             <div className=" flex gap-16 md:gap-24 lg:gap-32 w-full ">
               {[...logos].map((logo, index) => (
-                <div className="h-12 lg:h-20 xl:h-24 " key={`${logo.DocId}-${index}`}>
+                <div className="h-12 lg:h-20 xl:h-24 aspect-video" key={`${logo.DocId}-${index}`}>
                   <img
                     src={logo.ImageUrl}
                     alt={logo.Title}
