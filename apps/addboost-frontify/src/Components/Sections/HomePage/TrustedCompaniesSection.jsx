@@ -30,7 +30,24 @@ py-10 md:py-14 lg:py-20
         </h2>
 
         <div className="relative overflow-hidden mt-16">
-          <div className="flex animate-scroll gap-16 md:gap-24 lg:gap-32 w-max h-5 md:h-6 lg:h-8 aspect-video">
+
+
+          <marquee scrollamount="12">
+            <div className=" flex gap-16 md:gap-24 lg:gap-32 w-full ">
+              {[...logos].map((logo, index) => (
+                <div className="h-5 md:h-6 lg:h-20 xl:h-24 aspect-video" key={`${logo.DocId}-${index}`}>
+                  <img
+                    src={logo.ImageUrl}
+                    alt={logo.Title}
+                    className="h-full w-full object-contain "
+                  />
+                </div>
+              ))}
+            </div>
+          </marquee>
+
+
+          {/* <div className="flex animate-scroll w-max ">
             {[...logos, ...logos].map((logo, index) => (
               <img
                 key={`${logo.DocId}-${index}`} // 👈 ensures key is unique
@@ -40,7 +57,7 @@ py-10 md:py-14 lg:py-20
               />
               //  filter invert brightness-0
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     );
