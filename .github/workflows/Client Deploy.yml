@@ -26,20 +26,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # Build & Deploy: addboost-frontify
-      - name: Build addboost-frontify
-        working-directory: apps/addboost-frontify
-        run: pnpm run build
-
-      - name: Deploy addboost-frontify
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_ADD_BOOST_360 }}
-          projectId: add-boost-360
-          entryPoint: apps/addboost-frontify
-          channelId: ${{ github.event_name == 'push' && 'live' || '' }}
-
       # Build & Deploy: addboost-sparkpanel
       - name: Build addboost-sparkpanel
         working-directory: apps/addboost-sparkpanel
