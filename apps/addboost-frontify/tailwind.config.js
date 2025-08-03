@@ -73,6 +73,10 @@ export default {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        marquee: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(6px)' },
@@ -86,6 +90,7 @@ export default {
         },
       },
       animation: {
+        marquee: 'marquee 16s linear infinite',
         scroll: "scroll 20s linear infinite",
         float: 'float 2s ease-in-out infinite',
         oscillator: 'oscillator 3s ease-in-out infinite',
