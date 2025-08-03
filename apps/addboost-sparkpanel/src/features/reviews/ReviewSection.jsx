@@ -61,7 +61,7 @@ const ReviewSection = () => {
       <AddReview
         isEditing={false}
         title="Add New Review"
-        description="Create a new review offering for your business"
+        description="Add a new review for your business"
         onBack={handleBack}
         onSave={handleSave}
       />

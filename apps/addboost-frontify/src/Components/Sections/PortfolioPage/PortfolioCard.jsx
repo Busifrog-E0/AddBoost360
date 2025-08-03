@@ -85,29 +85,32 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
           </motion.p>
         ))}
       </motion.div>
-
       {/* Button comes after all text with a delay */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.6,
-          ease: "easeIn",
-          delay: 0.6, // ⬅️ ensure this comes after the text
-        }}
-        className="grid md:flex lg:grid xl:flex flex-row gap-6"
-      >
-        <Button
-          bgColor="bg-white"
-          textColor="text-[#1C1C1C]"
-          border="border border-black"
-          text={project.ButtonMessage1}
-          iconColor="black"
-          hoverBgColor="bg-gray-300"
-          hoverTextColor="text-black"
-          onClick={() => window.open(project.LinkToProject, "_blank")}
-        />
-      </motion.div>
+      {
+        project.LinkToProject && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: "easeIn",
+              delay: 0.6, // ⬅️ ensure this comes after the text
+            }}
+            className="grid md:flex lg:grid xl:flex flex-row gap-6"
+          >
+            <Button
+              bgColor="bg-white"
+              textColor="text-[#1C1C1C]"
+              border="border border-black"
+              text={project.ButtonMessage1}
+              iconColor="black"
+              hoverBgColor="bg-gray-300"
+              hoverTextColor="text-black"
+              onClick={() => window.open(project.LinkToProject, "_blank")}
+            />
+          </motion.div>
+        )
+      }
     </motion.div>
   );
 
@@ -125,19 +128,24 @@ const PortfolioCard = ({ project, reverse = false, bgColor = "bg-white" }) => {
         className="w-full h-full object-cover rounded-md relative z-10"
       />
       <div className="absolute -bottom-9 left-0 right-6 md:right-8 xl:right-16 z-30">
-        <div className="w-10 h-10 sm:w-8 sm:h-8 lg:w-12 lg:h-12 p-3 lg:p-4 sm:p-2 bg-primary">
-          <a
-            href={project.LinkToProject}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={Play}
-              alt="play"
-              className="w-full h-full object-cover cursor-pointer"
-            />
-          </a>
-        </div>
+        {
+          project.LinkToProject && (
+            <div className="w-10 h-10 sm:w-8 sm:h-8 lg:w-12 lg:h-12 p-3 lg:p-4 sm:p-2 bg-primary">
+              <a
+                href={project.LinkToProject}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={Play}
+                  alt="play"
+                  className="w-full h-full object-cover cursor-pointer"
+                />
+              </a>
+            </div>
+          )
+        }
+
         <div className="flex bg-white">
           <div className="p-2 md:p-3 lg:p-4 md:px-4 lg:px-6">
             <p className="text-sm sm:text-sm md:text-xl font-anton text-PrimaryDarkBlue mt-1">

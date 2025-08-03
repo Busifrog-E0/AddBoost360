@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      # ▶️ Build & Deploy: addboost-frontify
+      # Build & Deploy: addboost-frontify
       - name: Build addboost-frontify
         working-directory: apps/addboost-frontify
         run: pnpm run build
@@ -40,7 +40,7 @@ jobs:
           entryPoint: apps/addboost-frontify
           channelId: ${{ github.event_name == 'push' && 'live' || '' }}
 
-      # ▶️ Build & Deploy: addboost-sparkpanel
+      # Build & Deploy: addboost-sparkpanel
       - name: Build addboost-sparkpanel
         working-directory: apps/addboost-sparkpanel
         run: pnpm run build
