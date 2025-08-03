@@ -99,11 +99,11 @@ py-10 md:py-14 lg:py-20
       </motion.div>
 
       {/* Steps */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 text-center py-14 relative">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-10 text-center py-14 relative">
         {steps.map((step, index) => (
           <motion.div
             key={index}
-            className="relative flex flex-col justify-between items-center h-full py-6 px-6 md:px-10 rounded-lg bg-black/20 border border-black/20"
+            className="relative flex flex-col justify-between items-center h-full py-6 px-4 md:px-10 rounded-lg bg-black/20 border border-black/20"
             initial={{ scale: 0.5, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{
