@@ -157,9 +157,8 @@ const AddCompanyLogo = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="Company Name"
             />
             {errors.Title && (
@@ -180,9 +179,8 @@ const AddCompanyLogo = ({
                   e.target.value === "" ? "" : Number(e.target.value)
                 )
               }
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="Order Priority"
             />
             {errors.priority && (
@@ -197,11 +195,10 @@ const AddCompanyLogo = ({
             <div className="overflow-hidden w-[250px] aspect-video">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
-                    errors.ImageUrl
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                 >
                   <input
                     type="file"
@@ -267,7 +264,7 @@ const AddCompanyLogo = ({
               ) : (
                 <>
                   <Save className="w-4 h-4" />
-                  <span>Save Company logo </span>
+                  <span>Save Company </span>
                 </>
               )}
             </button>
