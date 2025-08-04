@@ -2,7 +2,7 @@ import { useState } from "react";
 import GoogleTranslateDropdown from "./GoogleTranslateDropdown";
 import GoogleTranslateLoader from "./GoogleTranslateLoader";
 
-import Ukflag from "../assets/UKflag.webp";
+import Ukflag from "../assets/Ukflag.webp";
 import Arabflag from "../assets/Arabflag.webp";
 
 export const languages = [

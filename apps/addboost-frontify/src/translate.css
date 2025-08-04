@@ -4,51 +4,23 @@
   translate: no;
 }
 
-/* Hide Google's top banner */
-iframe.goog-te-banner-frame {
-  display: none !important;
-}
-
 /* Hide the popup banner spacing issue */
 body {
   top: 0px !important;
 }
 
 /* Hide the embedded translate icon and gadgets */
-.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate,
-.goog-te-gadget img {
+.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate {
   display: none !important;
 }
 
-/* Completely hide the default translate widget */
-#google_translate_element {
+#goog-gt-tt,
+#goog-gt-vt {
   display: none !important;
 }
 
-/* Optional: remove unwanted translate overlay tooltip */
-.goog-tooltip {
-  display: none !important;
-}
-
-.goog-tooltip:hover {
-  display: none !important;
-}
-
-.goog-text-highlight {
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Prevent Google Translate hover tooltip */
-.goog-tooltip,
-.goog-tooltip:hover,
-.VIpgJd-ZVi9od-xl07Ob {
-  display: none !important;
-}
-
-/* Remove background/text highlight */
-.goog-text-highlight {
-  background-color: transparent !important;
+[class^="VIpgJd"] {
+  background: transparent !important;
   box-shadow: none !important;
   color: inherit !important;
 }
