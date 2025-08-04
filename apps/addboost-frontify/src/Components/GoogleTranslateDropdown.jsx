@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-const GoogleTranslateDropdown = ({ isReady, languages }) => {
-    const [selectedLang, setSelectedLang] = useState(() => {
-        return localStorage.getItem("selectedLanguage") || "en";
-    });
+const GoogleTranslateDropdown = ({ isReady, languages, selectedLang, setSelectedLang }) => {
+
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [visible, setVisible] = useState(true);
     const [dropUp, setDropUp] = useState(false);
