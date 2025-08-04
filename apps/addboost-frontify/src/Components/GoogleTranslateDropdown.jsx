@@ -56,16 +56,16 @@ const GoogleTranslateDropdown = ({ isReady, languages, selectedLang, setSelected
                 <button
                     onClick={() => setDropdownOpen((prev) => !prev)}
                     disabled={!isReady}
-                    className="inline-flex justify-between items-center gap-2 sm:gap-3 w-full px-3 py-2 sm:px-4  bg-black/40 backdrop-blur-md shadow-md border border-white/10 rounded-md hover:bg-black/50 transition-all duration-300 text-white text-sm sm:text-base"
+                    className="inline-flex justify-between items-center gap-2 sm:gap-3 w-full px-3 py-2 sm:px-4 pr-2 sm:pr-3 bg-black/40 backdrop-blur-md shadow-md border border-white/10 rounded-md hover:bg-black/50 transition-all duration-300 text-white text-sm sm:text-base"
                 >
                     <div className="w-8 h-5 sm:w-9 sm:h-6 overflow-hidden rounded-md">
                         <img src={current.flag} alt={current.name} className="w-full h-full object-cover" />
                     </div>
-                    <span className="flex-1 text-left">{current.code.toUpperCase()}</span>
+                    <span className="flex-1 text-left text-xs sm:text-sm">{current.code.toUpperCase()}</span>
 
                     {/* Arrow Icon */}
                     <svg
-                        className={`w-4 h-4 shrink-0 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
+                        className={`h-3 w-3 sm:w-4 sm:h-4 shrink-0 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                     >
@@ -92,7 +92,7 @@ const GoogleTranslateDropdown = ({ isReady, languages, selectedLang, setSelected
                                     <div className="w-6 h-4 sm:w-8 sm:h-5 overflow-hidden rounded">
                                         <img src={lang.flag} alt={lang.name} className="w-full h-full object-cover" />
                                     </div>
-                                    <span className="text-sm sm:text-base">{lang.name}</span>
+                                    <span className="text-sm sm:text-sm">{lang.name}</span>
                                 </div>
                             ))}
                     </div>
