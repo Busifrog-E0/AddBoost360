@@ -3,7 +3,7 @@ import { useLayoutEffect } from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 import ScrollToTopButton from "../Components/ScrollToTopButton";
-import GoogleTranslateButton from "../Components/GoogleTranslateButton";
+import GoogleTranslate from "../Components/GoogleTranslate";
 
 const MainLayout = () => {
   const location = useLocation();
@@ -18,7 +18,7 @@ const MainLayout = () => {
       <Outlet />
       <Footer />
       <ScrollToTopButton />
-      <GoogleTranslateButton />
+      <GoogleTranslate />
     </div>
   );
 };
