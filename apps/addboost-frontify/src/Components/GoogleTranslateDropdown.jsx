@@ -58,7 +58,7 @@ const GoogleTranslateDropdown = ({ isReady, languages }) => {
                 <button
                     onClick={() => setDropdownOpen((prev) => !prev)}
                     disabled={!isReady}
-                    className="inline-flex justify-between items-center gap-2 px-3 py-2 bg-PrimaryLightBlue border border-white/10 rounded shadow hover:bg-PrimaryDarkBlue transition-all duration-300 text-white"
+                    className="inline-flex justify-between items-center gap-2 px-3 py-2 bg-black/30 backdrop-blur-md shadow-md  border border-white/10 rounded hover:bg-black/40 transition-all duration-300 text-white"
                 >
                     <div className="w-10 h-7 overflow-hidden rounded-md">
                         <img src={current.flag} alt={current.name} className="w-full h-full object-cover" />
@@ -82,21 +82,23 @@ const GoogleTranslateDropdown = ({ isReady, languages }) => {
 
                 {dropdownOpen && (
                     <div
-                        className={`absolute z-10 w-32 bg-PrimaryLightBlue text-white rounded border border-white/10 shadow-lg max-h-60 overflow-auto p-3 flex flex-col gap-4 ${dropUp ? "bottom-full mb-2" : "mt-2"
+                        className={`absolute z-10 w-32 bg-black/30 backdrop-blur-md shadow-lg text-white rounded border border-white/10 max-h-60 overflow-auto p-3 flex flex-col gap-4 ${dropUp ? "bottom-full mb-2" : "mt-2"
                             }`}
                     >
-                        {languages.map((lang) => (
-                            <div
-                                key={lang.code}
-                                onClick={() => changeLanguage(lang.code)}
-                                className="cursor-pointer flex items-center gap-2"
-                            >
-                                <div className="w-8 h-6 overflow-hidden rounded-md" >
-                                    <img src={lang.flag} alt={lang.name} className="w-full h-full object-cover" />
+                        {languages
+                            .filter((lang) => lang.code !== current.code)
+                            .map((lang) => (
+                                <div
+                                    key={lang.code}
+                                    onClick={() => changeLanguage(lang.code)}
+                                    className="cursor-pointer flex items-center gap-2"
+                                >
+                                    <div className="w-8 h-6 overflow-hidden rounded-md" >
+                                        <img src={lang.flag} alt={lang.name} className="w-full h-full object-cover" />
+                                    </div>
+                                    <span>{lang.name}</span>
                                 </div>
-                                <span>{lang.name}</span>
-                            </div>
-                        ))}
+                            ))}
                     </div>
                 )}
             </div>
