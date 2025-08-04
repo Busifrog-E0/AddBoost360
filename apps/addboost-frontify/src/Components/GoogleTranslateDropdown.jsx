@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
-const GoogleTranslateDropdown = ({ isReady, languages }) => {
-    const [selectedLang, setSelectedLang] = useState(() => {
-        return localStorage.getItem("selectedLanguage") || "en";
-    });
+const GoogleTranslateDropdown = ({ isReady, languages, selectedLang, setSelectedLang }) => {
+
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [visible, setVisible] = useState(true);
     const [dropUp, setDropUp] = useState(false);
@@ -54,20 +52,20 @@ const GoogleTranslateDropdown = ({ isReady, languages }) => {
             className={`notranslate fixed left-4 bottom-4 z-50 transition-opacity duration-500 ease-in-out ${visible ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
         >
-            <div className="relative inline-block text-left" ref={buttonRef}>
+            <div className="relative inline-block text-left w-full max-w-[200px]" ref={buttonRef}>
                 <button
                     onClick={() => setDropdownOpen((prev) => !prev)}
                     disabled={!isReady}
-                    className="inline-flex justify-between items-center gap-2 px-3 py-2 bg-black/30 backdrop-blur-md shadow-md  border border-white/10 rounded hover:bg-black/40 transition-all duration-300 text-white"
+                    className="inline-flex justify-between items-center gap-2 sm:gap-3 w-full px-3 py-2 sm:px-4 pr-2 sm:pr-3 bg-black/40 backdrop-blur-md shadow-md border border-white/10 rounded-md hover:bg-black/50 transition-all duration-300 text-white text-sm sm:text-base"
                 >
-                    <div className="w-10 h-7 overflow-hidden rounded-md">
+                    <div className="w-8 h-5 sm:w-9 sm:h-6 overflow-hidden rounded-md">
                         <img src={current.flag} alt={current.name} className="w-full h-full object-cover" />
                     </div>
-                    <span>{current.code.toUpperCase()}</span>
+                    <span className="flex-1 text-left text-xs sm:text-sm">{current.code.toUpperCase()}</span>
 
                     {/* Arrow Icon */}
                     <svg
-                        className={`w-4 h-4 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
+                        className={`h-3 w-3 sm:w-4 sm:h-4 shrink-0 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                     >
@@ -79,11 +77,9 @@ const GoogleTranslateDropdown = ({ isReady, languages }) => {
                     </svg>
                 </button>
 
-
                 {dropdownOpen && (
                     <div
-                        className={`absolute z-10 w-32 bg-black/30 backdrop-blur-md shadow-lg text-white rounded border border-white/10 max-h-60 overflow-auto p-3 flex flex-col gap-4 ${dropUp ? "bottom-full mb-2" : "mt-2"
-                            }`}
+                        className={`absolute z-20 bg-black/40 backdrop-blur-md shadow-lg text-white rounded-md border border-white/10 max-h-64 overflow-y-auto mt-2 sm:mt-3 flex flex-col gap-2 sm:gap-3 px-3 py-2 sm:px-4   ${dropUp ? "bottom-full mb-2" : ""}`}
                     >
                         {languages
                             .filter((lang) => lang.code !== current.code)
@@ -91,17 +87,18 @@ const GoogleTranslateDropdown = ({ isReady, languages }) => {
                                 <div
                                     key={lang.code}
                                     onClick={() => changeLanguage(lang.code)}
-                                    className="cursor-pointer flex items-center gap-2"
+                                    className="cursor-pointer flex items-center gap-2 rounded"
                                 >
-                                    <div className="w-8 h-6 overflow-hidden rounded-md" >
+                                    <div className="w-6 h-4 sm:w-8 sm:h-5 overflow-hidden rounded">
                                         <img src={lang.flag} alt={lang.name} className="w-full h-full object-cover" />
                                     </div>
-                                    <span>{lang.name}</span>
+                                    <span className="text-sm sm:text-sm">{lang.name}</span>
                                 </div>
                             ))}
                     </div>
                 )}
             </div>
+
         </div>
     );
 };

@@ -19,11 +19,18 @@ export const languages = [
 ];
 
 const GoogleTranslate = ({ }) => {
+    const [selectedLang, setSelectedLang] = useState(localStorage.getItem("selectedLanguage") || "en");
     const [isComboReady, setIsComboReady] = useState(false);
     return (
         <>
-            <GoogleTranslateLoader onReady={setIsComboReady} languages={languages} />
-            <GoogleTranslateDropdown isReady={isComboReady} languages={languages} />
+            <GoogleTranslateLoader
+                onReady={setIsComboReady}
+                languages={languages} />
+            <GoogleTranslateDropdown
+                selectedLang={selectedLang}
+                setSelectedLang={setSelectedLang}
+                isReady={isComboReady}
+                languages={languages} />
         </>
     );
 };
