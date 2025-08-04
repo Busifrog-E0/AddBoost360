@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 
-const GoogleTranslateLoader = ({ onReady }) => {
+const GoogleTranslateLoader = ({ onReady, languages }) => {
+
     useEffect(() => {
         const googleTranslateElementInit = () => {
             new window.google.translate.TranslateElement(
                 {
                     pageLanguage: "en",
                     autoDisplay: false,
-                    includedLanguages: "en,ar",
+                    includedLanguages: languages.map(l => l.code).join(","),
                 },
                 "google_translate_element"
             );
