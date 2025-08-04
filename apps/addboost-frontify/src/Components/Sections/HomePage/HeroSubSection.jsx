@@ -82,7 +82,7 @@ const HeroSubSection = () => {
   10xl:pl-280 11xl:pl-300 12xl:pl-320
   13xl:pl-340 14xl:pl-360 15xl:pl-400
 
-pr-0 xl:pr-10 2xl:pr-20 3xl:pr-52
+pr-6 md:pr-10 2xl:pr-20 3xl:pr-52
 
 py-10 md:py-14 lg:py-20
 4xl:py-24 5xl:py-28 6xl:py-32 7xl:py-36
