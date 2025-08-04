@@ -1,21 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import Ukflag from "../assets/Ukflag.webp";
-import Arabflag from "../assets/Arabflag.webp";
 
-const languages = [
-    {
-        code: "en",
-        name: "English",
-        flag: Ukflag, // 🏳️ SVG image
-    },
-    {
-        code: "ar",
-        name: "Arabic",
-        flag: Arabflag,
-    },
-];
-
-const GoogleTranslateDropdown = ({ isReady }) => {
+const GoogleTranslateDropdown = ({ isReady, languages }) => {
     const [selectedLang, setSelectedLang] = useState(() => {
         return localStorage.getItem("selectedLanguage") || "en";
     });
