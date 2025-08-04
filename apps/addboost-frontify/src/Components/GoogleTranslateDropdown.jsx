@@ -52,20 +52,20 @@ const GoogleTranslateDropdown = ({ isReady, languages, selectedLang, setSelected
             className={`notranslate fixed left-4 bottom-4 z-50 transition-opacity duration-500 ease-in-out ${visible ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
         >
-            <div className="relative inline-block text-left w-full max-w-[200px]" ref={buttonRef}>
+            <div className="relative inline-block text-left w-full " ref={buttonRef}>
                 <button
                     onClick={() => setDropdownOpen((prev) => !prev)}
                     disabled={!isReady}
-                    className="inline-flex justify-between items-center gap-2 sm:gap-3 w-full px-3 py-2 sm:px-4 pr-2 sm:pr-3 bg-black/40 backdrop-blur-md shadow-md border border-white/10 rounded-md hover:bg-black/50 transition-all duration-300 text-white text-sm sm:text-base"
+                    className="inline-flex justify-between items-center gap-3 w-full px-4 py-2 pr-3 bg-black/40 backdrop-blur-md shadow-md border border-white/10 rounded-md hover:bg-black/50 transition-all duration-300 text-white text-base"
                 >
-                    <div className="w-8 h-5 sm:w-9 sm:h-6 overflow-hidden rounded-md">
+                    <div className="w-9 h-6 overflow-hidden rounded-md">
                         <img src={current.flag} alt={current.name} className="w-full h-full object-cover" />
                     </div>
-                    <span className="flex-1 text-left text-xs sm:text-sm">{current.code.toUpperCase()}</span>
+                    <span className="flex-1 text-left">{current.code.toUpperCase()}</span>
 
                     {/* Arrow Icon */}
                     <svg
-                        className={`h-3 w-3 sm:w-4 sm:h-4 shrink-0 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
+                        className={`w-4 h-4 shrink-0 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
                         viewBox="0 0 20 20"
                         fill="currentColor"
                     >
@@ -79,7 +79,7 @@ const GoogleTranslateDropdown = ({ isReady, languages, selectedLang, setSelected
 
                 {dropdownOpen && (
                     <div
-                        className={`absolute z-20 bg-black/40 backdrop-blur-md shadow-lg text-white rounded-md border border-white/10 max-h-64 overflow-y-auto mt-2 sm:mt-3 flex flex-col gap-2 sm:gap-3 px-3 py-2 sm:px-4   ${dropUp ? "bottom-full mb-2" : ""}`}
+                        className={`absolute z-20 bg-black/40 backdrop-blur-md shadow-lg text-white rounded-md border border-white/10 max-h-64 overflow-y-auto mt-3 flex flex-col gap-3 py-2 px-4   ${dropUp ? "bottom-full mb-2" : ""}`}
                     >
                         {languages
                             .filter((lang) => lang.code !== current.code)
@@ -89,10 +89,10 @@ const GoogleTranslateDropdown = ({ isReady, languages, selectedLang, setSelected
                                     onClick={() => changeLanguage(lang.code)}
                                     className="cursor-pointer flex items-center gap-2 rounded"
                                 >
-                                    <div className="w-6 h-4 sm:w-8 sm:h-5 overflow-hidden rounded">
+                                    <div className="w-8 h-5 overflow-hidden rounded">
                                         <img src={lang.flag} alt={lang.name} className="w-full h-full object-cover" />
                                     </div>
-                                    <span className="text-sm sm:text-sm">{lang.name}</span>
+                                    <span className="text-base">{lang.name}</span>
                                 </div>
                             ))}
                     </div>
