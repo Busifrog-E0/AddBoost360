@@ -1,53 +1,40 @@
+/* Prevent translation on custom dropdown and any UI */
+.notranslate,
+[translate="no"] {
+  translate: no;
+}
+
+/* Hide Google's top banner */
+iframe.goog-te-banner-frame {
+  display: none !important;
+}
+
+/* Hide the popup banner spacing issue */
 body {
   top: 0px !important;
 }
 
+/* Hide the embedded translate icon and gadgets */
 .VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate,
 .goog-te-gadget img {
   display: none !important;
 }
 
-iframe.goog-te-banner-frame {
-  display: none !important;
-}
-
-/* Container style */
+/* Completely hide the default translate widget */
 #google_translate_element {
-  display: inline-block;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-family: Arial, sans-serif;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* Hide Google's icon */
-#google_translate_element .goog-te-gadget-icon {
   display: none !important;
 }
 
-/* Style the dropdown container */
-#google_translate_element .goog-te-gadget-simple {
-  background-color: #f5f5f5;
-  border-radius: 4px;
-  padding: 5px 10px;
-  cursor: pointer;
-  border: none;
-  font-size: 14px;
-  color: #333;
+/* Optional: remove unwanted translate overlay tooltip */
+.goog-tooltip {
+  display: none !important;
 }
 
-/* Style the text + arrow */
-#google_translate_element .VIpgJd-ZVi9od-xl07Ob-lTBxed {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
+.goog-tooltip:hover {
+  display: none !important;
 }
 
-/* Optional: change the arrow ▼ */
-#google_translate_element .VIpgJd-ZVi9od-xl07Ob-lTBxed span[aria-hidden="true"] {
-  font-size: 12px;
-  margin-left: 8px;
-  color: #777;
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
