@@ -55,8 +55,8 @@ const CompanyLogoSection = () => {
     return (
       <AddCompanyLogo
         isEditing={false}
-        title="Add Service Providers"
-        description="Upload a new company logo"
+        title="Add Service Provider"
+        description="Upload a new company "
         onBack={handleBack}
         onSave={handleSave}
       />
@@ -67,8 +67,8 @@ const CompanyLogoSection = () => {
     return (
       <AddCompanyLogo
         isEditing={true}
-        title="Edit Service Providers"
-        description="Update the selected company logo"
+        title="Edit Service Provider"
+        description="Update the selected company "
         onBack={handleBack}
         onSave={handleSave}
         initialValue={logoToBeEdited}
@@ -82,10 +82,10 @@ const CompanyLogoSection = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-800">
-            Service Providers
+            Transaction/Payment Service Providers
           </h1>
           <p className="text-gray-500 text-sm">
-            Manage logos of featured companies
+            Manage Highlighted Companies
           </p>
         </div>
         <button
@@ -93,7 +93,7 @@ const CompanyLogoSection = () => {
           className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 flex items-center gap-2"
         >
           <Plus size={16} />
-          Add Logo
+          Add Entry
         </button>
       </div>
 
@@ -156,16 +156,16 @@ const CompanyLogoSection = () => {
                 <Plus className="w-8 h-8 text-gray-400" />
               </div>
               <h3 className="text-lg font-medium text-gray-900 mb-2">
-                No portfolios yet
+                No companies yet
               </h3>
               <p className="text-gray-500 mb-4">
-                Get started by creating your first service offering.
+                Get started by creating your first service provider.
               </p>
               <button
                 onClick={handleAdd}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
               >
-                Add Your First Logo
+                Add Your First Entry
               </button>
             </div>
           )}

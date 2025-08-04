@@ -1,0 +1,26 @@
+/* Prevent translation on custom dropdown and any UI */
+.notranslate,
+[translate="no"] {
+  translate: no;
+}
+
+/* Hide the popup banner spacing issue */
+body {
+  top: 0px !important;
+}
+
+/* Hide the embedded translate icon and gadgets */
+.VIpgJd-ZVi9od-ORHb-OEVmcd.skiptranslate {
+  display: none !important;
+}
+
+#goog-gt-tt,
+#goog-gt-vt {
+  display: none !important;
+}
+
+[class^="VIpgJd"] {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}

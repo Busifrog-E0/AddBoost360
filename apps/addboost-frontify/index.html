@@ -3,7 +3,19 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+  <!-- Standard favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+  <!-- Apple Touch Icon (iOS Safari) -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Android Chrome (homescreen icons) -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+
   <link href="https://fonts.googleapis.com/css2?family=Arya&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
@@ -15,6 +27,11 @@
 <body class="bg-PrimaryDarkBlue">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+
+  <script>window.$zoho = window.$zoho || {}; $zoho.salesiq = $zoho.salesiq || { ready: function () { } }</script>
+  <script id="zsiqscript"
+    src="https://salesiq.zohopublic.com/widget?wc=siq7ff134fac0a82be6bd1d43aec6e90e2c2aabba71c9a50b5e51c3df86cced7082"
+     defer></script>
 </body>
 
 </html>

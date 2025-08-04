@@ -39,6 +39,7 @@ const Header = () => {
 
   return (
     <>
+
       <header
         className={`fixed top-0 left-0 right-0 z-[999] text-white transition-all duration-300
           ${scrolled
@@ -67,6 +68,7 @@ const Header = () => {
               </h1>
             </div>
           </div>
+
           {/* Phone */}
           <div className="hidden md:flex items-center gap-6 2xl:gap-12">
             <div className="flex flex-nowrap items-center text-sm font-inter gap-2 outline-none">
@@ -96,6 +98,7 @@ const Header = () => {
               </a>
             </div>
           </div>
+
 
           {/* Nav Items */}
           <nav className="hidden xl:flex gap-8 text-sm font-arya uppercase">
