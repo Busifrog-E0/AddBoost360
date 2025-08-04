@@ -73,17 +73,31 @@ const GoogleTranslateDropdown = ({ isReady }) => {
                 <button
                     onClick={() => setDropdownOpen((prev) => !prev)}
                     disabled={!isReady}
-                    className="inline-flex justify-between items-center gap-2 px-2 py-2 bg-white border rounded shadow hover:bg-gray-200 transition-all duration-300"
+                    className="inline-flex justify-between items-center gap-2 px-3 py-2 bg-PrimaryLightBlue border border-white/10 rounded shadow hover:bg-PrimaryDarkBlue transition-all duration-300 text-white"
                 >
-                    <div className="w-10 h-7 overflow-hidden rounded-md" >
+                    <div className="w-10 h-7 overflow-hidden rounded-md">
                         <img src={current.flag} alt={current.name} className="w-full h-full object-cover" />
                     </div>
-                    <span className="">{current.code.toUpperCase()}</span>
+                    <span>{current.code.toUpperCase()}</span>
+
+                    {/* Arrow Icon */}
+                    <svg
+                        className={`w-4 h-4 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : "rotate-0"}`}
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.586l3.71-4.356a.75.75 0 111.14.976l-4.25 5a.75.75 0 01-1.14 0l-4.25-5a.75.75 0 01.02-1.06z"
+                            clipRule="evenodd"
+                        />
+                    </svg>
                 </button>
+
 
                 {dropdownOpen && (
                     <div
-                        className={`absolute z-10 w-32 bg-white border border-gray-200 rounded shadow-lg max-h-60 overflow-auto p-2 flex flex-col gap-2 ${dropUp ? "bottom-full mb-2" : "mt-2"
+                        className={`absolute z-10 w-32 bg-PrimaryLightBlue text-white rounded border border-white/10 shadow-lg max-h-60 overflow-auto p-3 flex flex-col gap-4 ${dropUp ? "bottom-full mb-2" : "mt-2"
                             }`}
                     >
                         {languages.map((lang) => (
@@ -92,7 +106,7 @@ const GoogleTranslateDropdown = ({ isReady }) => {
                                 onClick={() => changeLanguage(lang.code)}
                                 className="cursor-pointer flex items-center gap-2"
                             >
-                                <div className="w-10 h-7 overflow-hidden rounded-md" >
+                                <div className="w-8 h-6 overflow-hidden rounded-md" >
                                     <img src={lang.flag} alt={lang.name} className="w-full h-full object-cover" />
                                 </div>
                                 <span>{lang.name}</span>

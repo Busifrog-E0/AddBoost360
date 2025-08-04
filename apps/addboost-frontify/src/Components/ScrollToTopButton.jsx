@@ -37,7 +37,7 @@ const ScrollToTopButton = ({ size = 'sm', color = 'bg-primary' }) => {
     return (
         <button
             onClick={scrollToTop}
-            className={`fixed bottom-6 right-6 z-50 p-3 bg-white rounded-full shadow-lg transition-opacity duration-300 ease-in-out ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+            className={`fixed bottom-20 right-3.5 z-50 p-3 bg-white rounded-full shadow-lg transition-opacity duration-300 ease-in-out ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
                 }`}
         >
             <img src={ScrollUp} className="w-5 h-5" />

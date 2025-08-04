@@ -38,3 +38,17 @@ body {
   background-color: transparent !important;
   box-shadow: none !important;
 }
+
+/* Prevent Google Translate hover tooltip */
+.goog-tooltip,
+.goog-tooltip:hover,
+.VIpgJd-ZVi9od-xl07Ob {
+  display: none !important;
+}
+
+/* Remove background/text highlight */
+.goog-text-highlight {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
