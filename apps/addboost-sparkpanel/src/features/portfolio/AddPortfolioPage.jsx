@@ -37,6 +37,10 @@ const AddPortfolioPage = ({
     const updatedList = [...formData[field]];
     updatedList[index] = value;
     setFormData((prev) => ({ ...prev, [field]: updatedList }));
+
+    // Clear the error if present
+
+    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
   const addListItem = (field) => {
@@ -231,8 +235,9 @@ const AddPortfolioPage = ({
                 type="text"
                 value={formData.Title}
                 onChange={(e) => handleInputChange("Title", e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                  }`}
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
                 placeholder="e.g., E-commerce Platform"
               />
               {errors.Title && (
@@ -254,10 +259,11 @@ const AddPortfolioPage = ({
                       e.target.value === "" ? "" : Number(e.target.value)
                     )
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.Priority
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="Order Priority"
                 />
                 {errors.Priority && (
@@ -277,10 +283,11 @@ const AddPortfolioPage = ({
                 onChange={(e) =>
                   handleInputChange("ButtonMessage1", e.target.value)
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${errors.ButtonMessage1
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-                  }`}
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.ButtonMessage1
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                }`}
                 placeholder="e.g., View Website"
               />
               {errors.ButtonMessage1 && (
@@ -297,8 +304,9 @@ const AddPortfolioPage = ({
                 type="text"
                 value={formData.Type}
                 onChange={(e) => handleInputChange("Type", e.target.value)}
-                className={`w-full px-4 mb-2 py-3 border rounded-lg ${errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
-                  }`}
+                className={`w-full px-4 mb-2 py-3 border rounded-lg ${
+                  errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
                 placeholder="e.g., Website Design, Branding, Social Media Marketing"
               />
               {errors.Type && (
@@ -321,10 +329,11 @@ const AddPortfolioPage = ({
                       onChange={(e) =>
                         handleListChange("ImpactPoints", index, e.target.value)
                       }
-                      className={`w-full px-4 py-3 border rounded-lg ${errors.ImpactPoints?.[index]
-                        ? "border-red-300 bg-red-50"
-                        : "border-gray-300"
-                        }`}
+                      className={`w-full px-4 py-3 border rounded-lg ${
+                        errors.ImpactPoints?.[index]
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
+                      }`}
                       placeholder={`Impact Point ${index + 1}`}
                     />
                     {errors.ImpactPoints?.[index] && (
@@ -361,7 +370,7 @@ const AddPortfolioPage = ({
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Project Link *
+                Project Link
               </label>
               <input
                 type="text"
@@ -382,10 +391,11 @@ const AddPortfolioPage = ({
               <div className="overflow-hidden w-[250px] aspect-video">
                 {!formData.ImageUrl ? (
                   <div
-                    className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                      }`}
+                    className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
+                      errors.ImageUrl
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
+                    }`}
                   >
                     <input
                       type="file"
