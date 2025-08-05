@@ -108,34 +108,34 @@ const EmployeeCard = ({ employee }) => {
         <div className="absolute top-0 left-0">
           <img src={Cornerchipwhite} alt="Global" className="w-6 h-6" />
         </div>
+        <div className="relative text-center flex flex-col gap-2 items-center">
+          {/* Logo fixed at top-left corner */}
+          <img
+            src={ADDBOOSTlogo}
+            alt="Boost Logo"
+            className="absolute top-0 left-0 w-20"
+          />
 
-        <div className="text-center flex flex-col gap-2 items-center">
-          <div className="relative inline-block">
-            <img
-              src={ADDBOOSTlogo}
-              alt="Boost Logo"
-              className="w-24 ml-6 mt-2"
-            />
+          {/* Centered employee image */}
+          <div className="mt-6">
             <img
               src={employee.ImageUrl}
               alt={employee.FullName}
-              className="w-24 h-24 mt-2 mx-auto rounded-full object-cover border-4 border-white"
+              className="w-24 h-24 rounded-full object-cover border-4 border-white"
             />
           </div>
 
           <h3 className="mt-4 text-sm sm:text-lg md:text-xl text-white font-arya capitalize">
             {employee.FullName}
           </h3>
-          <span
-            className="text-xs sm:text-sm md:text-base text-center px-3 py-1 bg-white/10 border border-white/20 text-white/80 rounded-md font-inter"
-          >
+
+          <span className="text-xs sm:text-sm md:text-base text-center px-3 py-1 bg-white/10 border border-white/20 text-white/80 rounded-md font-inter">
             {employee.ID}
           </span>
 
           <p className="text-[#76B0FF] font-medium text-xs sm:text-base md:text-lg font-inter capitalize">
             {employee.Designation}
           </p>
-
 
           <p className="text-gray-300 text-xs sm:text-sm md:text-base font-inter mb-5 capitalize">
             {employee.State}, {employee.Country}
