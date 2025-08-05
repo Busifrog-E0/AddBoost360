@@ -43,7 +43,19 @@ const AddServicePage = ({
   const handleServiceChange = (index, value) => {
     const newServices = [...formData.ServiceList];
     newServices[index] = value;
-    setFormData((prev) => ({ ...prev, ServiceList: newServices }));
+
+    setFormData((prev) => ({
+      ...prev,
+      ServiceList: newServices,
+    }));
+
+    // Clear the error if present
+    if (errors.ServiceList) {
+      setErrors((prev) => ({
+        ...prev,
+        ServiceList: "",
+      }));
+    }
   };
 
   const addService = () => {
@@ -117,10 +129,17 @@ const AddServicePage = ({
       newErrors.Description2 = "Description is required";
     if (!formData.ButtonMessage1.trim())
       newErrors.ButtonMessage1 = "Button text is required";
+
+    const filteredServices = formData.ServiceList.filter(
+      (item) => item && item.trim() !== ""
+    );
+    if (filteredServices.length === 0) {
+      newErrors.ServiceList = "At least one service is required";
+    }
+
     if (isEditing) {
       const hasImages =
         formData.images.length > 0 || formData.ImageUrl.length > 0;
-
       if (!hasImages) {
         newErrors.ImageUrl = "At least one image is required";
       }
@@ -337,7 +356,7 @@ const AddServicePage = ({
               {/* Services List */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  List of Services
+                  List of Services *
                 </label>
                 {formData.ServiceList.map((service, index) => (
                   <div key={index} className="flex items-center space-x-2 mb-2">
@@ -347,9 +366,14 @@ const AddServicePage = ({
                       onChange={(e) =>
                         handleServiceChange(index, e.target.value)
                       }
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                      className={`w-full px-4 py-2 border rounded-lg ${
+                        errors.ServiceList
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
+                      }`}
                       placeholder={`Service ${index + 1}`}
                     />
+
                     <button
                       type="button"
                       onClick={() => removeService(index)}
@@ -367,6 +391,11 @@ const AddServicePage = ({
                   <Plus className="w-4 h-4 mr-1" />
                   Add New Service
                 </button>
+                {errors.ServiceList && (
+                  <p className="text-sm text-red-600 mt-1">
+                    {errors.ServiceList}
+                  </p>
+                )}
               </div>
 
               {/* Images */}

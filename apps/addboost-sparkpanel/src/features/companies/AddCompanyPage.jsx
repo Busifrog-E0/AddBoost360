@@ -288,6 +288,9 @@ const AddCompanyPage = ({
     const { image, ImageUrl, ...rest } = formData;
     const payload = { ...rest, ImageUrl: fileUrl };
 
+    //in payload, remove the element from Tags, if it is "", undefined or null
+    payload.Tags = payload.Tags.filter((tag) => tag && tag.trim() !== "");
+
     if (isEditing) {
       updateData({
         endpoint: `organizations/${formData.DocId}`,
@@ -361,9 +364,8 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
-                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., Razorpay"
             />
             {errors.Title && (
@@ -403,9 +405,8 @@ const AddCompanyPage = ({
                   updated[index] = e.target.value;
                   handleInputChange("Tags", updated);
                 }}
-                className={`w-full px-4 py-3 border rounded-lg mb-2 ${
-                  errors.Tags ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+                className={`w-full px-4 py-3 border rounded-lg mb-2 ${errors.Tags ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
               >
                 <option value="" disabled>
                   Select a Category
@@ -462,9 +463,8 @@ const AddCompanyPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
-                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., India"
             />
             {errors.State && (
@@ -480,9 +480,8 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
-                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., India"
             />
             {errors.Country && (
@@ -498,11 +497,10 @@ const AddCompanyPage = ({
             <div className="overflow-hidden w-[250px] aspect-video">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
-                    errors.ImageUrl
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                 >
                   <input
                     type="file"
