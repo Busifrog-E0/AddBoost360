@@ -113,7 +113,7 @@ const EmployeeCard = ({ employee }) => {
           <img
             src={ADDBOOSTlogo}
             alt="Boost Logo"
-            className="absolute top-0 left-0 w-28"
+            className="absolute top-0 left-0 w-20"
           />
 
           {/* Centered employee image */}
