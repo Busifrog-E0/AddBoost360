@@ -9,9 +9,11 @@ import {
   Home,
   LogOut,
   Handshake,
+  Eye,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router";
 import { useAuth } from "../../features/auth/context/AuthProvider";
+import { CLIENT_URL } from "../../lib/env";
 
 const Sidebar = ({
   activeSection,
@@ -95,6 +97,9 @@ const Sidebar = ({
           })}
         </ul>
       </nav>
+      <div className="p-4 border-t border-slate-700 flex justify-center items-center gap-1">
+        {<a href={CLIENT_URL} target="_blank" className="text-center text-white cursor-pointer transition-all hover:text-blue-600 duration-200">View Website</a>}
+      </div>
 
       {/* Logout Button */}
       <div className="p-4 border-t border-slate-700">
