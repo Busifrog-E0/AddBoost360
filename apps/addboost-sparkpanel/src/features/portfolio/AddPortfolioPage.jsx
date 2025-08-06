@@ -245,7 +245,7 @@ const AddPortfolioPage = ({
                 placeholder="e.g., E-commerce Platform"
               />
               {errors.Title && (
-                <p className="text-sm text-red-600">{errors.title}</p>
+                <p className="text-sm text-red-600">{errors.Title}</p>
               )}
             </div>
             {/* Priority */}
@@ -308,7 +308,7 @@ const AddPortfolioPage = ({
                 type="text"
                 value={formData.Type}
                 onChange={(e) => handleInputChange("Type", e.target.value)}
-                className={`w-full px-4 mb-2 py-3 border rounded-lg ${
+                className={`w-full px-4  py-3 border rounded-lg ${
                   errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
                 }`}
                 placeholder="e.g., Website Design, Branding, Social Media Marketing"
@@ -340,6 +340,11 @@ const AddPortfolioPage = ({
                       }`}
                       placeholder={`Impact Point ${index + 1}`}
                     />
+                    {errors.ImpactPoints?.[index] && (
+                      <p className="text-sm text-red-600">
+                        {errors.ImpactPoints[index]}
+                      </p>
+                    )}
                   </div>
 
                   {formData.ImpactPoints.length > 1 && (
