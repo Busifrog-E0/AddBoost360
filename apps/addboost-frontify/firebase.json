@@ -1,6 +1,5 @@
 {
   "hosting": {
-    "site": "add-boost-360-test",
     "public": "dist",
     "ignore": [
       "firebase.json",
