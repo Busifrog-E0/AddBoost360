@@ -101,7 +101,7 @@ const AddReview = ({
 
     if (!formData.Description1.trim())
       newErrors.Description1 = "Review is required";
-    if (!formData.ImageUrl) newErrors.ImageUrl = "Image is required";
+    if (!formData.ImageUrl) newErrors.ImageUrl = "Customer Image is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -187,7 +187,7 @@ const AddReview = ({
           {/* Priority */}
           <div className="space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
                 Priority *
               </label>
               <input
@@ -212,7 +212,7 @@ const AddReview = ({
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Designation / Location *
             </label>
             <input
@@ -232,7 +232,7 @@ const AddReview = ({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
               Customer Review *
             </label>
             <textarea
@@ -304,6 +304,9 @@ const AddReview = ({
                 </div>
               )}
             </div>
+            {errors.ImageUrl && (
+              <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
+            )}
           </div>
         </div>
 
