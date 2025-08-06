@@ -356,7 +356,7 @@ const AddCompanyPage = ({
           </h2>
 
           {/* Company Name */}
-          <div className="mb-4">
+          <div className="mb-2">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Company Name *
             </label>
@@ -364,8 +364,9 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border mb-3 rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border mb-3 rounded-lg ${
+                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., Razorpay"
             />
             {errors.Title && (
@@ -397,31 +398,50 @@ const AddCompanyPage = ({
             </label>
 
             {formData.Tags.map((category, index) => (
-              <select
-                key={index}
-                value={category}
-                onChange={(e) => {
-                  const updated = [...formData.Tags];
-                  updated[index] = e.target.value;
-                  handleInputChange("Tags", updated);
-                }}
-                className={`w-full px-4 py-3 border rounded-lg mb-2 ${errors.Tags ? "border-red-300 bg-red-50" : "border-gray-300"
-                  }`}
-              >
-                <option value="" disabled>
-                  Select a Category
-                </option>
+              <div key={index} className="flex items-center space-x-2 mb-2">
+                <div className="w-full">
+                  <select
+                    value={category}
+                    onChange={(e) => {
+                      const updated = [...formData.Tags];
+                      updated[index] = e.target.value;
+                      handleInputChange("Tags", updated);
+                    }}
+                    className={`w-full px-4 py-3 border rounded-lg ${
+                      errors.Tags
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
+                    }`}
+                  >
+                    <option value="" disabled>
+                      Select a Category
+                    </option>
 
-                {allOptionGroups.map((group, idx) => (
-                  <optgroup key={`group-${idx}`} label={group.label}>
-                    {group.options.map((option) => (
-                      <option key={`${idx}-${option}`} value={option}>
-                        {option}
-                      </option>
+                    {allOptionGroups.map((group, idx) => (
+                      <optgroup key={`group-${idx}`} label={group.label}>
+                        {group.options.map((option) => (
+                          <option key={`${idx}-${option}`} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </optgroup>
                     ))}
-                  </optgroup>
-                ))}
-              </select>
+                  </select>
+                </div>
+
+                {/* Delete Button Always Visible */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    const updated = [...formData.Tags];
+                    updated.splice(index, 1);
+                    handleInputChange("Tags", updated);
+                  }}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
             ))}
 
             <div className="flex items-center space-x-2 mt-2">
@@ -430,30 +450,17 @@ const AddCompanyPage = ({
                 onClick={() =>
                   handleInputChange("Tags", [...formData.Tags, ""])
                 }
-                className="flex items-center mt-1  mb-2 text-blue-600 hover:underline"
+                className="flex items-center mt-1 mb-2 text-blue-600 hover:underline"
               >
-                <Plus className="w-4 h-4 mr-1 " /> Add New Category
+                <Plus className="w-4 h-4 mr-1" /> Add New Category
               </button>
-
-              {formData.Tags.length > 1 && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    const updated = [...formData.Tags];
-                    updated.pop();
-                    handleInputChange("Tags", updated);
-                  }}
-                  className="flex items-center justify-center border border-red-500 text-red-500  rounded-md p-2   hover:bg-red-50"
-                >
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              )}
             </div>
 
             {errors.Tags && (
               <p className="text-sm text-red-600 mb-2">{errors.Tags}</p>
             )}
           </div>
+
           {/*State */}
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -463,8 +470,9 @@ const AddCompanyPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
+                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., India"
             />
             {errors.State && (
@@ -480,8 +488,9 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
+                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., India"
             />
             {errors.Country && (
@@ -497,10 +506,11 @@ const AddCompanyPage = ({
             <div className="overflow-hidden w-[250px] aspect-video">
               {!formData.ImageUrl ? (
                 <div
-                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${errors.ImageUrl
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
+                    errors.ImageUrl
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                 >
                   <input
                     type="file"

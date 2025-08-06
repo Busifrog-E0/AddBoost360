@@ -31,24 +31,34 @@ const FormDetailsPage = ({ form, onBack }) => {
             label="Business / Startup Name (if any)"
             value={form.BusinessName}
           />
-          <Detail label="Preferred Date & Time" value={new Date(form.PreferredDate).toLocaleString(undefined, {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: true,
-          })} />
+
+          <Detail
+            label="Preferred Date & Time"
+            value={
+              form.PreferredDate === 0
+                ? ""
+                : new Date(form.PreferredDate).toLocaleString(undefined, {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "2-digit",
+                  second: "2-digit",
+                  hour12: true,
+                })
+            }
+          />
+          <Detail label="Additional Notes or Questions" value={form.Notes} />
+
         </div>
 
-        <div className="mt-6">
+        {/* <div className="mt-6">
           <p className="text-gray-600 font-semibold mb-1">
             Additional Notes or Questions:
           </p>
           <p className="text-gray-900 whitespace-pre-line">{form.Notes}</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );

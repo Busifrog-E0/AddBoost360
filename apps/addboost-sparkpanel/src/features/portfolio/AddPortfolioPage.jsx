@@ -336,18 +336,13 @@ const AddPortfolioPage = ({
                       }`}
                       placeholder={`Impact Point ${index + 1}`}
                     />
-                    {errors.ImpactPoints?.[index] && (
-                      <p className="text-sm text-red-600 mt-1">
-                        {errors.ImpactPoints[index]}
-                      </p>
-                    )}
                   </div>
 
                   {formData.ImpactPoints.length > 1 && (
                     <button
                       type="button"
                       onClick={() => removeListItem("ImpactPoints", index)}
-                      className="text-red-500  mt-2"
+                      className="text-red-500  mt-4"
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>

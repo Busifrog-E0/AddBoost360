@@ -104,7 +104,7 @@ const EmployeeCard = ({ employee }) => {
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
     >
-      <div className="relative p-6">
+      <div className="relative p-6 min-h-96  h-full ">
         <div className="absolute top-0 left-0">
           <img src={Cornerchipwhite} alt="Global" className="w-6 h-6" />
         </div>
@@ -137,7 +137,7 @@ const EmployeeCard = ({ employee }) => {
             {employee.Designation}
           </p>
 
-          <p className="text-gray-300 text-xs sm:text-sm md:text-base font-inter mb-5 capitalize">
+          <p className="text-gray-300 text-xs sm:text-sm md:text-base font-inter  capitalize">
             {employee.State}, {employee.Country}
           </p>
         </div>
