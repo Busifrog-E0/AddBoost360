@@ -130,6 +130,9 @@ const AddServicePage = ({
     if (!formData.ButtonMessage1.trim())
       newErrors.ButtonMessage1 = "Button text is required";
 
+    if (formData.Priority === "") {
+      newErrors.Priority = "Priority is required";
+    }
     const filteredServices = formData.ServiceList.filter(
       (item) => item && item.trim() !== ""
     );
@@ -275,8 +278,8 @@ const AddServicePage = ({
                   }`}
                   placeholder="Order Priority"
                 />
-                {errors.priority && (
-                  <p className="mt-1 text-sm text-red-600">{errors.priority}</p>
+                {errors.Priority && (
+                  <p className="mt-1 text-sm text-red-600">{errors.Priority}</p>
                 )}
               </div>
 

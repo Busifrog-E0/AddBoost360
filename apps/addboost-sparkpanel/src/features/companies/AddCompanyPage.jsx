@@ -277,6 +277,11 @@ const AddCompanyPage = ({
       formData.Tags.every((cat) => cat.trim() === "")
     )
       newErrors.Tags = "Product categories are required";
+
+    if (formData.Priority === "") {
+      newErrors.Priority = "Priority is required";
+    }
+
     if (!formData.Country.trim()) newErrors.Country = "Country is required";
     if (!formData.State.trim()) newErrors.State = "State is required";
     if (!formData.ImageUrl) newErrors.ImageUrl = "Company image is required";
@@ -374,20 +379,30 @@ const AddCompanyPage = ({
             )}
           </div>
           {/* Priority */}
-          <div className="space-y-6 mb-4">
+          <div className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                Priority
+                Priority *
               </label>
               <input
                 type="number"
-                value={formData.Priority}
+                value={formData.Priority ?? ""}
                 onChange={(e) =>
-                  handleInputChange("Priority", Number(e.target.value))
+                  handleInputChange(
+                    "Priority",
+                    e.target.value === "" ? "" : Number(e.target.value)
+                  )
                 }
-                className="w-full px-4 py-3 border rounded-lg border-gray-300"
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.Priority
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                }`}
                 placeholder="Order Priority"
               />
+              {errors.Priority && (
+                <p className="mt-1 text-sm text-red-600">{errors.Priority}</p>
+              )}
             </div>
           </div>
 

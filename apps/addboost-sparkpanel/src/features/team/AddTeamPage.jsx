@@ -131,6 +131,9 @@ const AddTeamPage = ({
     if (!formData.ID.trim()) newErrors.ID = "ID is required";
     if (!formData.Description1.trim())
       newErrors.Description1 = "Position is required";
+      if (formData.Priority === "") {
+      newErrors.Priority = "Priority is required";
+    }
 
     if (!formData.State.trim()) newErrors.State = "State is required";
     if (!formData.Country.trim()) newErrors.Country = "Country is required";

@@ -126,6 +126,10 @@ const AddPortfolioPage = ({
       isValid = false;
     }
 
+    if (formData.Priority === "") {
+      newErrors.Priority = "Priority is required";
+    }
+
     if (!formData.ButtonMessage1.trim()) {
       newErrors.ButtonMessage1 = "Button text is required";
       isValid = false;
