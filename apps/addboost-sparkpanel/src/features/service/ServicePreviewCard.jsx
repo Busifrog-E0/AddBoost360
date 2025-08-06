@@ -8,6 +8,7 @@ const ServicePreviewCard = ({ service }) => {
     ServiceList,
     ButtonMessage1,
     ImageUrl,
+    images,
   } = service || {};
 
   return (
@@ -21,17 +22,24 @@ const ServicePreviewCard = ({ service }) => {
 
       {/* Image */}
       <div className="w-full mb-4">
-        {ImageUrl && ImageUrl[0]?.trim() ? (
+        {ImageUrl && ImageUrl.length > 0 && ImageUrl[0]?.trim() ? (
           <img
             src={ImageUrl[0]}
             alt="Service"
             className="w-full aspect-video object-cover rounded-md"
           />
-        ) : (
-          <div className="w-full aspect-video bg-gray-200 rounded-md flex items-center justify-center text-gray-500 text-sm">
-            {"Service Image"}
-          </div>
-        )}
+        ) :
+          (images && images.length > 0) ?
+            <img
+              src={URL.createObjectURL(new Blob([new Uint8Array(images[0].FileData)], { type: "image/jpeg" }))}
+              alt="Service"
+              className="w-full aspect-video object-cover rounded-md"
+            />
+            : (
+              <div className="w-full aspect-video bg-gray-200 rounded-md flex items-center justify-center text-gray-500 text-sm">
+                {"Service Image"}
+              </div>
+            )}
       </div>
 
       {/* Title */}
