@@ -74,13 +74,6 @@ const FormListPage = () => {
                     <td className="py-3 px-4">{form.Phone}</td>
                     <td className="py-3 px-4">
                       <div className="flex justify-center">
-                        {/* <button
-                      onClick={() => handleDeleteData(form.DocId)}
-                      className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                      title="Delete data"
-                    >
-                      <Trash2 className="w-5 h-5" />
-                    </button> */}
                         <button
                           onClick={() => setSelectedForm(form)}
                           className="text-blue-600 hover:underline flex items-center gap-1"
@@ -88,6 +81,14 @@ const FormListPage = () => {
                           <Eye className="w-4 h-4" />
                           <span>View Full Details</span>
                         </button>
+                        {/* <button
+                          onClick={() => handleDeleteData(form.DocId)}
+                          className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                          title="Delete data"
+                        >
+                          <Trash2 className="w-5 h-5" />
+                        </button> */}
+
                       </div>
                     </td>
                   </tr>
