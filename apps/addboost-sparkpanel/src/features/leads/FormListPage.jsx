@@ -47,23 +47,25 @@ const FormListPage = () => {
       <h1 className="text-2xl font-bold text-gray-900 ">Form Submissions</h1>
       <p className="text-gray-600 ">View basic info of all submissions</p>
 
-      <div className="bg-white rounded-xl shadow-sm border overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="text-left py-3 px-4 text-gray-700">Name</th>
-              <th className="text-left py-3 px-4 text-gray-700">Email</th>
-              <th className="text-left py-3 px-4 text-gray-700">Phone</th>
-              <th className="text-center py-3 px-4 text-gray-700">Action</th>
-            </tr>
-          </thead>
-          {isLoading ? (
-            <div>
-              <Loader />
-            </div>
-          ) : (
-            <>
-              {" "}
+      {isLoading ? (
+        <div>
+          <Loader />
+        </div>
+      ) : (
+        <>
+          {" "}
+          <div className="bg-white rounded-xl shadow-sm border overflow-x-auto">
+            <table className="w-full">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="text-left py-3 px-4 text-gray-700">Name</th>
+                  <th className="text-left py-3 px-4 text-gray-700">Email</th>
+                  <th className="text-left py-3 px-4 text-gray-700">Phone</th>
+                  <th className="text-center py-3 px-4 text-gray-700">
+                    Action
+                  </th>
+                </tr>
+              </thead>
               <tbody>
                 {forms.map((form) => (
                   <tr key={form.DocId} className="border-t hover:bg-gray-50">
@@ -91,16 +93,16 @@ const FormListPage = () => {
                   </tr>
                 ))}
               </tbody>
-            </>
-          )}
-        </table>
+            </table>
 
-        {forms.length === 0 && (
-          <div className="text-center p-8 text-gray-500">
-            No submissions yet.
+            {forms.length === 0 && (
+              <div className="text-center p-8 text-gray-500">
+                No submissions yet.
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 };

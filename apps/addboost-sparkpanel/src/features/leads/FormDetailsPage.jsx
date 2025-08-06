@@ -31,16 +31,24 @@ const FormDetailsPage = ({ form, onBack }) => {
             label="Business / Startup Name (if any)"
             value={form.BusinessName}
           />
-          <Detail label="Preferred Date & Time" value={new Date(form.PreferredDate).toLocaleString(undefined, {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: true,
-          })} />
+
+          <Detail
+            label="Preferred Date & Time"
+            value={
+              form.PreferredDate === 0
+                ? ""
+                : new Date(form.PreferredDate).toLocaleString(undefined, {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: true,
+                  })
+            }
+          />
         </div>
 
         <div className="mt-6">
