@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router";
-import { useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useEffect } from "react";
 import Sidebar from "../components/ui/Sidebar";
 import { Menu } from "lucide-react";
 
@@ -10,6 +10,21 @@ const MainLayout = () => {
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [location]);
+  useEffect(() => {
+    const BreakWheel = () => {
+      function handleNumberInputWheel(event) {
+        // Prevent the default behavior of the mouse wheel (scrolling) only if the event occurred on a number input
+        if (event.target.type === "number") {
+          event.preventDefault();
+        }
+      }
+      // Add a non-passive event listener for the wheel event on all number input fields
+      document.addEventListener("wheel", handleNumberInputWheel, {
+        passive: false,
+      });
+    };
+    return BreakWheel();
+  }, []);
 
   const [activeSection, setActiveSection] = useState("service");
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);

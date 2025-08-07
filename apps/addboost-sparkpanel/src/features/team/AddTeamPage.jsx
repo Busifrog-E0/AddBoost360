@@ -131,6 +131,9 @@ const AddTeamPage = ({
     if (!formData.ID.trim()) newErrors.ID = "ID is required";
     if (!formData.Description1.trim())
       newErrors.Description1 = "Position is required";
+    if (formData.Priority === "") {
+      newErrors.Priority = "Priority is required";
+    }
 
     if (!formData.State.trim()) newErrors.State = "State is required";
     if (!formData.Country.trim()) newErrors.Country = "Country is required";
@@ -217,7 +220,7 @@ const AddTeamPage = ({
               type="text"
               value={formData.FullName}
               onChange={(e) => handleInputChange("FullName", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
+              className={`w-full px-4 py-3 border  rounded-lg ${
                 errors.FullName ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., John Doe"
@@ -262,7 +265,7 @@ const AddTeamPage = ({
               type="text"
               value={formData.ID}
               onChange={(e) => handleInputChange("ID", e.target.value)}
-              className={`w-full px-4 mb-2 py-3 border rounded-lg ${
+              className={`w-full px-4  py-3 border rounded-lg ${
                 errors.ID ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., ID-43"
@@ -278,7 +281,7 @@ const AddTeamPage = ({
               type="text"
               value={formData.Designation}
               onChange={(e) => handleInputChange("Designation", e.target.value)}
-              className={`w-full px-4 mb-2 py-3 border rounded-lg ${
+              className={`w-full px-4  py-3 border rounded-lg ${
                 errors.Designation
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
@@ -335,7 +338,7 @@ const AddTeamPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border mb-2 rounded-lg ${
+              className={`w-full px-4 py-3 border  rounded-lg ${
                 errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., kerala"
@@ -354,7 +357,7 @@ const AddTeamPage = ({
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4 mb-2 py-3 border rounded-lg ${
+              className={`w-full px-4  py-3 border rounded-lg ${
                 errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
               }`}
               placeholder="e.g., India"
