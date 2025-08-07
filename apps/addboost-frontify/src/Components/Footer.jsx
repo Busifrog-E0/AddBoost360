@@ -3,7 +3,7 @@ import linkedin from "../assets/SocialMediaIcon/linkedin.svg";
 import instagram from "../assets/SocialMediaIcon/instagram.svg";
 import facebook from "../assets/SocialMediaIcon/facebook.svg";
 import youtube from "../assets/SocialMediaIcon/youtube.svg";
-import Ukflag from "../assets/Flags/Ukflag.webp";
+import Ukflag from "../assets/Flags/Ukflag.png";
 import ADDBOOSTlogo from "../assets/ADDBOOSTlogo.png";
 
 import refundPDF from "../assets/docs/refund-and-cancellation.pdf";

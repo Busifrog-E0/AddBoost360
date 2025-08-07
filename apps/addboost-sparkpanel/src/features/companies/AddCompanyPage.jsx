@@ -272,11 +272,23 @@ const AddCompanyPage = ({
   const validateForm = () => {
     const newErrors = {};
     if (!formData.Title.trim()) newErrors.Title = "Company name is required";
-    if (
-      !formData.Tags.length ||
-      formData.Tags.every((cat) => cat.trim() === "")
-    )
-      newErrors.Tags = "Product categories are required";
+
+    if (formData.Tags.length === 0) {
+      newErrors.Tags = "At least one service area is required";
+    } else {
+      const emptyService = formData.Tags.some(
+        (item) => !item || item.trim() === ""
+      );
+      if (emptyService) {
+        newErrors.Tags = "Please fill in all service area fields.";
+      }
+    }
+
+    // if (
+    //   !formData.Tags.length ||
+    //   formData.Tags.every((cat) => cat.trim() === "")
+    // )
+    //   newErrors.Tags = "Product categories are required";
 
     if (formData.Priority === "") {
       newErrors.Priority = "Priority is required";
