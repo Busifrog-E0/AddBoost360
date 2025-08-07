@@ -89,8 +89,7 @@ export const languages = [
     flag: China,
   },
 ];
-
-const GoogleTranslate = ({}) => {
+const GoogleTranslate = ({ }) => {
   const [selectedLang, setSelectedLang] = useState(
     localStorage.getItem("selectedLanguage") || "en"
   );
