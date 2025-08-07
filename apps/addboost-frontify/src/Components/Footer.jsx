@@ -3,7 +3,7 @@ import linkedin from "../assets/SocialMediaIcon/linkedin.svg";
 import instagram from "../assets/SocialMediaIcon/instagram.svg";
 import facebook from "../assets/SocialMediaIcon/facebook.svg";
 import youtube from "../assets/SocialMediaIcon/youtube.svg";
-import Ukflag from "../assets/Ukflag.webp";
+import Ukflag from "../assets/Flags/Ukflag.webp";
 import ADDBOOSTlogo from "../assets/ADDBOOSTlogo.png";
 
 import refundPDF from "../assets/docs/refund-and-cancellation.pdf";
@@ -40,7 +40,7 @@ const Footer = () => {
         label: "Refund Policy",
         url: refundPDF,
       },
-    ]
+    ],
   });
 
   return (
@@ -179,9 +179,6 @@ py-10 md:py-14 lg:py-20
             </div>
             <p>{footerData.copywrite}</p>
           </div>
-
-
-
 
           <p className="text-gray-500 font-inter text-base">
             Want to stay updated with digital trends, offers and sourcing
