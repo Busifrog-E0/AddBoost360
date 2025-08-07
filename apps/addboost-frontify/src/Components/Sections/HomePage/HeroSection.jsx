@@ -3,7 +3,7 @@ import Button from "../../Button";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollToBottom from "../../ScrollToBottom";
-import Ukflag from "../../../assets/Flags/Ukflag.webp";
+import Ukflag from "../../../assets/Flags/Ukflag.png";
 
 // Animation Variants
 const containerStagger = {

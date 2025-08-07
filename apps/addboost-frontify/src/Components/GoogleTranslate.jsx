@@ -2,10 +2,10 @@ import { useState } from "react";
 import GoogleTranslateDropdown from "./GoogleTranslateDropdown";
 import GoogleTranslateLoader from "./GoogleTranslateLoader";
 
-import Ukflag from "../assets/Flags/Ukflag.webp";
+import Ukflag from "../assets/Flags/Ukflag.png";
 import Arabflag from "../assets/Flags/Arabflag.webp";
 import Germany from "../assets/Flags/Germany.jpg";
-import Spain from "../assets/Flags/Spain.jpg";
+import Spain from "../assets/Flags/Spain.png";
 import India from "../assets/Flags/India.png";
 import Japan from "../assets/Flags/Japan.png";
 import Korea from "../assets/Flags/Korea.png";
@@ -14,7 +14,7 @@ import China from "../assets/Flags/China.png";
 import France from "../assets/Flags/France.png";
 import Italy from "../assets/Flags/Italy.png";
 import Poland from "../assets/Flags/Poland.png";
-import Philippines from "../assets/Flags/Philippines.png";
+import Philippines from "../assets/Flags/Philippines.jpeg";
 import Vietnam from "../assets/Flags/Vietnam.png";
 export const languages = [
   {
@@ -89,7 +89,6 @@ export const languages = [
     flag: China,
   },
 ];
-
 const GoogleTranslate = ({}) => {
   const [selectedLang, setSelectedLang] = useState(
     localStorage.getItem("selectedLanguage") || "en"
