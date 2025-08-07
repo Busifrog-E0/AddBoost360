@@ -43,9 +43,13 @@ const FormListPage = () => {
   }
 
   return (
-    <div className="space-y-2">
-      <h1 className="text-2xl font-bold text-gray-900 ">Form Submissions</h1>
-      <p className="text-gray-600 ">View basic info of all submissions</p>
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold text-gray-900 ">Form Submissions</h1>
+        <p className="text-gray-600 mt-1 ">
+          View basic info of all submissions
+        </p>
+      </div>
 
       {isLoading ? (
         <div>
@@ -54,9 +58,9 @@ const FormListPage = () => {
       ) : (
         <>
           {" "}
-          <div className="bg-white rounded-xl shadow-sm border overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gray-100">
+          <div className="bg-white rounded-xl shadow-sm border overflow-x-auto  ">
+            <table className="w-full  ">
+              <thead className="bg-gray-100  ">
                 <tr>
                   <th className="text-left py-3 px-4 text-gray-700">Name</th>
                   <th className="text-left py-3 px-4 text-gray-700">Email</th>
@@ -88,7 +92,6 @@ const FormListPage = () => {
                         >
                           <Trash2 className="w-5 h-5" />
                         </button> */}
-
                       </div>
                     </td>
                   </tr>

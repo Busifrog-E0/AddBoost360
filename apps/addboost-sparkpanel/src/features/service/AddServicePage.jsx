@@ -130,12 +130,20 @@ const AddServicePage = ({
     if (!formData.ButtonMessage1.trim())
       newErrors.ButtonMessage1 = "Button text is required";
 
-    const filteredServices = formData.ServiceList.filter(
-      (item) => item && item.trim() !== ""
-    );
-    if (filteredServices.length === 0) {
-      newErrors.ServiceList = "At least one service is required";
+    if (formData.Priority === "") {
+      newErrors.Priority = "Priority is required";
     }
+    if (formData.ServiceList.length === 0) {
+      newErrors.ServiceList = "At least one service is required";
+    } else {
+      const emptyService = formData.ServiceList.some(
+        (item) => !item || item.trim() === ""
+      );
+      if (emptyService) {
+        newErrors.ServiceList = "Please fill in all service fields";
+      }
+    }
+
 
     if (isEditing) {
       const hasImages =
@@ -275,8 +283,8 @@ const AddServicePage = ({
                   }`}
                   placeholder="Order Priority"
                 />
-                {errors.priority && (
-                  <p className="mt-1 text-sm text-red-600">{errors.priority}</p>
+                {errors.Priority && (
+                  <p className="mt-1 text-sm text-red-600">{errors.Priority}</p>
                 )}
               </div>
 

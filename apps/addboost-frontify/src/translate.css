@@ -24,3 +24,19 @@ body {
   box-shadow: none !important;
   color: inherit !important;
 }
+
+/* Scrollbar Styles */
+.tabview::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+.tabview::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2); /* Scrollbar thumb */
+  border-radius: 10px;
+  border: none;
+}
+
+/* Optional: On hover */
+.tabview::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
