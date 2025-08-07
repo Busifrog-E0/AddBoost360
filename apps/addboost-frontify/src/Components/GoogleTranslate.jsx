@@ -2,8 +2,8 @@ import { useState } from "react";
 import GoogleTranslateDropdown from "./GoogleTranslateDropdown";
 import GoogleTranslateLoader from "./GoogleTranslateLoader";
 
-import Ukflag from "../assets/Ukflag.webp";
-import Arabflag from "../assets/Arabflag.webp";
+import Ukflag from "../assets/Flags/Ukflag.webp";
+import Arabflag from "../assets/Flags/Arabflag.webp";
 import Germany from "../assets/Flags/Germany.jpg";
 import Spain from "../assets/Flags/Spain.jpg";
 import India from "../assets/Flags/India.png";
