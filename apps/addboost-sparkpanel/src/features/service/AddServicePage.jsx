@@ -133,12 +133,17 @@ const AddServicePage = ({
     if (formData.Priority === "") {
       newErrors.Priority = "Priority is required";
     }
-    const filteredServices = formData.ServiceList.filter(
-      (item) => item && item.trim() !== ""
-    );
-    if (filteredServices.length === 0) {
+    if (formData.ServiceList.length === 0) {
       newErrors.ServiceList = "At least one service is required";
+    } else {
+      const emptyService = formData.ServiceList.some(
+        (item) => !item || item.trim() === ""
+      );
+      if (emptyService) {
+        newErrors.ServiceList = "Please fill in all service fields";
+      }
     }
+
 
     if (isEditing) {
       const hasImages =
