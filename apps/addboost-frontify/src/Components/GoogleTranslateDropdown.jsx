@@ -16,12 +16,13 @@ const GoogleTranslateDropdown = ({
     const combo = document.querySelector(".goog-te-combo");
     if (combo) {
       combo.value = lang;
+      console.log(selectedLang, selectedLanguageHistory)
       combo.dispatchEvent(new Event("change"));
       localStorage.setItem("selectedLanguage", lang); // Save to localStorage
       updateCurrentLang(lang);
       setDropdownOpen(false);
 
-      // Reload after a short delay if the previously selected language is englis using selectedLanguageHistory
+      // Reload after a short delay if the previously selected language is english
       setTimeout(() => {
         if (lang === "en") {
           window.location.reload();
@@ -52,8 +53,6 @@ const GoogleTranslateDropdown = ({
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  console.log(selectedLang, languages.find((l) => l.code === selectedLang))
 
   const current = languages.find((l) => l.code === selectedLang);
   return (

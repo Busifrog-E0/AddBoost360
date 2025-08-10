@@ -63,7 +63,6 @@ export default function useGetList(options) {
     : [...extraDependencies];
 
   const getList = runOnce((temp, fromUpdate = true) => {
-    console.log(filters)
     const query = `${endpoint}?${jsonToQuery({
       ...filters,
       ...extraParams,
