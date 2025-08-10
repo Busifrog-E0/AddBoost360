@@ -4,7 +4,6 @@ import { _retrieveData, _storeData, CURRENTLANGUAGE } from "../../lib/local-stor
 
 const Context = createContext();
 
-
 const getLocalLang = () => {
   const raw = _retrieveData(CURRENTLANGUAGE, 'string');
   if (!raw) return "en";
@@ -16,6 +15,7 @@ const getLocalLang = () => {
     return "en";
   }
 };
+
 export const ContextProvider = ({ children }) => {
   const [selectedLang, setSelectedLang] = useState(getLocalLang());
   const [selectedLanguageHistory, setSelectedLanguageHistory] = useState(() => [selectedLang]); // start with current lang in history

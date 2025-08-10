@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const GoogleTranslateLoader = ({ onReady, languages, selectedLang }) => {
+const GoogleTranslateLoader = ({ onReady, languages }) => {
 
   useEffect(() => {
     const googleTranslateElementInit = () => {
