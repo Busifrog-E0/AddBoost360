@@ -20,3 +20,4 @@ export const _clear = () => {
 };
 
 export const CURRENTUSERDATA = "currentUserData";
+export const CURRENTLANGUAGE = "selectedLanguage";

@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useLangContext } from "./context/ContextProvider";
 
 const GoogleTranslateDropdown = ({
   isReady,
   languages,
-  selectedLang,
-  setSelectedLang,
 }) => {
+  const { selectedLang, updateCurrentLang, selectedLanguageHistory } = useLangContext()
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [visible, setVisible] = useState(true);
   const [dropUp, setDropUp] = useState(false);
@@ -17,13 +18,15 @@ const GoogleTranslateDropdown = ({
       combo.value = lang;
       combo.dispatchEvent(new Event("change"));
       localStorage.setItem("selectedLanguage", lang); // Save to localStorage
-      setSelectedLang(lang);
+      updateCurrentLang(lang);
       setDropdownOpen(false);
 
-      // Reload after a short delay
-      // setTimeout(() => {
-      //   window.location.reload();
-      // }, 500);
+      // Reload after a short delay if the previously selected language is englis using selectedLanguageHistory
+      setTimeout(() => {
+        if (lang === "en") {
+          window.location.reload();
+        }
+      }, 500);
     }
   };
   // Detect scroll near bottom

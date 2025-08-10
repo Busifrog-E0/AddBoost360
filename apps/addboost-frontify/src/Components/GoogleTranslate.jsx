@@ -16,6 +16,7 @@ import Italy from "../assets/Flags/Italy.png";
 import Poland from "../assets/Flags/Poland.png";
 import Philippines from "../assets/Flags/Philippines.jpeg";
 import Vietnam from "../assets/Flags/Vietnam.png";
+import { useLangContext } from "./context/ContextProvider";
 export const languages = [
   {
     code: "en",
@@ -89,17 +90,16 @@ export const languages = [
     flag: China,
   },
 ];
-const GoogleTranslate = ({}) => {
-  const [selectedLang, setSelectedLang] = useState(
-    localStorage.getItem("selectedLanguage") || "en"
-  );
+const GoogleTranslate = ({ }) => {
+
+
+  const { selectedLang, updateCurrentLang, selectedLanguageHistory } = useLangContext()
   const [isComboReady, setIsComboReady] = useState(false);
   return (
     <>
-      <GoogleTranslateLoader onReady={setIsComboReady} languages={languages} />
+      <GoogleTranslateLoader onReady={setIsComboReady} languages={languages} selectedLang={selectedLang} />
       <GoogleTranslateDropdown
-        selectedLang={selectedLang}
-        setSelectedLang={setSelectedLang}
+
         isReady={isComboReady}
         languages={languages}
       />
