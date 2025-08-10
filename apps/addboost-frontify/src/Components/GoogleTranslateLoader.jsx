@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
-const GoogleTranslateLoader = ({ onReady, languages }) => {
+const GoogleTranslateLoader = ({ onReady, languages, selectedLang }) => {
+
   useEffect(() => {
     const googleTranslateElementInit = () => {
       new window.google.translate.TranslateElement(
@@ -23,7 +24,6 @@ const GoogleTranslateLoader = ({ onReady, languages }) => {
       document.body.appendChild(script);
     }
   }, []);
-
   // Monitor when the translate dropdown is ready
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,6 +35,24 @@ const GoogleTranslateLoader = ({ onReady, languages }) => {
     }, 500);
     return () => clearInterval(interval);
   }, [onReady]);
+
+
+  // useEffect(() => {
+  //   const savedLang = localStorage.getItem("selectedLanguage") || "en";
+
+  //   const setComboLanguage = () => {
+  //     const combo = document.querySelector(".goog-te-combo");
+  //     if (combo) {
+  //       combo.value = savedLang;
+  //       combo.dispatchEvent(new Event("change"));
+  //     } else {
+  //       // Retry a bit later if combo not yet loaded
+  //       setTimeout(setComboLanguage, 500);
+  //     }
+  //   };
+
+  //   setComboLanguage();
+  // }, []);
 
   return (
     <div
