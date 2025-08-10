@@ -4,8 +4,7 @@ import CategoryCard from "./CategoryCard";
 import Arrowforward from "../../../../assets/arrowforwardwhite.svg";
 import Arrowbackward from "../../../../assets/Arrowbackwardwhite.svg";
 import Button from "../../../Button";
-import { useNavigate } from "react-router";
-import privacyPDF from "../../../../assets/docs/privacy-policy.pdf";
+import ActionButtons from "./ActionButtons";
 
 const containerVariant = {
   hidden: {},
@@ -42,7 +41,6 @@ const CategoriesListView = ({
   const [endX, setEndX] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     const updateItemsPerView = () => {
@@ -116,8 +114,8 @@ const CategoriesListView = ({
             onClick={handlePrevious}
             disabled={currentSlide === 0}
             className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === 0
-                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
               }`}
           >
             <img
@@ -130,8 +128,8 @@ const CategoriesListView = ({
             onClick={handleNext}
             disabled={currentSlide === maxSlide}
             className={`p-2 lg:p-3 rounded-full border-2 transition-all duration-300 ${currentSlide === maxSlide
-                ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
-                : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
+              ? "border-gray-300 text-gray-300 cursor-not-allowed opacity-50"
+              : "border-gray-400 text-gray-900 hover:bg-gray-200 hover:text-white transform hover:scale-110 flex-shrink-0"
               }`}
           >
             <img
@@ -176,27 +174,7 @@ const CategoriesListView = ({
       </div>
 
       {showAllServicesButton && (
-        <div className="flex items-end justify-center mt-14 gap-6">
-          <Button
-            bgColor="bg-transparent"
-            textColor="text-white"
-            border="border border-white"
-            iconColor="white"
-            hoverBgColor="bg-gray-600"
-            text="View OUR Policy"
-          // onClick={() => window.open(privacyPDF, "_blank")}
-          />
-
-          <Button
-            bgColor="bg-white"
-            textColor="text-black"
-            hoverBgColor="bg-gray-300"
-            hoverTextColor="text-black"
-            iconColor="black"
-            onClick={() => navigate("/contact/Become a Member")}
-            text="JOIN OUR GLOBAL TEAM"
-          />
-        </div>
+        <ActionButtons />
       )}
     </motion.div>
   );
