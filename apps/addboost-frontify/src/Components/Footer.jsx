@@ -15,7 +15,7 @@ const Footer = () => {
     phone: "+44 7309 651130",
     website: "www.addboost360.com",
     description:
-      "Empowering Your Digital Future – Globally. Intelligently. Creatively.",
+      "Empowering Your Digital Future - Globally. Intelligently. Creatively.",
     company: "ADD BOOST 360",
     address: {
       country: "United Kingdom",

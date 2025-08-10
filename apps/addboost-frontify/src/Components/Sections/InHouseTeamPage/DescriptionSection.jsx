@@ -1,23 +1,8 @@
 import { motion } from "framer-motion";
-import Button from "../../Button";
-import { useNavigate } from "react-router";
+import ActionButtons from "./Elements/ActionButtons";
 
 const DescriptionSection = () => {
-  const navigate = useNavigate();
 
-  const bounceRight = {
-    hidden: { opacity: 0, x: 100 },
-    show: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 15,
-        duration: 1,
-      },
-    },
-  };
 
   const fadeRotate = (index) => ({
     initial: { opacity: 0, y: 30 },
@@ -64,7 +49,7 @@ const DescriptionSection = () => {
               No matter your background or experience level
             </span>
             , if you have passion and potential, you have a place with us in our
-            global family. Together, we're building a brighter future –{" "}
+            global family. Together, we're building a brighter future -{" "}
             <span className="italic">one creative idea at a time</span>.
           </p>
         </motion.div>
@@ -87,7 +72,7 @@ const DescriptionSection = () => {
               {" "}
               International accessibility is in our DNA
             </span>{" "}
-            – wherever you are in the world, we've designed our recruitment to
+            - wherever you are in the world, we've designed our recruitment to
             reach you. Our{" "}
             <span className="italic">
               culturally inclusive environment
@@ -109,13 +94,13 @@ const DescriptionSection = () => {
             step. We value your trust, so we ensure every candidate knows what
             to expect throughout the journey. Selections and evaluations are
             based on{" "}
-            <span className="italic">merit, skills, and experience</span> –{" "}
+            <span className="italic">merit, skills, and experience</span> -{" "}
             <span className="font-bold">never on bias</span>. We adhere strictly
             to all legal and ethical standards, whether it's respecting data
             privacy or complying with employment laws, so you can be confident
             that your application is handled with integrity. If you're an
             international candidate, rest assured we'll navigate the necessary
-            work permits and local regulations with you – our{" "}
+            work permits and local regulations with you - our{" "}
             <span className="italic">global mindset</span> comes with a
             commitment to do things the right way everywhere.
           </p>
@@ -127,7 +112,7 @@ const DescriptionSection = () => {
             Empowering Onboarding and Growth
           </p>
           <p className="font-inter text-sm sm:text-base mt-2 text-white text-justify">
-            Your journey with us doesn't end with an offer letter – it's just
+            Your journey with us doesn't end with an offer letter - it's just
             beginning. We've crafted a structured yet{" "}
             <span className="italic">empowering onboarding program</span> to
             welcome you into the team. From day one, you'll receive a thorough
@@ -143,7 +128,7 @@ const DescriptionSection = () => {
             projects or a full-time employee climbing the career ladder, we
             provide mentorship, continuous learning opportunities, and room to
             innovate. We believe in giving you clear structure and support, then
-            empowering you to shine – your ideas will be heard, your talents
+            empowering you to shine - your ideas will be heard, your talents
             nurtured, and your career path guided by your own ambition.
           </p>
         </motion.div>
@@ -154,7 +139,7 @@ const DescriptionSection = () => {
             <span className="font-bold">
               Ready to shape the future with us?
             </span>{" "}
-            At ADD BOOST 360, a career is more than just a job – it's a chance
+            At ADD BOOST 360, a career is more than just a job - it's a chance
             to be part of something global and meaningful. If you're looking for
             a{" "}
             <span className="italic">
@@ -166,29 +151,8 @@ const DescriptionSection = () => {
         </motion.div>
       </section>
 
-      <motion.div
-        className="flex items-end justify-center mt-14 gap-6 "
-        variants={bounceRight}
-      >
-        <Button
-          bgColor="bg-transparent"
-          textColor="text-white"
-          border="border border-white"
-          iconColor="white"
-          hoverBgColor="bg-gray-600"
-          text="View OUR Policy"
-          // onClick={() => window.open(privacyPDF, "_blank")}
-        />
-        <Button
-          bgColor="bg-white"
-          textColor="text-black"
-          hoverBgColor="bg-gray-300"
-          hoverTextColor="text-black"
-          iconColor="black"
-          onClick={() => navigate("/contact/Become a Member")}
-          text="Join our global team"
-        />
-      </motion.div>
+      <ActionButtons />
+
     </div>
   );
 };
