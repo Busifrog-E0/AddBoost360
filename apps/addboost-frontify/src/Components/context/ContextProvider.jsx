@@ -18,7 +18,7 @@ const getLocalLang = () => {
 };
 export const ContextProvider = ({ children }) => {
   const [selectedLang, setSelectedLang] = useState(getLocalLang());
-  const [selectedLanguageHistory, setSelectedLanguageHistory] = useState([]); // start with current lang in history
+  const [selectedLanguageHistory, setSelectedLanguageHistory] = useState(() => [selectedLang]); // start with current lang in history
 
   const updateCurrentLang = async (lang) => {
     setSelectedLang(lang);
@@ -36,7 +36,7 @@ export const ContextProvider = ({ children }) => {
       newHistory.push(lang);
 
       // Keep only last 3 items
-      if (newHistory.length > 3) {
+      if (newHistory.length > 10) {
         newHistory = newHistory.slice(newHistory.length - 3);
       }
 
