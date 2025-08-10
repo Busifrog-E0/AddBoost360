@@ -36,7 +36,7 @@ export const ContextProvider = ({ children }) => {
       newHistory.push(lang);
 
       // Keep only last 3 items
-      if (newHistory.length > 10) {
+      if (newHistory.length > 3) {
         newHistory = newHistory.slice(newHistory.length - 3);
       }
 
