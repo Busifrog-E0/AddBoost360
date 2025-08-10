@@ -29,7 +29,8 @@ const Footer = () => {
       facebook: "https://www.facebook.com/your-page",
       youtube: "https://www.youtube.com/your-page",
     },
-    copywrite: "© 2025 ADD BOOST 360 LIMITED. All Rights Reserved.",
+    version: `Version: ${__APP_VERSION__} `,
+    copywrite: `© 2025 ADD BOOST 360 LIMITED. All Rights Reserved`,
     policies: [
       {
         label: "Privacy Policy",
@@ -172,12 +173,12 @@ py-10 md:py-14 lg:py-20
                     {policy.label}
                   </a>
                   {index < footerData.policies.length - 1 && (
-                    <span className=" text-gray-500">▪</span>
+                    <span className=" text-gray-500">·</span>
                   )}
                 </React.Fragment>
               ))}
             </div>
-            <p>{footerData.copywrite}</p>
+            <div className="flex gap-2">{footerData.copywrite} <span className="text-gray-500">·</span> {footerData.version}</div>
           </div>
 
           <p className="text-gray-500 font-inter text-base">
