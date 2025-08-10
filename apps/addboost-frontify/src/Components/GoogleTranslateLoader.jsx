@@ -37,23 +37,6 @@ const GoogleTranslateLoader = ({ onReady, languages, selectedLang }) => {
   }, [onReady]);
 
 
-  // useEffect(() => {
-  //   const savedLang = localStorage.getItem("selectedLanguage") || "en";
-
-  //   const setComboLanguage = () => {
-  //     const combo = document.querySelector(".goog-te-combo");
-  //     if (combo) {
-  //       combo.value = savedLang;
-  //       combo.dispatchEvent(new Event("change"));
-  //     } else {
-  //       // Retry a bit later if combo not yet loaded
-  //       setTimeout(setComboLanguage, 500);
-  //     }
-  //   };
-
-  //   setComboLanguage();
-  // }, []);
-
   return (
     <div
       id="google_translate_element"
