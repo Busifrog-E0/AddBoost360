@@ -97,7 +97,7 @@ const GoogleTranslateDropdown = ({
               } `}
           >
             {languages
-              .filter((lang) => lang.code !== current.code)
+              // .filter((lang) => lang.code !== current.code)
               .map((lang) => (
                 <div
                   key={lang.code}
