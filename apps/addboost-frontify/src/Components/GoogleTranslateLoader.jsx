@@ -1,6 +1,8 @@
 import { useEffect } from "react";
+import { useLangContext } from "./context/ContextProvider";
 
 const GoogleTranslateLoader = ({ onReady, languages }) => {
+  const { updateCurrentLang, } = useLangContext()
 
   useEffect(() => {
     const googleTranslateElementInit = () => {
@@ -36,7 +38,19 @@ const GoogleTranslateLoader = ({ onReady, languages }) => {
     return () => clearInterval(interval);
   }, [onReady]);
 
+  useEffect(() => {
+    const combo = document.querySelector(".goog-te-combo");
+    if (!combo) return;
+    const observer = new MutationObserver(() => {
+      console.log("Google Translate language changed to:", combo.value);
+      if (combo.value === "en") {
+        updateCurrentLang("en")
+      }
+    });
+    observer.observe(combo, { attributes: true, attributeFilter: ["value"] });
 
+    return () => observer.disconnect();
+  }, []);
   return (
     <div
       id="google_translate_element"
