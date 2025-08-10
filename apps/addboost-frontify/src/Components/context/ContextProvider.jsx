@@ -7,7 +7,6 @@ const Context = createContext();
 
 const getLocalLang = () => {
   const raw = _retrieveData(CURRENTLANGUAGE, 'string');
-  console.log(raw)
   if (!raw) return "en";
   try {
     return (raw);
@@ -19,7 +18,7 @@ const getLocalLang = () => {
 };
 export const ContextProvider = ({ children }) => {
   const [selectedLang, setSelectedLang] = useState(getLocalLang());
-  const [selectedLanguageHistory, setSelectedLanguageHistory] = useState(() => [selectedLang]); // start with current lang in history
+  const [selectedLanguageHistory, setSelectedLanguageHistory] = useState([]); // start with current lang in history
 
   const updateCurrentLang = async (lang) => {
     setSelectedLang(lang);
