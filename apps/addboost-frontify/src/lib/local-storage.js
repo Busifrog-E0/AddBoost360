@@ -9,7 +9,7 @@ export const _clearData = (key) => {
 export const _retrieveData = (key) => {
   const value = localStorage.getItem(key);
   if (value != null && value != undefined) {
-    return JSON.parse(value);
+    return (value);
   } else {
     return null;
   }

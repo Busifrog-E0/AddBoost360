@@ -11,9 +11,9 @@ const getLocalLang = () => {
   if (!raw) return "en";
   try {
     return (raw);
-  } catch (e) {
+  } catch {
 
-    console.warn("Malformed language data in localStorage", e);
+    console.warn("Malformed language data in localStorage");
     return "en";
   }
 };
