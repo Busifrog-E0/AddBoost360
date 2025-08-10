@@ -21,9 +21,9 @@ const GoogleTranslateDropdown = ({
       setDropdownOpen(false);
 
       // Reload after a short delay
-      setTimeout(() => {
-        window.location.reload();
-      }, 500);
+      // setTimeout(() => {
+      //   window.location.reload();
+      // }, 500);
     }
   };
   // Detect scroll near bottom
@@ -49,6 +49,8 @@ const GoogleTranslateDropdown = ({
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  console.log(selectedLang, languages.find((l) => l.code === selectedLang))
 
   const current = languages.find((l) => l.code === selectedLang);
   return (
