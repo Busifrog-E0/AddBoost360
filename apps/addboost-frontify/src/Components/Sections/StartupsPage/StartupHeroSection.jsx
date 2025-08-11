@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import StartupHeroImg from "../../../assets/StartupHeroImg.png";
 import ScrollToBottom from "../../ScrollToBottom";
-import Global from "../../../assets/Global.jpeg";
+import Global from "../../../assets/Global1.jpg";
 
 const StartupHeroSection = () => {
   const imageAnim = {
