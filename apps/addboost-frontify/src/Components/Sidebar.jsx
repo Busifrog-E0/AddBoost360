@@ -36,8 +36,8 @@ const Sidebar = ({ menuOpen, setMenuOpen, navItems }) => {
             onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
               isActive
-                ? "text-primary underline outline-none"
-                : "text-white hover:text-primary transition outline-none"
+                ? "text-primary underline outline-none uppercase"
+                : "text-white hover:text-primary transition outline-none uppercase"
             }
           >
             {item.label}

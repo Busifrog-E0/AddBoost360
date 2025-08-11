@@ -23,7 +23,7 @@ const Header = () => {
     { label: "PORTFOLIO", to: "/portfolio" },
     { label: "TALENT POOL", to: "/in-house-team" },
 
-    { label: "COMPANIES", to: "/companies" },
+    { label: "Supplier's Hub", to: "/companies" },
     { label: "STUDIO", to: "/studio" },
     { label: "CONTACT", to: "/contact" },
   ];
