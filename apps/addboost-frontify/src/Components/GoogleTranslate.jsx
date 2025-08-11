@@ -96,9 +96,11 @@ const GoogleTranslate = ({ }) => {
   const [isComboReady, setIsComboReady] = useState(false);
 
   useEffect(() => {
-    const pageLang = document.documentElement.lang;
-    console.log(pageLang)
-    // updateCurrentLang(pageLang)
+    setTimeout(() => {
+      const pageLang = document.documentElement.lang;
+      console.log(pageLang)
+      updateCurrentLang(pageLang)
+    }, 1000);
   }, [])
   return (
     <>
