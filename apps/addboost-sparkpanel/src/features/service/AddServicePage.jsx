@@ -250,11 +250,10 @@ const AddServicePage = ({
                   type="text"
                   value={formData.Title}
                   onChange={(e) => handleInputChange("Title", e.target.value)}
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.Title
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.Title
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   placeholder="e.g., Web Development"
                 />
                 {errors.Title && (
@@ -276,11 +275,10 @@ const AddServicePage = ({
                       e.target.value === "" ? "" : Number(e.target.value)
                     )
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.Priority
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   placeholder="Order Priority"
                 />
                 {errors.Priority && (
@@ -299,11 +297,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description2", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg resize-none ${
-                    errors.Description2
+                  className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.Description2
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   placeholder="Detailed description..."
                 />
                 {errors.Description2 && (
@@ -322,11 +319,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("Description1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.Description1
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.Description1
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   placeholder="e.g., Modern Web Apps"
                 />
                 {errors.Description1 && (
@@ -347,11 +343,10 @@ const AddServicePage = ({
                   onChange={(e) =>
                     handleInputChange("ButtonMessage1", e.target.value)
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.ButtonMessage1
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.ButtonMessage1
                       ? "border-red-300 bg-red-50"
                       : "border-gray-300"
-                  }`}
+                    }`}
                   placeholder="e.g., Contact Us"
                 />
                 {errors.ButtonMessage1 && (
@@ -374,11 +369,10 @@ const AddServicePage = ({
                       onChange={(e) =>
                         handleServiceChange(index, e.target.value)
                       }
-                      className={`w-full px-4 py-2 border rounded-lg ${
-                        errors.ServiceList
+                      className={`w-full px-4 py-2 border rounded-lg ${errors.ServiceList
                           ? "border-red-300 bg-red-50"
                           : "border-gray-300"
-                      }`}
+                        }`}
                       placeholder={`Service ${index + 1}`}
                     />
 
@@ -474,11 +468,10 @@ const AddServicePage = ({
                   />
                   <label
                     htmlFor="image-upload"
-                    className={`w-[250px] aspect-video border-2 border-dashed p-8 text-center flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-lg ${
-                      errors.ImageUrl
+                    className={`w-[250px] aspect-video border-2 border-dashed p-8 text-center flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-lg ${errors.ImageUrl
                         ? "border-red-300 bg-red-50"
                         : "border-gray-300"
-                    }`}
+                      }`}
                   >
                     <div className="flex flex-col items-center space-y-2 h-full justify-center">
                       <div className="p-3 bg-gray-100 rounded-full">

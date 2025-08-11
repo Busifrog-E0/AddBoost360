@@ -3,6 +3,8 @@ import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
 import ProjectPreviewCard from "./PortfolioPreviewCard";
 import usePostData from "../../hooks/api/usePostData";
 import useUpdateData from "../../hooks/api/useUpdateData";
+import ImageUploader from "../../components/ImageUploader";
+import useHandleImageUpload from "../../hooks/handleImageUpload";
 
 const AddPortfolioPage = ({
   onBack,
@@ -23,6 +25,7 @@ const AddPortfolioPage = ({
 }) => {
   const { isLoading, postData } = usePostData({});
   const { updateData } = useUpdateData({});
+  const { handleImageUpload, isLoading: isImageUploading } = useHandleImageUpload();
   const [formData, setFormData] = useState(initialValue);
   const [errors, setErrors] = useState({});
 
@@ -57,65 +60,7 @@ const AddPortfolioPage = ({
     }));
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
 
-    // ——— Validate type & size ———
-    if (!file.type.startsWith("image/")) {
-      setErrors((prev) => ({
-        ...prev,
-        image: "Please select a valid image file",
-      }));
-      return;
-    }
-    if (file.size > 5 * 1024 * 1024) {
-      setErrors((prev) => ({
-        ...prev,
-        image: "Image size should be less than 5MB",
-      }));
-      return;
-    }
-
-    // ——— Read as ArrayBuffer ———
-    const reader = new FileReader();
-    reader.onload = (loadEvent) => {
-      const arrayBuffer = loadEvent.target.result; // true ArrayBuffer
-      const byteArray = Array.from(new Uint8Array(arrayBuffer));
-
-      // Create a blob URL for preview
-      const previewUrl = URL.createObjectURL(file);
-
-      setFormData((prev) => ({
-        ...prev,
-        ImageUrl: previewUrl,
-        image: {
-          FileType: file.type,
-          FileData: byteArray,
-          FileName: file.name,
-        },
-      }));
-      setErrors((prev) => ({
-        ...prev,
-        image: "",
-        ImageUrl: "",
-      }));
-    };
-
-    reader.onerror = (err) => {
-      console.error("FileReader error:", err);
-      setErrors((prev) => ({
-        ...prev,
-        image: "Failed to read file. Please try again.",
-      }));
-    };
-
-    reader.readAsArrayBuffer(file);
-  };
-
-  const removeImage = () => {
-    setFormData((prev) => ({ ...prev, image: null, ImageUrl: "" }));
-  };
   const validateForm = () => {
     const newErrors = {};
     let isValid = true;
@@ -191,23 +136,19 @@ const AddPortfolioPage = ({
       });
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
 
-    if (formData.image) {
-      postData({
-        endpoint: "files/admin",
-        payload: formData.image,
-        onsuccess: (result) => {
-          handleFormSubmit(result.FileUrl);
-        },
-      });
-    } else {
-      handleFormSubmit(formData.ImageUrl);
-    }
+    handleImageUpload(
+      formData,
+      (fileUrl) => handleFormSubmit(fileUrl),
+      (errorMsg) => {
+        setErrors((prev) => ({ ...prev, ImageUrl: errorMsg }));
+      }
+    );
   };
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -239,9 +180,8 @@ const AddPortfolioPage = ({
                 type="text"
                 value={formData.Title}
                 onChange={(e) => handleInputChange("Title", e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+                className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
                 placeholder="e.g., E-commerce Platform"
               />
               {errors.Title && (
@@ -263,11 +203,10 @@ const AddPortfolioPage = ({
                       e.target.value === "" ? "" : Number(e.target.value)
                     )
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${
-                    errors.Priority
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                  }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                    }`}
                   placeholder="Order Priority"
                 />
                 {errors.Priority && (
@@ -287,11 +226,10 @@ const AddPortfolioPage = ({
                 onChange={(e) =>
                   handleInputChange("ButtonMessage1", e.target.value)
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.ButtonMessage1
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                }`}
+                className={`w-full px-4 py-3 border rounded-lg ${errors.ButtonMessage1
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+                  }`}
                 placeholder="e.g., View Website"
               />
               {errors.ButtonMessage1 && (
@@ -308,9 +246,8 @@ const AddPortfolioPage = ({
                 type="text"
                 value={formData.Type}
                 onChange={(e) => handleInputChange("Type", e.target.value)}
-                className={`w-full px-4  py-3 border rounded-lg ${
-                  errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+                className={`w-full px-4  py-3 border rounded-lg ${errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
+                  }`}
                 placeholder="e.g., Website Design, Branding, Social Media Marketing"
               />
               {errors.Type && (
@@ -333,11 +270,10 @@ const AddPortfolioPage = ({
                       onChange={(e) =>
                         handleListChange("ImpactPoints", index, e.target.value)
                       }
-                      className={`w-full px-4 py-3 border rounded-lg ${
-                        errors.ImpactPoints?.[index]
-                          ? "border-red-300 bg-red-50"
-                          : "border-gray-300"
-                      }`}
+                      className={`w-full px-4 py-3 border rounded-lg ${errors.ImpactPoints?.[index]
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
+                        }`}
                       placeholder={`Impact Point ${index + 1}`}
                     />
                     {errors.ImpactPoints?.[index] && (
@@ -389,60 +325,23 @@ const AddPortfolioPage = ({
 
             {/* Image Upload */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Project Image *
-              </label>
-              <div className="overflow-hidden w-[250px] aspect-video">
-                {!formData.ImageUrl ? (
-                  <div
-                    className={`border-2 border-dashed p-8 text-center rounded-lg w-full h-full ${
-                      errors.ImageUrl
-                        ? "border-red-300 bg-red-50"
-                        : "border-gray-300"
-                    }`}
-                  >
-                    <input
-                      type="file"
-                      accept=".jpg, .jpeg, .webp"
-                      onChange={handleImageUpload}
-                      className="hidden"
-                      id="image-upload"
-                    />
-                    <label htmlFor="image-upload" className="cursor-pointer ">
-                      <div className="flex flex-col items-center space-y-2 h-full justify-center">
-                        <div className="p-3 bg-gray-100 rounded-full">
-                          <Upload className="w-6 h-6 text-gray-600" />
-                        </div>
-                        <p className="text-sm font-medium text-gray-900 ">
-                          Click to upload image
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          JPG or WEBP • Max 2MB • 16:9 aspect ratio
-                        </p>
-                      </div>
-                    </label>
-                  </div>
-                ) : (
-                  <div className="relative w-full aspect-video rounded-lg">
-                    <img
-                      src={formData.ImageUrl}
-                      alt="Team member preview"
-                      className="w-full h-full object-cover rounded-lg border"
-                    />
-                    <button
-                      type="button"
-                      onClick={removeImage}
-                      className="absolute top-2 right-2 p-1.5 bg-red-600 text-white rounded-full"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
-                )}
-              </div>
+              <ImageUploader
+                value={{ ImageUrl: formData.ImageUrl }}
+                error={errors.ImageUrl}
+                onChange={(imageData, errorMsg) => {
+                  if (errorMsg) {
+                    setErrors((prev) => ({ ...prev, ImageUrl: errorMsg }));
+                  } else {
+                    setFormData((prev) => ({
+                      ...prev,
+                      image: imageData,
+                      ImageUrl: imageData?.ImageUrl || "",
+                    }));
+                    setErrors((prev) => ({ ...prev, ImageUrl: "" }));
+                  }
+                }}
+              />
 
-              {errors.ImageUrl && (
-                <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
-              )}
             </div>
           </div>
 
