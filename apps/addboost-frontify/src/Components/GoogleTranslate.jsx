@@ -97,7 +97,8 @@ const GoogleTranslate = ({ }) => {
 
   useEffect(() => {
     const pageLang = document.documentElement.lang;
-    updateCurrentLang(pageLang)
+    console.log(pageLang)
+    // updateCurrentLang(pageLang)
   }, [])
   return (
     <>
