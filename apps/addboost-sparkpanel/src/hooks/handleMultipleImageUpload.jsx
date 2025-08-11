@@ -1,4 +1,4 @@
-import usePostData from "../../hooks/api/usePostData";
+import usePostData from "./api/usePostData";
 
 const useHandleMultipleImagesUpload = () => {
     const { postData, isLoading } = usePostData({});

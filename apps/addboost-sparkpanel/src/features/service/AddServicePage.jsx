@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { Save, X, Upload, ArrowLeft, Trash2, Plus } from "lucide-react";
+import { useState } from "react";
+import { Save, ArrowLeft, Trash2, Plus } from "lucide-react";
 import ServicePreviewCard from "./ServicePreviewCard";
 import usePostData from "../../hooks/api/usePostData";
 import useUpdateData from "../../hooks/api/useUpdateData";
+import useHandleMultipleImagesUpload from "../../hooks/handleMultipleImageUpload";
+import MultipleImageUploader from "../../components/MultipleImageUploader";
 
 const AddServicePage = ({
   onBack,
@@ -23,6 +25,8 @@ const AddServicePage = ({
   },
 }) => {
   const { isLoading, postData } = usePostData({});
+  const { handleMultipleImagesUpload, isLoading: isImagesUploading } = useHandleMultipleImagesUpload();
+
   const { updateData } = useUpdateData({});
 
   const [formData, setFormData] = useState(() => ({
@@ -69,54 +73,6 @@ const AddServicePage = ({
     setFormData((prev) => ({
       ...prev,
       ServiceList: prev.ServiceList.filter((_, i) => i !== index),
-    }));
-  };
-
-  const handleImageUpload = (e) => {
-    const files = Array.from(e.target.files || []);
-    const newImages = [];
-
-    files.forEach((file) => {
-      if (!file.type.startsWith("image/") || file.size > 5 * 1024 * 1024)
-        return;
-
-      const reader = new FileReader();
-      reader.onload = (loadEvent) => {
-        const arrayBuffer = loadEvent.target.result;
-        const byteArray = Array.from(new Uint8Array(arrayBuffer));
-        const previewUrl = URL.createObjectURL(file);
-
-        setFormData((prev) => ({
-          ...prev,
-          ImageUrl: [...prev.ImageUrl],
-          images: [
-            ...prev.images,
-            {
-              FileType: file.type,
-              FileData: byteArray,
-              FileName: file.name,
-            },
-          ],
-        }));
-      };
-
-      reader.readAsArrayBuffer(file);
-    });
-
-    setErrors((prev) => ({ ...prev, ImageUrl: "" }));
-  };
-
-  const removeImage = (index) => {
-    setFormData((prev) => ({
-      ...prev,
-      ImageUrl: prev.ImageUrl.filter((_, i) => i !== index),
-    }));
-  };
-
-  const removeImageFile = (index) => {
-    setFormData((prev) => ({
-      ...prev,
-      images: prev.images.filter((_, i) => i !== index),
     }));
   };
 
@@ -188,30 +144,15 @@ const AddServicePage = ({
     e.preventDefault();
     if (!validateForm()) return;
 
-    const uploadedUrls = [];
-
-    const uploadNext = (index) => {
-      if (index >= formData.images.length) {
-        handleFormSubmit(uploadedUrls);
-        return;
+    handleMultipleImagesUpload(
+      formData.images,
+      (urls) => handleFormSubmit(urls),
+      (errorMsg) => {
+        setErrors((prev) => ({ ...prev, ImageUrl: errorMsg }));
       }
-
-      postData({
-        endpoint: "files/admin",
-        payload: formData.images[index],
-        onsuccess: (result) => {
-          uploadedUrls.push(result.FileUrl);
-          uploadNext(index + 1);
-        },
-      });
-    };
-
-    if (formData.images.length > 0) {
-      uploadNext(0);
-    } else {
-      handleFormSubmit([]);
-    }
+    );
   };
+
 
   return (
     <div className="space-y-6">
@@ -251,8 +192,8 @@ const AddServicePage = ({
                   value={formData.Title}
                   onChange={(e) => handleInputChange("Title", e.target.value)}
                   className={`w-full px-4 py-3 border rounded-lg ${errors.Title
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                   placeholder="e.g., Web Development"
                 />
@@ -276,8 +217,8 @@ const AddServicePage = ({
                     )
                   }
                   className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                   placeholder="Order Priority"
                 />
@@ -298,8 +239,8 @@ const AddServicePage = ({
                     handleInputChange("Description2", e.target.value)
                   }
                   className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.Description2
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                   placeholder="Detailed description..."
                 />
@@ -320,8 +261,8 @@ const AddServicePage = ({
                     handleInputChange("Description1", e.target.value)
                   }
                   className={`w-full px-4 py-3 border rounded-lg ${errors.Description1
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                   placeholder="e.g., Modern Web Apps"
                 />
@@ -344,8 +285,8 @@ const AddServicePage = ({
                     handleInputChange("ButtonMessage1", e.target.value)
                   }
                   className={`w-full px-4 py-3 border rounded-lg ${errors.ButtonMessage1
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
                     }`}
                   placeholder="e.g., Contact Us"
                 />
@@ -370,8 +311,8 @@ const AddServicePage = ({
                         handleServiceChange(index, e.target.value)
                       }
                       className={`w-full px-4 py-2 border rounded-lg ${errors.ServiceList
-                          ? "border-red-300 bg-red-50"
-                          : "border-gray-300"
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
                         }`}
                       placeholder={`Service ${index + 1}`}
                     />
@@ -402,93 +343,28 @@ const AddServicePage = ({
 
               {/* Images */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Service Images *
-                </label>
-                <div className="flex flex-wrap gap-4">
-                  {formData.ImageUrl.map((url, index) => (
-                    <div
-                      key={index}
-                      className="relative w-[250px] aspect-video border rounded-md"
-                    >
-                      <img
-                        src={url}
-                        alt={`Preview ${index}`}
-                        className="w-full h-full object-cover rounded-md"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => removeImage(index)}
-                        className="absolute top-1 right-1 p-1.5 bg-red-600 text-white rounded-full"
-                      >
-                        <X className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
+                <MultipleImageUploader
+                  images={formData.images}
+                  ImageUrl={formData.ImageUrl}
+                  error={errors.ImageUrl}
+                  onChangeImages={(updatedImages, errorMsg) => {
+                    if (errorMsg) {
+                      setErrors((prev) => ({ ...prev, ImageUrl: errorMsg }));
+                    } else {
+                      setFormData((prev) => ({ ...prev, images: updatedImages }));
+                      setErrors((prev) => ({ ...prev, ImageUrl: "" }));
+                    }
+                  }}
+                  onChangeImageUrl={(updatedImages, errorMsg) => {
+                    if (errorMsg) {
+                      setErrors((prev) => ({ ...prev, ImageUrl: errorMsg }));
+                    } else {
+                      setFormData((prev) => ({ ...prev, ImageUrl: updatedImages }));
+                      setErrors((prev) => ({ ...prev, ImageUrl: "" }));
+                    }
+                  }}
 
-                  {formData.images.map((item, index) => {
-                    let imageUrl = "";
-
-                    const byteArray = new Uint8Array(item.FileData);
-                    const blob = new Blob([byteArray], { type: "image/jpeg" }); // or image/png
-                    imageUrl = URL.createObjectURL(blob);
-
-                    return (
-                      <div
-                        key={index}
-                        className="relative w-[250px] aspect-video border rounded-md"
-                      >
-                        <img
-                          src={imageUrl}
-                          alt={`Preview ${index}`}
-                          className="w-full h-full object-cover rounded-md"
-                          onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = "/fallback-image.jpg"; // optional fallback
-                          }}
-                        />
-                        <button
-                          type="button"
-                          onClick={() => removeImageFile(index)}
-                          className="absolute top-1 right-1 p-1.5 bg-red-600 text-white rounded-full"
-                        >
-                          <X className="w-4 h-4" />
-                        </button>
-                      </div>
-                    );
-                  })}
-
-                  <input
-                    type="file"
-                    id="image-upload"
-                    multiple
-                    accept=".jpg, .jpeg, .webp"
-                    onChange={handleImageUpload}
-                    className="hidden"
-                  />
-                  <label
-                    htmlFor="image-upload"
-                    className={`w-[250px] aspect-video border-2 border-dashed p-8 text-center flex flex-col justify-center items-center text-sm text-gray-500 cursor-pointer rounded-lg ${errors.ImageUrl
-                        ? "border-red-300 bg-red-50"
-                        : "border-gray-300"
-                      }`}
-                  >
-                    <div className="flex flex-col items-center space-y-2 h-full justify-center">
-                      <div className="p-3 bg-gray-100 rounded-full">
-                        <Upload className="w-6 h-6 text-gray-600" />
-                      </div>
-                      <p className="text-sm font-medium text-gray-900 ">
-                        Click to upload image
-                      </p>
-                      <p className="text-xs text-gray-500">
-                        JPG or WEBP • Max 2MB • 16:9 aspect ratio
-                      </p>
-                    </div>
-                  </label>
-                </div>
-                {errors.ImageUrl && (
-                  <p className="text-sm text-red-600 mt-1">{errors.ImageUrl}</p>
-                )}
+                />
               </div>
             </div>
           </div>
@@ -504,10 +380,10 @@ const AddServicePage = ({
             </button>
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || isImagesUploading}
               className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
             >
-              {isLoading ? (
+              {isLoading || isImagesUploading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>Saving...</span>
@@ -532,3 +408,5 @@ const AddServicePage = ({
 };
 
 export default AddServicePage;
+
+
