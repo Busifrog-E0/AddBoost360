@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GoogleTranslateDropdown from "./GoogleTranslateDropdown";
 import GoogleTranslateLoader from "./GoogleTranslateLoader";
 
@@ -16,6 +16,7 @@ import Italy from "../assets/Flags/Italy.png";
 import Poland from "../assets/Flags/Poland.png";
 import Philippines from "../assets/Flags/Philippines.jpeg";
 import Vietnam from "../assets/Flags/Vietnam.png";
+import { useLangContext } from "./context/ContextProvider";
 export const languages = [
   {
     code: "en",
@@ -91,8 +92,13 @@ export const languages = [
 ];
 const GoogleTranslate = ({ }) => {
 
-
+  const { selectedLang, updateCurrentLang } = useLangContext()
   const [isComboReady, setIsComboReady] = useState(false);
+
+  useEffect(() => {
+    const pageLang = document.documentElement.lang;
+    updateCurrentLang(pageLang)
+  }, [])
   return (
     <>
       <GoogleTranslateLoader onReady={setIsComboReady} languages={languages} />
