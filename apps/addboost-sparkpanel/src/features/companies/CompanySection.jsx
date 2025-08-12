@@ -9,7 +9,6 @@ const CompanySection = () => {
   const [showAddCompany, setShowAddCompany] = useState(false);
   const [showEditCompany, setShowEditCompany] = useState(false);
   const [companyToBeEdited, setCompanyToBeEdited] = useState(null);
-  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const { deleteData } = useDeleteData({});
   const {
@@ -43,13 +42,11 @@ const CompanySection = () => {
     }
   };
 
-  const handleSaveCompany = async () => {
-    setIsRefreshing(true);
+  const handleSaveCompany = () => {
     setShowAddCompany(false);
     setShowEditCompany(false);
     setCompanyToBeEdited(null);
-    await getList([]);
-    setIsRefreshing(false);
+    getList([]);
   };
 
   const handleBack = () => {
@@ -101,7 +98,7 @@ const CompanySection = () => {
       </div>
 
       {/* Loader */}
-      {isLoading || isRefreshing ? (
+      {isLoading ? (
         <div>
           <Loader />
         </div>

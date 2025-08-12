@@ -3,7 +3,7 @@ import { patchItem } from "@/lib/api";
 
 export default function useUpdateData(options) {
   const { onSuccess = () => {}, onError = () => {} } = options;
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
   const updateData = (options) => {
     const {
@@ -12,14 +12,14 @@ export default function useUpdateData(options) {
       onsuccess = () => {},
       onerror = () => {},
     } = options;
-    setIsLoading(true);
+    setIsLoadingMore(true);
     patchItem(
       `${endpoint}`,
       payload,
       (result) => {
         onsuccess(result);
         onSuccess(result);
-        setIsLoading(false);
+        setIsLoadingMore(false);
       },
       (err) => {
         console.log(err, "error from patch single item");
@@ -31,7 +31,7 @@ export default function useUpdateData(options) {
   };
 
   return {
-    isLoading,
+    isLoadingMore,
     updateData,
   };
 }

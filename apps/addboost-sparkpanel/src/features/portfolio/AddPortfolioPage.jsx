@@ -24,8 +24,9 @@ const AddPortfolioPage = ({
   isEditing = false,
 }) => {
   const { isLoading, postData } = usePostData({});
-  const { updateData } = useUpdateData({});
-  const { handleImageUpload, isLoading: isImageUploading } = useHandleImageUpload();
+  const { isLoadingMore, updateData } = useUpdateData({});
+  const { handleImageUpload, isLoading: isImageUploading } =
+    useHandleImageUpload();
   const [formData, setFormData] = useState(initialValue);
   const [errors, setErrors] = useState({});
 
@@ -59,7 +60,6 @@ const AddPortfolioPage = ({
       [field]: prev[field].filter((_, i) => i !== index),
     }));
   };
-
 
   const validateForm = () => {
     const newErrors = {};
@@ -180,8 +180,9 @@ const AddPortfolioPage = ({
                 type="text"
                 value={formData.Title}
                 onChange={(e) => handleInputChange("Title", e.target.value)}
-                className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                  }`}
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
                 placeholder="e.g., E-commerce Platform"
               />
               {errors.Title && (
@@ -203,10 +204,11 @@ const AddPortfolioPage = ({
                       e.target.value === "" ? "" : Number(e.target.value)
                     )
                   }
-                  className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
-                    ? "border-red-300 bg-red-50"
-                    : "border-gray-300"
-                    }`}
+                  className={`w-full px-4 py-3 border rounded-lg ${
+                    errors.Priority
+                      ? "border-red-300 bg-red-50"
+                      : "border-gray-300"
+                  }`}
                   placeholder="Order Priority"
                 />
                 {errors.Priority && (
@@ -226,10 +228,11 @@ const AddPortfolioPage = ({
                 onChange={(e) =>
                   handleInputChange("ButtonMessage1", e.target.value)
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${errors.ButtonMessage1
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-                  }`}
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.ButtonMessage1
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                }`}
                 placeholder="e.g., View Website"
               />
               {errors.ButtonMessage1 && (
@@ -246,8 +249,9 @@ const AddPortfolioPage = ({
                 type="text"
                 value={formData.Type}
                 onChange={(e) => handleInputChange("Type", e.target.value)}
-                className={`w-full px-4  py-3 border rounded-lg ${errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
-                  }`}
+                className={`w-full px-4  py-3 border rounded-lg ${
+                  errors.Type ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
                 placeholder="e.g., Website Design, Branding, Social Media Marketing"
               />
               {errors.Type && (
@@ -270,10 +274,11 @@ const AddPortfolioPage = ({
                       onChange={(e) =>
                         handleListChange("ImpactPoints", index, e.target.value)
                       }
-                      className={`w-full px-4 py-3 border rounded-lg ${errors.ImpactPoints?.[index]
-                        ? "border-red-300 bg-red-50"
-                        : "border-gray-300"
-                        }`}
+                      className={`w-full px-4 py-3 border rounded-lg ${
+                        errors.ImpactPoints?.[index]
+                          ? "border-red-300 bg-red-50"
+                          : "border-gray-300"
+                      }`}
                       placeholder={`Impact Point ${index + 1}`}
                     />
                     {errors.ImpactPoints?.[index] && (
@@ -341,7 +346,6 @@ const AddPortfolioPage = ({
                   }
                 }}
               />
-
             </div>
           </div>
 
@@ -356,10 +360,10 @@ const AddPortfolioPage = ({
             </button>
             <button
               type="submit"
-              disabled={isLoading}
+              disabled={isLoading || isLoadingMore}
               className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
             >
-              {isLoading ? (
+              {isLoading || isLoadingMore ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>Saving...</span>
