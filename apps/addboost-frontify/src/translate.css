@@ -27,11 +27,13 @@ body {
 
 /* Scrollbar Styles */
 .tabview::-webkit-scrollbar {
-  width: 6px; /* Width of the scrollbar */
+  width: 6px;
+  /* Width of the scrollbar */
 }
 
 .tabview::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2); /* Scrollbar thumb */
+  background-color: rgba(255, 255, 255, 0.2);
+  /* Scrollbar thumb */
   border-radius: 10px;
   border: none;
 }

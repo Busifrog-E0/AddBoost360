@@ -36,6 +36,9 @@ py-10 md:py-14 lg:py-20
  bg-BackgroundGradientleft "
     >
       <img src={ADDBOOSTlogo} alt="Logo" className="w-32 object-contain" />
+      <h1 className="font-inter font-bold text-white capitalize text-lg md:text-xl 2xl:text-3xl block mt-2 ">
+        Supplier's Hub
+      </h1>
       <h1 className="font-anton text-white uppercase text-3xl md:text-4xl 2xl:text-5xl block mt-2 ">
         OUR REGISTERED Global Sourcing Partners
       </h1>

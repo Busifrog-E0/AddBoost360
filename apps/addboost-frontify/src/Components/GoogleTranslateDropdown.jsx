@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { useLangContext } from "./context/ContextProvider";
 
 const GoogleTranslateDropdown = ({
   isReady,
   languages,
-  selectedLang,
-  setSelectedLang,
 }) => {
+  const { selectedLang, updateCurrentLang, selectedLanguageHistory } = useLangContext()
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [visible, setVisible] = useState(true);
   const [dropUp, setDropUp] = useState(false);
@@ -15,15 +16,15 @@ const GoogleTranslateDropdown = ({
     const combo = document.querySelector(".goog-te-combo");
     if (combo) {
       combo.value = lang;
+      console.log(selectedLang, selectedLanguageHistory)
       combo.dispatchEvent(new Event("change"));
-      localStorage.setItem("selectedLanguage", lang); // Save to localStorage
-      setSelectedLang(lang);
+      updateCurrentLang(lang);
       setDropdownOpen(false);
 
-      // Reload after a short delay
-      setTimeout(() => {
+      // Reload if the current selected language is english
+      if (lang === "en") {
         window.location.reload();
-      }, 500);
+      }
     }
   };
   // Detect scroll near bottom
@@ -53,9 +54,8 @@ const GoogleTranslateDropdown = ({
   const current = languages.find((l) => l.code === selectedLang);
   return (
     <div
-      className={`notranslate fixed left-4 bottom-4 z-50 transition-opacity duration-500 ease-in-out ${
-        visible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
+      className={`notranslate fixed left-4 bottom-4 z-50 transition-opacity duration-500 ease-in-out ${visible ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
     >
       <div className="relative inline-block text-left w-full " ref={buttonRef}>
         <button
@@ -74,9 +74,8 @@ const GoogleTranslateDropdown = ({
 
           {/* Arrow Icon */}
           <svg
-            className={`w-4 h-4 shrink-0 transition-transform duration-300 ${
-              dropdownOpen ? "rotate-180" : "rotate-0"
-            }`}
+            className={`w-4 h-4 shrink-0 transition-transform duration-300 ${dropdownOpen ? "rotate-180" : "rotate-0"
+              }`}
             viewBox="0 0 20 20"
             fill="currentColor"
           >
@@ -90,12 +89,11 @@ const GoogleTranslateDropdown = ({
 
         {dropdownOpen && (
           <div
-            className={`absolute z-20 bg-black/40 backdrop-blur-md shadow-lg text-white rounded-md border border-white/10 max-h-64 overflow-y-auto mt-3 flex flex-col gap-3 py-2 px-4  w-60 tabview  ${
-              dropUp ? "bottom-full mb-2" : ""
-            } `}
+            className={`absolute z-20 bg-black/40 backdrop-blur-md shadow-lg text-white rounded-md border border-white/10 max-h-64 overflow-y-auto mt-3 flex flex-col gap-3 py-2 px-4  w-60 tabview  ${dropUp ? "bottom-full mb-2" : ""
+              } `}
           >
             {languages
-              .filter((lang) => lang.code !== current.code)
+              // .filter((lang) => lang.code !== current.code)
               .map((lang) => (
                 <div
                   key={lang.code}
