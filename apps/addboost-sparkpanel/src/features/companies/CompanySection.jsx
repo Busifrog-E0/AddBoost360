@@ -7,10 +7,11 @@ import Loader from "../../components/Loader";
 
 const CompanySection = () => {
   const [showAddCompany, setShowAddCompany] = useState(false);
-  const [showEditCompany, setshowEditCompany] = useState(false);
-  const [companyToBeEdited, setcompanyToBeEdited] = useState(null);
-  const { deleteData } = useDeleteData({});
+  const [showEditCompany, setShowEditCompany] = useState(false);
+  const [companyToBeEdited, setCompanyToBeEdited] = useState(null);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
+  const { deleteData } = useDeleteData({});
   const {
     data: organizations,
     isLoading,
@@ -20,13 +21,13 @@ const CompanySection = () => {
   } = useGetList({ endpoint: "organizations" });
 
   const handleAddCompany = () => {
-    setcompanyToBeEdited(null);
+    setCompanyToBeEdited(null);
     setShowAddCompany(true);
   };
 
   const handleEditCompany = (company) => {
-    setcompanyToBeEdited(company);
-    setshowEditCompany(true);
+    setCompanyToBeEdited(company);
+    setShowEditCompany(true);
   };
 
   const handleDeleteCompany = (id) => {
@@ -42,23 +43,19 @@ const CompanySection = () => {
     }
   };
 
-  // const handleDeleteCompany = (id) => {
-  //   if (window.confirm("Are you sure you want to delete this company?")) {
-  //     setCompanies((prev) => prev.filter((c) => c.id !== id));
-  //   }
-  // };
-
-  const handleSaveCompany = (companyData) => {
+  const handleSaveCompany = async () => {
+    setIsRefreshing(true);
     setShowAddCompany(false);
-    setshowEditCompany(false);
-    setcompanyToBeEdited(null);
-    getList([]);
+    setShowEditCompany(false);
+    setCompanyToBeEdited(null);
+    await getList([]);
+    setIsRefreshing(false);
   };
 
   const handleBack = () => {
     setShowAddCompany(false);
-    setshowEditCompany(false);
-    setcompanyToBeEdited(null);
+    setShowEditCompany(false);
+    setCompanyToBeEdited(null);
   };
 
   if (showAddCompany) {
@@ -72,6 +69,7 @@ const CompanySection = () => {
       />
     );
   }
+
   if (showEditCompany) {
     return (
       <AddCompanyPage
@@ -101,7 +99,9 @@ const CompanySection = () => {
           <span>Add Company</span>
         </button>
       </div>
-      {isLoading ? (
+
+      {/* Loader */}
+      {isLoading || isRefreshing ? (
         <div>
           <Loader />
         </div>
