@@ -162,9 +162,8 @@ const AddTeamPage = ({
               type="text"
               value={formData.FullName}
               onChange={(e) => handleInputChange("FullName", e.target.value)}
-              className={`w-full px-4 py-3 border  rounded-lg ${
-                errors.FullName ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border  rounded-lg ${errors.FullName ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., John Doe"
             />
             {errors.FullName && (
@@ -186,11 +185,10 @@ const AddTeamPage = ({
                     e.target.value === "" ? "" : Number(e.target.value)
                   )
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${
-                  errors.Priority
+                className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
                     ? "border-red-300 bg-red-50"
                     : "border-gray-300"
-                }`}
+                  }`}
                 placeholder="Order Priority"
               />
               {errors.Priority && (
@@ -207,9 +205,8 @@ const AddTeamPage = ({
               type="text"
               value={formData.ID}
               onChange={(e) => handleInputChange("ID", e.target.value)}
-              className={`w-full px-4  py-3 border rounded-lg ${
-                errors.ID ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4  py-3 border rounded-lg ${errors.ID ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., ID-43"
             />
             {errors.ID && <p className="  text-sm text-red-600">{errors.ID}</p>}
@@ -223,11 +220,10 @@ const AddTeamPage = ({
               type="text"
               value={formData.Designation}
               onChange={(e) => handleInputChange("Designation", e.target.value)}
-              className={`w-full px-4  py-3 border rounded-lg ${
-                errors.Designation
+              className={`w-full px-4  py-3 border rounded-lg ${errors.Designation
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
-              }`}
+                }`}
               placeholder="e.g., Frontend Developer"
             />
             {errors.Designation && (
@@ -245,11 +241,10 @@ const AddTeamPage = ({
               onChange={(e) =>
                 handleInputChange("Description1", e.target.value)
               }
-              className={`w-full px-4 py-3 border rounded-lg ${
-                errors.Description1
+              className={`w-full px-4 py-3 border rounded-lg ${errors.Description1
                   ? "border-red-300 bg-red-50"
                   : "border-gray-300"
-              }`}
+                }`}
             >
               <option value="" disabled>
                 Select a Position
@@ -280,9 +275,8 @@ const AddTeamPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border  rounded-lg ${
-                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4 py-3 border  rounded-lg ${errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., kerala"
             />
             {errors.State && (
@@ -299,9 +293,8 @@ const AddTeamPage = ({
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4  py-3 border rounded-lg ${
-                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
-              }`}
+              className={`w-full px-4  py-3 border rounded-lg ${errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
+                }`}
               placeholder="e.g., India"
             />
             {errors.Country && (
