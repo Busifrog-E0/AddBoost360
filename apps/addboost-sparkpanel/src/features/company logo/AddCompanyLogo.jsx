@@ -19,9 +19,11 @@ const AddCompanyLogo = ({
   },
 }) => {
   const [formData, setFormData] = useState(initialValue);
-  const { updateData } = useUpdateData({});
+  const { isLoadingMore, updateData } = useUpdateData({});
+
   const { isLoading, postData } = usePostData({});
-  const { handleImageUpload, isLoading: isImageUploading } = useHandleImageUpload();
+  const { handleImageUpload, isLoading: isImageUploading } =
+    useHandleImageUpload();
   const [errors, setErrors] = useState({});
 
   const handleInputChange = (field, value) => {
@@ -79,7 +81,6 @@ const AddCompanyLogo = ({
     );
   };
 
-
   return (
     <div className="space-y-6">
       <div className="flex items-center space-x-4">
@@ -105,8 +106,9 @@ const AddCompanyLogo = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="Company Name"
             />
             {errors.Title && (
@@ -127,8 +129,9 @@ const AddCompanyLogo = ({
                   e.target.value === "" ? "" : Number(e.target.value)
                 )
               }
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Priority ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="Order Priority"
             />
             {errors.Priority && (
@@ -153,7 +156,6 @@ const AddCompanyLogo = ({
                 }
               }}
             />
-
           </div>
         </div>
 
@@ -169,10 +171,10 @@ const AddCompanyLogo = ({
             </button>
             <button
               type="submit"
-              disabled={isLoading || isImageUploading}
+              disabled={isLoading || isImageUploading || isLoadingMore}
               className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
             >
-              {(isLoading || isImageUploading) ? (
+              {isLoading || isImageUploading || isLoadingMore ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>Saving...</span>

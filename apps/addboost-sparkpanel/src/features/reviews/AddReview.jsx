@@ -21,8 +21,9 @@ const AddReview = ({
   },
 }) => {
   const [formData, setFormData] = useState(initialValue);
-  const { updateData } = useUpdateData({});
-  const { handleImageUpload, isLoading: isImageUploading } = useHandleImageUpload();
+  const { isLoadingMore, updateData } = useUpdateData({});
+  const { handleImageUpload, isLoading: isImageUploading } =
+    useHandleImageUpload();
 
   const { isLoading, postData } = usePostData({});
   const [errors, setErrors] = useState({});
@@ -115,8 +116,9 @@ const AddReview = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="Customer Title / Company Name"
             />
             {errors.Title && (
@@ -139,10 +141,11 @@ const AddReview = ({
                     e.target.value === "" ? "" : Number(e.target.value)
                   )
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-                  }`}
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.Priority
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                }`}
                 placeholder="Order Priority"
               />
               {errors.Priority && (
@@ -158,10 +161,11 @@ const AddReview = ({
               type="text"
               value={formData.Designation}
               onChange={(e) => handleInputChange("Designation", e.target.value)}
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Designation
-                ? "border-red-300 bg-red-50"
-                : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Designation
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+              }`}
               placeholder="Designation / Location"
             />
             {errors.Designation && (
@@ -179,10 +183,11 @@ const AddReview = ({
                 handleInputChange("Description1", e.target.value)
               }
               rows={4}
-              className={`w-full px-4 py-3 border rounded-lg resize-none ${errors.Description1
-                ? "border-red-300 bg-red-50"
-                : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg resize-none ${
+                errors.Description1
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+              }`}
               placeholder="Customer feedback or success story"
             />
             {errors.Description1 && (
@@ -220,10 +225,10 @@ const AddReview = ({
           </button>
           <button
             type="submit"
-            disabled={isLoading || isImageUploading}
+            disabled={isLoading || isImageUploading || isLoadingMore}
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
           >
-            {isLoading || isImageUploading ? (
+            {isLoading || isImageUploading || isLoadingMore ? (
               <>
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 <span>Saving...</span>

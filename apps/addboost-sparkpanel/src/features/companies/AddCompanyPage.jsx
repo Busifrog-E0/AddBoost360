@@ -202,8 +202,10 @@ const AddCompanyPage = ({
 
   const [errors, setErrors] = useState({});
   const { isLoading, postData } = usePostData({});
-  const { handleImageUpload, isLoading: isImageUploading } = useHandleImageUpload();
-  const { updateData } = useUpdateData({});
+
+  const { handleImageUpload, isLoading: isImageUploading } =
+    useHandleImageUpload();
+  const { isLoadingMore, updateData } = useUpdateData({});
 
   const handleInputChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -287,7 +289,6 @@ const AddCompanyPage = ({
     );
   };
 
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -322,8 +323,9 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Title}
               onChange={(e) => handleInputChange("Title", e.target.value)}
-              className={`w-full px-4 py-3 border  rounded-lg ${errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border  rounded-lg ${
+                errors.Title ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., Razorpay"
             />
             {errors.Title && (
@@ -345,10 +347,11 @@ const AddCompanyPage = ({
                     e.target.value === "" ? "" : Number(e.target.value)
                   )
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-                  }`}
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.Priority
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                }`}
                 placeholder="Order Priority"
               />
               {errors.Priority && (
@@ -373,10 +376,11 @@ const AddCompanyPage = ({
                       updated[index] = e.target.value;
                       handleInputChange("Tags", updated);
                     }}
-                    className={`w-full px-4 py-3 border rounded-lg ${errors.Tags
-                      ? "border-red-300 bg-red-50"
-                      : "border-gray-300"
-                      }`}
+                    className={`w-full px-4 py-3 border rounded-lg ${
+                      errors.Tags
+                        ? "border-red-300 bg-red-50"
+                        : "border-gray-300"
+                    }`}
                   >
                     <option value="" disabled>
                       Select a Category
@@ -435,8 +439,9 @@ const AddCompanyPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border  rounded-lg ${errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border  rounded-lg ${
+                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., India"
             />
             {errors.State && (
@@ -452,8 +457,9 @@ const AddCompanyPage = ({
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4 py-3 border  rounded-lg ${errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border  rounded-lg ${
+                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., India"
             />
             {errors.Country && (
@@ -493,10 +499,10 @@ const AddCompanyPage = ({
           </button>
           <button
             type="submit"
-            disabled={isLoading || isImageUploading}
+            disabled={isLoading || isImageUploading || isLoadingMore}
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
           >
-            {isLoading || isImageUploading ? (
+            {isLoading || isImageUploading || isLoadingMore ? (
               <>
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 <span>Saving...</span>

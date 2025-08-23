@@ -27,10 +27,11 @@ const AddTeamPage = ({
   const [formData, setFormData] = useState(initialValue);
 
   const { isLoading, postData } = usePostData({});
-  const { handleImageUpload, isLoading: isImageUploading } = useHandleImageUpload();
+  const { handleImageUpload, isLoading: isImageUploading } =
+    useHandleImageUpload();
 
   const [errors, setErrors] = useState({});
-  const { updateData } = useUpdateData({});
+  const { isLoadingMore, updateData } = useUpdateData({});
   const digitalMarketingTypeOptions = [
     "Branding & Creative Design",
     "Web & App Development",
@@ -66,7 +67,6 @@ const AddTeamPage = ({
       setErrors((prev) => ({ ...prev, [field]: "" }));
     }
   };
-
 
   const validateForm = () => {
     const newErrors = {};
@@ -128,7 +128,6 @@ const AddTeamPage = ({
     );
   };
 
-
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -163,8 +162,9 @@ const AddTeamPage = ({
               type="text"
               value={formData.FullName}
               onChange={(e) => handleInputChange("FullName", e.target.value)}
-              className={`w-full px-4 py-3 border  rounded-lg ${errors.FullName ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border  rounded-lg ${
+                errors.FullName ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., John Doe"
             />
             {errors.FullName && (
@@ -186,10 +186,11 @@ const AddTeamPage = ({
                     e.target.value === "" ? "" : Number(e.target.value)
                   )
                 }
-                className={`w-full px-4 py-3 border rounded-lg ${errors.Priority
-                  ? "border-red-300 bg-red-50"
-                  : "border-gray-300"
-                  }`}
+                className={`w-full px-4 py-3 border rounded-lg ${
+                  errors.Priority
+                    ? "border-red-300 bg-red-50"
+                    : "border-gray-300"
+                }`}
                 placeholder="Order Priority"
               />
               {errors.Priority && (
@@ -206,8 +207,9 @@ const AddTeamPage = ({
               type="text"
               value={formData.ID}
               onChange={(e) => handleInputChange("ID", e.target.value)}
-              className={`w-full px-4  py-3 border rounded-lg ${errors.ID ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4  py-3 border rounded-lg ${
+                errors.ID ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., ID-43"
             />
             {errors.ID && <p className="  text-sm text-red-600">{errors.ID}</p>}
@@ -221,10 +223,11 @@ const AddTeamPage = ({
               type="text"
               value={formData.Designation}
               onChange={(e) => handleInputChange("Designation", e.target.value)}
-              className={`w-full px-4  py-3 border rounded-lg ${errors.Designation
-                ? "border-red-300 bg-red-50"
-                : "border-gray-300"
-                }`}
+              className={`w-full px-4  py-3 border rounded-lg ${
+                errors.Designation
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+              }`}
               placeholder="e.g., Frontend Developer"
             />
             {errors.Designation && (
@@ -242,10 +245,11 @@ const AddTeamPage = ({
               onChange={(e) =>
                 handleInputChange("Description1", e.target.value)
               }
-              className={`w-full px-4 py-3 border rounded-lg ${errors.Description1
-                ? "border-red-300 bg-red-50"
-                : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border rounded-lg ${
+                errors.Description1
+                  ? "border-red-300 bg-red-50"
+                  : "border-gray-300"
+              }`}
             >
               <option value="" disabled>
                 Select a Position
@@ -276,8 +280,9 @@ const AddTeamPage = ({
               type="text"
               value={formData.State}
               onChange={(e) => handleInputChange("State", e.target.value)}
-              className={`w-full px-4 py-3 border  rounded-lg ${errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4 py-3 border  rounded-lg ${
+                errors.State ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., kerala"
             />
             {errors.State && (
@@ -294,8 +299,9 @@ const AddTeamPage = ({
               type="text"
               value={formData.Country}
               onChange={(e) => handleInputChange("Country", e.target.value)}
-              className={`w-full px-4  py-3 border rounded-lg ${errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
-                }`}
+              className={`w-full px-4  py-3 border rounded-lg ${
+                errors.Country ? "border-red-300 bg-red-50" : "border-gray-300"
+              }`}
               placeholder="e.g., India"
             />
             {errors.Country && (
@@ -335,10 +341,10 @@ const AddTeamPage = ({
           </button>
           <button
             type="submit"
-            disabled={isLoading || isImageUploading}
+            disabled={isLoading || isImageUploading || isLoadingMore}
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
           >
-            {isLoading || isImageUploading ? (
+            {isLoading || isImageUploading || isLoadingMore ? (
               <>
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 <span>Saving...</span>
