@@ -24,7 +24,7 @@ const AddPortfolioPage = ({
   isEditing = false,
 }) => {
   const { isLoading, postData } = usePostData({});
-  const { isLoadingMore, updateData } = useUpdateData({});
+  const { updateLoading, updateData } = useUpdateData({});
   const { handleImageUpload, isLoading: isImageUploading } =
     useHandleImageUpload();
   const [formData, setFormData] = useState(initialValue);
@@ -360,10 +360,10 @@ const AddPortfolioPage = ({
             </button>
             <button
               type="submit"
-              disabled={isLoading || isLoadingMore}
+              disabled={isLoading || updateLoading || isImageUploading}
               className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
             >
-              {isLoading || isLoadingMore ? (
+              {isLoading || updateLoading || isImageUploading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>Saving...</span>

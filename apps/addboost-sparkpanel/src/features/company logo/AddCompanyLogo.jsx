@@ -19,7 +19,7 @@ const AddCompanyLogo = ({
   },
 }) => {
   const [formData, setFormData] = useState(initialValue);
-  const { isLoadingMore, updateData } = useUpdateData({});
+  const { updateLoading, updateData } = useUpdateData({});
 
   const { isLoading, postData } = usePostData({});
   const { handleImageUpload, isLoading: isImageUploading } =
@@ -171,10 +171,10 @@ const AddCompanyLogo = ({
             </button>
             <button
               type="submit"
-              disabled={isLoading || isImageUploading || isLoadingMore}
+              disabled={isLoading || isImageUploading || updateLoading}
               className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center space-x-2 disabled:opacity-50"
             >
-              {isLoading || isImageUploading || isLoadingMore ? (
+              {isLoading || isImageUploading || updateLoading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                   <span>Saving...</span>
