@@ -44,20 +44,6 @@ py-10 md:py-14 lg:py-20
               </div>
             ))}
           </div>
-
-
-
-          {/* <div className="flex animate-scroll w-max ">
-            {[...logos, ...logos].map((logo, index) => (
-              <img
-                key={`${logo.DocId}-${index}`} // 👈 ensures key is unique
-                src={logo.ImageUrl}
-                alt={logo.Title}
-                className="h-full w-full object-contain"
-              />
-              //  filter invert brightness-0
-            ))}
-          </div> */}
         </div>
       </div>
     );

@@ -23,6 +23,7 @@ import CompanyLogoSection from "../features/company logo/CompanyLogoSection";
 // ✅ Render LoginPage OUTSIDE MainLayout
 export const router = createBrowserRouter(
   createRoutesFromElements(
+    
     <>
       {/* Standalone Login page */}
       <Route path="/login" element={<UnAuthLayout />}>
