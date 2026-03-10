@@ -101,7 +101,7 @@ const Header = () => {
 
 
           {/* Nav Items */}
-          <nav className="hidden xl:flex gap-8 text-sm font-arya uppercase">
+          <nav className="hidden xl:flex gap-5 text-sm font-arya uppercase">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
