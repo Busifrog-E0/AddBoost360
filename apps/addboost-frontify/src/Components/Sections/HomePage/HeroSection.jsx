@@ -59,7 +59,7 @@ const HeroSection = () => {
     description:
       "Transform your brand with full-service digital marketing, AI-powered web solutions, global product sourcing, and startup empowerment—powered by experts across the world.",
     videoSrc:
-      "https://static.videezy.com/system/resources/previews/000/018/776/original/solution-wei_C3_9F.mp4",
+      "https://addboost360.blr1.cdn.digitaloceanspaces.com/Admin/solution-wei_C3_9F.mp4",
     buttonText: "BOOK A FREE CONSULTATION",
     buttonLink: "/contact",
   });
