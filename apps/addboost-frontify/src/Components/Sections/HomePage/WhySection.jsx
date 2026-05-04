@@ -17,9 +17,9 @@ const WhySection = () => {
     },
     {
       icon: creative2,
-      title: "Legally Protected Services & Secure Escrow Model",
+      title: "Coming Soon - Legally Protected & Escrow model Service.",
       description:
-        "Safe, escrow-backed services with custom video solutions for global markets.",
+        "Bridging global B2B and B2C markets through safe, escrow Model -backed services and custom video-conferencing solutions.",
     },
     {
       icon: creative3,
